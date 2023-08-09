@@ -1,56 +1,133 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class UITest : MonoBehaviour
 {
     public Button[] firstBtn;
+    public Button[] secondBtn;
+
+
     public Image PlayerIcon;
 
-    Image[] fristImage;
-    Color[] fristColor;
+    Image[] firstImage;
+    Color[] firstColor;
 
-    LineRenderer line;
+    Image[] secondImage;
+    Color[] secondColor;
 
-    private void Awake()
+    public int skillPoint;
+    public Text skillPointTxt;
+
+    bool canFirst = true;
+    bool canSecond= true;
+    private void Start()
     {
-        fristImage = new Image[firstBtn.Length];
-        fristColor = new Color[firstBtn.Length];
+        StartCoroutine(SkillStartSet());
+    }
+
+
+    IEnumerator SkillStartSet()
+    {
+        firstImage = new Image[firstBtn.Length];
+        firstColor = new Color[firstBtn.Length];
+
+        secondImage = new Image[secondBtn.Length];
+        secondColor = new Color[secondBtn.Length];
+
 
         for (int e = 0; e < firstBtn.Length; e++)
         {
-            fristImage[e] = firstBtn[e].GetComponent<Image>();
-            fristColor[e] = fristImage[e].color;
-        }
-
-        line = PlayerIcon.GetComponent<LineRenderer>();
-        line.positionCount = firstBtn.Length; // 버튼 개수만큼 라인 렌더러의 점 개수를 설정합니다.
-    }
-
-    public void Test()
-    {
-        string ButtonName = EventSystem.current.currentSelectedGameObject.name;
-        Debug.Log(ButtonName);
-
-        for (int i = 0; i < firstBtn.Length; i++)
+            firstImage[e] = firstBtn[e].GetComponent<Image>();
+            firstColor[e] = firstImage[e].color;
+        } // 1단계 set
+        for (int e = 0; e < secondBtn.Length; e++)
         {
-            if (ButtonName != (i + 1).ToString())
+            secondImage[e] = secondBtn[e].GetComponent<Image>();
+            secondColor[e] = secondImage[e].color;
+        } // 2단계 set
+
+        float startTime = Time.time;
+        while(Time.time - startTime < 1.0f)
+        {
+            for(int e = 0; e < firstBtn.Length; ++e)
             {
-                Color newColor = fristColor[i];
-                newColor.a = 0.3f;
-                fristImage[i].color = newColor;
+                firstColor[e].a = (Time.time - startTime) / 1f;
+
+                firstImage[e].color = firstColor[e];
             }
+
+            yield return null;
+        }
+    } // 게임시작할때 호출될 함수
+    IEnumerator SecondFiledSkill()
+    {
+        float startTime = Time.time;
+        while(Time.time - startTime < 1.0f)
+        {
+            for (int e = 0; e < secondBtn.Length; ++e)
+            {
+                secondColor[e].a = (Time.time - startTime) / 1f;
+
+                secondImage[e].color = secondColor[e];
+            }
+            yield return null;
         }
     }
 
-    // RectTransform의 중점 좌표를 구하는 함수
-    private Vector3 GetCenterPosition(RectTransform rectTransform)
+    public void PointOneSkill()
     {
-        Vector3[] corners = new Vector3[4];
-        rectTransform.GetWorldCorners(corners);
-        Vector3 center = (corners[0] + corners[2]) * 0.5f;
-        return center;
+        if(canFirst)
+        {
+            string ButtonName = EventSystem.current.currentSelectedGameObject.name;
+            Debug.Log(ButtonName);
+
+            for (int i = 0; i < firstBtn.Length; i++)
+            {
+                if (ButtonName != (i + 1).ToString())
+                {
+                    Color newColor = firstColor[i];
+                    newColor.a = 0.2f;
+                    firstImage[i].color = newColor;
+                }
+            }
+
+            StartCoroutine(SecondFiledSkill());
+            canFirst = false;
+            skillPoint -= 1;
+        }
     }
+
+    public void PointTwoSkill()
+    {
+        if(canSecond)
+        {
+            string ButtonName = EventSystem.current.currentSelectedGameObject.name;
+            Debug.Log(ButtonName);
+
+            for (int i = 0; i < secondBtn.Length; i++)
+            {
+                if (ButtonName != (i + 1).ToString())
+                {
+                    Color newColor = secondColor[i];
+                    newColor.a = 0.2f;
+                    secondImage[i].color = newColor;
+                }
+            }
+
+            canSecond = false;
+            skillPoint -= 2;
+        }
+        
+
+    }
+
+    private void Update()
+    {
+        skillPointTxt.text = "Point : " + skillPoint.ToString();
+    }
+
+
 }
