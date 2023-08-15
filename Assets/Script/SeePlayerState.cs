@@ -4,9 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class SeePlayerState : MonoBehaviour
 {
-    public Text atk;
-    public Text df;
-    public Text hp;
+    public Text Damagetxt;
+    public Text Defensetxt;
+    public Text Hptxt;
+    public Text Speedtxt;
     void Start()
     {
         
@@ -15,9 +16,10 @@ public class SeePlayerState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        atk.text = "ATK : " + PlayerState.ATT.ToString();
-        df.text = "DF : " + PlayerState.DF.ToString();
-        hp.text = "HP : " + PlayerState.HP.ToString();
+        Damagetxt.text = "ATK : " + PlayerState.Damage.ToString();
+        Defensetxt.text = "DF : " + PlayerState.Defense.ToString();
+        Hptxt.text = "HP : " + PlayerState.Hp.ToString();
+        Speedtxt.text = "Speed : " + PlayerState.Speed.ToString();
 
 
     }

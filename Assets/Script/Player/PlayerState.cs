@@ -7,6 +7,7 @@ public class PlayerState : MonoBehaviour
     private static PlayerState instance;
     private void Awake()
     {
+        // -----------------------------
         if (instance != null && instance != this)
         {
             Destroy(this.gameObject);
@@ -16,14 +17,15 @@ public class PlayerState : MonoBehaviour
         instance = this;
         DontDestroyOnLoad(this.gameObject);
 
-        DF = 1f;
-        ATT = 1f;
-        HP = 1f;
+        Defense = 1f;
+        Damage = 1f;
+        Hp = 1f;
+        Speed = 5f;
     }
-    public static float DF;
-    public static float ATT;
-    public static float HP;
-
-
+    public static float Defense; // 방어력
+    public static float Damage; // 공격력
+    public static float Hp; // 체력
+    public static float Speed; // 이동속도
+    
 
 }

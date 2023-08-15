@@ -15,7 +15,7 @@ public class TestSkillBase : MonoBehaviour
     {
         if(canFirst)
         {
-            PlayerState.HP += 2;
+            PlayerState.Hp += 2;
             canFirst = false;
         }
     }
@@ -23,7 +23,7 @@ public class TestSkillBase : MonoBehaviour
     {
         if (canFirst)
         {
-            PlayerState.ATT += 2;
+            PlayerState.Damage += 2;
             canFirst = false;
         }
     }
@@ -31,7 +31,7 @@ public class TestSkillBase : MonoBehaviour
     {
         if (canFirst)
         {
-            PlayerState.DF += 2;
+            PlayerState.Defense += 2;
             canFirst = false;
         }
     }
@@ -39,8 +39,8 @@ public class TestSkillBase : MonoBehaviour
     {
         if (canFirst)
         {
-            PlayerState.HP += 1;
-            PlayerState.DF += 1;
+            PlayerState.Hp += 1;
+            PlayerState.Defense += 1;
             canFirst = false;
         }
     }
@@ -48,8 +48,8 @@ public class TestSkillBase : MonoBehaviour
     {
         if (canFirst)
         {
-            PlayerState.ATT += 1;
-            PlayerState.DF += 1;
+            PlayerState.Damage += 1;
+            PlayerState.Defense += 1;
             canFirst = false;
         }
     }
@@ -58,8 +58,8 @@ public class TestSkillBase : MonoBehaviour
     {
         if (canSecond)
         {
-            PlayerState.HP += 2;
-            PlayerState.ATT += 1;
+            PlayerState.Hp += 2;
+            PlayerState.Damage += 1;
             canSecond = false;
         }
     }
@@ -67,8 +67,8 @@ public class TestSkillBase : MonoBehaviour
     {
         if (canSecond)
         {
-            PlayerState.DF += 2;
-            PlayerState.ATT += 1;
+            PlayerState.Defense += 2;
+            PlayerState.Damage += 1;
             canSecond = false;
         }   
     }
@@ -76,8 +76,8 @@ public class TestSkillBase : MonoBehaviour
     {
         if (canSecond)
         {
-            PlayerState.ATT += 2;
-            PlayerState.HP += 1;
+            PlayerState.Damage += 2;
+            PlayerState.Hp += 1;
             canSecond = false;
         }
     }
