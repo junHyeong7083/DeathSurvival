@@ -54,11 +54,11 @@ public class UITest : MonoBehaviour
         } // 2´Ü°è set
 
         float startTime = Time.time;
-        while(Time.time - startTime < 1.0f)
+        while(Time.time - startTime < 0.5f)
         {
             for(int e = 0; e < firstBtn.Length; ++e)
             {
-                firstColor[e].a = (Time.time - startTime) / 1f;
+                firstColor[e].a = (Time.time - startTime) / 0.5f;
 
                 firstImage[e].color = firstColor[e];
             }
@@ -69,11 +69,11 @@ public class UITest : MonoBehaviour
     IEnumerator SecondFiledSkill()
     {
         float startTime = Time.time;
-        while(Time.time - startTime < 1.0f)
+        while(Time.time - startTime < 0.5f)
         {
             for (int e = 0; e < secondBtn.Length; ++e)
             {
-                secondColor[e].a = (Time.time - startTime) / 1f;
+                secondColor[e].a = (Time.time - startTime) / 0.5f;
 
                 secondImage[e].color = secondColor[e];
             }

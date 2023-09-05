@@ -6,6 +6,8 @@ using static UnityEditor.Searcher.SearcherWindow.Alignment;
 public class PlayerController : MonoBehaviour
 {
     Animator animator;
+
+    public static Vector3 PlayerPos;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -14,7 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        Vector3 PlayerPos = this.transform.position;
+        PlayerPos = this.transform.position;
         if (h != 0 || v != 0)
             animator.SetBool("isInput", true);
         else
