@@ -23,13 +23,11 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isInput", false);
 
         animator.SetFloat("InputX", h);
-        animator.SetFloat("InputY", v);
+        animator.SetFloat("InputY", v); 
 
         PlayerPos.x += h * Time.deltaTime * PlayerState.Speed;
         PlayerPos.y += v * Time.deltaTime * PlayerState.Speed;
 
         this.transform.position = PlayerPos;
-
-       
     }
 }

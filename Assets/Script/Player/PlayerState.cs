@@ -6,8 +6,12 @@ public class PlayerState : MonoBehaviour
 {
 
     public static float Defense; // 방어력
+
     public static float Damage; // 공격력
+
     public static float Hp; // 체력
+    public static bool isHpSkillPoint = false;
+
     public static float Speed; // 이동속도
 
 
@@ -37,7 +41,7 @@ public class PlayerState : MonoBehaviour
 
         Defense = 1f;
         Damage = 1f;
-        Hp = 1f;
+        Hp = 10f;
         Speed = 5f;
     }
 
