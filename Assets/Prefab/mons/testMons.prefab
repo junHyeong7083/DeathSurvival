@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1416456153413296528}
   m_Layer: 0
   m_Name: testMons
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,6 @@ MonoBehaviour:
   Speed: 3
   Hp: 0
   Damage: 0
-  playerTransform: {fileID: 0}
   isRight: 0
 --- !u!50 &1416456153413296532
 Rigidbody2D:

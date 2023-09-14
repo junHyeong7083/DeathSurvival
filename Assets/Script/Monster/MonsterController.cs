@@ -22,7 +22,7 @@ public class MonsterController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "TestSkill")
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
     }
 
 
