@@ -9,6 +9,8 @@ public class MonsterManager : MonoBehaviour
     private List<GameObject>[] monsterPools; // 몬스터 풀 배열
     private int currentMonsterNumber = 1; // 현재 몬스터 번호
 
+    private Coroutine currentSpawnCoroutine; // 현재 실행 중인 코루틴을 추적하기 위한 변수
+
     private void Start()
     {
         // 몬스터 풀 배열 초기화
@@ -27,17 +29,33 @@ public class MonsterManager : MonoBehaviour
         }
 
         // 시작할 때 첫 번째 몬스터 활성화
-        StartCoroutine(SpawnMonster(1f, currentMonsterNumber));
+        currentSpawnCoroutine = StartCoroutine(SpawnMonster(1f, currentMonsterNumber));
     }
 
+    float currentTime;
+    public float standardTime;
     private void Update()
     {
-        // 게임 진행 중일 때 여기서 게임 로직을 추가할 수 있습니다.
+        currentTime += Time.deltaTime;
+        if(currentTime/ standardTime < monsterPrefabs.Length) // 정해진 몬스터 숫자내에서만 연산이되도록
+        {
+            if (currentTime / standardTime >= currentMonsterNumber)
+            {
+                // 이전 코루틴 중지
+                if (currentSpawnCoroutine != null)
+                {
+                    StopCoroutine(currentSpawnCoroutine);
+                }
+
+                currentMonsterNumber++;
+                currentSpawnCoroutine = StartCoroutine(SpawnMonster(1f, currentMonsterNumber));
+            }
+        }
     }
 
     private IEnumerator SpawnMonster(float delay, int monsterNumber)
     {
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(delay);
 
@@ -46,16 +64,10 @@ public class MonsterManager : MonoBehaviour
 
             if (inactiveMonster != null)
             {
-                Debug.Log("생성");
                 // 활성화 및 위치 설정
                 inactiveMonster.SetActive(true);
                 inactiveMonster.transform.position = GetRandomSpawnPosition();
             }
-            Debug.Log("가득");
-
-            // 다음 몬스터 스폰
-            int nextMonsterNumber = (monsterNumber % monsterPrefabs.Length) + 1;
-            StartCoroutine(SpawnMonster(60f, nextMonsterNumber)); // 60초 후에 다음 몬스터 스폰
         }
     }
 
