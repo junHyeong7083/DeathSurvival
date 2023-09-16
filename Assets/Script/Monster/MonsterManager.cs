@@ -4,36 +4,42 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
-    public GameObject[] monsterPrefabs; // 1~6번 몬스터 프리팹 배열
+    public GameObject[] monsterPrefabs; // 몬스터 프리팹 배열
+
     public int maxMonsters = 10; // 최대 몬스터 수
+
     private List<GameObject>[] monsterPools; // 몬스터 풀 배열
+
     private int currentMonsterNumber = 1; // 현재 몬스터 번호
 
-    private Coroutine currentSpawnCoroutine; // 현재 실행 중인 코루틴을 추적하기 위한 변수
+    private Coroutine currentSpawnCoroutine; // 현재 실행 중인 코루틴
 
+    #region SpawnTime
+    public float spawndelayTime;
+    [SerializeField]
+    float currentTime;
+    public float standardTime;
+    #endregion
+
+    #region SpawnPos
+    public float spawnPosX1, spawnPosX2, spawnPosY1, spawnPosY2;
+    #endregion
     private void Start()
     {
-        // 몬스터 풀 배열 초기화
         monsterPools = new List<GameObject>[monsterPrefabs.Length];
         for (int i = 0; i < monsterPrefabs.Length; i++)
         {
             monsterPools[i] = new List<GameObject>();
 
-            // 몬스터 프리팹 별로 초기화
             for (int j = 0; j < maxMonsters; j++)
             {
                 GameObject monster = Instantiate(monsterPrefabs[i]);
-                monster.SetActive(false); // 비활성화 상태로 시작
+                monster.SetActive(false); // 비활성화 
                 monsterPools[i].Add(monster);
             }
         }
-
-        // 시작할 때 첫 번째 몬스터 활성화
-        currentSpawnCoroutine = StartCoroutine(SpawnMonster(1f, currentMonsterNumber));
+        currentSpawnCoroutine = StartCoroutine(SpawnMonster(spawndelayTime, currentMonsterNumber));
     }
-
-    float currentTime;
-    public float standardTime;
     private void Update()
     {
         currentTime += Time.deltaTime;
@@ -48,7 +54,7 @@ public class MonsterManager : MonoBehaviour
                 }
 
                 currentMonsterNumber++;
-                currentSpawnCoroutine = StartCoroutine(SpawnMonster(1f, currentMonsterNumber));
+                currentSpawnCoroutine = StartCoroutine(SpawnMonster(spawndelayTime, currentMonsterNumber));
             }
         }
     }
@@ -59,12 +65,11 @@ public class MonsterManager : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
 
-            // 비활성화된 몬스터 찾기
             GameObject inactiveMonster = monsterPools[monsterNumber - 1].Find(monster => !monster.activeSelf);
-
+            float hp = inactiveMonster.GetComponent<MonsterController>().Hp;
             if (inactiveMonster != null)
             {
-                // 활성화 및 위치 설정
+                hp = 100f;
                 inactiveMonster.SetActive(true);
                 inactiveMonster.transform.position = GetRandomSpawnPosition();
             }
@@ -73,9 +78,31 @@ public class MonsterManager : MonoBehaviour
 
     private Vector3 GetRandomSpawnPosition()
     {
-        // 랜덤한 스폰 위치 반환 (게임 화면 내의 적절한 위치로 설정해야 함)
-        float x = Random.Range(-10f, 10f);
-        float y = Random.Range(-10f, 10f);
-        return new Vector3(x, y, 0f);
+        float x1 = Random.Range(PlayerController.PlayerPos.x - spawnPosX1, PlayerController.PlayerPos.x - spawnPosX2);
+        float x2 = Random.Range(PlayerController.PlayerPos.x + spawnPosX1, PlayerController.PlayerPos.x + spawnPosX2);
+
+        float y1 = Random.Range(PlayerController.PlayerPos.y - spawnPosY1, PlayerController.PlayerPos.x - spawnPosY2);
+        float y2 = Random.Range(PlayerController.PlayerPos.y + spawnPosY1, PlayerController.PlayerPos.x + spawnPosY2);
+
+        float X,Y;
+        if (Random.value < 0.5f)
+        {
+            X = x1;
+        }
+        else
+        {
+            X = x2;
+        }
+
+        if (Random.value < 0.5f)
+        {
+            Y = x1;
+        }
+        else
+        {
+            Y = x2;
+        }
+
+        return new Vector3(X, Y, 0f);
     }
 }
