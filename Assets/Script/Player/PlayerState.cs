@@ -13,6 +13,8 @@ public class PlayerState : MonoBehaviour
     public static bool isHpSkillPoint = false;
 
     public static float Speed; // 이동속도
+    [SerializeField]
+    private int Level;
 
 
     #region See Inspector

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class MonsterController : MonoBehaviour
 {
@@ -9,17 +11,21 @@ public class MonsterController : MonoBehaviour
     [SerializeField]
     float Speed;
 
-    public float Hp; 
+    public float Hp;
+    float maxHp;
     [SerializeField]
     float Damage;
     #endregion
     Transform playerTransform;
 
     SpriteRenderer spriternRenderer;
-
+    GameObject monsterItem;
     [SerializeField]
     bool isRight = false;
 
+
+    GameObject monsterManagerObj;
+    MonsterManager monsterManager;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "TestSkill")
@@ -32,16 +38,33 @@ public class MonsterController : MonoBehaviour
 
     void Start()
     {
-        Hp = maxHp;
+        monsterManagerObj = GameObject.Find("MonsterManager");
+
+        monsterManager = monsterManagerObj.GetComponent<MonsterManager>();
+
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+
         spriternRenderer = GetComponent<SpriteRenderer>();
     }
 
+    bool isStart = false;
+    private void OnEnable()
+    {
+        if(!isStart)
+            maxHp = Hp;
+        isStart = true;
+        Hp = maxHp;
+        isDead = false;
+    }
+
+    bool isDead = false;
     void Update()
     {
-        if(Hp < 0)
+        if (!isDead && Hp <= 0) // 몬스터가 죽지 않았고 HP가 0 이하인 경우
         {
+            monsterManager.SpawnMonsterItem(this.transform.position.x, this.transform.position.y);
             this.gameObject.SetActive(false);
+            isDead = true; // 몬스터를 죽은 상태로 표시
         }
 
 

@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 3
-  Hp: 0
+  Hp: 100
   Damage: 0
   isRight: 0
 --- !u!50 &1416456153413296532
