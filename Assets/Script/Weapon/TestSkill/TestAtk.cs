@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class TestAtk : MonoBehaviour
 {
+    GameObject SkillData;
     public GameObject weaponPrefab; // 원운동할 오브젝트의 프리팹
     Transform PlayerTransform;  // a 오브젝트의 Transform
     public float rotationSpeed = 10f; // 원운동의 속도
@@ -13,25 +14,31 @@ public class TestAtk : MonoBehaviour
     public int numberOfWeapon = 5; // 생성할 circle의 개수
     float[] angle; // 시작 각도
 
-
+    GameObject skillParentA; // 빈 오브젝트를 저장할 변수
     GameObject[] circle;
     public static bool isTestWeapon = false;
     bool isStart = false; // 생성효과
     bool isInit = false;
 
     GameObject Player;
+
     void Start()
     {
+        SkillData = GameObject.Find("WeaponManager/Skill Data");
         Player = GameObject.Find("Player");
         PlayerTransform = Player.transform;
+        // 스킬을 넣을 빈 오브젝트 생성
+        skillParentA = new GameObject("Skill ParentA");
+
+        skillParentA.transform.parent = SkillData.transform;
     }
 
     IEnumerator isSkillStart()
     {
         #region Setting
-        SpriteRenderer[] spriteRenderers = new SpriteRenderer[numberOfWeapon]; ;
-        Color[] colors =   new Color[numberOfWeapon]; ;
-        for(int e = 0; e < numberOfWeapon; e++)
+        SpriteRenderer[] spriteRenderers = new SpriteRenderer[numberOfWeapon];
+        Color[] colors = new Color[numberOfWeapon];
+        for (int e = 0; e < numberOfWeapon; e++)
         {
             spriteRenderers[e] = circle[e].GetComponent<SpriteRenderer>();
             colors[e].a = 0f;
@@ -39,7 +46,7 @@ public class TestAtk : MonoBehaviour
         }
         #endregion
         float startTime = Time.time;
-        while(Time.time - startTime < 1f)
+        while (Time.time - startTime < 1f)
         {
             float alpha = (Time.time - startTime) / 1f;
 
@@ -57,16 +64,16 @@ public class TestAtk : MonoBehaviour
     void Update()
     {
 
-        if(isTestWeapon)
+        if (isTestWeapon)
         {
-            if(!isInit)
+            if (!isInit)
             {
                 circle = new GameObject[numberOfWeapon]; // 배열 초기화
                 angle = new float[numberOfWeapon];
 
                 for (int i = 0; i < numberOfWeapon; i++)
                 {
-                    circle[i] = Instantiate(weaponPrefab, PlayerTransform.position, Quaternion.identity); // 프리팹을 인스턴스화하여 circle 배열에 할당
+                    circle[i] = Instantiate(weaponPrefab, skillParentA.transform); // 빈 오브젝트를 부모로 사용
                     angle[i] = (2 * Mathf.PI / numberOfWeapon) * i; // 각도를 균등하게 분배
 
                     float x = PlayerTransform.position.x + Mathf.Cos(angle[i]) * distance;
@@ -77,12 +84,11 @@ public class TestAtk : MonoBehaviour
                 isInit = true;
             }
 
-
             if (!isStart)
             {
                 StartCoroutine(isSkillStart());
             }
-            else if(isStart)
+            else if (isStart)
             {
                 for (int e = 0; e < angle.Length; ++e)
                 {
