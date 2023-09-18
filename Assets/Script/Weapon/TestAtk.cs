@@ -1,12 +1,13 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TestAtk : MonoBehaviour
 {
     public GameObject weaponPrefab; // 원운동할 오브젝트의 프리팹
-    public Transform PlayerTransform;  // a 오브젝트의 Transform
+    Transform PlayerTransform;  // a 오브젝트의 Transform
     public float rotationSpeed = 10f; // 원운동의 속도
     public float distance;
     public int numberOfWeapon = 5; // 생성할 circle의 개수
@@ -17,6 +18,14 @@ public class TestAtk : MonoBehaviour
     public static bool isTestWeapon = false;
     bool isStart = false; // 생성효과
     bool isInit = false;
+
+    GameObject Player;
+    void Start()
+    {
+        Player = GameObject.Find("Player");
+        PlayerTransform = Player.transform;
+    }
+
     IEnumerator isSkillStart()
     {
         #region Setting

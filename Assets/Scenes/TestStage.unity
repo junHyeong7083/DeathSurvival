@@ -123,55 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &247685039
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 247685040}
-  - component: {fileID: 247685041}
-  m_Layer: 0
-  m_Name: ATK
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &247685040
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247685039}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7686469506715745577}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &247685041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 247685039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c9c67d0892a344c86cc8ee1020ecd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 3684992149943777572, guid: 07c42ddd42199664c97fc3c7f7e52c48, type: 3}
-  PlayerTransform: {fileID: 7686469506715745577}
-  rotationSpeed: 10
-  distance: 3
-  numberOfWeapon: 5
 --- !u!1 &345980958
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,8 +545,8 @@ MonoBehaviour:
   - {fileID: 1416456153413296534, guid: c4b1be9ef1fb1424097fa2f363075f02, type: 3}
   - {fileID: 1416456153413296534, guid: 4198bef5381c0834ca03f1f1176fd0bd, type: 3}
   - {fileID: 1416456153413296534, guid: 07450d4a6ad992f49ad6f3fe5825cd4f, type: 3}
-  monsterItem: {fileID: 3677681965715089104, guid: 76cdbeb50dc15144491b406fe55a0a66, type: 3}
   maxMonsters: 0a000000140000001e000000
+  monsterItem: {fileID: 3677681965715089104, guid: 76cdbeb50dc15144491b406fe55a0a66, type: 3}
   spawndelayTime: 0.1
   currentTime: 0
   standardTime: 10
@@ -812,6 +763,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 780aeb07d8f439e46b64177e5340c00d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 7686469506715745589}
+  SkillPrefabs:
+  - {fileID: 1597703909510322553, guid: 52c75b5736aca0542be6e424cf08a3ed, type: 3}
 --- !u!4 &1885262596
 Transform:
   m_ObjectHideFlags: 0
@@ -1009,7 +963,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7686469507991880168}
-  - {fileID: 247685040}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
