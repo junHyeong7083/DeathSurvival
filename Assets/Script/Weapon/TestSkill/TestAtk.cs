@@ -16,7 +16,7 @@ public class TestAtk : MonoBehaviour
 
     GameObject skillParentA; // 빈 오브젝트를 저장할 변수
     GameObject[] circle;
-    public static bool isTestWeapon = false;
+    public static bool isTestAtk1 = false;
     bool isStart = false; // 생성효과
     bool isInit = false;
 
@@ -64,7 +64,7 @@ public class TestAtk : MonoBehaviour
     void Update()
     {
 
-        if (isTestWeapon)
+        if (isTestAtk1)
         {
             if (!isInit)
             {
@@ -87,6 +87,13 @@ public class TestAtk : MonoBehaviour
             if (!isStart)
             {
                 StartCoroutine(isSkillStart());
+
+                for(int e = 0; e< numberOfWeapon; e++)
+                {
+                    float x = PlayerTransform.position.x + Mathf.Cos(angle[e]) * distance;
+                    float y = PlayerTransform.position.y + Mathf.Sin(angle[e]) * distance;
+                    circle[e].transform.position = new Vector3(x, y, circle[e].transform.position.z);
+                }
             }
             else if (isStart)
             {

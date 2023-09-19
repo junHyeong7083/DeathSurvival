@@ -24,6 +24,14 @@ public class WeaponManager : MonoBehaviour
         {
             GameObject SkillA = Instantiate(SkillPrefabs[0], skillParent);
         }
-        TestAtk.isTestWeapon = true;
+        TestAtk.isTestAtk1 = true;
+    }
+
+    public void SkillB()
+    {
+        if(Player != null)
+        {
+             GameObject SkillB = Instantiate(SkillPrefabs[1], skillParent);
+        }
     }
 }

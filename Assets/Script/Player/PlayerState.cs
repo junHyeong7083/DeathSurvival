@@ -16,7 +16,6 @@ public class PlayerState : MonoBehaviour
     [SerializeField]
     private int Level;
 
-
     #region See Inspector
     [SerializeField]
     float _Defense;
