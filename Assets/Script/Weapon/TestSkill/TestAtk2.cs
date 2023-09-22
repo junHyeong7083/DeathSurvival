@@ -38,6 +38,7 @@ public class TestAtk2 : MonoBehaviour
 
     IEnumerator isSkillInit()
     {
+        Debug.Log("!!");
         this.gameObject.SetActive(true);
         float startTime = Time.time;
         color.a = 0f;
@@ -46,6 +47,7 @@ public class TestAtk2 : MonoBehaviour
         while (Time.time - startTime < spawnTime)
         {
             transform.rotation *= Quaternion.Euler(0,0,45f);
+       //     this.transform.position = DirController.DirPos;
 
             float alpha = (Time.time - startTime) / spawnTime;
             color.a = alpha;
@@ -67,11 +69,11 @@ public class TestAtk2 : MonoBehaviour
         while (Time.time - startTime < surviveTime)
         {
             // 현재 방향으로 움직임
-            transform.rotation = Quaternion.Euler(0, 0, 45f); // z축 회전 설정
+            transform.rotation *= Quaternion.Euler(0, 0, 45f); // z축 회전 설정
             float journeyLength = Vector3.Distance(startPosition, DirTransform.position);
             float distanceCovered = (Time.time - startTime) * moveSpeed;
             float fractionOfJourney = distanceCovered / journeyLength;
-            transform.position = Vector3.Lerp(startPosition, DirTransform.position, fractionOfJourney);
+           this.transform.position = Vector3.Lerp(startPosition, DirTransform.position, fractionOfJourney);
 
             yield return null;
         }
@@ -91,7 +93,6 @@ public class TestAtk2 : MonoBehaviour
             {
                 if (!isInit)
                 {
-                    transform.position = DirController.DirPos;
                     Debug.Log("dirpos.x : " + DirController.DirPos.x);
                     StartCoroutine(isSkillInit());
                 }

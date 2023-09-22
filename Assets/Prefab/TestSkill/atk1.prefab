@@ -45,7 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 3684992149943777572, guid: 07c42ddd42199664c97fc3c7f7e52c48, type: 3}
-  PlayerTransform: {fileID: 0}
   rotationSpeed: 10
   distance: 3
   numberOfWeapon: 5

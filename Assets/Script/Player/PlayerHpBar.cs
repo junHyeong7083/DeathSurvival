@@ -25,7 +25,7 @@ public class PlayerHpBar : MonoBehaviour
         {
             if (isHit)
             {
-                Debug.Log("Hit!!");
+                //Debug.Log("Hit!!");
                 currentHp -= 0.5f;
                 isHit = false;
 

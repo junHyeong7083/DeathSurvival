@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Timeline;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -19,10 +20,12 @@ public class MonsterController : MonoBehaviour
     Transform playerTransform;
 
     SpriteRenderer spriternRenderer;
+    UnityEngine.Color color;
     GameObject monsterItem;
     [SerializeField]
     bool isRight = false;
 
+    bool isDead = false;
 
     GameObject monsterManagerObj;
     MonsterManager monsterManager;
@@ -45,6 +48,8 @@ public class MonsterController : MonoBehaviour
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
 
         spriternRenderer = GetComponent<SpriteRenderer>();
+
+        color = spriternRenderer.color;
     }
 
     bool isStart = false;
@@ -57,7 +62,7 @@ public class MonsterController : MonoBehaviour
         isDead = false;
     }
 
-    bool isDead = false;
+
     void Update()
     {
         if (!isDead && Hp <= 0) // 몬스터가 죽지 않았고 HP가 0 이하인 경우

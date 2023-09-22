@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Monster
   - TestSkill
+  - detectField
   layers:
   - Default
   - TransparentFX
