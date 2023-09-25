@@ -1,72 +1,56 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class WeaponManager : MonoBehaviour
 {
-    public GameObject Player;
-    public GameObject[] SkillPrefabs;
-    GameObject[] WeaponPrefab;
+    private static WeaponManager instance; // 다른 곳에서 즉시 사용 불가능한 instance
 
-    private Transform skillParent;
-    private void Start()
+    [SerializeField]
+    private GameObject[] patternArray; // 패턴 배열, Inspecter에서 패턴 프리팹을 받아오는 역할
+
+    Dictionary<string, GameObject> patternDic = new Dictionary<string, GameObject>(); // 패턴 딕셔너리, 패턴 이름을 통해 패턴을 불러오게 하는 역할
+
+    public static WeaponManager Instance // 다른 곳에서 사용 가능하여 instance를 반환
     {
-        // "SkillParent" 빈 오브젝트 생성
-        GameObject parentObject = new GameObject("Skill Data");
-        skillParent = parentObject.transform;
-
-        // "SkillParent" 빈 오브젝트를 "WeaponManager"의 자식으로 설정
-        skillParent.parent = this.transform;
-
-        for(int e = 0; e < SkillPrefabs.Length; ++e)
+        get
         {
-            Instantiate(SkillPrefabs[e], skillParent);
-            SkillPrefabs[e].SetActive(false);
-            Debug.Log("e : " + e);
+            // 오류 방지
+            if (instance == null)
+            {
+                instance = FindObjectOfType<WeaponManager>();
+            }
+
+            return instance; // 오류 없으면 정상적으로 반환
         }
     }
 
-    public void SkillA()
+    private void Awake()
     {
-        Debug.Log("씨발라ㅏ아리어히ㅏㄴ어라ㅣㄴ허ㅣㄴㅇㄹ");
-        SkillPrefabs[0].SetActive(true);
-        TestAtk.isTestAtk1 = true;
-    }
-
-
-    public void SkillB()
-    {
-         StartCoroutine(SkillBpattern());
-    }
-    bool startInit = false;
-    IEnumerator SkillBpattern()
-    {
-        SpriteRenderer spriteRenderer = SkillPrefabs[1].GetComponent<SpriteRenderer>();
-        UnityEngine.Color color = spriteRenderer.color;
-        color.a = 0f;
-        spriteRenderer.color = color;
-
-        SkillPrefabs[1].SetActive(true);
-
-        float startTime = Time.time;
-        while(Time.time - startTime < 1f)
+        // 오류 방지
+        if (Instance != this)
         {
-            float alpha = (Time.time - startTime ) /1f;
+            Destroy(this.gameObject);
+        }
+        //   DontDestroyOnLoad(this.gameObject);
 
-            color.a = alpha;
-            spriteRenderer.color = color;
-
-            yield return null;
+        // 패턴 배열에 있는 패턴들을 패턴 딕셔너리에 삽입
+        foreach (GameObject pattern in patternArray)
+        {
+            patternDic.Add(pattern.name, pattern);
         }
     }
 
-
-    private void Update()
+    public GameObject StartPattern(string name)
     {
-    }
+        // 오류 방지
+        if (patternDic.ContainsKey(name) == false)
+        {
+            Debug.Log(name + " is not Contained atternDic");
+            return null;
+        }
 
+        // 패턴 생성
+        return Instantiate(patternDic[name]);
+    }
 }

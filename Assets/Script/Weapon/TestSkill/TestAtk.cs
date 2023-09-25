@@ -14,7 +14,6 @@ public class TestAtk : MonoBehaviour
     public int numberOfWeapon = 5; // 생성할 circle의 개수
     float[] angle; // 시작 각도
 
-    GameObject skillParentA; // 빈 오브젝트를 저장할 변수
     GameObject[] circle;
     public static bool isTestAtk1 = false;
     bool isStart = false; // 생성효과
@@ -27,10 +26,6 @@ public class TestAtk : MonoBehaviour
         SkillData = GameObject.Find("WeaponManager/Skill Data");
         Player = GameObject.Find("Player");
         PlayerTransform = Player.transform;
-        // 스킬을 넣을 빈 오브젝트 생성
-        skillParentA = new GameObject("Skill ParentA");
-
-        skillParentA.transform.parent = SkillData.transform;
     }
 
     IEnumerator isSkillStart()
@@ -73,7 +68,8 @@ public class TestAtk : MonoBehaviour
 
                 for (int i = 0; i < numberOfWeapon; i++)
                 {
-                    circle[i] = Instantiate(weaponPrefab, skillParentA.transform); // 빈 오브젝트를 부모로 사용
+                    circle[i] = WeaponManager.Instance.StartPattern("Circle");
+
                     angle[i] = (2 * Mathf.PI / numberOfWeapon) * i; // 각도를 균등하게 분배
 
                     float x = PlayerTransform.position.x + Mathf.Cos(angle[i]) * distance;
