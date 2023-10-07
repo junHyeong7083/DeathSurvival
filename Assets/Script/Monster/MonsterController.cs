@@ -17,11 +17,15 @@ public class MonsterController : MonoBehaviour
     [SerializeField]
     float Damage;
     #endregion
+
     Transform playerTransform;
 
     SpriteRenderer spriternRenderer;
+
     UnityEngine.Color color;
+
     GameObject monsterItem;
+
     [SerializeField]
     bool isRight = false;
 

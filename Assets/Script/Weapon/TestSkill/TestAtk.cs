@@ -24,7 +24,7 @@ public class TestAtk : MonoBehaviour
     void Start()
     {
         SkillData = GameObject.Find("WeaponManager/Skill Data");
-        Player = GameObject.Find("Player");
+        Player = GameObject.FindWithTag("Player");
         PlayerTransform = Player.transform;
     }
 

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class PlayerHpBar : MonoBehaviour
 {
-    public Image hpBar;
+    Image hpBar;
 
     float maxHp;
     float currentHp;
@@ -37,6 +37,7 @@ public class PlayerHpBar : MonoBehaviour
 
     void Start()
     {
+        hpBar = GameObject.Find("HpBar").GetComponent<Image>();
         maxHp = PlayerState.Hp;
         currentHp = maxHp;
 

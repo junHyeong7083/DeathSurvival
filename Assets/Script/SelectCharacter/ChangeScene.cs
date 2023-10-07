@@ -6,7 +6,7 @@ public class ChangeScene : MonoBehaviour
 {
    public void GoGameScene()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void GoSelectScene()

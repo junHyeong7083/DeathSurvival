@@ -8,7 +8,7 @@ public class Meet : MonoBehaviour
     bool isAttracted = false; 
     private void Start()
     {
-        Player = GameObject.Find("Player");
+        Player = GameObject.FindWithTag("Player");
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
