@@ -207,9 +207,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: WeaponManager, Assembly-CSharp
-        m_MethodName: SkillB
+      - m_Target: {fileID: 226860182}
+        m_TargetAssemblyTypeName: TestPattern, Assembly-CSharp
+        m_MethodName: Pattern2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1084,7 +1084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   patternArray:
   - {fileID: 1597703909510322553, guid: 52c75b5736aca0542be6e424cf08a3ed, type: 3}
-  - {fileID: 8011516875517245831, guid: 4bf9c5228c5bc3841ab412e1e07940a6, type: 3}
+  - {fileID: 3900902190841934007, guid: 4bf9c5228c5bc3841ab412e1e07940a6, type: 3}
   - {fileID: 3684992149943777572, guid: 07c42ddd42199664c97fc3c7f7e52c48, type: 3}
 --- !u!1 &2005737807
 GameObject:
