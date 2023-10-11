@@ -13,6 +13,7 @@ public class PlayerState : MonoBehaviour
     public static bool isHpSkillPoint = false;
 
     public static float Speed; // 이동속도
+    public static float detectRange;
     [SerializeField]
     private int Level;
 
@@ -39,7 +40,7 @@ public class PlayerState : MonoBehaviour
 
         instance = this;
         //DontDestroyOnLoad(this.gameObject);
-
+        detectRange = 2.5f;
         Defense = 1f;
         Damage = 1f;
         Hp = 10f;
