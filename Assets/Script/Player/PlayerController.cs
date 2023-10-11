@@ -21,15 +21,19 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("isInput", true);
             isMove = true;
+
+            if (h > 0)
+                animator.SetBool("isRight", true);
+            else if (h < 0)
+                animator.SetBool("isRight", false);
         }
         else
         {
             animator.SetBool("isInput", false);
             isMove = false;
         }
-
-        animator.SetFloat("InputX", h);
-        animator.SetFloat("InputY", v); 
+        // animator.SetFloat("InputX", h);
+        // animator.SetFloat("InputY", v); 
 
         PlayerPos.x += h * Time.deltaTime * PlayerState.Speed;
         PlayerPos.y += v * Time.deltaTime * PlayerState.Speed;
