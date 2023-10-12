@@ -14,6 +14,7 @@ public class PlayerState : MonoBehaviour
 
     public static float Speed; // 이동속도
     public static float detectRange;
+    //public static float attractionSpeed;
     [SerializeField]
     private int Level;
 
@@ -45,6 +46,7 @@ public class PlayerState : MonoBehaviour
         Damage = 1f;
         Hp = 10f;
         Speed = 5f;
+        //attractionSpeed = 15f;
     }
 
     private void Update()

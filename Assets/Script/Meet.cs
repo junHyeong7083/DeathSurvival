@@ -34,7 +34,8 @@ public class Meet : MonoBehaviour
         if (isAttracted)
         {
             // 플레이어 위치로 아이템을 부드럽게 이동시킴
-            transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, detectItem.attractionSpeed * Time.deltaTime);
+         //   transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, PlayerState.attractionSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, 15f * Time.deltaTime);
         }
     }
 
