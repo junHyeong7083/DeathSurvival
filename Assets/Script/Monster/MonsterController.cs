@@ -20,6 +20,8 @@ public class MonsterController : MonoBehaviour
 
     Transform playerTransform;
 
+    Animator animator;
+
     SpriteRenderer spriternRenderer;
 
     UnityEngine.Color color;
@@ -45,6 +47,8 @@ public class MonsterController : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         monsterManagerObj = GameObject.Find("MonsterManager");
 
         monsterManager = monsterManagerObj.GetComponent<MonsterManager>();
@@ -75,7 +79,12 @@ public class MonsterController : MonoBehaviour
             this.gameObject.SetActive(false);
             isDead = true; // 몬스터를 죽은 상태로 표시
         }
+        if(isDead)
+        {
+         //   animator.SetTrigger("isDie");
+         // 애니메이션 클립에서 setactive(false) 설정하기
 
+        }
 
         Vector2 direction = (playerTransform.position - transform.position).normalized;
         this.GetComponent<Rigidbody2D>().velocity = direction * Speed;
