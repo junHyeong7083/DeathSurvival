@@ -14,4 +14,9 @@ public class TestPattern : MonoBehaviour
     {
         WeaponManager.Instance.StartPattern("atk2");
     }
+
+    public void Pattern3()
+    {
+        WeaponManager.Instance.StartPattern("atk3");
+    }
 }
