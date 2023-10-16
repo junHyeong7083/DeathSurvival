@@ -35,6 +35,8 @@ public class MonsterController : MonoBehaviour
 
     GameObject monsterManagerObj;
     MonsterManager monsterManager;
+    GameObject bloodEffectObj;
+    BloodEffect bloodEffect;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "TestSkill")
@@ -48,6 +50,10 @@ public class MonsterController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+
+        bloodEffectObj = GameObject.Find("BloodManager");
+
+        bloodEffect = bloodEffectObj.GetComponent<BloodEffect>();
 
         monsterManagerObj = GameObject.Find("MonsterManager");
 
@@ -75,6 +81,7 @@ public class MonsterController : MonoBehaviour
     {
         if (!isDead && Hp <= 0) // 몬스터가 죽지 않았고 HP가 0 이하인 경우
         {
+            bloodEffect.SpawnMonsterBlood(this.transform.position.x, this.transform.position.y);
             monsterManager.SpawnMonsterItem(this.transform.position.x, this.transform.position.y);
             this.gameObject.SetActive(false);
             isDead = true; // 몬스터를 죽은 상태로 표시

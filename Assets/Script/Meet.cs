@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Meet : MonoBehaviour
 {
-
-
     GameObject Player;
     bool isAttracted = false; 
     private void Start()
