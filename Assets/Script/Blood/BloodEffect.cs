@@ -31,6 +31,9 @@ public class BloodEffect : MonoBehaviour
 
         if (inactiveMonsterBlood != null)
         {
+              randomX = Random.Range(4, 9);
+        randomY = Random.Range(2, 5);
+        randomZ = Random.Range(1, 360);
             inactiveMonsterBlood.SetActive(true);
             inactiveMonsterBlood.transform.localScale = new Vector3(randomX * 0.2f, randomY * 0.2f, 0);
             inactiveMonsterBlood.transform.rotation = Quaternion.Euler(0, 0, randomZ);
@@ -42,10 +45,4 @@ public class BloodEffect : MonoBehaviour
     float randomY;
     float randomZ;
     // Update is called once per frame
-    void Update()
-    {
-        randomX = Random.Range(4, 9);
-        randomY = Random.Range(2, 5);
-        randomZ = Random.Range(1, 360);
-    }
 }

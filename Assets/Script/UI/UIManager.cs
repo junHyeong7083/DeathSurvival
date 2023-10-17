@@ -19,14 +19,12 @@ public class UIManager : MonoBehaviour
     {
         isPause = true;
         optionPanel.SetActive(true);
-        Time.timeScale = 0f;
     }
 
     public void OutOption()
     {
         isPause = false;
         optionPanel.SetActive(false);
-        Time.timeScale = 1f;
     }
 
     private void Update()
@@ -39,7 +37,6 @@ public class UIManager : MonoBehaviour
             {
                 isPause = true; 
                 optionPanel.SetActive(true);
-                Time.timeScale = 0f;
                 isClick = true;
             }
 
@@ -50,10 +47,12 @@ public class UIManager : MonoBehaviour
             {
                 isPause = false;
                 optionPanel.SetActive(false);
-                Time.timeScale = 1f;
                 isClick = false;
             }
         }
+
+        if(isPause) { Time.timeScale = 0f; }
+        else if(!isPause){ Time.timeScale = 1f; }
         #endregion
     }
 }
