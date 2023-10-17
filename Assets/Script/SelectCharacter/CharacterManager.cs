@@ -8,9 +8,9 @@ public enum Character
     White, Blue, Green,Default
 }
 
-public class DataManager : MonoBehaviour
+public class CharacterManager : MonoBehaviour
 {
-   public static DataManager Instance;
+   public static CharacterManager Instance;
     private void Awake()
     {
         if (Instance == null) Instance = this;

@@ -17,13 +17,13 @@ public class SelectCharacter : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        if (DataManager.Instance.currentCharacter == character) OnSelect();
+        if (CharacterManager.Instance.currentCharacter == character) OnSelect();
         else OnDeSelect();
     }
 
     private void OnMouseUpAsButton()
     {
-        DataManager.Instance.currentCharacter = character;
+        CharacterManager.Instance.currentCharacter = character;
         OnSelect();
 
         for(int e = 0; e<Chars.Length; ++e)

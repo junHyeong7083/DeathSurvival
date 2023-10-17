@@ -5,7 +5,9 @@ using UnityEngine;
 public class Meet : MonoBehaviour
 {
     GameObject Player;
-    bool isAttracted = false; 
+    bool isAttracted = false;
+
+    float Timer;
     private void Start()
     {
         Player = GameObject.FindWithTag("Player");
@@ -14,12 +16,15 @@ public class Meet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+
+
             this.gameObject.SetActive(false);
         }
     }
 
     void Update()
     {
+        Timer += Time.deltaTime;
         float distance = Vector3.Distance(transform.position, Player.transform.position);
         if (distance <= PlayerState.detectRange)
         {
