@@ -10,38 +10,44 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         animator = GetComponent<Animator>();
+        animator.SetBool("isDie", false);
     }
     void Update()
     {
         if (!UIManager.isPause)
         {
-            float h = Input.GetAxisRaw("Horizontal");
-            float v = Input.GetAxisRaw("Vertical");
-            PlayerPos = this.transform.position;
-            if (h != 0 || v != 0)
+            if(!PlayerHpBar.isDie)
             {
-                animator.SetBool("isInput", true);
-                isMove = true;
+                float h = Input.GetAxisRaw("Horizontal");
+                float v = Input.GetAxisRaw("Vertical");
+                PlayerPos = this.transform.position;
+                if (h != 0 || v != 0)
+                {
+                    animator.SetBool("isInput", true);
+                    isMove = true;
 
-                if (h > 0)
-                    animator.SetBool("isRight", true);
-                else if (h < 0)
-                    animator.SetBool("isRight", false);
+                    if (h > 0)
+                        animator.SetBool("isRight", true);
+                    else if (h < 0)
+                        animator.SetBool("isRight", false);
+                }
+                else
+                {
+                    animator.SetBool("isInput", false);
+                    isMove = false;
+                }
+                // animator.SetFloat("InputX", h);
+                // animator.SetFloat("InputY", v); 
+
+                PlayerPos.x += h * Time.deltaTime * PlayerState.Speed;
+                PlayerPos.y += v * Time.deltaTime * PlayerState.Speed;
+
+                this.transform.position = PlayerPos;
             }
-            else
-            {
-                animator.SetBool("isInput", false);
-                isMove = false;
-            }
-            // animator.SetFloat("InputX", h);
-            // animator.SetFloat("InputY", v); 
-
-            PlayerPos.x += h * Time.deltaTime * PlayerState.Speed;
-            PlayerPos.y += v * Time.deltaTime * PlayerState.Speed;
-
-            this.transform.position = PlayerPos;
 
         }
+        if (PlayerHpBar.isDie)
+            animator.SetBool("isDie",true);
      
     }
 }

@@ -7,11 +7,17 @@ public class UIManager : MonoBehaviour
     public Button OptionBtn;
     public GameObject optionPanel;
 
-   // public Text levelTxt;
+    public GameObject DiePanel;
+    float delayDieTime;
+    // public Text levelTxt;
     public static bool isPause;
     bool isClick = false;
     private void Start()
     {
+        Time.timeScale = 1f;
+        delayDieTime = 0f;
+        DiePanel.gameObject.SetActive(false);
+
         isClick = false;
         optionPanel.SetActive(false);
     }
@@ -20,7 +26,6 @@ public class UIManager : MonoBehaviour
         isPause = true;
         optionPanel.SetActive(true);
     }
-
     public void OutOption()
     {
         isPause = false;
@@ -29,7 +34,6 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        //levelTxt.text = "Level : " + DataManager.currentLevel.ToString();
         #region ESC Click
         if (!isClick)
         {
@@ -53,6 +57,27 @@ public class UIManager : MonoBehaviour
 
         if(isPause) { Time.timeScale = 0f; }
         else if(!isPause){ Time.timeScale = 1f; }
+        #endregion
+
+        #region DiePanel
+        if(PlayerHpBar.isDie)
+        {
+            delayDieTime += Time.deltaTime;
+            if(delayDieTime > 2f)
+            {
+                PlayerHpBar.isDie = false;
+                DiePanel.gameObject.SetActive(true);
+                Time.timeScale = 0f;
+
+                Animator[] allAnimators = FindObjectsOfType<Animator>();
+                foreach (Animator animator in allAnimators)
+                {
+                    animator.speed = 0f; 
+                }
+            }
+        }
+
+
         #endregion
     }
 }

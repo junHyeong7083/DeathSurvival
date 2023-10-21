@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PlayerHpBar : MonoBehaviour
@@ -8,9 +9,9 @@ public class PlayerHpBar : MonoBehaviour
     Image hpBar;
 
     float maxHp;
-    float currentHp;
+    public static float currentHp;
     float saveHp;
-
+    public static bool isDie;
     bool isHit = true;
     [SerializeField]
     float hitcoolTime;
@@ -18,24 +19,33 @@ public class PlayerHpBar : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     Color playerColor;
+
+    
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
-            if (isHit)
+            if(!isDie)
             {
-                //Debug.Log("Hit!!");
-                currentHp -= 0.5f;
-                isHit = false;
+                if (isHit)
+                {
+                    //Debug.Log("Hit!!");
+                    currentHp -= 0.5f;
+                    isHit = false;
 
-                playerColor = Color.blue;
-                spriteRenderer.color = playerColor;
+                    playerColor = Color.blue;
+                    spriteRenderer.color = playerColor;
+                }
             }
         }
     }
 
-    void Start()
+    private void Awake()
     {
+        isDie = false;
+    }
+    void Start()
+    { 
         hpBar = GameObject.Find("HpBar").GetComponent<Image>();
         maxHp = PlayerState.Hp;
         currentHp = maxHp;
@@ -48,34 +58,43 @@ public class PlayerHpBar : MonoBehaviour
     float hitEffect = 0f;
     [SerializeField]
     float hitEffectcoolTime;
-
     void Update()
-    {   
-        hpBar.fillAmount = (currentHp / maxHp);
-        if(PlayerState.isHpSkillPoint)
+    {
+        Debug.Log("currentHp : " + currentHp);
+        if(!isDie)
         {
-            saveHp = maxHp;
-            maxHp = PlayerState.Hp;
-            currentHp += maxHp - saveHp;
-        } // 스킬포인트 찍었다고 가정했을때 대비용
-
-        if (!isHit)
-        {
-            playerColor = Color.white;
-            hitEffect += Time.deltaTime;
-            if(hitEffect > hitEffectcoolTime)
+            Debug.Log("State.hp : " + PlayerState.Hp);
+            hpBar.fillAmount = (currentHp / maxHp);
+            if (PlayerState.isHpSkillPoint)
             {
-                spriteRenderer.color = playerColor;
-                hitEffect = 0f;
-            }
-            hitTime += Time.deltaTime;
-            if (hitTime > hitcoolTime)
-            {
-                isHit = true;
-                hitTime = 0f;
-            }
-        } // 피격 쿨타임
+                saveHp = maxHp;
+                maxHp = PlayerState.Hp;
+                currentHp += maxHp - saveHp;
+            } // 스킬포인트 찍었다고 가정했을때 대비용
 
+            if (!isHit)
+            {
+                playerColor = Color.white;
+                hitEffect += Time.deltaTime;
+                if (hitEffect > hitEffectcoolTime)
+                {
+                    spriteRenderer.color = playerColor;
+                    hitEffect = 0f;
+                }
+                hitTime += Time.deltaTime;
+                if (hitTime > hitcoolTime)
+                {
+                    isHit = true;
+                    hitTime = 0f;
+                }
+            } // 피격 쿨타임
+
+            if (currentHp <= 0)
+            {
+                isDie = true;
+            }
+
+        }
 
     }
 }

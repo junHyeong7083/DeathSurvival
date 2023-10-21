@@ -13,6 +13,9 @@ public class MonsterController : MonoBehaviour
     [SerializeField]
     float Damage;
     #endregion
+    Rigidbody2D rigidbody2D;
+
+    CircleCollider2D circleCollider2D;
 
     Transform playerTransform;
 
@@ -45,6 +48,16 @@ public class MonsterController : MonoBehaviour
 
     void Start()
     {
+        circleCollider2D = GetComponent<CircleCollider2D>();
+
+        gameObject.GetComponent<CircleCollider2D>().enabled = true;
+
+        rigidbody2D = GetComponent<Rigidbody2D>();
+
+        isMove = true;
+
+        delayDieTime = 0f;
+
         animator = GetComponent<Animator>();
 
         bloodEffectObj = GameObject.Find("BloodManager");
@@ -65,32 +78,46 @@ public class MonsterController : MonoBehaviour
     bool isStart = false;
     private void OnEnable()
     {
-        if(!isStart)
+        gameObject.GetComponent<CircleCollider2D>().enabled = true;
+        isMove = true;
+        delayDieTime = 0f;
+        if (!isStart)
             maxHp = Hp;
         isStart = true;
         Hp = maxHp;
         isDead = false;
+      //  animator.SetBool("MonsterDie", false);
     }
-
-
+    float delayDieTime;
+    bool isMove;
     void Update()
     {
-        if (!isDead && Hp <= 0) // 몬스터가 죽지 않았고 HP가 0 이하인 경우
+        if (!PlayerHpBar.isDie) // 플레이어가 살아있을때 움직이기
         {
-            bloodEffect.SpawnMonsterBlood(this.transform.position.x, this.transform.position.y);
-            monsterManager.SpawnMonsterItem(this.transform.position.x, this.transform.position.y);
-            this.gameObject.SetActive(false);
-            isDead = true; // 몬스터를 죽은 상태로 표시
-        }
-        if(isDead)
-        {
-         //   animator.SetTrigger("isDie");
-         // 애니메이션 클립에서 setactive(false) 설정하기
+            if (!isDead && Hp <= 0) // 몬스터가 죽지 않았고 HP가 0 이하인 경우
+            {
+                bloodEffect.SpawnMonsterBlood(this.transform.position.x, this.transform.position.y);
+                monsterManager.SpawnMonsterItem(this.transform.position.x, this.transform.position.y);
+                isMove = false;
+                isDead = true; // 몬스터를 죽은 상태로 표시
+            }
+            if (isDead)
+            {
+                gameObject.GetComponent<CircleCollider2D>().enabled = false;
+                delayDieTime += Time.deltaTime;
+                animator.SetBool("MonsterDie", true);
+                if (delayDieTime > 1.0f)
+                    this.gameObject.SetActive(false);
 
-        }
+            }
 
-        Vector2 direction = (playerTransform.position - transform.position).normalized;
-        this.GetComponent<Rigidbody2D>().velocity = direction * Speed;
+
+            if (isMove)
+            {
+                Vector2 direction = (playerTransform.position - transform.position).normalized;
+                transform.Translate(direction * Speed * Time.deltaTime);
+            }
+        }
 
         if (this.transform.position.x <= playerTransform.position.x)
         {
@@ -102,6 +129,7 @@ public class MonsterController : MonoBehaviour
             isRight = false;
             spriternRenderer.flipX = false;
         }
-            
+
+
     }
 }
