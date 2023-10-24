@@ -35,30 +35,6 @@ public class SelectCharacter : MonoBehaviour
                 currentIndex = e;
         }
 
-        switch (currentIndex)
-        {
-            case 0:
-                selectNum = 1;
-                Panels[0].gameObject.SetActive(true);
-                Panels[1].gameObject.SetActive(false);
-                Panels[2].gameObject.SetActive(false);
-                break;
-
-            case 1:
-                selectNum = 2;
-                Panels[0].gameObject.SetActive(false);
-                Panels[1].gameObject.SetActive(true);
-                Panels[2].gameObject.SetActive(false);
-                break;
-
-            case 2:
-                selectNum = 3;
-                Panels[0].gameObject.SetActive(false);
-                Panels[1].gameObject.SetActive(false);
-                Panels[2].gameObject.SetActive(true);
-                break;
-
-        }
     }
     void OnSelect()
     {
