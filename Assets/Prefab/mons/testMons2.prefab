@@ -125,7 +125,7 @@ MonoBehaviour:
   Speed: 6
   Hp: 100
   Damage: 0
-  isRight: 0
+  hitcoolTime: 0.5
 --- !u!114 &-7025342917348870221
 MonoBehaviour:
   m_ObjectHideFlags: 0

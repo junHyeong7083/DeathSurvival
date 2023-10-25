@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class SelectKeyboard : MonoBehaviour
 {
     public ScrollRect scrollRect;
-    bool isClick;
+    public static bool isClick;
     float delayClick;
     float changeTime = 2f;
-    int currentIndex = 0;
+    public static int currentIndex = 0;
     Vector3 targetPosition;
     //  float movementSpeed = 2.0f; // 이동 속도 조절
-
     public GameObject[] showPaenl;
 
     void Start()
     {
+        prePos = new Vector3(0, 0, 0);
         scrollRect.content.localPosition = new Vector3(0, 0, 0);
         delayClick = 0f;
         isClick = false;
@@ -29,33 +29,40 @@ public class SelectKeyboard : MonoBehaviour
     {
         if (!isClick)
         {
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
             {
                 if (currentIndex > 0)
                 {
                     isClick = true;
                     currentIndex--;
                 }
-                else
-                    isClick = false;
+                else if(currentIndex == 0)
+                {
+                    isClick = true;
+                    currentIndex = 2;
+                }
+                 //   isClick = false;
             }
 
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 if (currentIndex < 2)
                 {
                     isClick = true;
                     currentIndex++;
                 }
-                else
-                    isClick = false;
+                else if (currentIndex == 2)
+                {
+                    isClick = true;
+                    currentIndex = 0;
+                }
             }
         }
 
         if (isClick)
         {
             delayClick += Time.deltaTime;
-            if (delayClick > 0.7f)
+            if (delayClick > 0.5f)
             {
                 delayClick = 0f;
                 isClick = false;
@@ -75,15 +82,16 @@ public class SelectKeyboard : MonoBehaviour
             switch (currentIndex)
             {
                 case 0:
-                    targetPosition = new Vector3(0, 0, 0);
-                    
-                    for(int e = 0; e < showPaenl.Length; ++e)
+                    targetPosition = new Vector3(0, 0, 0); 
+                    for (int e = 0; e < showPaenl.Length; ++e)
                     {
                         if (e == currentIndex)
                             showPaenl[e].SetActive(true);
                         else
                             showPaenl[e].SetActive(false);
                     }
+
+                    CharacterManager.Instance.currentCharacter = Character.White;
                     break;
 
                 case 1:
@@ -95,6 +103,7 @@ public class SelectKeyboard : MonoBehaviour
                         else
                             showPaenl[e].SetActive(false);
                     }
+                    CharacterManager.Instance.currentCharacter = Character.Blue;
                     break;
 
                 case 2:
@@ -106,6 +115,7 @@ public class SelectKeyboard : MonoBehaviour
                         else
                             showPaenl[e].SetActive(false);
                     }
+                    CharacterManager.Instance.currentCharacter = Character.Green;
                     break;
             }
         }

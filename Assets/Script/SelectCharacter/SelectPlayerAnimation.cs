@@ -13,7 +13,7 @@ public class SelectPlayerAnimation : MonoBehaviour
     }
     void Update()
     {
-        if (SelectNum == SelectCharacter.selectNum)
+        if (SelectNum == SelectKeyboard.currentIndex)
             animator.SetBool("isSelect", true);
         else
             animator.SetBool("isSelect", false);

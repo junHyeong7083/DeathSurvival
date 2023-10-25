@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TestPattern : MonoBehaviour
 {
-    public static float testValue = 1f;
+    public static float testValue = 1f; // 테스트용
     public void Pattern1()
     {
         WeaponManager.Instance.StartPattern("atk1");

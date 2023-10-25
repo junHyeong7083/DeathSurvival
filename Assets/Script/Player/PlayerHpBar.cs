@@ -60,10 +60,10 @@ public class PlayerHpBar : MonoBehaviour
     float hitEffectcoolTime;
     void Update()
     {
-        Debug.Log("currentHp : " + currentHp);
+        //Debug.Log("currentHp : " + currentHp);
         if(!isDie)
         {
-            Debug.Log("State.hp : " + PlayerState.Hp);
+            //Debug.Log("State.hp : " + PlayerState.Hp);
             hpBar.fillAmount = (currentHp / maxHp);
             if (PlayerState.isHpSkillPoint)
             {

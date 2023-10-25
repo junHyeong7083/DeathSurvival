@@ -104,7 +104,7 @@ MonoBehaviour:
   Speed: 3
   Hp: 100
   Damage: 0
-  isRight: 0
+  hitcoolTime: 0.5
 --- !u!50 &1416456153413296532
 Rigidbody2D:
   serializedVersion: 4

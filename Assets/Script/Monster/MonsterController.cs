@@ -27,22 +27,42 @@ public class MonsterController : MonoBehaviour
 
     GameObject monsterItem;
 
-    [SerializeField]
     bool isRight = false;
-
     bool isDead = false;
-
+    bool isHit = false;
+    bool showHitEffect = false;
+    public float hitcoolTime;
+    float hitTime = 0f;
     GameObject monsterManagerObj;
     MonsterManager monsterManager;
     GameObject bloodEffectObj;
     BloodEffect bloodEffect;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "TestSkill")
+        if (!isHit)
         {
-            // 공격력 따라 데미지 줄이는 코드
-            Hp -= 100f;
+            if (collision.gameObject.tag == "PlayerA_One")
+            {
+                // 공격력 따라 데미지 줄이는 코드
+               Hp -= WeaponDataManager.playerAOneAtk;
+                isHit = true;
+            }
+
+            if (collision.gameObject.tag == "PlayerA_Two")
+            {
+                // 공격력 따라 데미지 줄이는 코드
+                Hp -= WeaponDataManager.playerATwoAtk;
+                isHit = true;
+            }
+
+            if (collision.gameObject.tag == "PlayerA_Three")
+            {
+                // 공격력 따라 데미지 줄이는 코드
+                Hp -= WeaponDataManager.playerAThreeAtk;
+                isHit = true;
+            }
         }
+   
     }
 
 
@@ -86,7 +106,6 @@ public class MonsterController : MonoBehaviour
         isStart = true;
         Hp = maxHp;
         isDead = false;
-      //  animator.SetBool("MonsterDie", false);
     }
     float delayDieTime;
     bool isMove;
@@ -130,6 +149,33 @@ public class MonsterController : MonoBehaviour
             spriternRenderer.flipX = false;
         }
 
+        if(isHit)
+        {
+            showHitEffect = true;
+            knockbackTime += Time.deltaTime;
+            hitTime += Time.deltaTime;
+            if(hitTime >= hitcoolTime)
+            {
+                knockbackTime = 0f;
+                hitTime = 0f;
+                isHit = false;
+                showHitEffect = false;
+            }
+        }
+        if(showHitEffect)
+        {
+            if(knockbackTime < 0.1f)
+            {
+                Debug.Log("!");
+                Vector2 direction = (playerTransform.position - transform.position).normalized / 5;
+                Vector3 knockbackVector = direction * -1f * 50f * Time.deltaTime;
+                transform.Translate(knockbackVector);
+
+            }
+        } // 넉백효과
+
+
 
     }
+    float knockbackTime = 0f;
 }

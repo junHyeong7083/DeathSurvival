@@ -5,8 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Monster
-  - TestSkill
   - detectField
+  - Item
+  - Undefined
+  - PlayerA_One
+  - PlayerA_Two
+  - PlayerA_Three
   layers:
   - Default
   - TransparentFX

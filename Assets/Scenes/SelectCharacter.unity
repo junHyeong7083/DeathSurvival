@@ -214,6 +214,8 @@ GameObject:
   - component: {fileID: 42453307}
   - component: {fileID: 42453309}
   - component: {fileID: 42453308}
+  - component: {fileID: 42453311}
+  - component: {fileID: 42453310}
   m_Layer: 5
   m_Name: Character
   m_TagString: Untagged
@@ -279,6 +281,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 42453306}
   m_CullTransparentMesh: 1
+--- !u!114 &42453310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42453306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9518a2045efdb534eb95553426addccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectNum: 1
+--- !u!95 &42453311
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42453306}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bb3fd72a40cd7c64fb5e2bfc5a03230c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &48034444
 GameObject:
   m_ObjectHideFlags: 0
@@ -3352,7 +3388,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 961923005}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2093989452}
+        m_TargetAssemblyTypeName: SelectBtn, Assembly-CSharp
+        m_MethodName: upBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &961923005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3402,6 +3450,8 @@ GameObject:
   - component: {fileID: 975107673}
   - component: {fileID: 975107675}
   - component: {fileID: 975107674}
+  - component: {fileID: 975107677}
+  - component: {fileID: 975107676}
   m_Layer: 5
   m_Name: Character
   m_TagString: Untagged
@@ -3467,6 +3517,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975107672}
   m_CullTransparentMesh: 1
+--- !u!114 &975107676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975107672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9518a2045efdb534eb95553426addccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelectNum: 0
+--- !u!95 &975107677
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975107672}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 772753935ff72e74e817b2a5f8b9c017, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1041599532
 GameObject:
   m_ObjectHideFlags: 0
@@ -8673,7 +8757,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1411328473}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2093989452}
+        m_TargetAssemblyTypeName: SelectBtn, Assembly-CSharp
+        m_MethodName: downBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1411328473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9804,7 +9900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -49.999977, y: 0}
+  m_AnchoredPosition: {x: -50.000023, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1825850000
@@ -10410,6 +10506,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2093989450}
   - component: {fileID: 2093989451}
+  - component: {fileID: 2093989452}
   m_Layer: 0
   m_Name: SelectManager
   m_TagString: Untagged
@@ -10449,6 +10546,18 @@ MonoBehaviour:
   - {fileID: 2043836608}
   - {fileID: 1652801991}
   - {fileID: 482611478}
+--- !u!114 &2093989452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093989449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe15fcb4cf6a0f1479a6fa21d2473475, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2123462043
 GameObject:
   m_ObjectHideFlags: 0
@@ -10638,6 +10747,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  currentIndex: 0
 --- !u!58 &999090591524233151
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10797,6 +10908,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  currentIndex: 0
 --- !u!58 &4672767998585395387
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11033,6 +11146,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  currentIndex: 0
 --- !u!58 &6259391034173146109
 CircleCollider2D:
   m_ObjectHideFlags: 0
