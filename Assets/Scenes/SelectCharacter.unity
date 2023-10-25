@@ -1702,7 +1702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d90f8717124d1fd468b6725bc897cd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lightning: {fileID: 1296750716}
 --- !u!4 &458420465
 Transform:
   m_ObjectHideFlags: 0
@@ -9900,7 +9899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50.000023, y: 0}
+  m_AnchoredPosition: {x: 0.000045776367, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1825850000
@@ -10738,17 +10737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54d8cb563a135549b10bc296897e49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: 0
-  Chars:
-  - {fileID: 999090591524233150}
-  - {fileID: 6259391034173146108}
-  - {fileID: 4672767998585395386}
-  Panels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  currentIndex: 0
 --- !u!58 &999090591524233151
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -10899,17 +10887,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54d8cb563a135549b10bc296897e49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: 2
-  Chars:
-  - {fileID: 999090591524233150}
-  - {fileID: 6259391034173146108}
-  - {fileID: 4672767998585395386}
-  Panels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  currentIndex: 0
 --- !u!58 &4672767998585395387
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -11137,17 +11114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54d8cb563a135549b10bc296897e49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: 1
-  Chars:
-  - {fileID: 999090591524233150}
-  - {fileID: 6259391034173146108}
-  - {fileID: 4672767998585395386}
-  Panels:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spriteRenderer: {fileID: 0}
-  currentIndex: 0
 --- !u!58 &6259391034173146109
 CircleCollider2D:
   m_ObjectHideFlags: 0

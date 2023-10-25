@@ -13,7 +13,7 @@ public class WeaponDataManager : MonoBehaviour
     private void Awake()
     {
         playerAOneAtk = 25f;
-        playerATwoAtk = 50f;
+        playerATwoAtk = 15f;
         playerAThreeAtk = 100f;
     }
 }

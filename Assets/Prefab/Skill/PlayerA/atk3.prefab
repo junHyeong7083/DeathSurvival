@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4185993218074511829}
-  - component: {fileID: 5363107318494915629}
   m_Layer: 0
   m_Name: atk3
   m_TagString: PlayerA_Three
@@ -33,20 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5363107318494915629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4185993218074511828}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ead863d6a89c4c14f9361aea68881efe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  childObj: {fileID: 7271665993665986332}
-  Count: 0
 --- !u!1 &7271665993665986332
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,7 +47,7 @@ GameObject:
   - component: {fileID: 2961369769901313991}
   m_Layer: 0
   m_Name: atk3_child
-  m_TagString: TestSkill
+  m_TagString: PlayerA_Three
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -7,8 +7,14 @@ public class UIManager : MonoBehaviour
     public Button OptionBtn;
     public GameObject optionPanel;
 
+
+    #region Die
     public GameObject DiePanel;
     float delayDieTime;
+
+    public Text[] PlayerADamage;
+
+    #endregion
     // public Text levelTxt;
     public static bool isPause;
     bool isClick = false;
@@ -67,6 +73,12 @@ public class UIManager : MonoBehaviour
             {
                 PlayerHpBar.isDie = false;
                 DiePanel.gameObject.SetActive(true);
+
+                #region Damage Text
+                PlayerADamage[0].text = "1번스킬 : " + MonsterController.PlayerAOneDamage.ToString();
+                PlayerADamage[1].text = "2번스킬 : " + MonsterController.PlayerATwoDamage.ToString();
+                PlayerADamage[2].text = "3번스킬 : " + MonsterController.PlayerAThreeDamage.ToString();
+                #endregion
                 Time.timeScale = 0f;
 
                 Animator[] allAnimators = FindObjectsOfType<Animator>();

@@ -29,10 +29,24 @@ public class MonsterController : MonoBehaviour
 
     bool isRight = false;
     bool isDead = false;
+
+    #region Hit
     bool isHit = false;
     bool showHitEffect = false;
     public float hitcoolTime;
     float hitTime = 0f;
+    #endregion
+
+    #region SaveDamage
+    public static float PlayerAOneDamage = 0;
+    public static float PlayerATwoDamage = 0;
+    public static float PlayerAThreeDamage = 0;
+
+
+
+    #endregion
+
+
     GameObject monsterManagerObj;
     MonsterManager monsterManager;
     GameObject bloodEffectObj;
@@ -44,7 +58,9 @@ public class MonsterController : MonoBehaviour
             if (collision.gameObject.tag == "PlayerA_One")
             {
                 // 공격력 따라 데미지 줄이는 코드
-               Hp -= WeaponDataManager.playerAOneAtk;
+                Hp -= WeaponDataManager.playerAOneAtk;
+                PlayerAOneDamage+= WeaponDataManager.playerAOneAtk;
+                
                 isHit = true;
             }
 
@@ -52,6 +68,7 @@ public class MonsterController : MonoBehaviour
             {
                 // 공격력 따라 데미지 줄이는 코드
                 Hp -= WeaponDataManager.playerATwoAtk;
+                PlayerATwoDamage += WeaponDataManager.playerATwoAtk;
                 isHit = true;
             }
 
@@ -59,6 +76,7 @@ public class MonsterController : MonoBehaviour
             {
                 // 공격력 따라 데미지 줄이는 코드
                 Hp -= WeaponDataManager.playerAThreeAtk;
+                PlayerAThreeDamage += WeaponDataManager.playerAThreeAtk;
                 isHit = true;
             }
         }
@@ -98,6 +116,11 @@ public class MonsterController : MonoBehaviour
     bool isStart = false;
     private void OnEnable()
     {
+        ones = false;
+        showHitEffect = false;
+        hitTime = 0f;
+        knockbackTime = 0f; 
+        isHit = false;
         gameObject.GetComponent<CircleCollider2D>().enabled = true;
         isMove = true;
         delayDieTime = 0f;
@@ -115,7 +138,6 @@ public class MonsterController : MonoBehaviour
         {
             if (!isDead && Hp <= 0) // 몬스터가 죽지 않았고 HP가 0 이하인 경우
             {
-                bloodEffect.SpawnMonsterBlood(this.transform.position.x, this.transform.position.y);
                 monsterManager.SpawnMonsterItem(this.transform.position.x, this.transform.position.y);
                 isMove = false;
                 isDead = true; // 몬스터를 죽은 상태로 표시
@@ -124,6 +146,7 @@ public class MonsterController : MonoBehaviour
             {
                 gameObject.GetComponent<CircleCollider2D>().enabled = false;
                 delayDieTime += Time.deltaTime;
+                knockPos = this.transform.position;
                 animator.SetBool("MonsterDie", true);
                 if (delayDieTime > 1.0f)
                     this.gameObject.SetActive(false);
@@ -148,7 +171,7 @@ public class MonsterController : MonoBehaviour
             isRight = false;
             spriternRenderer.flipX = false;
         }
-
+       
         if(isHit)
         {
             showHitEffect = true;
@@ -164,18 +187,31 @@ public class MonsterController : MonoBehaviour
         }
         if(showHitEffect)
         {
-            if(knockbackTime < 0.1f)
+            if(!isDead)
             {
-                Debug.Log("!");
-                Vector2 direction = (playerTransform.position - transform.position).normalized / 5;
-                Vector3 knockbackVector = direction * -1f * 50f * Time.deltaTime;
-                transform.Translate(knockbackVector);
+                if (knockbackTime < 0.1f)
+                {
+                    // 피격 애니메이션 들어갈 자리
 
+                    Vector2 direction = (playerTransform.position - transform.position).normalized / 5;
+                    Vector3 knockbackVector = direction * -1f * 50f * Time.deltaTime;
+                    this.transform.Translate(knockbackVector);
+                }
+            }
+            if (isDead)
+            {
+                if (!ones)
+                {
+                    bloodEffect.SpawnMonsterBlood(knockPos.x, knockPos.y);
+                    ones = true;
+                }
             }
         } // 넉백효과
 
 
 
     }
+    bool ones = false;
     float knockbackTime = 0f;
+    Vector3 knockPos;
 }
