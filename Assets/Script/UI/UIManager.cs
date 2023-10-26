@@ -18,6 +18,8 @@ public class UIManager : MonoBehaviour
     // public Text levelTxt;
     public static bool isPause;
     bool isClick = false;
+
+    float PlayerAskillTime = 0f;
     private void Start()
     {
         Time.timeScale = 1f;
@@ -65,8 +67,12 @@ public class UIManager : MonoBehaviour
         else if(!isPause){ Time.timeScale = 1f; }
         #endregion
 
+        if (WeaponDataManager.playerAFourbool)
+            PlayerAskillTime += Time.deltaTime;
+
+
         #region DiePanel
-        if(PlayerHpBar.isDie)
+        if (PlayerHpBar.isDie)
         {
             delayDieTime += Time.deltaTime;
             if(delayDieTime > 2f)
@@ -78,6 +84,7 @@ public class UIManager : MonoBehaviour
                 PlayerADamage[0].text = "1번스킬 : " + MonsterController.PlayerAOneDamage.ToString();
                 PlayerADamage[1].text = "2번스킬 : " + MonsterController.PlayerATwoDamage.ToString();
                 PlayerADamage[2].text = "3번스킬 : " + MonsterController.PlayerAThreeDamage.ToString();
+                PlayerADamage[3].text = "4번스킬 : " + PlayerAskillTime.ToString("F2") + "초";
                 #endregion
                 Time.timeScale = 0f;
 

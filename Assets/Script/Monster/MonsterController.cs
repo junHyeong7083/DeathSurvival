@@ -43,7 +43,6 @@ public class MonsterController : MonoBehaviour
     public static float PlayerAThreeDamage = 0;
 
 
-
     #endregion
 
 
@@ -134,6 +133,14 @@ public class MonsterController : MonoBehaviour
     bool isMove;
     void Update()
     {
+        if (WeaponDataManager.playerAFourbool)
+        {
+            animator.SetBool("MonsterTimeStop", true);
+        }
+        // animator.SetBool("MonsterTimeStop", true);
+        else
+            animator.SetBool("MonsterTimeStop", false);
+
         if (!PlayerHpBar.isDie) // 플레이어가 살아있을때 움직이기
         {
             if (!isDead && Hp <= 0) // 몬스터가 죽지 않았고 HP가 0 이하인 경우
@@ -153,26 +160,31 @@ public class MonsterController : MonoBehaviour
 
             }
 
-
-            if (isMove)
+            if (!WeaponDataManager.playerAFourbool)
             {
-                Vector2 direction = (playerTransform.position - transform.position).normalized;
-                transform.Translate(direction * Speed * Time.deltaTime);
+                if (isMove)
+                {
+                    Vector2 direction = (playerTransform.position - transform.position).normalized;
+                    transform.Translate(direction * Speed * Time.deltaTime);
+                }
             }
         }
+        if (!WeaponDataManager.playerAFourbool)
+        {
+            if (this.transform.position.x <= playerTransform.position.x)
+            {
+                isRight = true;
+                spriternRenderer.flipX = true;
+            }
+            else
+            {
+                isRight = false;
+                spriternRenderer.flipX = false;
+            }
 
-        if (this.transform.position.x <= playerTransform.position.x)
-        {
-            isRight = true;
-            spriternRenderer.flipX = true;
         }
-        else
-        {
-            isRight = false;
-            spriternRenderer.flipX = false;
-        }
-       
-        if(isHit)
+
+        if (isHit)
         {
             showHitEffect = true;
             knockbackTime += Time.deltaTime;
@@ -185,18 +197,23 @@ public class MonsterController : MonoBehaviour
                 showHitEffect = false;
             }
         }
+
         if(showHitEffect)
         {
             if(!isDead)
             {
-                if (knockbackTime < 0.1f)
+                if(!WeaponDataManager.playerAFourbool) // 전구 시간정지때는 넉백작동하면 딜로스남
                 {
-                    // 피격 애니메이션 들어갈 자리
+                    if (knockbackTime < 0.1f)
+                    {
+                        // 피격 애니메이션 들어갈 자리
 
-                    Vector2 direction = (playerTransform.position - transform.position).normalized / 5;
-                    Vector3 knockbackVector = direction * -1f * 50f * Time.deltaTime;
-                    this.transform.Translate(knockbackVector);
+                        Vector2 direction = (playerTransform.position - transform.position).normalized / 5;
+                        Vector3 knockbackVector = direction * -1f * 50f * Time.deltaTime;
+                        this.transform.Translate(knockbackVector);
+                    }
                 }
+            
             }
             if (isDead)
             {

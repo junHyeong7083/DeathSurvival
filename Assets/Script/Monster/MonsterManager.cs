@@ -75,20 +75,24 @@ public class MonsterManager : MonoBehaviour
                 currentSpawnCoroutine = StartCoroutine(SpawnMonster(spawndelayTime, currentMonsterNumber));
             }
         }
+
+   
+
     }
     private IEnumerator SpawnMonster(float delay, int monsterNumber)
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(delay);
-
-            GameObject inactiveMonster; inactiveMonster = monsterPools[monsterNumber - 1].Find(monster => !monster.activeSelf);
-            if (inactiveMonster != null)
+            while (true)
             {
-                inactiveMonster.SetActive(true);
-                inactiveMonster.transform.position = GetRandomSpawnPosition();
+                yield return new WaitForSeconds(delay);
+                GameObject inactiveMonster;
+                inactiveMonster = monsterPools[monsterNumber - 1].Find(monster => !monster.activeSelf);
+                if (inactiveMonster != null)
+                {
+                    inactiveMonster.SetActive(true);
+                    inactiveMonster.transform.position = GetRandomSpawnPosition();
+                }
             }
-        }
+        
     }
     public void SpawnMonsterItem(float x, float y)
     {
