@@ -22,12 +22,22 @@ public class BtnEffect : MonoBehaviour
     float isdelayInputTime;
     int currentIndex;
 
+    float masterSound;
+    float bgmSound;
+    float sfxSound;
+
     public GameObject OptionPanel;
-    bool isOptionOn;
+    public GameObject[] optionSelectObj;
+    int optionIndex;
+
+    public Image[] sliders;
+
+    bool isOptionOn; // 옵션패널 계속 안열리도록 방지하는 코드
     public GameObject SceneManager;
     ChangeScene changeScene;
     private void Start()
     {
+        optionIndex = 2; // 시작값 2;
         isOptionOn = false;
         OptionPanel.gameObject.SetActive(false);
         isMouse = false;
@@ -56,9 +66,6 @@ public class BtnEffect : MonoBehaviour
     }
 
     #endregion
-
-
-
 
     #region 마우스 온오프 효과
     public void OnMouseStartBtn()
@@ -131,8 +138,6 @@ public class BtnEffect : MonoBehaviour
                     currentIndex = 0;
                 else
                     currentIndex--;
-
-                Debug.Log(currentIndex);
             }
             else if(Input.GetKeyDown(KeyCode.UpArrow)) // 위
             {
@@ -141,7 +146,6 @@ public class BtnEffect : MonoBehaviour
                     currentIndex = 2;
                 else
                     currentIndex++;
-                Debug.Log(currentIndex);
             }
             else if(Input.GetKeyDown(KeyCode.Space)) // 입력
             {
@@ -240,6 +244,91 @@ public class BtnEffect : MonoBehaviour
                 Debug.Log("??");
                 OptionPanel.gameObject.SetActive(false);
                 isOptionOn = false;
+            }
+
+            if(Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                if (optionIndex == 0)
+                    optionIndex = 0;
+                else
+                {
+                    optionIndex--;
+                }
+            }
+            else if(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                if(optionIndex == 2)
+                    optionIndex = 2; 
+                else
+                {
+                    optionIndex++;
+                }
+
+            }
+
+            switch(optionIndex)
+            {
+                case 2:
+                    if(Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        sliders[0].fillAmount += 0.1f;
+                        Debug.Log("master:  " +sliders[0].fillAmount);
+                    }
+                    if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        sliders[0].fillAmount -= 0.1f;
+                        Debug.Log("master:  " + sliders[0].fillAmount);
+                    }
+
+                    for (int e= 0; e < optionSelectObj.Length; ++e)
+                    {
+                        if (e == optionIndex)
+                            optionSelectObj[e].gameObject.SetActive(true);
+                        else
+                            optionSelectObj[e].gameObject.SetActive(false);
+                    }
+                    break;
+
+                case 1:
+                    if (Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        sliders[1].fillAmount += 0.1f;
+                        Debug.Log("bgm:  " + sliders[1].fillAmount);
+                    }
+                    if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        sliders[1].fillAmount -= 0.1f;
+                        Debug.Log("bgm:  " + sliders[1].fillAmount);
+                    }
+                    for (int e = 0; e < optionSelectObj.Length; ++e)
+                    {
+                        if (e == optionIndex)
+                            optionSelectObj[e].gameObject.SetActive(true);
+                        else
+                            optionSelectObj[e].gameObject.SetActive(false);
+                    }
+                    break;
+
+                case 0:
+                    if (Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        sliders[2].fillAmount += 0.1f;
+                        Debug.Log("sfx:  " + sliders[2].fillAmount);
+                    }
+                    if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        sliders[2].fillAmount -= 0.1f;
+                        Debug.Log("sfx:  " + sliders[2].fillAmount);
+                    }
+                    for (int e = 0; e < optionSelectObj.Length; ++e)
+                    {
+                        if (e == optionIndex)
+                            optionSelectObj[e].gameObject.SetActive(true);
+                        else
+                            optionSelectObj[e].gameObject.SetActive(false);
+                    }
+                    break;
+
             }
         }
 

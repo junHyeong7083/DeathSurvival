@@ -93,7 +93,7 @@ public class PlayerLevelBar : MonoBehaviour
     float Timer = 0f;
     private void Update()
     {
-        levelTxt.text = "Level : " + currentLevel.ToString();
+        levelTxt.text = "Lv " + currentLevel.ToString();
 
         Timer += Time.deltaTime;
     }
