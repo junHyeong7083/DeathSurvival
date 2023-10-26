@@ -59,7 +59,7 @@ public class MonsterController : MonoBehaviour
                 // 공격력 따라 데미지 줄이는 코드
                 Hp -= WeaponDataManager.playerAOneAtk;
                 PlayerAOneDamage+= WeaponDataManager.playerAOneAtk;
-                
+                isHitAni = false;
                 isHit = true;
             }
 
@@ -69,6 +69,7 @@ public class MonsterController : MonoBehaviour
                 Hp -= WeaponDataManager.playerATwoAtk;
                 PlayerATwoDamage += WeaponDataManager.playerATwoAtk;
                 isHit = true;
+                isHitAni = false;
             }
 
             if (collision.gameObject.tag == "PlayerA_Three")
@@ -77,6 +78,7 @@ public class MonsterController : MonoBehaviour
                 Hp -= WeaponDataManager.playerAThreeAtk;
                 PlayerAThreeDamage += WeaponDataManager.playerAThreeAtk;
                 isHit = true;
+                isHitAni = false;
             }
         }
    
@@ -131,6 +133,7 @@ public class MonsterController : MonoBehaviour
     }
     float delayDieTime;
     bool isMove;
+    bool isHitAni = false;
     void Update()
     {
         if (WeaponDataManager.playerAFourbool)
@@ -206,7 +209,11 @@ public class MonsterController : MonoBehaviour
                 {
                     if (knockbackTime < 0.1f)
                     {
-                        // 피격 애니메이션 들어갈 자리
+                        if(!isHitAni)
+                        {
+                            isHitAni = true;
+                            animator.SetTrigger("MonsterHit");
+                        }
 
                         Vector2 direction = (playerTransform.position - transform.position).normalized / 5;
                         Vector3 knockbackVector = direction * -1f * 50f * Time.deltaTime;
