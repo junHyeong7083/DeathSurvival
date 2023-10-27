@@ -30,6 +30,12 @@ public class BtnEffect : MonoBehaviour
 
     public Image[] sliders;
 
+    public Button[] sounds;
+    public Sprite[] soundIcons;
+    bool xmasterSound = false;
+    bool xbgmSound = false;
+    bool xsfxSound = false;
+
     bool isOptionOn; // 옵션패널 계속 안열리도록 방지하는 코드
     public GameObject SceneManager;
     ChangeScene changeScene;
@@ -46,7 +52,6 @@ public class BtnEffect : MonoBehaviour
         OptionBtnOutline = OptionTxt.GetComponent<Outline>();
         ExitBtnOutline = ExitTxt.GetComponent<Outline>();
     }
-
     int mouseIndex;
 
     #region 옵션창
@@ -60,8 +65,52 @@ public class BtnEffect : MonoBehaviour
         OptionPanel.gameObject.SetActive(false);
         isOptionOn = false;
     }
-
     #endregion
+    #region 마우스 음소거 버튼 클릭효과
+    public void masterSoundBtn()
+    { 
+        if(!xmasterSound)
+        {
+            sounds[0].image.sprite = soundIcons[0];
+            xmasterSound = true;
+        }
+        else if(xmasterSound)
+        {
+            sounds[0].image.sprite = soundIcons[1];
+            xmasterSound = false;
+        }
+
+    }
+    public void bgmSoundBtn()
+    {
+        if (!xbgmSound)
+        {
+            sounds[1].image.sprite = soundIcons[0];
+            xbgmSound = true;
+        }
+        else if (xbgmSound)
+        {
+            sounds[1].image.sprite = soundIcons[1];
+            xbgmSound = false;
+        }
+
+    }
+    public void sfxSoundBtn()
+    {
+        if (!xsfxSound)
+        {
+            sounds[2].image.sprite = soundIcons[0];
+            xsfxSound = true;
+        }
+        else if (xsfxSound)
+        {
+            sounds[2].image.sprite = soundIcons[1];
+            xsfxSound = false;
+        }
+
+    }
+    #endregion
+
 
     #region 마우스 온오프 효과
     public void OnMouseStartBtn()
@@ -123,9 +172,11 @@ public class BtnEffect : MonoBehaviour
     }
     #endregion
 
+    bool ischeck = false;
+    float a = 0f;
     private void Update()
     {
-        if(!isMouse)
+        if(!isMouse && !isOptionOn)
         {
             if(Input.GetKeyDown(KeyCode.DownArrow)) // 아래
             {
@@ -147,7 +198,7 @@ public class BtnEffect : MonoBehaviour
             }
             
         }
-        if(!isMouse )
+        if(!isMouse && !isOptionOn)
         {
             switch (currentIndex)
             {
@@ -194,6 +245,7 @@ public class BtnEffect : MonoBehaviour
                         OptionPanel.gameObject.SetActive(true);
                         isOptionOn = true;
                         isSelect = false;
+                        ischeck = true;
                     }
                     break;
 
@@ -229,6 +281,9 @@ public class BtnEffect : MonoBehaviour
                 Debug.Log("??");
                 OptionPanel.gameObject.SetActive(false);
                 isOptionOn = false;
+                
+                a = 0f;
+                ischeck = false; // 스페이스바 누르면 바로 음소거 되는거 막을려고 임시로 만듬;
             }
 
             if(Input.GetKeyDown(KeyCode.DownArrow))
@@ -264,6 +319,15 @@ public class BtnEffect : MonoBehaviour
                         sliders[0].fillAmount -= 0.1f;
                         Debug.Log("master:  " + sliders[0].fillAmount);
                     }
+                    if(a > 0.15f)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            masterSoundBtn();
+                        }
+                        a = 1f;
+
+                    }
 
                     for (int e= 0; e < optionSelectObj.Length; ++e)
                     {
@@ -285,6 +349,15 @@ public class BtnEffect : MonoBehaviour
                         sliders[1].fillAmount -= 0.1f;
                         Debug.Log("bgm:  " + sliders[1].fillAmount);
                     }
+                    if (a > 0.15f)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            bgmSoundBtn();
+                        }
+                        a = 1f;
+
+                    }
                     for (int e = 0; e < optionSelectObj.Length; ++e)
                     {
                         if (e == optionIndex)
@@ -305,6 +378,15 @@ public class BtnEffect : MonoBehaviour
                         sliders[2].fillAmount -= 0.1f;
                         Debug.Log("sfx:  " + sliders[2].fillAmount);
                     }
+                    if (a > 0.15f)
+                    {
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            sfxSoundBtn();
+                        }
+                        a = 1f;
+
+                    }
                     for (int e = 0; e < optionSelectObj.Length; ++e)
                     {
                         if (e == optionIndex)
@@ -317,5 +399,8 @@ public class BtnEffect : MonoBehaviour
             }
         }
 
+
+        if (ischeck)
+            a += Time.deltaTime; // 옵션을 스페이스바로 들어가면 바로 음소거 되는현상방지
     }
 }
