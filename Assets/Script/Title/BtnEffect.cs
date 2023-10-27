@@ -16,10 +16,8 @@ public class BtnEffect : MonoBehaviour
     Outline ExitBtnOutline;
 
     public GameObject[] selectObj;
-    bool isInput;
     bool isSelect;
     bool isMouse;
-    float isdelayInputTime;
     int currentIndex;
 
     float masterSound;
@@ -43,9 +41,7 @@ public class BtnEffect : MonoBehaviour
         isMouse = false;
         isSelect = false;
         changeScene = SceneManager.GetComponent<ChangeScene>();
-        isdelayInputTime = 0f;
         currentIndex = 2; // 시작시 게임시작 위치
-        isInput = false;
         StartBtnOutline = StartTxt.GetComponent<Outline>();
         OptionBtnOutline = OptionTxt.GetComponent<Outline>();
         ExitBtnOutline = ExitTxt.GetComponent<Outline>();
@@ -129,11 +125,10 @@ public class BtnEffect : MonoBehaviour
 
     private void Update()
     {
-        if(!isInput && !isMouse)
+        if(!isMouse)
         {
             if(Input.GetKeyDown(KeyCode.DownArrow)) // 아래
             {
-                isInput = true;
                 if (currentIndex == 0)
                     currentIndex = 0;
                 else
@@ -141,7 +136,6 @@ public class BtnEffect : MonoBehaviour
             }
             else if(Input.GetKeyDown(KeyCode.UpArrow)) // 위
             {
-                isInput = true;
                 if (currentIndex == 2)
                     currentIndex = 2;
                 else
@@ -152,15 +146,6 @@ public class BtnEffect : MonoBehaviour
                 isSelect = true;
             }
             
-        }
-        if(isInput)
-        {
-            isdelayInputTime += Time.deltaTime;
-            if(isdelayInputTime > 0.15f)
-            {
-                isdelayInputTime = 0;
-                isInput = false;
-            }
         }
         if(!isMouse )
         {
