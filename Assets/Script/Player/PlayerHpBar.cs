@@ -6,8 +6,9 @@ using UnityEngine.UI;
 
 public class PlayerHpBar : MonoBehaviour
 {
+    Image hpBg;
     Image hpBar;
-
+    Camera camera;
     float maxHp;
     public static float currentHp;
     float saveHp;
@@ -21,11 +22,16 @@ public class PlayerHpBar : MonoBehaviour
     Color playerColor;
 
     
+    private void Awake()
+    {
+        isDie = false;
+    }
+
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Monster"))
         {
-            if(!isDie)
+            if (!isDie)
             {
                 if (isHit)
                 {
@@ -33,19 +39,16 @@ public class PlayerHpBar : MonoBehaviour
                     currentHp -= 0.5f;
                     isHit = false;
 
-                    playerColor = Color.blue;
-                    spriteRenderer.color = playerColor;
+                  //  playerColor = Color.blue;
+                  //  spriteRenderer.color = playerColor;
                 }
             }
         }
     }
-
-    private void Awake()
-    {
-        isDie = false;
-    }
     void Start()
-    { 
+    {
+        camera = Camera.main;
+        hpBg = GameObject.Find("HpBG").GetComponent<Image>();
         hpBar = GameObject.Find("HpBar").GetComponent<Image>();
         maxHp = PlayerState.Hp;
         currentHp = maxHp;
@@ -59,8 +62,8 @@ public class PlayerHpBar : MonoBehaviour
     [SerializeField]
     float hitEffectcoolTime;
     void Update()
-    {
-        //Debug.Log("currentHp : " + currentHp);
+    {   
+
         if(!isDie)
         {
             //Debug.Log("State.hp : " + PlayerState.Hp);
@@ -96,5 +99,9 @@ public class PlayerHpBar : MonoBehaviour
 
         }
 
+        #region HpBar Transform
+        hpBg.transform.position = camera.WorldToScreenPoint(this.transform.position + new Vector3(0, -0.7f, 0));
+
+        #endregion
     }
 }
