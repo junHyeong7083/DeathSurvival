@@ -41,7 +41,7 @@ public class SelectBtn : MonoBehaviour
 
     public void onupBtn()
     {
-        SelectKeyboard.isMouseuse = true;
+      //  SelectKeyboard.isMouseuse = true;
         SelectKeyboard.selectBtn = 1;
         selectKeyboard.buttonOutlines[0].effectColor = Color.green;
         selectKeyboard.buttonOutlines[1].effectColor = Color.white;
@@ -55,7 +55,7 @@ public class SelectBtn : MonoBehaviour
     }
     public void ondownBtn()
     {
-        SelectKeyboard.isMouseuse = true;
+      //  SelectKeyboard.isMouseuse = true;
         SelectKeyboard.selectBtn = 0;
         selectKeyboard.buttonOutlines[0].effectColor = Color.white;
         selectKeyboard.buttonOutlines[1].effectColor = Color.green;

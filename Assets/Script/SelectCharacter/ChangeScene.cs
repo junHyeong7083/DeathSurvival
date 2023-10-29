@@ -21,4 +21,26 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene(0);
     }
+
+    public void SelectSceneStart()
+    {
+        switch (SelectKeyboard.currentIndex)
+        {
+            case 0:
+                SceneManager.LoadScene(2);
+                break;
+
+            case 1:
+                if(SelectKeyboard.canB)
+                    SceneManager.LoadScene(2);
+                break;
+
+            case 2:
+                if (SelectKeyboard.canC)
+                    SceneManager.LoadScene(2);
+                break;
+
+        }
+    }
+
 }

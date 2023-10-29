@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using NBitcoin;
+
 public class SelectKeyboard : MonoBehaviour
 {
     public ScrollRect scrollRect;
@@ -19,8 +21,26 @@ public class SelectKeyboard : MonoBehaviour
     //  float movementSpeed = 2.0f; // 이동 속도 조절
     public GameObject[] showPaenl;
 
+    public static bool canB = false;
+    public static bool canC = false;
+    float checkB = 0f;
+    float checkC = 0f;
+
     void Start()
     {
+        checkB = PlayerPrefs.GetFloat("CharacterB");
+        checkC = PlayerPrefs.GetFloat("CharacterC");
+
+        if (checkB >= 1)
+            canB = true;
+        else
+            canB = false;
+
+        if (checkC >= 2)
+            canC = true;
+        else
+            canC = false;
+
         isMouseuse = false;
         selectBtn = 1;
         CharacterManager.Instance.currentCharacter = Character.White;
@@ -35,6 +55,8 @@ public class SelectKeyboard : MonoBehaviour
 
     void Update()
     {
+
+
         if(!isMouseuse)
         {
             #region 캐릭터 선택
@@ -99,8 +121,9 @@ public class SelectKeyboard : MonoBehaviour
                 case 2:
                     targetPosition = new Vector3(-1291.608f, 0, 0);
                     scrollRect.content.localPosition = targetPosition;
+
                     // scrollRect.content.localPosition = Vector3.Lerp(scrollRect.content.localPosition, targetPosition, (changeTime * 9) * Time.deltaTime);
-                    // Debug.Log("X2" + scrollRect.content.localPosition.x);
+                    // Debug.Log("X2" + scrollRect.content.localPosition.x);     
                     for (int e = 0; e < showPaenl.Length; ++e)
                     {
                         if (e == currentIndex)
@@ -139,10 +162,34 @@ public class SelectKeyboard : MonoBehaviour
 
                     buttonSelects[0].gameObject.SetActive(true);
                     buttonSelects[1].gameObject.SetActive(false);
-
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    if(currentIndex == 0)
                     {
-                        SceneManager.LoadScene(2);
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            SceneManager.LoadScene(2);
+                        }
+                    }
+                    else if(currentIndex == 1)
+                    {
+                        if(canB)
+                        {
+                            if (Input.GetKeyDown(KeyCode.Space))
+                            {
+                                SceneManager.LoadScene(2);
+                            }
+                        }
+                    }
+                    else if (currentIndex == 2)
+                    {
+                        if (canC)
+                        {
+                            Debug.Log("canC : " + canC);
+
+                            if (Input.GetKeyDown(KeyCode.Space))
+                            {
+                                SceneManager.LoadScene(2);
+                            }
+                        }
                     }
                     break;
 
