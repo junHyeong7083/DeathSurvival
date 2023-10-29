@@ -17,7 +17,7 @@ public class SelectKeyboard : MonoBehaviour
     public Outline[] buttonOutlines;
     public UnityEngine.UI.Image[] buttonSelects;
 
-    Vector3 targetPosition = new Vector3(0,0,0);
+    Vector3 targetPosition = new Vector3(0, 0, 0);
     //  float movementSpeed = 2.0f; // 이동 속도 조절
     public GameObject[] showPaenl;
 
@@ -26,8 +26,11 @@ public class SelectKeyboard : MonoBehaviour
     float checkB = 0f;
     float checkC = 0f;
 
+
+
     void Start()
     {
+
         checkB = PlayerPrefs.GetFloat("CharacterB");
         checkC = PlayerPrefs.GetFloat("CharacterC");
 
@@ -57,7 +60,7 @@ public class SelectKeyboard : MonoBehaviour
     {
 
 
-        if(!isMouseuse)
+        if (!isMouseuse)
         {
             #region 캐릭터 선택
             if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
@@ -162,32 +165,41 @@ public class SelectKeyboard : MonoBehaviour
 
                     buttonSelects[0].gameObject.SetActive(true);
                     buttonSelects[1].gameObject.SetActive(false);
-                    if(currentIndex == 0)
+                    if (currentIndex == 0)
                     {
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
                             SceneManager.LoadScene(2);
                         }
                     }
-                    else if(currentIndex == 1)
+                    else if (currentIndex == 1)
                     {
-                        if(canB)
+                        if (Input.GetKeyDown(KeyCode.Space))
                         {
-                            if (Input.GetKeyDown(KeyCode.Space))
+                            if (canB)
                             {
                                 SceneManager.LoadScene(2);
                             }
+                            else if (!canB)
+                            {
+                                //StartCoroutine(CanvasShaking(0.1f, 0.1f));
+                            }
                         }
+
                     }
                     else if (currentIndex == 2)
                     {
-                        if (canC)
-                        {
-                            Debug.Log("canC : " + canC);
+                        Debug.Log("canC : " + canC);
 
-                            if (Input.GetKeyDown(KeyCode.Space))
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            if (canC)
                             {
                                 SceneManager.LoadScene(2);
+                            }
+                            else if (!canC)
+                            {
+                                //StartCoroutine(CanvasShaking(0.1f, 0.1f));
                             }
                         }
                     }

@@ -459,6 +459,7 @@ Transform:
   - {fileID: 1551822591}
   - {fileID: 1836081880}
   - {fileID: 2093989450}
+  - {fileID: 785885315}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1325,8 +1326,8 @@ Canvas:
   m_GameObject: {fileID: 360775898}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_RenderMode: 1
+  m_Camera: {fileID: 412194516}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -1493,6 +1494,7 @@ GameObject:
   - component: {fileID: 412194517}
   - component: {fileID: 412194516}
   - component: {fileID: 412194515}
+  - component: {fileID: 412194518}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1566,6 +1568,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &412194518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412194514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23b14375b1f0bc847a61755fa17f8342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pixelate: 1
 --- !u!1 &415319943
 GameObject:
   m_ObjectHideFlags: 0
@@ -3059,9 +3074,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6391859503552773845, guid: 775725ede8e7c724298bbad1dacd111d, type: 3}
       propertyPath: m_Name
-      value: 'CheckKey '
+      value: CheckKeyC
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6391859503552773847, guid: 775725ede8e7c724298bbad1dacd111d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 775725ede8e7c724298bbad1dacd111d, type: 3}
 --- !u!224 &742196934 stripped
 RectTransform:
@@ -3144,6 +3164,56 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &785885314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 785885315}
+  - component: {fileID: 785885316}
+  m_Layer: 0
+  m_Name: KeyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &785885315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785885314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 114418985}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &785885316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785885314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6aaa0e3620dda45b53a31be23ac6b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keys:
+  - {fileID: 1798690910}
+  - {fileID: 1483226133}
+  animators:
+  - {fileID: 1798690911}
+  - {fileID: 1483226134}
 --- !u!1 &813177731
 GameObject:
   m_ObjectHideFlags: 0
@@ -10503,7 +10573,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1836081879}
         m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
-        m_MethodName: GoGameScene
+        m_MethodName: SelectSceneStart
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10642,7 +10712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 50.000008, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1825850000
@@ -11451,12 +11521,6 @@ MonoBehaviour:
   - {fileID: 2043836608}
   - {fileID: 1652801991}
   - {fileID: 482611478}
-  characterKeys:
-  - {fileID: 1798690910}
-  - {fileID: 1483226133}
-  keyAnim:
-  - {fileID: 1798690911}
-  - {fileID: 1483226134}
 --- !u!114 &2093989452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12169,7 +12233,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6391859503552773845, guid: 775725ede8e7c724298bbad1dacd111d, type: 3}
       propertyPath: m_Name
-      value: CheckKey
+      value: CheckKeyB
+      objectReference: {fileID: 0}
+    - target: {fileID: 6391859503552773847, guid: 775725ede8e7c724298bbad1dacd111d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 775725ede8e7c724298bbad1dacd111d, type: 3}
