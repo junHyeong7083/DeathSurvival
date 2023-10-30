@@ -12,7 +12,9 @@ public class RespawnCharacter : MonoBehaviour
 
     private void Start()
     {
-        for(int e = 0; e < seeBtnObj.Length; ++e)
+        Debug.Log("posx"+ this.transform.position.x);
+        Debug.Log("posy" + this.transform.position.y);
+        for (int e = 0; e < seeBtnObj.Length; ++e)
         {
             seeBtnObj[e].SetActive(false);
         }

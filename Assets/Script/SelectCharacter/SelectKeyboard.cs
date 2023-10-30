@@ -169,7 +169,9 @@ public class SelectKeyboard : MonoBehaviour
                     {
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
-                            SceneManager.LoadScene(2);
+                            Debug.Log("Ω√¿€");
+                            Pixelate.toGame = true;
+                         //   SceneManager.LoadScene(2);
                         }
                     }
                     else if (currentIndex == 1)
@@ -178,7 +180,8 @@ public class SelectKeyboard : MonoBehaviour
                         {
                             if (canB)
                             {
-                                SceneManager.LoadScene(2);
+                                Pixelate.toGame = true;
+                               // SceneManager.LoadScene(2);
                             }
                             else if (!canB)
                             {
@@ -195,7 +198,8 @@ public class SelectKeyboard : MonoBehaviour
                         {
                             if (canC)
                             {
-                                SceneManager.LoadScene(2);
+                                Pixelate.toGame = true;
+                               // SceneManager.LoadScene(2);
                             }
                             else if (!canC)
                             {

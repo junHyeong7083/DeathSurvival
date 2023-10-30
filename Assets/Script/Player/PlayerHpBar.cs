@@ -100,8 +100,10 @@ public class PlayerHpBar : MonoBehaviour
         }
 
         #region HpBar Transform
-        hpBg.transform.position = camera.WorldToScreenPoint(this.transform.position + new Vector3(0, -0.7f, 0));
-
+        if(Pixelate.showHpBar)
+            hpBg.transform.position = camera.WorldToScreenPoint(this.transform.position + new Vector3(0, -0.7f, 0));
+        else
+            hpBg.transform.position = camera.WorldToScreenPoint(this.transform.position + new Vector3(0, -30f, 0));
         #endregion
     }
 }

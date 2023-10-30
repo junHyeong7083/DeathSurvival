@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     float PlayerAskillTime = 0f;
     private void Start()
     {
+        isOnes = false;
         Time.timeScale = 1f;
         delayDieTime = 0f;
         DiePanel.gameObject.SetActive(false);
@@ -74,11 +75,25 @@ public class UIManager : MonoBehaviour
         #region DiePanel
         if (PlayerHpBar.isDie)
         {
+           // Pixelate.showHpBar = false;
             delayDieTime += Time.deltaTime;
-            if(delayDieTime > 2f)
+            if (delayDieTime > 1.0f)
+                Pixelate.showHpBar = false;
+
+            if (delayDieTime > 1.5f)
             {
+                if (!isOnes)
+                {
+                    Pixelate.showDieEffect = true;
+                    isOnes = true;
+                }
+
+                if (Pixelate.showDiePanel)
+                {
+                    Time.timeScale = 0f;
+                    DiePanel.gameObject.SetActive(true);
+                }
                 PlayerHpBar.isDie = false;
-                DiePanel.gameObject.SetActive(true);
 
                 #region Damage Text
                 PlayerADamage[0].text = "1번스킬 : " + MonsterController.PlayerAOneDamage.ToString();
@@ -86,7 +101,6 @@ public class UIManager : MonoBehaviour
                 PlayerADamage[2].text = "3번스킬 : " + MonsterController.PlayerAThreeDamage.ToString();
                 PlayerADamage[3].text = "4번스킬 : " + PlayerAskillTime.ToString("F2") + "초";
                 #endregion
-                Time.timeScale = 0f;
 
                 Animator[] allAnimators = FindObjectsOfType<Animator>();
                 foreach (Animator animator in allAnimators)
@@ -99,4 +113,5 @@ public class UIManager : MonoBehaviour
 
         #endregion
     }
+    bool isOnes;
 }

@@ -4,7 +4,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
-   public void GoGameScene()
+    private void Start()
+    {
+        UIManager.isPause = false;
+        Time.timeScale = 1f;
+    }
+
+    public void GoGameScene()
     {
         SceneManager.LoadScene(2);
     }
