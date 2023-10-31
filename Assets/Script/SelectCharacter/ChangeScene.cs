@@ -33,17 +33,24 @@ public class ChangeScene : MonoBehaviour
         switch (SelectKeyboard.currentIndex)
         {
             case 0:
-                SceneManager.LoadScene(2);
+                Pixelate.toGame = true;
+                //SceneManager.LoadScene(2);
                 break;
 
             case 1:
-                if(SelectKeyboard.canB)
-                    SceneManager.LoadScene(2);
+                if (SelectKeyboard.canB)
+                {
+                    Pixelate.toGame = true;
+                    // SceneManager.LoadScene(2);
+                }
                 break;
 
             case 2:
                 if (SelectKeyboard.canC)
-                    SceneManager.LoadScene(2);
+                {
+                    Pixelate.toGame = true;
+                  //  SceneManager.LoadScene(2);
+                }
                 break;
 
         }

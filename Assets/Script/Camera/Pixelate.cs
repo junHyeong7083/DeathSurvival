@@ -45,11 +45,11 @@ public class Pixelate : MonoBehaviour
         {
             pixelate += 150 * Time.deltaTime;
 
-            if (pixelate > 150)
+            if (pixelate > 100)
             { 
                 isChange = true;
                 toGame = false;
-                value = 150;
+                value = 100;
                 pixelate = value;
                 SceneManager.LoadScene(2);
             }
