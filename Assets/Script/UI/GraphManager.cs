@@ -8,7 +8,7 @@ public class GraphManager : MonoBehaviour
 {
     public RectTransform[] PlayerADamageBars; // 그래프 바를 배열로 저장
     public Text[] PlayerADamageTxt;
-    float[] playerADamage = new float[3]; // 플레이어 데미지 배열
+    float[] playerADamage = new float[4]; // 플레이어 데미지 배열
     public float maxValue;
     void Start()
     {
@@ -31,10 +31,12 @@ public class GraphManager : MonoBehaviour
         playerADamage[0] = MonsterController.PlayerAOneDamage;
         playerADamage[1] = MonsterController.PlayerATwoDamage;
         playerADamage[2] = MonsterController.PlayerAThreeDamage;
+        playerADamage[3] = MonsterController.PlayerABasicDamage;
 
         PlayerADamageTxt[0].text = MonsterController.PlayerAOneDamage.ToString();
         PlayerADamageTxt[1].text = MonsterController.PlayerATwoDamage.ToString();
         PlayerADamageTxt[2].text = MonsterController.PlayerAThreeDamage.ToString();
+        PlayerADamageTxt[3].text = MonsterController.PlayerABasicDamage.ToString();
 
         // 최대 데미지 값을 찾음
         float maxDamage = Mathf.Max(playerADamage);

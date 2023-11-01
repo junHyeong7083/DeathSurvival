@@ -39,12 +39,31 @@ public class PlayerHpBar : MonoBehaviour
                     currentHp -= 0.5f;
                     isHit = false;
 
-                  //  playerColor = Color.blue;
-                  //  spriteRenderer.color = playerColor;
+                    //  playerColor = Color.blue;
+                    //  spriteRenderer.color = playerColor;
                 }
             }
         }
     }
+
+    /*    private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.gameObject.CompareTag("Monster"))
+            {
+                if (!isDie)
+                {
+                    if (isHit)
+                    {
+                        //Debug.Log("Hit!!");
+                        currentHp -= 0.5f;
+                        isHit = false;
+
+                        //  playerColor = Color.blue;
+                        //  spriteRenderer.color = playerColor;
+                    }
+                }
+            }
+        }*/
     void Start()
     {
         camera = Camera.main;

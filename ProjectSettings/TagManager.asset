@@ -11,6 +11,7 @@ TagManager:
   - PlayerA_One
   - PlayerA_Two
   - PlayerA_Three
+  - PlayerA_Basic
   layers:
   - Default
   - TransparentFX

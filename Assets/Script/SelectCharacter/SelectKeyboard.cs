@@ -169,7 +169,6 @@ public class SelectKeyboard : MonoBehaviour
                     {
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
-                            Debug.Log("Ω√¿€");
                             Pixelate.toGame = true;
                          //   SceneManager.LoadScene(2);
                         }

@@ -9,13 +9,10 @@ public class UIManager : MonoBehaviour
     public GameObject optionPanel;
     public Image[] optionSelect;
     int optionIndex;
-
+    bool isoption = false;
     #region Die
     public GameObject DiePanel;
     float delayDieTime;
-
-    public Text[] PlayerADamage;
-
     #endregion
     // public Text levelTxt;
     public static bool isPause;
@@ -24,6 +21,7 @@ public class UIManager : MonoBehaviour
     float PlayerAskillTime = 0f;
     private void Start()
     {
+        isoption = false;
         for (int e = 0; e < optionSelect.Length; ++e)
             optionSelect[e].gameObject.SetActive(false);
 
@@ -57,48 +55,8 @@ public class UIManager : MonoBehaviour
                 isPause = true; 
                 optionPanel.SetActive(true);
                 isClick = true;
-/*
-                #region 옵션 선택창 입력
-                if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-                {
-                    Debug.Log(optionIndex);
-                    if (optionIndex == 0)
-                        optionIndex = 0;
-                    else
-                        optionIndex--;
-                }
-
-                if(Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-                {
-                    Debug.Log(optionIndex);
-                    if (optionIndex == 1)
-                        optionIndex = 1;
-                    else
-                        optionIndex++;
-                }
-                #endregion
-                switch(optionIndex)
-                {
-                    case 1:
-                        optionSelect[0].gameObject.SetActive(true);
-                        optionSelect[1].gameObject.SetActive(false);
-
-                        if(Input.GetKeyDown(KeyCode.Space))
-                        {
-                            SceneManager.LoadScene(1);
-                        }
-                        break;
-
-                    case 2:
-                        optionSelect[1].gameObject.SetActive(true);
-                        optionSelect[0].gameObject.SetActive(false);
-
-                        if(Input.GetKeyDown(KeyCode.Space))
-                        {
-                            Application.Quit();
-                        }
-                        break;
-                }*/
+                isoption = true;
+                Debug.Log("oPTION");  
             }
 
         }
@@ -109,6 +67,7 @@ public class UIManager : MonoBehaviour
                 isPause = false;
                 optionPanel.SetActive(false);
                 isClick = false;
+                isoption = false;
             }
         }
 
@@ -116,9 +75,57 @@ public class UIManager : MonoBehaviour
         else if(!isPause){ Time.timeScale = 1f; }
         #endregion
 
+        #region Option Controller
+        if (isoption)
+        {
+            #region 옵션 선택창 입력
+            if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+            {
+                Debug.Log(optionIndex);
+                if (optionIndex == 0)
+                    optionIndex = 0;
+                else
+                    optionIndex--;
+            }
+
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            {
+                Debug.Log(optionIndex);
+                if (optionIndex == 1)
+                    optionIndex = 1;
+                else
+                    optionIndex++;
+            }
+            #endregion
+            switch (optionIndex)
+            {
+                case 1:
+                    optionSelect[0].gameObject.SetActive(true);
+                    optionSelect[1].gameObject.SetActive(false);
+
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        SceneManager.LoadScene(1);
+                    }
+                    break;
+
+                case 0:
+                    optionSelect[1].gameObject.SetActive(true);
+                    optionSelect[0].gameObject.SetActive(false);
+
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        Application.Quit();
+                    }
+                    break;
+            }
+        }
+        #endregion
+
+        #region PlayerA Skill4 TimeSave
         if (WeaponDataManager.playerAFourbool)
             PlayerAskillTime += Time.deltaTime;
-
+        #endregion
 
         #region DiePanel
         if (PlayerHpBar.isDie)
@@ -143,17 +150,6 @@ public class UIManager : MonoBehaviour
                     DiePanel.gameObject.SetActive(true);
                 }
                 PlayerHpBar.isDie = false;
-
-                #region Damage Text_DataPanel
-                PlayerADamage[0].text = "1번스킬 : " + MonsterController.PlayerAOneDamage.ToString();
-                PlayerADamage[1].text = "2번스킬 : " + MonsterController.PlayerATwoDamage.ToString();
-                PlayerADamage[2].text = "3번스킬 : " + MonsterController.PlayerAThreeDamage.ToString();
-                PlayerADamage[3].text = "4번스킬 : " + PlayerAskillTime.ToString("F2") + "초";
-                #endregion
-
-                #region Damage_GraphPanel
-
-                #endregion
 
                 Animator[] allAnimators = FindObjectsOfType<Animator>();
                 foreach (Animator animator in allAnimators)

@@ -7,6 +7,7 @@ public class MonsterController : MonoBehaviour
     #region State
     [SerializeField]
     float Speed;
+    float saveSpeed;
 
     public float Hp;
     float maxHp;
@@ -41,7 +42,7 @@ public class MonsterController : MonoBehaviour
     public static float PlayerAOneDamage = 0;
     public static float PlayerATwoDamage = 0;
     public static float PlayerAThreeDamage = 0;
-
+    public static float PlayerABasicDamage = 0;
 
     #endregion
 
@@ -58,35 +59,110 @@ public class MonsterController : MonoBehaviour
             {
                 // 공격력 따라 데미지 줄이는 코드
                 Hp -= WeaponDataManager.playerAOneAtk;
-                PlayerAOneDamage+= WeaponDataManager.playerAOneAtk;
                 isHitAni = false;
                 isHit = true;
+
+                switch (CharacterManager.Instance.currentCharacter)
+                {
+                    case Character.White: // 전구
+                        PlayerAOneDamage += WeaponDataManager.playerAOneAtk;
+                        break;
+
+                    case Character.Blue:
+                        break;
+
+                    case Character.Green:
+                        break;
+                }
             }
+            
 
             if (collision.gameObject.tag == "PlayerA_Two")
             {
                 // 공격력 따라 데미지 줄이는 코드
                 Hp -= WeaponDataManager.playerATwoAtk;
-                PlayerATwoDamage += WeaponDataManager.playerATwoAtk;
                 isHit = true;
                 isHitAni = false;
+
+                switch (CharacterManager.Instance.currentCharacter)
+                {
+                    case Character.White: // 전구
+                        PlayerATwoDamage += WeaponDataManager.playerATwoAtk;
+                        break;
+
+                    case Character.Blue:
+                        break;
+
+                    case Character.Green:
+                        break;
+                }
             }
 
             if (collision.gameObject.tag == "PlayerA_Three")
             {
                 // 공격력 따라 데미지 줄이는 코드
                 Hp -= WeaponDataManager.playerAThreeAtk;
-                PlayerAThreeDamage += WeaponDataManager.playerAThreeAtk;
                 isHit = true;
                 isHitAni = false;
+
+                switch (CharacterManager.Instance.currentCharacter)
+                {
+                    case Character.White: // 전구
+                        PlayerAThreeDamage += WeaponDataManager.playerAThreeAtk;
+                        break;
+
+                    case Character.Blue:
+                        break;
+
+                    case Character.Green:
+                        break;
+                }
             }
+
+            if (collision.gameObject.tag == "PlayerA_Basic")
+            {
+                // 공격력 따라 데미지 줄이는 코드
+                Hp -= WeaponDataManager.playerABasicAtkDamage;
+                isHit = true;
+                isHitAni = false;
+
+                switch (CharacterManager.Instance.currentCharacter)
+                {
+                    case Character.White: // 전구
+                        PlayerABasicDamage += WeaponDataManager.playerABasicAtkDamage;
+                        break;
+
+                    case Character.Blue:
+                        break;
+
+                    case Character.Green:
+                        break;
+                }
+            }
+
+
+
+
+
+            #region 플레이어한테 너무 안붙게
+            if (collision.gameObject.tag == "Player")
+            {
+                Speed = 0;
+            }
+            else if(collision.gameObject.tag != "Player")
+            {
+                Speed = saveSpeed;
+            }
+            #endregion
         }
-   
+
     }
 
 
     void Start()
     {
+        saveSpeed = Speed;
+
         circleCollider2D = GetComponent<CircleCollider2D>();
 
         gameObject.GetComponent<CircleCollider2D>().enabled = true;
