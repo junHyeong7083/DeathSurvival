@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd0208933b0e3a443a9c1b5975c0fcb7, type: 3}
-  m_Name: Brush
+  m_Name: Brush 1
   m_EditorClassIdentifier: 
   multiplyColorMaterial: {fileID: 2100000, guid: 53171468e32441749b007c64337cd3db, type: 2}
   addColorMaterial: {fileID: 2100000, guid: 65ccb7b6cbefce14eb6f884cfc33ba91, type: 2}
@@ -21,7 +21,7 @@ MonoBehaviour:
   isCutoutTransition: 0
   transitionSpeed: 2.5
   autoAdjustTransitionTime: 1
-  flipX: 0
+  flipX: 1
   flipY: 0
   transitionTime: 1
   destroyTime: 1.25

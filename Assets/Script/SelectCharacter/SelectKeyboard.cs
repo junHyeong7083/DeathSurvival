@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
 using NBitcoin;
+using EasyTransition;
 
 public class SelectKeyboard : MonoBehaviour
 {
@@ -26,7 +27,8 @@ public class SelectKeyboard : MonoBehaviour
     float checkB = 0f;
     float checkC = 0f;
 
-
+    public TransitionSettings transition;
+    float loadDelay = 0f;
 
     void Start()
     {
@@ -55,6 +57,12 @@ public class SelectKeyboard : MonoBehaviour
             showPaenl[e].gameObject.SetActive(false);
         }
     }
+
+     void LoadScene(int _sceneName)
+    {
+        TransitionManager.Instance().Transition(_sceneName, transition, loadDelay);
+    }
+
 
     void Update()
     {
@@ -217,7 +225,8 @@ public class SelectKeyboard : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        SceneManager.LoadScene(0);
+                        // SceneManager.LoadScene(0);
+                        LoadScene(0);
                     }
                     break;
             }

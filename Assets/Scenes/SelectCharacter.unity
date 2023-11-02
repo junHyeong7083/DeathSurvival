@@ -10837,7 +10837,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449abf5213c8d284eb87cb54975533ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
+  transition: {fileID: 11400000, guid: db105e86c07732941b853685f9b3f0a8, type: 2}
   loadDelay: 0
 --- !u!4 &1836081880
 Transform:
@@ -11593,6 +11593,7 @@ MonoBehaviour:
   - {fileID: 2043836608}
   - {fileID: 1652801991}
   - {fileID: 482611478}
+  transition: {fileID: 11400000, guid: db105e86c07732941b853685f9b3f0a8, type: 2}
 --- !u!114 &2093989452
 MonoBehaviour:
   m_ObjectHideFlags: 0
