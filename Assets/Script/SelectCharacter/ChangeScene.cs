@@ -1,9 +1,12 @@
+using EasyTransition;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class ChangeScene : MonoBehaviour
 {
+    public TransitionSettings transition;
+    public float loadDelay;
     private void Start()
     {
         UIManager.isPause = false;
@@ -18,9 +21,19 @@ public class ChangeScene : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void LoadScene(int _sceneName)
+    {
+        TransitionManager.Instance().Transition(_sceneName, transition, loadDelay);
+    }
+
+
     public void GoSelectScene()
     {
-        SceneManager.LoadScene(1);
+        // SceneManager.LoadScene(1);
+        //SelectCharacter
+        LoadScene(1);
+
     }
 
     public void GoTitleScene()
