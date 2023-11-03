@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class MonsterController : MonoBehaviour
 {
     #region State
@@ -28,6 +28,12 @@ public class MonsterController : MonoBehaviour
 
     GameObject monsterItem;
 
+    public GameObject DamageText;
+    public Transform DamagePos;
+    int damage = 0;
+    int checkDamage = 0;
+    float sumDamage = 0;
+
     bool isRight = false;
     bool isDead = false;
 
@@ -46,7 +52,7 @@ public class MonsterController : MonoBehaviour
 
     #endregion
 
-
+    DamageTextPool pool;
     GameObject monsterManagerObj;
     MonsterManager monsterManager;
     GameObject bloodEffectObj;
@@ -55,10 +61,13 @@ public class MonsterController : MonoBehaviour
     {
         if (!isHit)
         {
+            damage = Random.Range(-1, 2);
+            checkDamage = damage;
             if (collision.gameObject.tag == "PlayerA_One")
             {
                 // 공격력 따라 데미지 줄이는 코드
-                Hp -= WeaponDataManager.playerAOneAtk;
+                Hp -= WeaponDataManager.playerAOneAtk + damage;
+                sumDamage = WeaponDataManager.playerAOneAtk + damage;
                 isHitAni = false;
                 isHit = true;
 
@@ -66,6 +75,8 @@ public class MonsterController : MonoBehaviour
                 {
                     case Character.White: // 전구
                         PlayerAOneDamage += WeaponDataManager.playerAOneAtk;
+                        //  TakeDamage(sumDamage, checkDamage);
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                         break;
 
                     case Character.Blue:
@@ -80,14 +91,16 @@ public class MonsterController : MonoBehaviour
             if (collision.gameObject.tag == "PlayerA_Two")
             {
                 // 공격력 따라 데미지 줄이는 코드
-                Hp -= WeaponDataManager.playerATwoAtk;
+                Hp -= WeaponDataManager.playerATwoAtk + damage;
+                sumDamage = WeaponDataManager.playerATwoAtk + damage;
                 isHit = true;
                 isHitAni = false;
 
                 switch (CharacterManager.Instance.currentCharacter)
                 {
                     case Character.White: // 전구
-                        PlayerATwoDamage += WeaponDataManager.playerATwoAtk;
+                        PlayerATwoDamage += WeaponDataManager.playerATwoAtk + damage;
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                         break;
 
                     case Character.Blue:
@@ -102,6 +115,7 @@ public class MonsterController : MonoBehaviour
             {
                 // 공격력 따라 데미지 줄이는 코드
                 Hp -= WeaponDataManager.playerAThreeAtk;
+                sumDamage = WeaponDataManager.playerAThreeAtk + damage;
                 isHit = true;
                 isHitAni = false;
 
@@ -109,6 +123,7 @@ public class MonsterController : MonoBehaviour
                 {
                     case Character.White: // 전구
                         PlayerAThreeDamage += WeaponDataManager.playerAThreeAtk;
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                         break;
 
                     case Character.Blue:
@@ -123,6 +138,7 @@ public class MonsterController : MonoBehaviour
             {
                 // 공격력 따라 데미지 줄이는 코드
                 Hp -= WeaponDataManager.playerABasicAtkDamage;
+                sumDamage = WeaponDataManager.playerABasicAtkDamage + damage;
                 isHit = true;
                 isHitAni = false;
 
@@ -130,6 +146,7 @@ public class MonsterController : MonoBehaviour
                 {
                     case Character.White: // 전구
                         PlayerABasicDamage += WeaponDataManager.playerABasicAtkDamage;
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                         break;
 
                     case Character.Blue:
@@ -161,6 +178,8 @@ public class MonsterController : MonoBehaviour
 
     void Start()
     {
+        pool = GameObject.Find("DamageManager").GetComponent<DamageTextPool>();
+
         saveSpeed = Speed;
 
         circleCollider2D = GetComponent<CircleCollider2D>();
@@ -210,8 +229,12 @@ public class MonsterController : MonoBehaviour
     float delayDieTime;
     bool isMove;
     bool isHitAni = false;
+
+
+
     void Update()
     {
+     //  DamageText.transform.position = DamagePos.position;
         if (WeaponDataManager.playerAFourbool)
         {
             animator.SetBool("MonsterTimeStop", true);

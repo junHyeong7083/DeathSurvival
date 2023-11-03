@@ -5168,6 +5168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449abf5213c8d284eb87cb54975533ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
+  loadDelay: 0
 --- !u!114 &1179525218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5180,6 +5182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f83bdfa3e549c3c449a39c7a56a296b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transition: {fileID: 0}
   OptionBtn: {fileID: 362252016}
   optionPanel: {fileID: 1242659464}
   optionSelect:
@@ -8733,6 +8736,7 @@ Transform:
   - {fileID: 1286481423}
   - {fileID: 269081322}
   - {fileID: 1002653762}
+  - {fileID: 5149945914596526377}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10030,3 +10034,49 @@ MonoBehaviour:
   - {fileID: 914170192}
   - {fileID: 624608479}
   - {fileID: 181445271}
+--- !u!114 &5149945914596526358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149945914596526359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c446c5480b5084597f7b121d64b45d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTextPrefab: {fileID: 5642844467708576510, guid: 1e5bd86bf5f7adb4882e67451b1db49c, type: 3}
+  poolSize: 20
+--- !u!1 &5149945914596526359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5149945914596526377}
+  - component: {fileID: 5149945914596526358}
+  m_Layer: 0
+  m_Name: DamageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5149945914596526377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5149945914596526359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.3523161, y: -2.3883214, z: -0.13223815}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2014066143}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
