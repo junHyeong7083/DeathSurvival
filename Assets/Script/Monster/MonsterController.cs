@@ -61,8 +61,10 @@ public class MonsterController : MonoBehaviour
     {
         if (!isHit)
         {
-            damage = Random.Range(-1, 2);
+            damage = Random.Range(-1, 6);
             checkDamage = damage;
+            if (checkDamage >= 1 && checkDamage < 5)
+                checkDamage = 1;
             if (collision.gameObject.tag == "PlayerA_One")
             {
                 // 공격력 따라 데미지 줄이는 코드

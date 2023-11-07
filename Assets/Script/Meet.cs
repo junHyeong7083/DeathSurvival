@@ -26,7 +26,7 @@ public class Meet : MonoBehaviour
     {
         Timer += Time.deltaTime;
         float distance = Vector3.Distance(transform.position, Player.transform.position);
-        if (distance <= PlayerState.detectRange)
+        if (distance <= PlayerState.detectRange) // ¾ÆÀÌÅÛ Å½Áö
         {
             isAttracted = true;
         }

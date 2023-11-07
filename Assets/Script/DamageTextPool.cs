@@ -45,11 +45,15 @@ public class DamageTextPool : MonoBehaviour
                     case 0:
                         break;
 
-                    case 1:
+                    case 5: // 크리티컬!
                         textMesh.fontStyle = FontStyles.Bold;
-                        textMesh.fontSize = fontSize + 0.3f;
-                        // textMesh.color = new Color32(255, 218, 218, 255);
+                        textMesh.fontSize = fontSize + 0.5f;
+                        textMesh.color = Color.yellow;
                         break;
+
+                    default:
+                        break;
+
                 }
 
                 textMesh.text = damage.ToString();
@@ -61,6 +65,15 @@ public class DamageTextPool : MonoBehaviour
             }
         }
     }
+
+
+    void FontInit(TextMeshPro tmp)
+    {
+        tmp.fontSize = 2f;
+        tmp.fontStyle = FontStyles.Normal;
+        tmp.color = Color.white;
+    }
+
 
     IEnumerator FadeOutDamageText(GameObject damageText)
     {
@@ -76,8 +89,8 @@ public class DamageTextPool : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-        textMesh.fontSize = 2f;
-        textMesh.fontStyle = FontStyles.Normal;
+        FontInit(textMesh);
+
         damageText.SetActive(false);
     }
 }
