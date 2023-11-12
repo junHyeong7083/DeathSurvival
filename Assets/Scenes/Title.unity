@@ -6130,5 +6130,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: TransitionManager
       objectReference: {fileID: 0}
+    - target: {fileID: 5495313396703868911, guid: 9ddca13c1932e3b40aae7d446b1e6fee, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ddca13c1932e3b40aae7d446b1e6fee, type: 3}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dbf88a5c0cc4f10499449a4d28a63996
+guid: 15eaacc0deb97f0478e0e032fae39567
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_r_Sheet_0
+      name: death_r_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27d28ccc1b3c2764baf414accf790b16
-      internalID: 1318159864
+      spriteID: ed436643e768ce248b04d20540fa9eb6
+      internalID: 2039616484
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_r_Sheet_1
+      name: death_r_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7eb93b80aa62d044b0ceee55681ffaf
-      internalID: -1550558014
+      spriteID: f70fd1a9d66a4a24db0e04794441ffc1
+      internalID: 1795326139
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_r_Sheet_2
+      name: death_r_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59a628798e4e9c3458395cfe19363f34
-      internalID: 1938559921
+      spriteID: b41204ed8c88cb744a577209d81e8bf9
+      internalID: -1450449922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_r_Sheet_3
+      name: death_r_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7a9aaf68995461419e3f60fdc0ca583
-      internalID: 1529294554
+      spriteID: fa02e0cdd49565645b6ad97d455427c5
+      internalID: -1221418413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_r_Sheet_4
+      name: death_r_4
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,29 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f2fba9658a04564594814080107edb8
-      internalID: -1087504444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: walk_r_Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a0f124ef64a78724faf53bd35c6bb0c9
-      internalID: -93678630
+      spriteID: 9a0f6fe3511962d4faae66ca8ea2ef81
+      internalID: -156088693
       vertices: []
       indices: 
       edges: []
@@ -241,12 +220,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walk_r_Sheet_0: 1318159864
-      walk_r_Sheet_1: -1550558014
-      walk_r_Sheet_2: 1938559921
-      walk_r_Sheet_3: 1529294554
-      walk_r_Sheet_4: -1087504444
-      walk_r_Sheet_5: -93678630
+      death_r_0: 2039616484
+      death_r_1: 1795326139
+      death_r_2: -1450449922
+      death_r_3: -1221418413
+      death_r_4: -156088693
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

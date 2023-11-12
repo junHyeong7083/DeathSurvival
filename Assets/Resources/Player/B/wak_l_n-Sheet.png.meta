@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dbf88a5c0cc4f10499449a4d28a63996
+guid: e689e97127c6dfd4289d950bb08d3093
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,13 +105,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_r_Sheet_0
+      name: wak_l_n-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27d28ccc1b3c2764baf414accf790b16
-      internalID: 1318159864
+      spriteID: 4b68f41164620b14ba51cd92eb785f9a
+      internalID: -2076939485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_r_Sheet_1
+      name: wak_l_n-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +140,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7eb93b80aa62d044b0ceee55681ffaf
-      internalID: -1550558014
+      spriteID: 2d0ad17d7c2711343b3224dd8237b99a
+      internalID: -199894950
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_r_Sheet_2
+      name: wak_l_n-Sheet_2
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,20 +161,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 59a628798e4e9c3458395cfe19363f34
-      internalID: 1938559921
+      spriteID: 07c2360a0dae7b5409236b9d5b78451d
+      internalID: -434297595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_r_Sheet_3
+      name: wak_l_n-Sheet_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,20 +182,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a7a9aaf68995461419e3f60fdc0ca583
-      internalID: 1529294554
+      spriteID: bcee76be3e34aca41bf7474b50d74b25
+      internalID: 1943581612
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_r_Sheet_4
+      name: wak_l_n-Sheet_4
       rect:
         serializedVersion: 2
         x: 256
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,20 +203,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f2fba9658a04564594814080107edb8
-      internalID: -1087504444
+      spriteID: 794d34a206bc0d54dbb9509f216b7aea
+      internalID: 668080984
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_r_Sheet_5
+      name: wak_l_n-Sheet_5
       rect:
         serializedVersion: 2
         x: 320
         y: 0
         width: 64
-        height: 40
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -224,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0f124ef64a78724faf53bd35c6bb0c9
-      internalID: -93678630
+      spriteID: 6129d9f13b8100b479fc5f9f0a915e80
+      internalID: 1663152870
       vertices: []
       indices: 
       edges: []
@@ -241,12 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walk_r_Sheet_0: 1318159864
-      walk_r_Sheet_1: -1550558014
-      walk_r_Sheet_2: 1938559921
-      walk_r_Sheet_3: 1529294554
-      walk_r_Sheet_4: -1087504444
-      walk_r_Sheet_5: -93678630
+      wak_l_n-Sheet_0: -2076939485
+      wak_l_n-Sheet_1: -199894950
+      wak_l_n-Sheet_2: -434297595
+      wak_l_n-Sheet_3: 1943581612
+      wak_l_n-Sheet_4: 668080984
+      wak_l_n-Sheet_5: 1663152870
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

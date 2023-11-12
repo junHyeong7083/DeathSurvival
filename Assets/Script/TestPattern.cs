@@ -6,21 +6,45 @@ public class TestPattern : MonoBehaviour
 {
 
     public static float testValue = 1f; // 테스트용
+
+    int[] playerA = new int[10];
+
+    private void Start()
+    {
+        for(int e = 0; e < playerA.Length; e++)
+        {
+            playerA[e] = 0;
+        }
+    }
     public void Pattern1()
     {
-        WeaponManager.Instance.StartPattern("atk1");
-        TestAtk.isTestAtk1 = true;
+        if (playerA[0] == 0)
+        {
+            WeaponManager.Instance.StartPattern("atk1");
+            TestAtk.isTestAtk1 = true;
+            playerA[0]++;
+        }
     }
 
     public void Pattern2()
     {
-        WeaponManager.Instance.StartPattern("atk2");
+        if (playerA[1] == 0)
+        {
+            WeaponManager.Instance.StartPattern("atk2");
+            playerA[1]++;
+        }
+       // WeaponManager.Instance.StartPattern("atk2");
     }
 
     #region Pattern3
     public void Pattern3()
     {
-        WeaponManager.Instance.StartPattern("atk3");
+        if (playerA[2] == 0)
+        {
+            WeaponManager.Instance.StartPattern("atk3");
+            playerA[2]++;
+        }
+       // WeaponManager.Instance.StartPattern("atk3");
     }
 
     public void ValueUP()
@@ -35,6 +59,11 @@ public class TestPattern : MonoBehaviour
 
     public void Pattern4()
     {
-        WeaponManager.Instance.StartPattern("atk4");
+        if (playerA[3] == 0)
+        {
+            WeaponManager.Instance.StartPattern("atk4");
+            playerA[3]++;   
+        }
+        //WeaponManager.Instance.StartPattern("atk4");
     }
 }
