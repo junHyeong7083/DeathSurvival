@@ -9,6 +9,8 @@ public class EventMonsterManager : MonoBehaviour
     List<GameObject>[] monsterPools;
 
     Transform monsterParent;
+
+    
     private void Start()
     {
         monsterPools = new List<GameObject>[monsterPrebs.Length];
@@ -28,4 +30,7 @@ public class EventMonsterManager : MonoBehaviour
             }
         }
     }
+
+
+
 }

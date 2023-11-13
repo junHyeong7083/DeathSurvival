@@ -5,7 +5,46 @@ using UnityEngine;
 public class SelectBtn : MonoBehaviour
 {
     SelectKeyboard selectKeyboard;
+    public GameObject showEffectPanel;
+    public float effectTime;
+    Vector3 originPos = new Vector3(870, 0, 0);
+    IEnumerator panelEffect(int num)
+    {
+        // 캐릭터별로 색 변경하기
+        //image.GetComponent<Image>().color = new Color32(255,255,225,100);
+       // UnityEngine.Color color = showEffectPanel.GetComponent<UnityEngine.UI.Image>().color;
+        showEffectPanel.transform.localPosition = originPos;
+        switch (num)
+        {
+            case 0:
+                showEffectPanel.GetComponent<UnityEngine.UI.Image>().color = new Color32(113, 95, 154, 152);
+                break;
 
+            case 1:
+                showEffectPanel.GetComponent<UnityEngine.UI.Image>().color = new Color32(154, 96, 95, 152);
+                break;
+
+            case 2:
+                showEffectPanel.GetComponent<UnityEngine.UI.Image>().color = new Color32(87, 68, 48, 152);
+                break;
+
+        } //  색변경로직
+        float startTime = Time.time;
+        while (Time.time - startTime < 0.1)
+        {
+            showEffectPanel.transform.localPosition += new Vector3(6000 * effectTime * Time.deltaTime, 0, 0);
+
+            yield return null;
+        }
+
+        startTime = Time.time;
+        while (Time.time - startTime < 0.1)
+        {
+            showEffectPanel.transform.localPosition -= new Vector3(5000 * effectTime * Time.deltaTime, 0, 0);
+            yield return null;
+        }
+        showEffectPanel.transform.localPosition = originPos;
+    }
     private void Start()
     {
         selectKeyboard = GetComponent<SelectKeyboard>();
@@ -23,10 +62,12 @@ public class SelectBtn : MonoBehaviour
         {
             SelectKeyboard.isClick = true;
         }
+        StartCoroutine(panelEffect(SelectKeyboard.currentIndex));
     }
 
     public void leftBtn()
     {
+
         SelectKeyboard.currentIndex--;
         if (SelectKeyboard.currentIndex < 0)
         {
@@ -37,6 +78,7 @@ public class SelectBtn : MonoBehaviour
         {
             SelectKeyboard.isClick = true;
         }
+        StartCoroutine(panelEffect(SelectKeyboard.currentIndex));
     }
 
     public void onupBtn()

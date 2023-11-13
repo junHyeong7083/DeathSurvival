@@ -9,6 +9,14 @@ using EasyTransition;
 
 public class SelectKeyboard : MonoBehaviour
 {
+    #region Effect
+    public GameObject showEffectPanel;
+    public float effectTime;
+    Vector3 originPos = new Vector3(870, 0, 0);
+    Vector3 maxPos = new Vector3(1900, 0, 0);
+    Vector3 currentPos = new Vector3(0, 0, 0);
+    #endregion
+
     public ScrollRect scrollRect;
     public static bool isClick;
     float changeTime = 2f;
@@ -18,7 +26,8 @@ public class SelectKeyboard : MonoBehaviour
     public Outline[] buttonOutlines;
     public UnityEngine.UI.Image[] buttonSelects;
 
-    Vector3 targetPosition = new Vector3(0, 0, 0);
+    Vector3 targetPosition;
+    Vector3 prePosition;
     //  float movementSpeed = 2.0f; // 이동 속도 조절
     public GameObject[] showPaenl;
 
@@ -32,7 +41,13 @@ public class SelectKeyboard : MonoBehaviour
 
     void Start()
     {
+        originPos = new Vector3(870, 0, 0);
+        maxPos = new Vector3(1900*3, 0, 0);
+        currentPos = originPos;
+        showEffectPanel.transform.localPosition = originPos;
 
+        targetPosition = new Vector3(0, 0, 0);
+        prePosition = targetPosition;
         checkB = PlayerPrefs.GetFloat("CharacterB");
         checkC = PlayerPrefs.GetFloat("CharacterC");
 
@@ -66,44 +81,65 @@ public class SelectKeyboard : MonoBehaviour
 
     void Update()
     {
-
+        if(!isInput)
+        {
+            inputCoolTime += Time.deltaTime;
+            if(inputCoolTime >= 0.22f)
+            {
+                inputCoolTime = 0f;
+                isInput = true;
+            }
+        }
 
         if (!isMouseuse)
         {
-            #region 캐릭터 선택
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            if(isInput)
             {
-                if (currentIndex > 0)
+                #region 캐릭터 선택
+                if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
                 {
+                    isInput = false;
+                    isOnes = false;
+                    isCheck = true;
+                    if (currentIndex > 0)
+                    {
 
-                    currentIndex--;
-                }
-                else if (currentIndex == 0)
-                {
+                        currentIndex--;
+                    }
+                    else if (currentIndex == 0)
+                    {
 
-                    currentIndex = 2;
+                        currentIndex = 2;
+                    }
+                    //   isClick = false;
                 }
-                //   isClick = false;
-            }
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-            {
-                if (currentIndex < 2)
+                if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
                 {
-                    currentIndex++;
-                }
-                else if (currentIndex == 2)
-                {
-                    currentIndex = 0;
-                }
+                    isInput = false;
+                    isCheck = true;
+                    isOnes = false;
+                    if (currentIndex < 2)
+                    {
+                        currentIndex++;
+                    }
+                    else if (currentIndex == 2)
+                    {
+                        currentIndex = 0;
+                    }
 
+                }
+                #endregion
             }
             switch (currentIndex)
             {
                 case 0:
                     targetPosition = new Vector3(0, 0, 0);
-                    scrollRect.content.localPosition = targetPosition;
-                    //scrollRect.content.localPosition = Vector3.Lerp(scrollRect.content.localPosition, targetPosition, (changeTime * 9) * Time.deltaTime);
-                    //Debug.Log("X0" + scrollRect.content.localPosition.x);
+                    if (!isOnes && isCheck)
+                    {
+                        StartCoroutine(panelEffect(currentIndex));
+                        isOnes = true;
+                    }
+                    scrollRect.content.localPosition = Vector3.Lerp(prePosition, targetPosition, (changeTime * 9) * Time.deltaTime);
                     for (int e = 0; e < showPaenl.Length; ++e)
                     {
                         if (e == currentIndex)
@@ -112,12 +148,18 @@ public class SelectKeyboard : MonoBehaviour
                             showPaenl[e].SetActive(false);
                     }
                     CharacterManager.Instance.currentCharacter = Character.White;
+                    prePosition = scrollRect.content.localPosition;
                     break;
 
                 case 1:
                     targetPosition = new Vector3(-653.24f, 0, 0);
-                    scrollRect.content.localPosition = targetPosition;
-                    //scrollRect.content.localPosition = Vector3.Lerp(scrollRect.content.localPosition, targetPosition, (changeTime * 9) * Time.deltaTime);
+                    if (!isOnes && isCheck)
+                    {
+                        StartCoroutine(panelEffect(currentIndex));
+                        isOnes = true;
+                    }
+                    //StartCoroutine(panelEffect());
+                    scrollRect.content.localPosition = Vector3.Lerp(prePosition, targetPosition, (changeTime * 9) * Time.deltaTime);
                     //Debug.Log("X1" + scrollRect.content.localPosition.x);
                     for (int e = 0; e < showPaenl.Length; ++e)
                     {
@@ -127,13 +169,18 @@ public class SelectKeyboard : MonoBehaviour
                             showPaenl[e].SetActive(false);
                     }
                     CharacterManager.Instance.currentCharacter = Character.Blue;
+                    prePosition = scrollRect.content.localPosition;
                     break;
 
                 case 2:
                     targetPosition = new Vector3(-1291.608f, 0, 0);
-                    scrollRect.content.localPosition = targetPosition;
-
-                    // scrollRect.content.localPosition = Vector3.Lerp(scrollRect.content.localPosition, targetPosition, (changeTime * 9) * Time.deltaTime);
+                    if (!isOnes && isCheck)
+                    {
+                        StartCoroutine(panelEffect(currentIndex));
+                        isOnes = true;
+                    }
+                    // StartCoroutine(panelEffect());
+                    scrollRect.content.localPosition = Vector3.Lerp(prePosition, targetPosition, (changeTime * 9) * Time.deltaTime);
                     // Debug.Log("X2" + scrollRect.content.localPosition.x);     
                     for (int e = 0; e < showPaenl.Length; ++e)
                     {
@@ -143,9 +190,9 @@ public class SelectKeyboard : MonoBehaviour
                             showPaenl[e].SetActive(false);
                     }
                     CharacterManager.Instance.currentCharacter = Character.Green;
+                    prePosition = scrollRect.content.localPosition;
                     break;
             }
-            #endregion
             #region 버튼 선택
             if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
@@ -199,7 +246,7 @@ public class SelectKeyboard : MonoBehaviour
                     }
                     else if (currentIndex == 2)
                     {
-                        Debug.Log("canC : " + canC);
+                        //Debug.Log("canC : " + canC);
 
                         if (Input.GetKeyDown(KeyCode.Space))
                         {
@@ -235,5 +282,47 @@ public class SelectKeyboard : MonoBehaviour
 
         }
 
+    }
+    bool isInput = true;
+    float inputCoolTime = 0f;
+    bool isOnes = false;
+    bool isCheck = false;
+    public IEnumerator panelEffect(int num)
+    {
+        // 캐릭터별로 색 변경하기
+        //image.GetComponent<Image>().color = new Color32(255,255,225,100);
+        UnityEngine.Color color = showEffectPanel.GetComponent<UnityEngine.UI.Image>().color;
+        showEffectPanel.transform.localPosition = originPos;
+        switch (num)
+        {
+            case 0:
+                showEffectPanel.GetComponent<UnityEngine.UI.Image>().color = new Color32(113, 95, 154, 152);
+                break;
+
+            case 1:
+                showEffectPanel.GetComponent<UnityEngine.UI.Image>().color = new Color32(154, 96, 95, 152);
+                break;
+
+            case 2:
+                showEffectPanel.GetComponent<UnityEngine.UI.Image>().color = new Color32(87, 68, 48, 152);
+                break;
+
+        } //  색변경로직
+        float startTime = Time.time;
+        while(Time.time-  startTime < 0.1)
+        {
+            showEffectPanel.transform.localPosition +=new Vector3(6000 * effectTime * Time.deltaTime, 0, 0);
+            
+             yield return null;
+        }
+        
+        startTime = Time.time;
+        while (Time.time - startTime < 0.1)
+        {
+            showEffectPanel.transform.localPosition -= new Vector3(5000* effectTime * Time.deltaTime, 0, 0);
+            yield return null;
+        }
+        showEffectPanel.transform.localPosition = originPos;
+        Debug.Log("CurrentPos : " + showEffectPanel.transform.localPosition.x);
     }
 }
