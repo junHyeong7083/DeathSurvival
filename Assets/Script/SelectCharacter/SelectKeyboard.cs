@@ -13,8 +13,6 @@ public class SelectKeyboard : MonoBehaviour
     public GameObject showEffectPanel;
     public float effectTime;
     Vector3 originPos = new Vector3(870, 0, 0);
-    Vector3 maxPos = new Vector3(1900, 0, 0);
-    Vector3 currentPos = new Vector3(0, 0, 0);
     #endregion
 
     public ScrollRect scrollRect;
@@ -41,9 +39,7 @@ public class SelectKeyboard : MonoBehaviour
 
     void Start()
     {
-        originPos = new Vector3(870, 0, 0);
-        maxPos = new Vector3(1900*3, 0, 0);
-        currentPos = originPos;
+        originPos = new Vector3(456, 0, 0);
         showEffectPanel.transform.localPosition = originPos;
 
         targetPosition = new Vector3(0, 0, 0);
@@ -133,7 +129,7 @@ public class SelectKeyboard : MonoBehaviour
             switch (currentIndex)
             {
                 case 0:
-                    targetPosition = new Vector3(0, 0, 0);
+                    targetPosition = new Vector3(-177, 0, 0);
                     if (!isOnes && isCheck)
                     {
                         StartCoroutine(panelEffect(currentIndex));
@@ -152,7 +148,7 @@ public class SelectKeyboard : MonoBehaviour
                     break;
 
                 case 1:
-                    targetPosition = new Vector3(-653.24f, 0, 0);
+                    targetPosition = new Vector3(-670, 0, 0);
                     if (!isOnes && isCheck)
                     {
                         StartCoroutine(panelEffect(currentIndex));
@@ -173,7 +169,7 @@ public class SelectKeyboard : MonoBehaviour
                     break;
 
                 case 2:
-                    targetPosition = new Vector3(-1291.608f, 0, 0);
+                    targetPosition = new Vector3(-1330, 0, 0);
                     if (!isOnes && isCheck)
                     {
                         StartCoroutine(panelEffect(currentIndex));
