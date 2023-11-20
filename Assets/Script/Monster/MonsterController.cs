@@ -249,6 +249,41 @@ public class MonsterController : MonoBehaviour
         {
             if (!isDead && Hp <= 0) // 몬스터가 죽지 않았고 HP가 0 이하인 경우
             {
+                int dieSound = Random.Range(1, 7);
+                switch(dieSound)
+                {
+                    case 1:
+                        Debug.Log("sound1");
+
+                        SoundManager.Instance.PlaySFXSound("monsterDie1");
+                        break;
+
+                    case 2:
+                        Debug.Log("sound2");
+                        SoundManager.Instance.PlaySFXSound("monsterDie2");
+                        break;
+
+                    case 3:
+                        Debug.Log("sound3");
+                        SoundManager.Instance.PlaySFXSound("monsterDie3");
+                        break;
+
+                    case 4:
+                        Debug.Log("sound4");
+                        SoundManager.Instance.PlaySFXSound("monsterDie4");
+                        break;
+
+                    case 5:
+                        Debug.Log("sound5");
+                        SoundManager.Instance.PlaySFXSound("monsterDie5");
+                        break;
+
+                    case 6:
+                        Debug.Log("sound6");
+                        SoundManager.Instance.PlaySFXSound("monsterDie6");
+                        break;
+
+                }
                 monsterManager.SpawnMonsterItem(this.transform.position.x, this.transform.position.y);
                 isMove = false;
                 isDead = true; // 몬스터를 죽은 상태로 표시
