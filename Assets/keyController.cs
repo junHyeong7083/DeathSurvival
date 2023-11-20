@@ -35,7 +35,8 @@ public class keyController : MonoBehaviour
     void Update()
     {
         checkValueB = PlayerPrefs.GetFloat("CharacterB");
-        if(checkValueB == 1.0f)
+        checkValueC = PlayerPrefs.GetFloat("CharacterC");
+        if(checkValueB >= 1.0f)
         {
          // keys[0].GetComponent<Animator>().SetTrigger("unLock");
          // PlayerPrefs.SetFloat("CharacterB",1.5f);
@@ -49,7 +50,7 @@ public class keyController : MonoBehaviour
           //      PlayerPrefs.SetInt("isfirstB", 1);
           //  }
         }
-        if (checkValueC == 2.0f)
+        if (checkValueC >= 2.0f)
         {
          //   keys[1].GetComponent<Animator>().SetTrigger("unLock");
          //   PlayerPrefs.SetFloat("CharacterC", 2.5f);

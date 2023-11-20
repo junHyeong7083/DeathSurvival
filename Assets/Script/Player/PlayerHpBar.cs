@@ -120,7 +120,23 @@ public class PlayerHpBar : MonoBehaviour
 
         #region HpBar Transform
         if(Pixelate.showHpBar)
-            hpBg.transform.position = camera.WorldToScreenPoint(this.transform.position + new Vector3(0, -0.7f, 0));
+        {
+                switch (CharacterManager.Instance.currentCharacter)
+            {
+                case Character.White:
+                    hpBg.transform.position = camera.WorldToScreenPoint(this.transform.position + new Vector3(0, -0.7f, 0));
+                    break;
+
+                case Character.Blue:
+                    hpBg.transform.position = camera.WorldToScreenPoint(this.transform.position + new Vector3(0, -0.7f, 0));
+                    break;
+
+                    case Character.Green:
+                    hpBg.transform.position = camera.WorldToScreenPoint(this.transform.position + new Vector3(0, -0.9f, 0));
+                    break;
+
+            }
+        }
         else
             hpBg.transform.position = camera.WorldToScreenPoint(this.transform.position + new Vector3(0, -30f, 0));
         #endregion

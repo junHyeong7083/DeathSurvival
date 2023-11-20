@@ -19,12 +19,12 @@ public class unlockCharacter : MonoBehaviour
 
     public void unlockCharB()
     {
-        PlayerPrefs.SetFloat("CharacterB", 1.0f);
+        PlayerPrefs.SetFloat("CharacterB", 1.5f);
     }
 
     public void unlockCharC()
     {
-        PlayerPrefs.SetFloat("CharacterC", 2.0f);
+        PlayerPrefs.SetFloat("CharacterC", 2.5f);
     }
 
     public void allKeyInit()

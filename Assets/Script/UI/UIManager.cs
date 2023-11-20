@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     public Button OptionBtn;
     public GameObject optionPanel;
+    public GameObject hpBars;
     public Image[] optionSelect;
     int optionIndex;
     bool isoption = false;
@@ -39,11 +40,13 @@ public class UIManager : MonoBehaviour
     }
     public void OnOption()
     {
+        hpBars.gameObject.SetActive(false);
         isPause = true;
         optionPanel.SetActive(true);
     }
     public void OutOption()
     {
+        hpBars.gameObject.SetActive(true);
         isPause = false;
         optionPanel.SetActive(false);
     }
@@ -55,11 +58,13 @@ public class UIManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.Escape))
             {
-                isPause = true; 
-                optionPanel.SetActive(true);
+                //  isPause = true; 
+                //  optionPanel.SetActive(true);
+                OnOption();
                 isClick = true;
                 isoption = true;
                 Debug.Log("oPTION");  
+
             }
 
         }
@@ -67,9 +72,10 @@ public class UIManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                isPause = false;
-                optionPanel.SetActive(false);
-                isClick = false;
+                // isPause = false;
+                // optionPanel.SetActive(false);
+                OutOption();
+                 isClick = false;
                 isoption = false;
             }
         }
