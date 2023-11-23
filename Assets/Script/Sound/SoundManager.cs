@@ -43,7 +43,10 @@ public class SoundManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-
+        else
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
         bgmPlayer = GetComponentsInChildren<AudioSource>()[0];
         sfxPlayer = GetComponentsInChildren<AudioSource>()[1];
 
@@ -58,9 +61,9 @@ public class SoundManager : MonoBehaviour
 
     public void LoadVolume()
     {
-        masterVolume = PlayerPrefs.GetFloat("MasterVolume", 1f);
-        bgmVolume = PlayerPrefs.GetFloat("BGMVolume", 1f);
-        sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 1f);
+        masterVolume = PlayerPrefs.GetFloat("masterSound");
+        bgmVolume = PlayerPrefs.GetFloat("bgmSound");
+        sfxVolume = PlayerPrefs.GetFloat("sfxSound");
     }
 
     private void ApplyVolume()
@@ -97,22 +100,22 @@ public class SoundManager : MonoBehaviour
     }
 
     // Volume
-    public void SetMasterVolume(float value)
+   /* public void SetMasterVolume(float value)
     {
         masterVolumeBGM = value;
         masterVolumeSFX = value;
-    }
+    }*/
 
-    public float GetMasterVolume()
+   /* public float GetMasterVolume()
     {
         return masterVolumeBGM;
-    }
+    }*/
 
     // Sound Play
     public void PlaySound()
     {
         bgmPlayer.Play();
-
+        Debug.Log("player");
         if (IsPause)
             IsPause = false;
     }
@@ -124,5 +127,22 @@ public class SoundManager : MonoBehaviour
 
         if (!IsPause)
             IsPause = true;
+    }
+   
+    private void Update()
+    {
+        Transform[] allChildren = GetComponentsInChildren<Transform>();
+        foreach (Transform child in allChildren)
+        {
+            if (child.name == "SFX_SoundPlayer")
+            {
+                child.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("sfxSound") * PlayerPrefs.GetFloat("masterSound");
+            }
+
+            if(child.name == "BGM_SoundPlayer")
+            {
+                child.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("bgmSound") * PlayerPrefs.GetFloat("masterSound");
+            }
+        }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Analytics;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
-using static UnityEngine.Rendering.DebugUI;
 
 [ExecuteInEditMode]
 public class Pixelate : MonoBehaviour

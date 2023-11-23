@@ -114,7 +114,7 @@ public class UIManager : MonoBehaviour
 
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        SceneManager.LoadScene(1);
+                        TransitionManager.Instance().Transition(1, transition, 0);
                     }
                     break;
 

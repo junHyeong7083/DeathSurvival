@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 
 public class BtnEffect : MonoBehaviour
 {
@@ -29,8 +27,9 @@ public class BtnEffect : MonoBehaviour
     public GameObject[] optionSelectObj;
     int optionIndex;
 
-    public Image[] sliders;
-
+    public Slider[] sliders;
+    public Image[] handles;
+    public Text[] valueTexts;
     public Button[] sounds;
     public Sprite[] soundIcons;
     bool xmasterSound;
@@ -40,8 +39,23 @@ public class BtnEffect : MonoBehaviour
     bool isOptionOn; // 옵션패널 계속 안열리도록 방지하는 코드
     public GameObject SceneManager;
     ChangeScene changeScene;
+    private void Awake()
+    {
+        isOptionSet = PlayerPrefs.GetInt("isOptionSet");
+    }
     private void Start()
     {
+        if(PlayerPrefs.GetInt("isOptionSet")==1)
+        {
+            sliders[0].value = PlayerPrefs.GetFloat("masterSound");
+            sliders[1].value = PlayerPrefs.GetFloat("bgmSound");
+            sliders[2].value = PlayerPrefs.GetFloat("sfxSound");
+        }
+        else
+        {
+            sliders[0].value = 0.5f; sliders[1].value = 0.5f; sliders[2].value = 0.5f;
+        }
+
         sounds[0].image.sprite = soundIcons[1];
         sounds[1].image.sprite = soundIcons[1];
         sounds[2].image.sprite = soundIcons[1];
@@ -59,8 +73,8 @@ public class BtnEffect : MonoBehaviour
         OptionBtnOutline = OptionTxt.GetComponent<Outline>();
         ExitBtnOutline = ExitTxt.GetComponent<Outline>();
     }
+    int isOptionSet = 0;
     int mouseIndex;
-
     #region 옵션창
     public void OnOptionPanel()
     {
@@ -177,10 +191,27 @@ public class BtnEffect : MonoBehaviour
         selectObj[0].gameObject.SetActive(false);
         ExitBtnOutline.effectColor = Color.white;
     }
+
+    public void OnMaster()
+    {
+        optionIndex = 2;
+    }
+    public void OnBGM()
+    {
+        optionIndex = 1;
+    }
+  
+    public void OnSFX()
+    {
+        optionIndex = 0;
+    }
     #endregion
 
     private void Update()
-    { 
+    {
+        valueTexts[0].text = (sliders[0].value * 100).ToString("F0") + "%'";
+        valueTexts[1].text = (sliders[1].value * 100).ToString("F0") + "%'";
+        valueTexts[2].text = (sliders[2].value * 100).ToString("F0") + "%'";
 
         if (!isMouse && !isOptionOn)
         {
@@ -303,48 +334,53 @@ public class BtnEffect : MonoBehaviour
 
             }
 
-            switch(optionIndex)
+            switch (optionIndex)
             {
                 case 2:
-                    if(Input.GetKeyDown(KeyCode.RightArrow))
+                    if (Input.GetKeyDown(KeyCode.RightArrow))
                     {
-                        sliders[0].fillAmount += 0.1f;
-                        Debug.Log("master:  " +sliders[0].fillAmount);
+                        sliders[0].value += 0.1f;
+                        //Debug.Log("master:  " +sliders[0].value);
                     }
                     if (Input.GetKeyDown(KeyCode.LeftArrow))
                     {
-                        sliders[0].fillAmount -= 0.1f;
-                        Debug.Log("master:  " + sliders[0].fillAmount);
+                        sliders[0].value -= 0.1f;
+                        Debug.Log("master:  " + sliders[0].value);
                     }
                     if (Input.GetKeyDown(KeyCode.Tab))
                     {
                         masterSoundBtn();
                     }
 
-                    for (int e= 0; e < optionSelectObj.Length; ++e)
+
+
+                    for (int e = 0; e < optionSelectObj.Length; ++e)
                     {
                         if (e == optionIndex)
                             optionSelectObj[e].gameObject.SetActive(true);
                         else
                             optionSelectObj[e].gameObject.SetActive(false);
                     }
+                    PlayerPrefs.SetInt("isOptionSet", 1);
+                    PlayerPrefs.SetFloat("masterSound", sliders[0].value);
                     break;
 
                 case 1:
                     if (Input.GetKeyDown(KeyCode.RightArrow))
                     {
-                        sliders[1].fillAmount += 0.1f;
-                        Debug.Log("bgm:  " + sliders[1].fillAmount);
+                        sliders[1].value += 0.1f;
                     }
                     if (Input.GetKeyDown(KeyCode.LeftArrow))
                     {
-                        sliders[1].fillAmount -= 0.1f;
-                        Debug.Log("bgm:  " + sliders[1].fillAmount);
+
+                        sliders[1].value -= 0.1f;
                     }
                     if (Input.GetKeyDown(KeyCode.Tab))
                     {
+
                         bgmSoundBtn();
                     }
+
 
                     for (int e = 0; e < optionSelectObj.Length; ++e)
                     {
@@ -353,23 +389,31 @@ public class BtnEffect : MonoBehaviour
                         else
                             optionSelectObj[e].gameObject.SetActive(false);
                     }
+                    PlayerPrefs.SetInt("isOptionSet", 1);
+                    PlayerPrefs.SetFloat("bgmSound", sliders[1].value);
                     break;
 
                 case 0:
                     if (Input.GetKeyDown(KeyCode.RightArrow))
                     {
-                        sliders[2].fillAmount += 0.1f;
-                        Debug.Log("sfx:  " + sliders[2].fillAmount);
+
+                        sliders[2].value += 0.1f;
                     }
                     if (Input.GetKeyDown(KeyCode.LeftArrow))
                     {
-                        sliders[2].fillAmount -= 0.1f;
-                        Debug.Log("sfx:  " + sliders[2].fillAmount);
+
+
+                        sliders[2].value -= 0.1f;
                     }
                     if (Input.GetKeyDown(KeyCode.Tab))
                     {
+
                         sfxSoundBtn();
                     }
+
+
+
+
                     for (int e = 0; e < optionSelectObj.Length; ++e)
                     {
                         if (e == optionIndex)
@@ -377,6 +421,8 @@ public class BtnEffect : MonoBehaviour
                         else
                             optionSelectObj[e].gameObject.SetActive(false);
                     }
+                    PlayerPrefs.SetInt("isOptionSet", 1);
+                    PlayerPrefs.SetFloat("sfxSound", sliders[2].value);
                     break;
 
             }
