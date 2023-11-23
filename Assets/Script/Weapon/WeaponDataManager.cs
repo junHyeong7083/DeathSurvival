@@ -6,6 +6,7 @@ public class WeaponDataManager : MonoBehaviour
 {
     #region PlayerA
     public static float playerAOneAtk;
+    public static float playerAOneSpeed;
     public static float playerATwoAtk;
     public static float playerAThreeAtk;
     public static float playerAFourTime;
@@ -14,15 +15,9 @@ public class WeaponDataManager : MonoBehaviour
     public static float playerABasicAtkCool;
     #endregion
 
-    /*
-     * 25
-     * 15
-     * 100
-     * 4
-     */
-
     private void Awake()
     {
+        playerAOneSpeed = 1;
         playerAOneAtk =25f;
         playerATwoAtk =15f;
         playerAThreeAtk =100f;

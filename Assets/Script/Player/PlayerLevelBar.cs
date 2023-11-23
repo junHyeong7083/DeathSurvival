@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using UnityEngine.UI;
 
 public class PlayerLevelBar : MonoBehaviour
@@ -10,7 +11,8 @@ public class PlayerLevelBar : MonoBehaviour
 
     DataManager dataManager;
 
-    public static int CheckingLevel; 
+    public static int CheckingLevel;
+    public static bool isLevelUp = false;
     int currentLevel;
     float currentExperience;
     float currentLevelMaxExperience; // 현재 레벨의 최대 경험치
@@ -29,9 +31,8 @@ public class PlayerLevelBar : MonoBehaviour
         CheckingLevel = currentLevel;
         currentExperience = 0;
 
-        someAmount = 30 + 10 * (Timer / 30); // 임시로 30으로 설정후 30초마다 10씩 증가함
+        someAmount = 100 + 10 * (Timer / 30); // 임시로 30으로 설정후 30초마다 10씩 증가함
 
-        // 현재 레벨의 최대 경험치 설정
         LevelData currentLevelData = GetLevelData(currentLevel + 1);
         if (currentLevelData != null)
         {
@@ -63,6 +64,7 @@ public class PlayerLevelBar : MonoBehaviour
             // 레벨 업 조건 충족
             currentLevel++;
             CheckingLevel = currentLevel;
+            isLevelUp = true;
             // 다음 레벨의 경험치 양으로 초기화
             LevelData nextLevelData = GetLevelData(currentLevel + 1);
             if (nextLevelData != null)
