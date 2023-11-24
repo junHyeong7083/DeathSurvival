@@ -472,6 +472,70 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 58145379}
   m_CullTransparentMesh: 1
+--- !u!1 &67012548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 67012550}
+  - component: {fileID: 67012549}
+  m_Layer: 0
+  m_Name: Mincheol
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &67012549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67012548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deca3c7dc65c8874986157ee101ee93f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Monster1HP: 10
+  Monster1Speed: 1
+  Monster2HP: 10
+  Monster2Speed: 1
+  Monster3HP: 10
+  Monster3Speed: 1
+  HP: 100
+  Damage: 10
+  Defense: 0.3
+  Speed: 10
+  BasicAtkDamage: 100
+  BasicAtkCool: 1
+  skill1Damage: 100
+  skill1Speed: 1
+  skill2Damage: 100
+  skill2Cool: 1
+  skill3Damage: 100
+  skill3Cool: 1
+  StopTime: 100
+  StopCool: 1
+--- !u!4 &67012550
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67012548}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 48.18929, y: 344.04102, z: -0.31056592}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &69348496
 GameObject:
   m_ObjectHideFlags: 0
@@ -9730,10 +9794,6 @@ MonoBehaviour:
   - {fileID: 3844337660859884489, guid: 74c7ff44afbfad84ba2de33e8739caac, type: 3}
   - {fileID: 3229708292185585361, guid: a1d684d3295d9ae448895d35475f482f, type: 3}
   player: {fileID: 0}
-  seeBtnObj:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &5149945914596526358
 MonoBehaviour:
   m_ObjectHideFlags: 0

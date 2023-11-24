@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1416456153413296531}
   - component: {fileID: 1416456153413296530}
   - component: {fileID: 1416456153413296533}
-  - component: {fileID: -7025342917348870221}
   - component: {fileID: 1416456153413296532}
   - component: {fileID: 1416456153413296528}
   m_Layer: 0
@@ -127,23 +126,10 @@ MonoBehaviour:
   Speed: 3
   Hp: 100
   Damage: 0
+  monsterIndex: 1
   DamageText: {fileID: 5642844467708576510, guid: 1e5bd86bf5f7adb4882e67451b1db49c, type: 3}
   DamagePos: {fileID: 6803439535309079961}
   hitcoolTime: 0.1
---- !u!114 &-7025342917348870221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416456153413296534}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80613a687c94e143afcf6fa64b25133, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animationSpeed: 1.5
-  animationName: Monster01_Move
 --- !u!50 &1416456153413296532
 Rigidbody2D:
   serializedVersion: 4

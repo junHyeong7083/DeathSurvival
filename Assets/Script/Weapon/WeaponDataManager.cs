@@ -20,17 +20,17 @@ public class WeaponDataManager : MonoBehaviour
 
     private void Awake()
     {
-        playerAOneSpeed = 1;
-        playerAOneAtk =25f;
-        playerATwoAtk =15f;
-        playerATwoCoolTime = 2f;
-        playerAThreeAtk =100f;
-        playerAThreeCoolTime = 3f;
-        playerAFourTime =4f;
-        playerAFourCoolTime = 30f;
-        playerAFourbool = false;
-        playerABasicAtkDamage = 1000f;
-        playerABasicAtkCool = 3f;
+      //  playerAOneSpeed = 1;
+      //  playerAOneAtk =25f;
+      //  playerATwoAtk =15f;
+      //  playerATwoCoolTime = 2f;
+      //  playerAThreeAtk =100f;
+      //  playerAThreeCoolTime = 3f;
+      //  playerAFourTime =4f;
+      //  playerAFourCoolTime = 30f;
+      //  playerAFourbool = false;
+      //  playerABasicAtkDamage = 1000f;
+      //  playerABasicAtkCool = 3f;
     }
 
     private void Update()

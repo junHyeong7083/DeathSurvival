@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Thirdweb.AccountAbstraction;
+
 public class MonsterController : MonoBehaviour
 {
     #region State
@@ -14,6 +16,8 @@ public class MonsterController : MonoBehaviour
     [SerializeField]
     float Damage;
     #endregion
+    public int monsterIndex;
+
     Rigidbody2D rigidbody2D;
 
     CircleCollider2D circleCollider2D;
@@ -180,9 +184,26 @@ public class MonsterController : MonoBehaviour
 
     void Start()
     {
-        pool = GameObject.Find("DamageManager").GetComponent<DamageTextPool>();
+        switch(monsterIndex)
+        {
+            case 0:
+                saveSpeed = MincheolWork._Monster1Speed;
+                maxHp = MincheolWork._Monster1HP;
+                break;
 
-        saveSpeed = Speed;
+            case 1:
+                saveSpeed = MincheolWork._Monster2Speed;
+                maxHp = MincheolWork._Monster2HP;
+                break;
+
+            case 2:
+                saveSpeed = MincheolWork._Monster3Speed;
+                maxHp = MincheolWork._Monster3HP;
+                break;
+
+        }
+        Speed = saveSpeed;
+        pool = GameObject.Find("DamageManager").GetComponent<DamageTextPool>();
 
         circleCollider2D = GetComponent<CircleCollider2D>();
 
@@ -217,17 +238,35 @@ public class MonsterController : MonoBehaviour
         ones = false;
         showHitEffect = false;
         hitTime = 0f;
-        knockbackTime = 0f; 
+        knockbackTime = 0f;
         isHit = false;
         gameObject.GetComponent<CircleCollider2D>().enabled = true;
         isMove = true;
         delayDieTime = 0f;
         if (!isStart)
-            maxHp = Hp;
+        {
+            switch (monsterIndex)
+            {
+                case 0:
+                    maxHp = MincheolWork._Monster1HP;
+                    break;
+
+                case 1:
+                    maxHp = MincheolWork._Monster2HP;
+                    break;
+
+                case 2:
+                    maxHp = MincheolWork._Monster3HP;
+                    break;
+            }
+        }
+        // 기존의 maxHp = Hp; 라인을 삭제
+        // maxHp = Hp;
         isStart = true;
-        Hp = maxHp;
+        Hp = maxHp; // 이 부분이 수정되었습니다.
         isDead = false;
     }
+
     float delayDieTime;
     bool isMove;
     bool isHitAni = false;
