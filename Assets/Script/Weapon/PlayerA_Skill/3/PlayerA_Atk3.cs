@@ -7,8 +7,8 @@ public class PlayerA_Atk3 : MonoBehaviour
     Animator animator;
     BoxCollider2D collider2D;
 
+    public static bool playerA_Atk3 = false;
     public float radios;
-    public float coolTime;
     public float PosyValue;
     private bool isCoolingDown = false;
     int randomValueX;
@@ -16,6 +16,7 @@ public class PlayerA_Atk3 : MonoBehaviour
     Vector3 thisScale;
     private void Start()
     {
+        playerA_Atk3 = true;
         thisScale = transform.localScale;
         collider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
@@ -71,7 +72,7 @@ public class PlayerA_Atk3 : MonoBehaviour
     {
         isCoolingDown = true;
         //Debug.Log("!!");
-        yield return new WaitForSeconds(coolTime);
+        yield return new WaitForSeconds(WeaponDataManager.playerAThreeCoolTime);
         isCoolingDown = false;
     }
 }

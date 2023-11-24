@@ -232,7 +232,14 @@ public class MonsterController : MonoBehaviour
     bool isMove;
     bool isHitAni = false;
 
-
+    void OnSkillEnd()
+    {
+        Transform child = transform.GetChild(0);
+        if (child != null)
+        {
+            child.gameObject.SetActive(false);
+        }
+    }
 
     void Update()
     {

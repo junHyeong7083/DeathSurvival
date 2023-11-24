@@ -8,16 +8,11 @@ public class RespawnCharacter : MonoBehaviour
     public GameObject[] characterPrefab;
     public GameObject player;
 
-    public GameObject[] seeBtnObj;
 
     private void Start()
     {
         Debug.Log("posx"+ this.transform.position.x);
         Debug.Log("posy" + this.transform.position.y);
-        for (int e = 0; e < seeBtnObj.Length; ++e)
-        {
-            seeBtnObj[e].SetActive(false);
-        }
 
         player = Instantiate(characterPrefab[(int)CharacterManager.Instance.currentCharacter]);
         player.transform.position = transform.position;
@@ -26,15 +21,15 @@ public class RespawnCharacter : MonoBehaviour
         #region SeeSkillBtn for Character
         if ((int)CharacterManager.Instance.currentCharacter == 0)
         {
-            seeBtnObj[0].SetActive(true);
+            //seeBtnObj[0].SetActive(true);
         }
         else if ((int)CharacterManager.Instance.currentCharacter == 1)
         {
-            seeBtnObj[1].SetActive(true);
+            //seeBtnObj[1].SetActive(true);
         }
         else if ((int)CharacterManager.Instance.currentCharacter == 2)
         {
-            seeBtnObj[2].SetActive(true);
+            //seeBtnObj[2].SetActive(true);
         }
         #endregion
     }

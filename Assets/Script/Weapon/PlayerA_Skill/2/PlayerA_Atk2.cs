@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerA_Atk2 : MonoBehaviour
 {
     Animator animator;
     BoxCollider2D collider2D;
-
+    public static bool playerA_Atk2 = false;
     public float radios;
     public float coolTime;
 
@@ -14,6 +15,7 @@ public class PlayerA_Atk2 : MonoBehaviour
 
     private void Start()
     {
+        playerA_Atk2 = true;
         collider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
         collider2D.enabled = false;
@@ -55,7 +57,7 @@ public class PlayerA_Atk2 : MonoBehaviour
     {
         isCoolingDown = true;
         //Debug.Log("!!");
-        yield return new WaitForSeconds(coolTime);
+        yield return new WaitForSeconds(WeaponDataManager.playerATwoCoolTime);
         isCoolingDown = false;
     }
 }

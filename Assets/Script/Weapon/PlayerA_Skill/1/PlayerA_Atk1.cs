@@ -6,9 +6,10 @@ public class PlayerA_Atk1 : MonoBehaviour
 {
     public float speed;
     Animator animator;
-
+    public static bool playerA_Atk1 = false;
     void Start()
     {
+        playerA_Atk1 = true;
         animator = GetComponent<Animator>();
     }
 
@@ -17,6 +18,6 @@ public class PlayerA_Atk1 : MonoBehaviour
     {
         this.transform.position = PlayerController.PlayerPos;
         // animator.speed = speed;
-        animator.speed = TestPattern.testValue;
+        animator.speed = WeaponDataManager.playerAOneSpeed;
     }
 }

@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radios: 5
-  coolTime: 1
+  coolTime: 2
 --- !u!61 &7065402156610871777
 BoxCollider2D:
   m_ObjectHideFlags: 0
