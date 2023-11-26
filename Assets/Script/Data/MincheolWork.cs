@@ -98,9 +98,9 @@ public class MincheolWork : MonoBehaviour
         WeaponDataManager.playerAFourTime = PlayerPrefs.GetFloat("Skill4Time");
         WeaponDataManager.playerAFourCoolTime = PlayerPrefs.GetFloat("Skill4Cool");
 
-        PlayerState.Hp = PlayerPrefs.GetFloat("PlayerHP");
+/*        PlayerState.Hp = PlayerPrefs.GetFloat("PlayerHP");
         PlayerState.Speed = PlayerPrefs.GetFloat("PlayerSpeed");
         PlayerState.Damage = PlayerPrefs.GetFloat("PlayerDamage");
-        PlayerState.Defense = PlayerPrefs.GetFloat("PlayerDefense");
+        PlayerState.Defense = PlayerPrefs.GetFloat("PlayerDefense");*/
     }
 }

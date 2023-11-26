@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e689e97127c6dfd4289d950bb08d3093
+guid: 9538edae9679b5c40b2458b9a7f659aa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -106,7 +106,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -122,7 +122,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 56
         height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b68f41164620b14ba51cd92eb785f9a
-      internalID: -2076939485
+      spriteID: 8437498f390a67a4bb26184d7f805b19
+      internalID: 1517655555
       vertices: []
       indices: 
       edges: []
@@ -141,9 +141,9 @@ TextureImporter:
       name: wak_l_n-Sheet_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 56
         y: 0
-        width: 64
+        width: 56
         height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d0ad17d7c2711343b3224dd8237b99a
-      internalID: -199894950
+      spriteID: fca774a62bf97914d9d0b83d20390329
+      internalID: -1221815966
       vertices: []
       indices: 
       edges: []
@@ -162,9 +162,9 @@ TextureImporter:
       name: wak_l_n-Sheet_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 112
         y: 0
-        width: 64
+        width: 56
         height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 07c2360a0dae7b5409236b9d5b78451d
-      internalID: -434297595
+      spriteID: 03054e1f80492a64a8c7e4ee879b2b05
+      internalID: 974653202
       vertices: []
       indices: 
       edges: []
@@ -183,9 +183,9 @@ TextureImporter:
       name: wak_l_n-Sheet_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 168
         y: 0
-        width: 64
+        width: 56
         height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bcee76be3e34aca41bf7474b50d74b25
-      internalID: 1943581612
+      spriteID: 786fb1e9280690e45992c6f677166424
+      internalID: -219935833
       vertices: []
       indices: 
       edges: []
@@ -204,9 +204,9 @@ TextureImporter:
       name: wak_l_n-Sheet_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 224
         y: 0
-        width: 64
+        width: 56
         height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -215,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 794d34a206bc0d54dbb9509f216b7aea
-      internalID: 668080984
+      spriteID: 9744658169ebcdf4ebbe887d6a6d0186
+      internalID: 942569395
       vertices: []
       indices: 
       edges: []
@@ -225,9 +225,9 @@ TextureImporter:
       name: wak_l_n-Sheet_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 280
         y: 0
-        width: 64
+        width: 56
         height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -236,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6129d9f13b8100b479fc5f9f0a915e80
-      internalID: 1663152870
+      spriteID: 9bdedc9fb8effee4d8bda484294abda7
+      internalID: -728389299
       vertices: []
       indices: 
       edges: []
@@ -253,12 +253,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wak_l_n-Sheet_0: -2076939485
-      wak_l_n-Sheet_1: -199894950
-      wak_l_n-Sheet_2: -434297595
-      wak_l_n-Sheet_3: 1943581612
-      wak_l_n-Sheet_4: 668080984
-      wak_l_n-Sheet_5: 1663152870
+      wak_l_n-Sheet_0: 1517655555
+      wak_l_n-Sheet_1: -1221815966
+      wak_l_n-Sheet_2: 974653202
+      wak_l_n-Sheet_3: -219935833
+      wak_l_n-Sheet_4: 942569395
+      wak_l_n-Sheet_5: -728389299
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

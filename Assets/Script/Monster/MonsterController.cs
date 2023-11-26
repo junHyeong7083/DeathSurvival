@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Thirdweb.AccountAbstraction;
-
 public class MonsterController : MonoBehaviour
 {
     #region State
@@ -189,6 +187,7 @@ public class MonsterController : MonoBehaviour
             case 0:
                 saveSpeed = MincheolWork._Monster1Speed;
                 maxHp = MincheolWork._Monster1HP;
+                Debug.Log("hp : " + maxHp);
                 break;
 
             case 1:

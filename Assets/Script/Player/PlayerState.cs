@@ -14,22 +14,10 @@ public class PlayerState : MonoBehaviour
 
     public static float Speed; // 이동속도
     public static float detectRange;
-    //public static float attractionSpeed;
-    [SerializeField]
-    private int Level;
-
-    #region See Inspector
-    [SerializeField]
-    float _Defense;
-    [SerializeField]
-    float _Damage;
-    [SerializeField]
-    float _Hp;
-    [SerializeField]
-    float _Speed;
-    #endregion
-
     private static PlayerState instance;
+
+    [SerializeField]
+    int CharacterIndex;
     private void Awake()
     {
         // -----------------------------
@@ -47,14 +35,34 @@ public class PlayerState : MonoBehaviour
    //     Hp = 10f;
    //     Speed = 5f;
         //attractionSpeed = 15f;
+
+        switch(CharacterIndex)
+        {
+            case 0:
+                Hp = PlayerPrefs.GetFloat("PlayerAHP");
+                Speed = PlayerPrefs.GetFloat("PlayerASpeed");
+                Damage = PlayerPrefs.GetFloat("PlayerADamage");
+                Defense = PlayerPrefs.GetFloat("PlayerADefense");
+                break;
+
+            case 1:
+                Hp = PlayerPrefs.GetFloat("PlayerAHP");
+                Speed = PlayerPrefs.GetFloat("PlayerASpeed");
+                Damage = PlayerPrefs.GetFloat("PlayerADamage");
+                Defense = PlayerPrefs.GetFloat("PlayerADefense");
+                break;
+
+            case 2:
+                Hp = PlayerPrefs.GetFloat("PlayerCHP");
+                Speed = PlayerPrefs.GetFloat("PlayerCSpeed");
+                Damage = PlayerPrefs.GetFloat("PlayerCDamage");
+                Defense = PlayerPrefs.GetFloat("PlayerCDefense");
+                break;
+        }
     }
 
     private void Update()
     {
-        _Defense = Defense;
-        _Damage = Damage;
-        _Hp = Hp;
-        _Speed = Speed;
     }
 
 }

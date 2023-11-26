@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.XR.Interaction;
 
 public class PlayerA_Basic : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class PlayerA_Basic : MonoBehaviour
 
     bool isRight = true;
 //    float damage = 0f;
-    float coolTime;
     float checkTime;
     bool canAtk = true;
     void Start()
@@ -23,7 +21,6 @@ public class PlayerA_Basic : MonoBehaviour
         checkTime = 0f;
         canAtk = true;
         //  damage = WeaponDataManager.playerABasicAtkDamage;
-        coolTime = WeaponDataManager.playerABasicAtkCool;
         Debug.Log("WeaponDataManager.playerABasicAtkCool  : " + WeaponDataManager.playerABasicAtkCool);
         isRight = false;
     }
@@ -32,9 +29,8 @@ public class PlayerA_Basic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //this.transform.position = PlayerController.PlayerPos;
-
-        if(Pixelate.showHpBar)
+        //this.transform.position = PlayerController.PlayerPos
+        if (Pixelate.showHpBar)
         {
             if(canAtk)
             {
@@ -61,7 +57,7 @@ public class PlayerA_Basic : MonoBehaviour
             else if(!canAtk)
             {
                 checkTime += Time.deltaTime;
-                if (checkTime > coolTime)
+                if (checkTime > PlayerPrefs.GetFloat("ABasicSpeed"))
                 {
                     checkTime = 0f;
                     canAtk = true;
