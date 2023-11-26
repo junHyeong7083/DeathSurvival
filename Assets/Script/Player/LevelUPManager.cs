@@ -48,12 +48,14 @@ public class LevelUPManager : MonoBehaviour
                         {
                             case 0: // 재생속도 증가x
                                     // Descriptions[0].text = "1번스킬 회전속도 1증가 \n 현재 속도 : " + WeaponDataManager.playerAOneSpeed.ToString();
-                                WeaponDataManager.playerAOneSpeed += 1;
+                                float value1 = PlayerPrefs.GetFloat("Skill1SpeedUP");
+                                WeaponDataManager.playerAOneSpeed += value1;
                                 break;
 
                             case 1: // 데미지 증가
                                 //Descriptions[0].text = "1번스킬 데미지 5증가 \n 현재 데미지 : " + WeaponDataManager.playerAOneAtk.ToString();
-                                WeaponDataManager.playerAOneAtk += 5;
+                                float value2 = PlayerPrefs.GetFloat("Skill1AtkUP");
+                                WeaponDataManager.playerAOneAtk += value2;
                                 break;
                         }
                     }
@@ -72,11 +74,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerATwoCoolTime -= 0.1f;
+                                WeaponDataManager.playerATwoCoolTime -= PlayerPrefs.GetFloat("Skill2SpeedUP");
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerATwoAtk += 5f;
+                                WeaponDataManager.playerATwoAtk += PlayerPrefs.GetFloat("Skill2AtkUP");
                                 break;
                         }
                     }
@@ -94,11 +96,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerAThreeCoolTime -= 0.3f;
+                                WeaponDataManager.playerAThreeCoolTime -= PlayerPrefs.GetFloat("Skill3SpeedUP");
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerAThreeAtk += 15f;
+                                WeaponDataManager.playerAThreeAtk += PlayerPrefs.GetFloat("Skill3AtkUP");
                                 break;
                         }
                     }
@@ -113,7 +115,18 @@ public class LevelUPManager : MonoBehaviour
                     }
                     else
                     {
-                        // Descriptions[0].text = "4번스킬 속박 시간 증가 \n 현재 속박 시간 : " + WeaponDataManager.playerAFourTime.ToString();
+                        int Askill4 = Random.Range(0, 2);
+                        switch(Askill4)
+                        {
+                            case 0: // 지속시간
+                                WeaponDataManager.playerAFourTime += PlayerPrefs.GetFloat("Skill4TimeUP");
+                                break;
+
+                            case 1: // 쿨타임
+                                WeaponDataManager.playerAFourCoolTime -= PlayerPrefs.GetFloat("Skill4CoolUP");
+                                break;
+                        }
+
                         WeaponDataManager.playerAFourTime += 0.25f;
                     }
                     break;
@@ -123,29 +136,29 @@ public class LevelUPManager : MonoBehaviour
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            WeaponDataManager.playerABasicAtkCool -= 0.5f;
+                            WeaponDataManager.playerABasicAtkCool -= PlayerPrefs.GetFloat("BasicSpeedUP");
                             break;
 
                         case 1: // 데미지 증가
-                            WeaponDataManager.playerABasicAtkDamage += 15f;
+                            WeaponDataManager.playerABasicAtkDamage += PlayerPrefs.GetFloat("BasicAtkUP");
                             break;
                     }
                     break;
 
                 case 5: // 공격력
-                        //  Descriptions[0].text = "공격력 증가";
+                    PlayerState.Damage += PlayerPrefs.GetFloat("PlayerADamageUP");
                     break;
 
                 case 6: // 체력
-                        // Descriptions[0].text = "체력 증가";
+                    PlayerState.Hp += PlayerPrefs.GetFloat("PlayerAHpUP");
                     break;
 
                 case 7: // 방어력
-                        // Descriptions[0].text = "방어력 증가";
+                    PlayerState.Defense += PlayerPrefs.GetFloat("PlayerADefenseUP");
                     break;
 
                 case 8: // 이동속도
-                        //  Descriptions[0].text = "이동속도 증가";
+                    PlayerState.Speed += PlayerPrefs.GetFloat("PlayerASpeedUP");
                     break;
             }
         }
@@ -171,12 +184,14 @@ public class LevelUPManager : MonoBehaviour
                         {
                             case 0: // 재생속도 증가x
                                     // Descriptions[0].text = "1번스킬 회전속도 1증가 \n 현재 속도 : " + WeaponDataManager.playerAOneSpeed.ToString();
-                                WeaponDataManager.playerAOneSpeed += 1;
+                                float value1 = PlayerPrefs.GetFloat("Skill1SpeedUP");
+                                WeaponDataManager.playerAOneSpeed += value1;
                                 break;
 
                             case 1: // 데미지 증가
                                 //Descriptions[0].text = "1번스킬 데미지 5증가 \n 현재 데미지 : " + WeaponDataManager.playerAOneAtk.ToString();
-                                WeaponDataManager.playerAOneAtk += 5;
+                                float value2 = PlayerPrefs.GetFloat("Skill1AtkUP");
+                                WeaponDataManager.playerAOneAtk += value2;
                                 break;
                         }
                     }
@@ -195,11 +210,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerATwoCoolTime -= 0.1f;
+                                WeaponDataManager.playerATwoCoolTime -= PlayerPrefs.GetFloat("Skill2SpeedUP");
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerATwoAtk += 5f;
+                                WeaponDataManager.playerATwoAtk += PlayerPrefs.GetFloat("Skill2AtkUP");
                                 break;
                         }
                     }
@@ -217,11 +232,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerAThreeCoolTime -= 0.3f;
+                                WeaponDataManager.playerAThreeCoolTime -= PlayerPrefs.GetFloat("Skill3SpeedUP");
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerAThreeAtk += 15f;
+                                WeaponDataManager.playerAThreeAtk += PlayerPrefs.GetFloat("Skill3AtkUP");
                                 break;
                         }
                     }
@@ -232,11 +247,22 @@ public class LevelUPManager : MonoBehaviour
                     {
                         playerASkillD = false;
                         WeaponManager.Instance.StartPattern("atk4");
-                       // WeaponDataManager.playerAFourbool = true;
+                        //   WeaponDataManager.playerAFourbool = true;
                     }
                     else
                     {
-                        // Descriptions[0].text = "4번스킬 속박 시간 증가 \n 현재 속박 시간 : " + WeaponDataManager.playerAFourTime.ToString();
+                        int Askill4 = Random.Range(0, 2);
+                        switch (Askill4)
+                        {
+                            case 0: // 지속시간
+                                WeaponDataManager.playerAFourTime += PlayerPrefs.GetFloat("Skill4TimeUP");
+                                break;
+
+                            case 1: // 쿨타임
+                                WeaponDataManager.playerAFourCoolTime -= PlayerPrefs.GetFloat("Skill4CoolUP");
+                                break;
+                        }
+
                         WeaponDataManager.playerAFourTime += 0.25f;
                     }
                     break;
@@ -246,29 +272,29 @@ public class LevelUPManager : MonoBehaviour
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            WeaponDataManager.playerABasicAtkCool -= 0.5f;
+                            WeaponDataManager.playerABasicAtkCool -= PlayerPrefs.GetFloat("BasicSpeedUP");
                             break;
 
                         case 1: // 데미지 증가
-                            WeaponDataManager.playerABasicAtkDamage += 15f;
+                            WeaponDataManager.playerABasicAtkDamage += PlayerPrefs.GetFloat("BasicAtkUP");
                             break;
                     }
                     break;
 
                 case 5: // 공격력
-                        //  Descriptions[0].text = "공격력 증가";
+                    PlayerState.Damage += PlayerPrefs.GetFloat("PlayerADamageUP");
                     break;
 
                 case 6: // 체력
-                        // Descriptions[0].text = "체력 증가";
+                    PlayerState.Hp += PlayerPrefs.GetFloat("PlayerAHpUP");
                     break;
 
                 case 7: // 방어력
-                        // Descriptions[0].text = "방어력 증가";
+                    PlayerState.Defense += PlayerPrefs.GetFloat("PlayerADefenseUP");
                     break;
 
                 case 8: // 이동속도
-                        //  Descriptions[0].text = "이동속도 증가";
+                    PlayerState.Speed += PlayerPrefs.GetFloat("PlayerASpeedUP");
                     break;
             }
         }
@@ -294,12 +320,14 @@ public class LevelUPManager : MonoBehaviour
                         {
                             case 0: // 재생속도 증가x
                                     // Descriptions[0].text = "1번스킬 회전속도 1증가 \n 현재 속도 : " + WeaponDataManager.playerAOneSpeed.ToString();
-                                WeaponDataManager.playerAOneSpeed += 1;
+                                float value1 = PlayerPrefs.GetFloat("Skill1SpeedUP");
+                                WeaponDataManager.playerAOneSpeed += value1;
                                 break;
 
                             case 1: // 데미지 증가
                                 //Descriptions[0].text = "1번스킬 데미지 5증가 \n 현재 데미지 : " + WeaponDataManager.playerAOneAtk.ToString();
-                                WeaponDataManager.playerAOneAtk += 5;
+                                float value2 = PlayerPrefs.GetFloat("Skill1AtkUP");
+                                WeaponDataManager.playerAOneAtk += value2;
                                 break;
                         }
                     }
@@ -318,11 +346,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerATwoCoolTime -= 0.1f;
+                                WeaponDataManager.playerATwoCoolTime -= PlayerPrefs.GetFloat("Skill2SpeedUP");
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerATwoAtk += 5f;
+                                WeaponDataManager.playerATwoAtk += PlayerPrefs.GetFloat("Skill2AtkUP");
                                 break;
                         }
                     }
@@ -340,11 +368,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerAThreeCoolTime -= 0.3f;
+                                WeaponDataManager.playerAThreeCoolTime -= PlayerPrefs.GetFloat("Skill3SpeedUP");
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerAThreeAtk += 15f;
+                                WeaponDataManager.playerAThreeAtk += PlayerPrefs.GetFloat("Skill3AtkUP");
                                 break;
                         }
                     }
@@ -355,11 +383,22 @@ public class LevelUPManager : MonoBehaviour
                     {
                         playerASkillD = false;
                         WeaponManager.Instance.StartPattern("atk4");
-                     //   WeaponDataManager.playerAFourbool = true;
+                        //   WeaponDataManager.playerAFourbool = true;
                     }
                     else
                     {
-                        // Descriptions[0].text = "4번스킬 속박 시간 증가 \n 현재 속박 시간 : " + WeaponDataManager.playerAFourTime.ToString();
+                        int Askill4 = Random.Range(0, 2);
+                        switch (Askill4)
+                        {
+                            case 0: // 지속시간
+                                WeaponDataManager.playerAFourTime += PlayerPrefs.GetFloat("Skill4TimeUP");
+                                break;
+
+                            case 1: // 쿨타임
+                                WeaponDataManager.playerAFourCoolTime -= PlayerPrefs.GetFloat("Skill4CoolUP");
+                                break;
+                        }
+
                         WeaponDataManager.playerAFourTime += 0.25f;
                     }
                     break;
@@ -369,29 +408,29 @@ public class LevelUPManager : MonoBehaviour
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            WeaponDataManager.playerABasicAtkCool -= 0.5f;
+                            WeaponDataManager.playerABasicAtkCool -= PlayerPrefs.GetFloat("BasicSpeedUP");
                             break;
 
                         case 1: // 데미지 증가
-                            WeaponDataManager.playerABasicAtkDamage += 15f;
+                            WeaponDataManager.playerABasicAtkDamage += PlayerPrefs.GetFloat("BasicAtkUP");
                             break;
                     }
                     break;
 
                 case 5: // 공격력
-                        //  Descriptions[0].text = "공격력 증가";
+                    PlayerState.Damage += PlayerPrefs.GetFloat("PlayerADamageUP");
                     break;
 
                 case 6: // 체력
-                        // Descriptions[0].text = "체력 증가";
+                    PlayerState.Hp += PlayerPrefs.GetFloat("PlayerAHpUP");
                     break;
 
                 case 7: // 방어력
-                        // Descriptions[0].text = "방어력 증가";
+                    PlayerState.Defense += PlayerPrefs.GetFloat("PlayerADefenseUP");
                     break;
 
                 case 8: // 이동속도
-                        //  Descriptions[0].text = "이동속도 증가";
+                    PlayerState.Speed += PlayerPrefs.GetFloat("PlayerASpeedUP");
                     break;
             }
         }

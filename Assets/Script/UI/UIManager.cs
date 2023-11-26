@@ -50,6 +50,15 @@ public class UIManager : MonoBehaviour
         isPause = false;
         optionPanel.SetActive(false);
     }
+    public void StopGame()
+    {
+        isPause = true;
+    }
+    public void ReStartGame()
+    {
+        isPause = false;
+    }
+
 
     private void Update()
     {

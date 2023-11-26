@@ -42,10 +42,10 @@ public class PlayerState : MonoBehaviour
         instance = this;
         //DontDestroyOnLoad(this.gameObject);
         detectRange = 2.5f;
-        Defense = 1f;
-        Damage = 1f;
-        Hp = 10f;
-        Speed = 5f;
+   //     Defense = 1f;
+   //     Damage = 1f;
+   //     Hp = 10f;
+   //     Speed = 5f;
         //attractionSpeed = 15f;
     }
 

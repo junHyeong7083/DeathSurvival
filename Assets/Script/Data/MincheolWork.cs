@@ -77,30 +77,30 @@ public class MincheolWork : MonoBehaviour
     [Tooltip("다음 시간정지까지의 쿨타임")]
     float StopCool;
 
+    
     void Awake()
     {
-        _Monster1HP = Monster1HP;
-        _Monster1Speed = Monster1Speed;
-        _Monster2HP = Monster2HP;
-        _Monster2Speed = Monster2Speed;
-        _Monster3HP = Monster3HP;
-        _Monster3Speed = Monster3Speed;
+        _Monster1HP = PlayerPrefs.GetFloat("M1HP");
+        _Monster1Speed = PlayerPrefs.GetFloat("M1Speed");
+        _Monster2HP = PlayerPrefs.GetFloat("M2HP");
+        _Monster2Speed = PlayerPrefs.GetFloat("M2Speed");
+        _Monster3HP = PlayerPrefs.GetFloat("M3HP");
+        _Monster3Speed = PlayerPrefs.GetFloat("M3Speed");
 
-        WeaponDataManager.playerABasicAtkDamage = BasicAtkDamage;
-        WeaponDataManager.playerABasicAtkCool = BasicAtkCool;
-        WeaponDataManager.playerAOneAtk = skill1Damage;
-        WeaponDataManager.playerAOneSpeed = skill1Speed;
-        WeaponDataManager.playerATwoAtk = skill2Damage;
-        WeaponDataManager.playerATwoCoolTime = skill2Cool;
-        WeaponDataManager.playerAThreeAtk = skill3Damage;
-        WeaponDataManager.playerAThreeCoolTime = skill3Cool;
-        WeaponDataManager.playerAFourTime = StopTime;
-        WeaponDataManager.playerAFourCoolTime = StopCool;
+        WeaponDataManager.playerABasicAtkDamage = PlayerPrefs.GetFloat("BasicAtk");
+        WeaponDataManager.playerABasicAtkCool = PlayerPrefs.GetFloat("BasicSpeed");
+        WeaponDataManager.playerAOneAtk = PlayerPrefs.GetFloat("Skill1Atk");
+        WeaponDataManager.playerAOneSpeed = PlayerPrefs.GetFloat("Skill1Speed");
+        WeaponDataManager.playerATwoAtk = PlayerPrefs.GetFloat("Skill2Atk");
+        WeaponDataManager.playerATwoCoolTime = PlayerPrefs.GetFloat("Skill2Speed");
+        WeaponDataManager.playerAThreeAtk = PlayerPrefs.GetFloat("Skill3Atk");
+        WeaponDataManager.playerAThreeCoolTime = PlayerPrefs.GetFloat("Skill3Speed");
+        WeaponDataManager.playerAFourTime = PlayerPrefs.GetFloat("Skill4Time");
+        WeaponDataManager.playerAFourCoolTime = PlayerPrefs.GetFloat("Skill4Cool");
 
-        PlayerState.Hp = HP;
-        PlayerState.Speed = Speed;
-        PlayerState.Damage = Damage;
-        PlayerState.Defense = Defense;
+        PlayerState.Hp = PlayerPrefs.GetFloat("PlayerHP");
+        PlayerState.Speed = PlayerPrefs.GetFloat("PlayerSpeed");
+        PlayerState.Damage = PlayerPrefs.GetFloat("PlayerDamage");
+        PlayerState.Defense = PlayerPrefs.GetFloat("PlayerDefense");
     }
-
 }
