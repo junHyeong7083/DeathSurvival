@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     Animator animator;
     public static bool isMove = false;
     public static Vector3 PlayerPos;
+    protected static bool isRight = false;
     GameObject DirObj;
     void Start()
     {
@@ -30,12 +31,13 @@ public class PlayerController : MonoBehaviour
 
                     if (h > 0)
                     {
-
+                        isRight = true;
                         animator.SetBool("isRight", true);
                         DirObj.transform.position = new Vector3(PlayerPos.x + 1f, PlayerPos.y, 0);
                     }
                     else if (h < 0)
                     {
+                        isRight = false;
                         animator.SetBool("isRight", false);
                         DirObj.transform.position = new Vector3(PlayerPos.x - 1f, PlayerPos.y, 0);
                     }

@@ -59,7 +59,7 @@ public class PlayerA_Basic : MonoBehaviour
                 checkTime += Time.deltaTime;
                 if (checkTime > PlayerPrefs.GetFloat("ABasicSpeed"))
                 {
-                    checkTime = 0f;
+                    checkTime = 0f; 
                     canAtk = true;
                 }
             }

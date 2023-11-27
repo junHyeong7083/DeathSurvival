@@ -18,19 +18,30 @@ public class WeaponDataManager : MonoBehaviour
     public static float playerABasicAtkCool;
     #endregion
 
+
+    #region PlayerB
+
+    public static bool playerBFourbool;
+    public static float playerBFourTime;
+    public static float playerBFourCoolTime;
+    #endregion
     private void Awake()
     {
-      //  playerAOneSpeed = 1;
-      //  playerAOneAtk =25f;
-      //  playerATwoAtk =15f;
-      //  playerATwoCoolTime = 2f;
-      //  playerAThreeAtk =100f;
-      //  playerAThreeCoolTime = 3f;
-      //  playerAFourTime =4f;
-      //  playerAFourCoolTime = 30f;
-      //  playerAFourbool = false;
-      //  playerABasicAtkDamage = 1000f;
-      //  playerABasicAtkCool = 3f;
+        //  playerAOneSpeed = 1;
+        //  playerAOneAtk =25f;
+        //  playerATwoAtk =15f;
+        //  playerATwoCoolTime = 2f;
+        //  playerAThreeAtk =100f;
+        //  playerAThreeCoolTime = 3f;
+        //  playerAFourTime =4f;
+        //  playerAFourCoolTime = 30f;
+        //  playerAFourbool = false;
+        //  playerABasicAtkDamage = 1000f;
+        //  playerABasicAtkCool = 3f;
+
+        playerBFourTime = 4f;
+        playerBFourCoolTime = 30f;
+        playerBFourbool = false;
     }
 
     private void Update()

@@ -234,6 +234,7 @@ public class MonsterController : MonoBehaviour
     bool isStart = false;
     private void OnEnable()
     {
+        Speed = saveSpeed;
         ones = false;
         showHitEffect = false;
         hitTime = 0f;
@@ -278,9 +279,29 @@ public class MonsterController : MonoBehaviour
             child.gameObject.SetActive(false);
         }
     }
+    float checkSpeed;
+    bool isSlowed = false;   
+    void OnSlow()
+    {
+        if (!isSlowed )
+        {
+            checkSpeed = Speed;
+            Debug.Log("checkSpeed : " + checkSpeed);
+            Speed = 0.4f;
+
+            isSlowed = true;
+        }
+    }
+    void OutSlow()
+    {
+        isSlowed = false;
+        Speed = checkSpeed;
+        Debug.Log("speedOut : " + Speed);
+    }
 
     void Update()
     {
+        Debug.Log("monsSpeed : " + Speed);
      //  DamageText.transform.position = DamagePos.position;
         if (WeaponDataManager.playerAFourbool)
         {
