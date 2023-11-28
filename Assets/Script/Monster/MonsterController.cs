@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.ComponentModel;
+using System.Drawing;
+
 public class MonsterController : MonoBehaviour
 {
     #region State
@@ -53,6 +56,8 @@ public class MonsterController : MonoBehaviour
     public static float PlayerABasicDamage = 0;
 
     #endregion
+
+    bool isHitPlayerBFourSkill = false;
 
     DamageTextPool pool;
     GameObject monsterManagerObj;
@@ -161,7 +166,14 @@ public class MonsterController : MonoBehaviour
                 }
             }
 
-
+            if (WeaponDataManager.playerBFourbool)
+            {
+                if (collision.gameObject.CompareTag("Player"))
+                {
+                    spriternRenderer.color = newColor;
+                    isHitPlayerBFourSkill = true;
+                }
+            }
 
 
 
@@ -178,16 +190,14 @@ public class MonsterController : MonoBehaviour
         }
 
     }
-
-
-    void Start()
+    private void Awake()
     {
-        switch(monsterIndex)
+        switch (monsterIndex)
         {
             case 0:
                 saveSpeed = MincheolWork._Monster1Speed;
                 maxHp = MincheolWork._Monster1HP;
-                Debug.Log("hp : " + maxHp);
+                //Debug.Log("hp : " + maxHp);
                 break;
 
             case 1:
@@ -201,6 +211,11 @@ public class MonsterController : MonoBehaviour
                 break;
 
         }
+    }
+    UnityEngine.Color newColor;
+    void Start()
+    {
+        isHitPlayerBFourSkill = false;
         Speed = saveSpeed;
         pool = GameObject.Find("DamageManager").GetComponent<DamageTextPool>();
 
@@ -229,11 +244,16 @@ public class MonsterController : MonoBehaviour
         spriternRenderer = GetComponent<SpriteRenderer>();
 
         color = spriternRenderer.color;
+        newColor = spriternRenderer.color;
+        /* newColor.r = 1 - color.r;
+         newColor.g = 1 - color.g;
+         newColor.b = 1 - color.b;*/
     }
 
     bool isStart = false;
     private void OnEnable()
     {
+        isHitPlayerBFourSkill = false;
         Speed = saveSpeed;
         ones = false;
         showHitEffect = false;
@@ -298,18 +318,43 @@ public class MonsterController : MonoBehaviour
         Speed = checkSpeed;
         Debug.Log("speedOut : " + Speed);
     }
+    bool isOnes = false;
 
     void Update()
     {
-        Debug.Log("monsSpeed : " + Speed);
-     //  DamageText.transform.position = DamagePos.position;
+        // Debug.Log("monsSpeed : " + Speed);
+        //  DamageText.transform.position = DamagePos.position;
         if (WeaponDataManager.playerAFourbool)
         {
             animator.SetBool("MonsterTimeStop", true);
         }
-        // animator.SetBool("MonsterTimeStop", true);
         else
             animator.SetBool("MonsterTimeStop", false);
+
+        if (WeaponDataManager.playerBFourbool)
+        {
+            Speed = 0.4f;
+            circleCollider2D.isTrigger = true;
+            isOnes = false;
+            Transform monsterTransform = this.transform;
+            Transform child = monsterTransform.GetChild(1);
+            child.gameObject.SetActive(false);
+        }
+        else if(!WeaponDataManager.playerBFourbool)
+        {
+        //    spriternRenderer.color = color;
+            Speed = saveSpeed;
+            circleCollider2D.isTrigger = false;
+            if (isHitPlayerBFourSkill)
+            {
+                Transform monsterTransform = this.transform;
+                Transform child = monsterTransform.GetChild(1);
+                child.gameObject.SetActive(true);
+                isHitPlayerBFourSkill = false;
+            }
+
+        }
+
 
         if (!PlayerHpBar.isDie) // 플레이어가 살아있을때 움직이기
         {
@@ -319,33 +364,33 @@ public class MonsterController : MonoBehaviour
                 switch(dieSound)
                 {
                     case 1:
-                        Debug.Log("sound1");
+                      //  Debug.Log("sound1");
 
                         SoundManager.Instance.PlaySFXSound("monsterDie1");
                         break;
 
                     case 2:
-                        Debug.Log("sound2");
+                       // Debug.Log("sound2");
                         SoundManager.Instance.PlaySFXSound("monsterDie2");
                         break;
 
                     case 3:
-                        Debug.Log("sound3");
+                      //  Debug.Log("sound3");
                         SoundManager.Instance.PlaySFXSound("monsterDie3");
                         break;
 
                     case 4:
-                        Debug.Log("sound4");
+                      //  Debug.Log("sound4");
                         SoundManager.Instance.PlaySFXSound("monsterDie4");
                         break;
 
                     case 5:
-                        Debug.Log("sound5");
+                       // Debug.Log("sound5");
                         SoundManager.Instance.PlaySFXSound("monsterDie5");
                         break;
 
                     case 6:
-                        Debug.Log("sound6");
+                       // Debug.Log("sound6");
                         SoundManager.Instance.PlaySFXSound("monsterDie6");
                         break;
 

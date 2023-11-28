@@ -56,7 +56,7 @@ public class Pixelate : MonoBehaviour
             pixelate -= 150 * Time.deltaTime;
             if (pixelate < 5)
             {
-                Debug.Log("???");
+               // Debug.Log("???");
                 pixelate = 1;
                 value = pixelate;
                 isChange = false;
@@ -66,7 +66,7 @@ public class Pixelate : MonoBehaviour
 
          if(showDieEffect)
         {
-            Debug.Log("aaa");
+           // Debug.Log("aaa");
             if(!dieshow)
             {
                 pixelate += 500*Time.deltaTime;

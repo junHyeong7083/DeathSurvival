@@ -6,7 +6,6 @@ public class PlayerB_Basic : MonoBehaviour
 {
     SpriteRenderer spriteRenderer;
     BoxCollider2D boxCollider;
-    UnityEngine.Color color;
 
     public ParticleSystem GhostEffect;
     ParticleSystem.MainModule mainModule;
@@ -27,7 +26,6 @@ public class PlayerB_Basic : MonoBehaviour
         dirPos = GameObject.Find("Dir");
         PlayerPrefs.SetFloat("BBasicSpeed", 2);
         spriteRenderer = GetComponent<SpriteRenderer>();
-        color = spriteRenderer.color;
         canAtk = true;
         isRight = false;
     }
@@ -63,7 +61,7 @@ public class PlayerB_Basic : MonoBehaviour
                     isRight = true;
                     this.transform.position = new Vector3(PlayerController.PlayerPos.x +0.05f, PlayerController.PlayerPos.y - 0.05f, 0);
                     Debug.Log("ПР");
-                    spriteRenderer.flipX = false;
+                  //  spriteRenderer.flipX = false;
                     isAxeThrowing = true;
                     canAtk = false;
                 }
@@ -71,7 +69,7 @@ public class PlayerB_Basic : MonoBehaviour
                 {
                     isRight = false;
                     this.transform.position = new Vector3(PlayerController.PlayerPos.x -0.05f, PlayerController.PlayerPos.y - 0.05f, 0);
-                    Debug.Log("По");
+                 //   Debug.Log("По");
                     spriteRenderer.flipX = true;
                     isAxeThrowing = true;
                     canAtk = false;

@@ -16,10 +16,14 @@ public class PlayerBGhostEffect : PlayerController
                 GhostEffect.gameObject.SetActive(true);
             if (isRight)
             {
+                if (!WeaponDataManager.playerBFourbool)
+                    GhostEffect.gameObject.SetActive(false);
                 GhostEffect.transform.localScale = new Vector3(-1*1.1f, 0.9f, 0.9f);
             }
             else if (!isRight)
             {
+                if (!WeaponDataManager.playerBFourbool)
+                    GhostEffect.gameObject.SetActive(false);
                 GhostEffect.transform.localScale = new Vector3(1.1f, 0.9f, 0.9f);
             }
         }

@@ -28,18 +28,21 @@ public class PlayerHpBar : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Monster"))
+        if(!WeaponDataManager.playerBFourbool)
         {
-            if (!isDie)
+            if (collision.gameObject.CompareTag("Monster"))
             {
-                if (isHit)
+                if (!isDie)
                 {
-                    //Debug.Log("Hit!!");
-                    currentHp -= 0.5f *(1- PlayerState.Defense);
-                    isHit = false;
+                    if (isHit)
+                    {
+                        //Debug.Log("Hit!!");
+                        currentHp -= 0.5f * (1 - PlayerState.Defense);
+                        isHit = false;
 
-                    //  playerColor = Color.blue;
-                    //  spriteRenderer.color = playerColor;
+                        //  playerColor = Color.blue;
+                        //  spriteRenderer.color = playerColor;
+                    }
                 }
             }
         }

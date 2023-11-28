@@ -318,6 +318,6 @@ public class SelectKeyboard : MonoBehaviour
             yield return null;
         }
         showEffectPanel.transform.localPosition = originPos;
-        Debug.Log("CurrentPos : " + showEffectPanel.transform.localPosition.x);
+       // Debug.Log("CurrentPos : " + showEffectPanel.transform.localPosition.x);
     }
 }

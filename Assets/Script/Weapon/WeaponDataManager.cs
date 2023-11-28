@@ -39,7 +39,7 @@ public class WeaponDataManager : MonoBehaviour
         //  playerABasicAtkDamage = 1000f;
         //  playerABasicAtkCool = 3f;
 
-        playerBFourTime = 4f;
+        playerBFourTime = 10f;
         playerBFourCoolTime = 30f;
         playerBFourbool = false;
     }

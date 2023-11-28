@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public static bool isMove = false;
     public static Vector3 PlayerPos;
     protected static bool isRight = false;
+
     GameObject DirObj;
     void Start()
     {
