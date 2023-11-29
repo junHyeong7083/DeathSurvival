@@ -20,7 +20,8 @@ public class MonsterController : MonoBehaviour
     public int monsterIndex;
 
     Rigidbody2D rigidbody2D;
-
+    Rigidbody2D targetRigid;
+    GameObject targetPlayer;
     CircleCollider2D circleCollider2D;
 
     Transform playerTransform;
@@ -119,7 +120,6 @@ public class MonsterController : MonoBehaviour
                         break;
                 }
             }
-
             if (collision.gameObject.tag == "PlayerA_Three")
             {
                 // 공격력 따라 데미지 줄이는 코드
@@ -215,6 +215,8 @@ public class MonsterController : MonoBehaviour
     UnityEngine.Color newColor;
     void Start()
     {
+        targetPlayer = GameObject.FindWithTag("Player");
+        targetRigid = targetPlayer.GetComponent<Rigidbody2D>();
         isHitPlayerBFourSkill = false;
         Speed = saveSpeed;
         pool = GameObject.Find("DamageManager").GetComponent<DamageTextPool>();
@@ -414,8 +416,14 @@ public class MonsterController : MonoBehaviour
             {
                 if (isMove)
                 {
-                    Vector2 direction = (playerTransform.position - transform.position).normalized;
-                    transform.Translate(direction * Speed * Time.deltaTime);
+                    /*   Vector2 direction = (playerTransform.position - transform.position).normalized;
+                       transform.Translate(direction * Speed * Time.deltaTime);*/
+                    Vector2 dirV = targetRigid.position - rigidbody2D.position;
+                    Vector2 nextV = dirV.normalized * Speed * Time.deltaTime;
+                    rigidbody2D.MovePosition(rigidbody2D.position + nextV);
+                    rigidbody2D.velocity = Vector2.zero;
+
+
                 }
             }
         }
