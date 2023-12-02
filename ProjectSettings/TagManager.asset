@@ -13,6 +13,7 @@ TagManager:
   - PlayerA_Three
   - PlayerA_Basic
   - TestSkill
+  - PlayerB_Magnetic
   layers:
   - Default
   - TransparentFX
