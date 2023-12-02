@@ -27,6 +27,12 @@ public class WeaponDataManager : MonoBehaviour
     public static float playerBFourTime;
     public static float playerBFourCoolTime;
     #endregion
+
+    #region PlayerC
+    public static float playerCBasicAtkTime;
+    public static float playerCBasicCoolTime;
+    public static bool playerCBasicBool;
+    #endregion
     private void Awake()
     {
         //  playerAOneSpeed = 1;
@@ -45,6 +51,10 @@ public class WeaponDataManager : MonoBehaviour
         playerBFourCoolTime = 30f;
         playerBFourbool = false;
         playerBTwobool = false;
+
+        playerCBasicAtkTime = 3f;
+        playerCBasicCoolTime = 3f;
+        playerCBasicBool = false;
     }
 
     private void Update()
