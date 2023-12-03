@@ -128,7 +128,7 @@ public class SelectKeyboard : MonoBehaviour
             switch (currentIndex)
             {
                 case 0:
-                    targetPosition = new Vector3(-177, 0, 0);
+                    targetPosition = new Vector3(25, 0, 0);
                     if (!isOnes && isCheck)
                     {
                         StartCoroutine(panelEffect(currentIndex));
@@ -147,7 +147,7 @@ public class SelectKeyboard : MonoBehaviour
                     break;
 
                 case 1:
-                    targetPosition = new Vector3(-670, 0, 0);
+                    targetPosition = new Vector3(-528, 0, 0);
                     if (!isOnes && isCheck)
                     {
                         StartCoroutine(panelEffect(currentIndex));
@@ -168,7 +168,7 @@ public class SelectKeyboard : MonoBehaviour
                     break;
 
                 case 2:
-                    targetPosition = new Vector3(-1330, 0, 0);
+                    targetPosition = new Vector3(-1026, 0, 0);
                     if (!isOnes && isCheck)
                     {
                         StartCoroutine(panelEffect(currentIndex));

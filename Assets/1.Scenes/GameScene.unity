@@ -6570,6 +6570,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerC_Basicfill
       objectReference: {fileID: 0}
+    - target: {fileID: 4613005198110790985, guid: aaf5523a7ec319c4faa17a64ecacf237, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3067422
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613005198110790985, guid: aaf5523a7ec319c4faa17a64ecacf237, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4613005198110790985, guid: aaf5523a7ec319c4faa17a64ecacf237, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8603243427834259760, guid: aaf5523a7ec319c4faa17a64ecacf237, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

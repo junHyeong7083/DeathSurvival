@@ -1,7 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
-using UnityEditor.Timeline;
 using UnityEngine;
 
 public class PlayerB_Atk2 : MonoBehaviour
