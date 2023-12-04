@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/1.Scenes/notUse/SkillTreeTest.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/1.Scenes/Title.unity
     guid: 2654011dc99758745917079eaa3eb6fe
   - enabled: 1
     path: Assets/1.Scenes/SelectCharacter.unity
     guid: d7da3c1a13b9d974690dc6cee5f1b3c5
-  - enabled: 0
+  - enabled: 1
     path: Assets/1.Scenes/GameScene.unity
     guid: 787f974309008154d9e7488d20f32f80
   m_configObjects: {}
