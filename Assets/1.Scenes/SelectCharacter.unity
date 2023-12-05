@@ -14042,7 +14042,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2093989450}
-  - component: {fileID: 2093989451}
   - component: {fileID: 2093989452}
   - component: {fileID: 2093989453}
   m_Layer: 0
@@ -14067,32 +14066,6 @@ Transform:
   m_Father: {fileID: 114418985}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2093989451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2093989449}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12338375e3c2a1f438381df668bda368, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  showEffectPanel: {fileID: 589967881}
-  effectTime: 1.5
-  scrollRect: {fileID: 677052987}
-  buttonOutlines:
-  - {fileID: 1920643076}
-  - {fileID: 1740127343}
-  buttonSelects:
-  - {fileID: 771307737}
-  - {fileID: 813177734}
-  showPaenl:
-  - {fileID: 2043836608}
-  - {fileID: 1652801991}
-  - {fileID: 482611478}
-  transition: {fileID: 11400000, guid: f19a137b4df85624898be50029d85c67, type: 2}
 --- !u!114 &2093989452
 MonoBehaviour:
   m_ObjectHideFlags: 0
