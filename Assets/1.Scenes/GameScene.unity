@@ -3159,7 +3159,7 @@ RectTransform:
   m_Children:
   - {fileID: 109987458}
   m_Father: {fileID: 1690458672}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -4149,7 +4149,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7c69ad2c175b05e44bccc1c5c09dbd69, type: 2}
   - {fileID: 11400000, guid: 1232eb971c1094a48abfc7c5347e460b, type: 2}
   spawnPercentage: 3
-  spawndistance: 10
+  spawndistance: 7
 --- !u!1 &794848496
 GameObject:
   m_ObjectHideFlags: 0
@@ -5205,6 +5205,7 @@ RectTransform:
   - {fileID: 734706911}
   - {fileID: 342480024}
   - {fileID: 1690458672}
+  - {fileID: 1941048339}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6369,7 +6370,7 @@ RectTransform:
   m_Children:
   - {fileID: 26429045}
   m_Father: {fileID: 1690458672}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6568,6 +6569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771c1213342718c4f9bac068c83708d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10
 --- !u!114 &1342718406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6852,7 +6854,7 @@ RectTransform:
   m_Children:
   - {fileID: 474526695}
   m_Father: {fileID: 1690458672}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -7976,7 +7978,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1941048339}
   - {fileID: 1464610263}
   - {fileID: 1336470120}
   - {fileID: 507434489}
@@ -8970,6 +8971,7 @@ MonoBehaviour:
   - {fileID: 1731773155862353156, guid: 9300cb44b95135a48857eda10550476d, type: 3}
   - {fileID: 285457850791107462, guid: 19bea4d32ec651c4eb3fb8d4afec3b99, type: 3}
   - {fileID: 1034737082450190401, guid: 0a38f0333f686a24cbd87b659acee939, type: 3}
+  - {fileID: 6493704282727944024, guid: 8636b155f5437574e90bb3fd6326271c, type: 3}
 --- !u!114 &1885262598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9548,8 +9550,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 797923976}
-  m_Father: {fileID: 1690458672}
-  m_RootOrder: 0
+  m_Father: {fileID: 1004380387}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9602,7 +9604,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 226860182}
         m_TargetAssemblyTypeName: TestPattern, Assembly-CSharp
-        m_MethodName: Pattern5
+        m_MethodName: PatternC3
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

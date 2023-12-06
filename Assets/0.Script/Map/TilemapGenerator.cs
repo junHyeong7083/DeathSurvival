@@ -38,7 +38,6 @@ public class TilemapGenerator : MonoBehaviour
             }
         }
     }
-
     void GenerateRandomObject()
     {
         // √ ±‚»≠
