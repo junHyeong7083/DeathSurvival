@@ -14,6 +14,7 @@ TagManager:
   - PlayerA_Basic
   - TestSkill
   - PlayerB_Magnetic
+  - ItemDetect
   layers:
   - Default
   - TransparentFX

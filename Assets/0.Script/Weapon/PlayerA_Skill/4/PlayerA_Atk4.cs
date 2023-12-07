@@ -84,7 +84,6 @@ public class PlayerA_Atk4 : MonoBehaviour
             foreach (GameObject monster in monsters)
             {
                 // 몬스터 오브젝트의 자식 오브젝트들을 활성화);
-
                 Transform monsterTransform = monster.transform;
                 Transform child = monsterTransform.GetChild(0);
                 child.gameObject.SetActive(true);

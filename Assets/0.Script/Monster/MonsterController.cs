@@ -425,6 +425,7 @@ public class MonsterController : MonoBehaviour
                 gameObject.GetComponent<CircleCollider2D>().enabled = false;
                 knockPos = this.transform.position;
                 animator.SetBool("MonsterDie", true);
+                delayDieTime += Time.deltaTime;
                 if (delayDieTime > 1.0f)
                     this.gameObject.SetActive(false);
 
