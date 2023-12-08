@@ -13,9 +13,14 @@ public class Pixelate : MonoBehaviour
     public static bool toGame;
     public static bool showHpBar;
     public static bool isChange = false;
+
     public static bool showDieEffect = false;
     public static bool showDiePanel;
+
+    public static bool showClearEffect = false;
+    public static bool showClearPanel;
     bool dieshow = false;
+    bool clearshow = false;
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
         source.filterMode = FilterMode.Point;
@@ -64,7 +69,8 @@ public class Pixelate : MonoBehaviour
             }
         }
 
-         if(showDieEffect)
+        #region Die
+        if (showDieEffect)
         {
            // Debug.Log("aaa");
             if(!dieshow)
@@ -88,5 +94,30 @@ public class Pixelate : MonoBehaviour
 
             }
         }
+        #endregion
+
+        #region Clear
+        if (showClearEffect)
+        {
+            if (!clearshow)
+            {
+                pixelate += 500 * Time.deltaTime;
+                if (pixelate > 300)
+                {
+                    clearshow = true;
+                    value = 150;
+                    pixelate = value;
+                }
+            }
+            else if (clearshow)
+            {
+                pixelate = 1;
+                value = pixelate;
+                clearshow = false;
+                showClearEffect = false;
+                showClearPanel = true;
+            }
+        }
+        #endregion
     }
 }

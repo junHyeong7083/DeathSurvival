@@ -249,7 +249,6 @@ public class SelectManager : MonoBehaviour
                 break;
         }
 
-
         #endregion
 
         #region 캐릭터 선택

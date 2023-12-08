@@ -45,6 +45,7 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
+            Debug.Log("???!!!");
             DontDestroyOnLoad(this.gameObject);
         }
         bgmPlayer = GetComponentsInChildren<AudioSource>()[0];

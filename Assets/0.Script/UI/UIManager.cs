@@ -18,6 +18,9 @@ public class UIManager : MonoBehaviour
     public GameObject DiePanel;
     float delayDieTime;
     #endregion
+
+    public GameObject ClearPanel;
+    float delayClearTime;
     // public Text levelTxt;
     public static bool isPause;
     bool isClick = false;
@@ -178,6 +181,39 @@ public class UIManager : MonoBehaviour
         }
 
 
+        #endregion
+
+        #region ClearPanel
+        if (TimerManager.isClear)
+        {
+            // Pixelate.showHpBar = false;
+            delayClearTime += Time.deltaTime;
+
+            if (delayClearTime > 1.3f)
+                Pixelate.showHpBar = false;
+
+            if (delayClearTime > 1.5f)
+            {
+                if (!isOnes)
+                {
+                    Pixelate.showClearEffect = true;
+                    isOnes = true;
+                }
+
+                if (Pixelate.showClearPanel)
+                {
+                    Time.timeScale = 0f;
+                    ClearPanel.gameObject.SetActive(true);
+                }
+                PlayerHpBar.isDie = false;
+
+                Animator[] allAnimators = FindObjectsOfType<Animator>();
+                foreach (Animator animator in allAnimators)
+                {
+                    animator.speed = 0f;
+                }
+            }
+        }
         #endregion
     }
     bool isOnes;
