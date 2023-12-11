@@ -1,63 +1,93 @@
+// PlayerC_Atk4 스크립트
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerC_Atk4 : MonoBehaviour
 {
-    public GameObject AtkObj;
-    GameObject Dir;
-    Animator animator;
     [SerializeField]
-    float rotateSpeed;
+    int currentSkillIndex;
+    bool isOnes = false;
+    bool isDetect = false;
 
     void Start()
     {
-        Dir = GameObject.Find("Dir");
-        animator = AtkObj.GetComponent<Animator>();
-
         StartCoroutine(Atk());
     }
-    bool isOnes = false;
+
+    GameObject targetObj;
+
+    float detectionRadius = 3;
+    float lastDetectionTime = 0f;
+    int check = 0;
+
     IEnumerator Atk()
     {
         while (true)
         {
-            if (!isOnes)
-            {
-                isOnes = true;
-                float startTime = Time.time;
-                animator.SetBool("isCool", false);
-                WeaponDataManager.playerCBasicBool = true;
-                while (Time.time - startTime < WeaponDataManager.playerCBasicAtkTime)
+                if (!WeaponDataManager.playerCFourbool)
                 {
-                    if (Dir.transform.position.x >= PlayerController.PlayerPos.x)
+                    Collider2D[] colliders = Physics2D.OverlapCircleAll(PlayerController.PlayerPos, detectionRadius);
+
+                    // 추가: 오브젝트마다 다른 대상 몬스터를 찾도록 수정
+                    if (targetObj == null)
                     {
-                        Debug.Log("오");
-                        // this.transform.localEulerAngles = new Vector3(180, 0, 270);
-                        AtkObj.transform.localPosition = new Vector3(2.5f, 0, 0);
+                        foreach (Collider2D collider in colliders)
+                        {
+                            yield return null;
+                            // 적인지 확인
+                            if (collider.CompareTag("Monster"))
+                            {
+                                if (currentSkillIndex == check)
+                                {
+                                    lastDetectionTime = 0f;
+                                    targetObj = collider.gameObject;
+                                    isDetect = true;
+                                WeaponDataManager.playerCFourbool = true;
+                                    break; // 첫 번째 적만 탐지하고 루프 종료
+                                }
+                                else
+                                {
+                                    check++;
+                                }
+
+                            }
+                        }
                     }
-                    else
+                }
+            if (WeaponDataManager.playerCFourbool)
+            {
+                    this.gameObject.SetActive(true);
+                    float startTime = Time.time;
+                    while (Time.time - startTime < WeaponDataManager.playerCFourAtkTime)
                     {
-                        AtkObj.transform.localPosition = new Vector3(-2.5f, 0, 0);
+                        // 수정: 각 오브젝트가 자신의 대상 몬스터를 따라가도록 변경
+                        if (targetObj != null && targetObj.activeSelf)
+                            this.transform.position = targetObj.transform.position;
+
+                        yield return null;
+                    }
+                    this.gameObject.SetActive(false);
+                    startTime = Time.time;
+                    while (Time.time - startTime < WeaponDataManager.playerCFourCoolTime)
+                    {
+                        yield return null;
                     }
 
-                    yield return null;
+                    isDetect = false;
+                    check = 0;
+                    targetObj = null;
+                WeaponDataManager.playerCFourbool = false;
+
                 }
-                startTime = Time.time;
-                animator.SetBool("isCool", true);
-                WeaponDataManager.playerCBasicBool = false;
-                while (Time.time - startTime < WeaponDataManager.playerCBasicCoolTime)
-                {
-                    yield return null;
-                }
-                isOnes = false;
+
+
             }
 
+            
         }
-    }
+
     void Update()
     {
-        this.transform.position = PlayerController.PlayerPos;
+        // 기타 업데이트 로직...
     }
 }

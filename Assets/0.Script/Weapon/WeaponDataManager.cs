@@ -37,6 +37,11 @@ public class WeaponDataManager : MonoBehaviour
     public static float playerCThreeCoolTime; // 쿨타임
     public static float playerCThreeAtkContinueTime; // 공격지속시간
     public static float playerCThreeAtkSize; // 공격 범위
+
+    public static float playerCFourCoolTime = 5f;
+    public static float playerCFourAtkTime = 5f;
+    public static int playerCFourAtkCnt = 1;
+    public static bool playerCFourbool = false;
     #endregion
     private void Awake()
     {

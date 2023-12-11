@@ -18,7 +18,7 @@ public class MonsterController : MonoBehaviour
     float Damage;
     #endregion
     public int monsterIndex;
-
+    public bool isDetect = false;
     Rigidbody2D rigidbody2D;
     Rigidbody2D targetRigid;
     GameObject targetPlayer;

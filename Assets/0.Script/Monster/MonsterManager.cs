@@ -48,7 +48,7 @@ public class MonsterManager : MonoBehaviour
             }
         }
         GameObject parentItemObject = new GameObject(monsterItem.name + " Parent");
-        for (int  e = 0; e < 200; ++e)
+        for (int e = 0; e < 200; ++e)
         {
             monsterItemParent = parentItemObject.transform;
             GameObject Item = Instantiate(monsterItem, monsterItemParent);
@@ -56,12 +56,12 @@ public class MonsterManager : MonoBehaviour
             monsterItemsPool.Add(Item);
         }
 
-        currentSpawnCoroutine = StartCoroutine(SpawnMonster(spawndelayTime, currentMonsterNumber));
+        currentSpawnCoroutine = StartCoroutine(SpawnMonster(spawndelayTime, currentMonsterNumber, currentMonsterNumber + 1));
     }
     private void Update()
     {
         currentTime += Time.deltaTime;
-        if(currentTime/ standardTime < monsterPrefabs.Length) // 정해진 몬스터 숫자내에서만 연산이되도록
+        if (currentTime / standardTime < monsterPrefabs.Length) // 정해진 몬스터 숫자내에서만 연산이되도록
         {
             if (currentTime / standardTime >= currentMonsterNumber)
             {
@@ -72,27 +72,42 @@ public class MonsterManager : MonoBehaviour
                 }
 
                 currentMonsterNumber++;
-                currentSpawnCoroutine = StartCoroutine(SpawnMonster(spawndelayTime, currentMonsterNumber));
+                currentSpawnCoroutine = StartCoroutine(SpawnMonster(spawndelayTime, currentMonsterNumber, currentMonsterNumber + 1));
             }
         }
 
-   
+
 
     }
-    private IEnumerator SpawnMonster(float delay, int monsterNumber)
+
+
+    private IEnumerator SpawnMonster(float delay, int monsterNumber, int nextmonterNumber)
     {
-            while (true)
+        while (true)
+        {
+            yield return new WaitForSeconds(delay);
+            GameObject inactiveMonster;
+            GameObject inactiveNextMonster;
+            inactiveMonster = monsterPools[monsterNumber - 1].Find(monster => !monster.activeSelf);
+            if (inactiveMonster != null)
             {
-                yield return new WaitForSeconds(delay);
-                GameObject inactiveMonster;
-                inactiveMonster = monsterPools[monsterNumber - 1].Find(monster => !monster.activeSelf);
-                if (inactiveMonster != null)
+                inactiveMonster.SetActive(true);
+                inactiveMonster.transform.position = GetRandomSpawnPosition();
+            }
+
+            if (nextmonterNumber <= monsterPrefabs.Length - 1)
+            {
+                inactiveNextMonster = monsterPools[nextmonterNumber].Find(monster => !monster.activeSelf);
+                if (inactiveNextMonster != null)
                 {
-                    inactiveMonster.SetActive(true);
-                    inactiveMonster.transform.position = GetRandomSpawnPosition();
+                    inactiveNextMonster.SetActive(true);
+                    inactiveNextMonster.transform.position = GetRandomSpawnPosition();
                 }
             }
-        
+         
+
+        }
+
     }
     public void SpawnMonsterItem(float x, float y)
     {
@@ -115,7 +130,7 @@ public class MonsterManager : MonoBehaviour
         float y1 = Random.Range(PlayerController.PlayerPos.y - spawnPosY1, PlayerController.PlayerPos.x - spawnPosY2);
         float y2 = Random.Range(PlayerController.PlayerPos.y + spawnPosY1, PlayerController.PlayerPos.x + spawnPosY2);
 
-        float X,Y;
+        float X, Y;
 
         #region Respone Pos Set
         if (Random.value < 0.5f)
