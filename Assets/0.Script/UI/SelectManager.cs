@@ -244,7 +244,7 @@ public class SelectManager : MonoBehaviour
                 ShowCurrentBtnIndex(0);
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    LoadScene(0);
+                    LoadScene(1);
                 }
                 break;
         }

@@ -32,14 +32,14 @@ public class ChangeScene : MonoBehaviour
     {
         // SceneManager.LoadScene(1);
         //SelectCharacter
-        LoadScene(1);
+        LoadScene(2);
 
     }
 
     public void GoTitleScene()
     {
         //SceneManager.LoadScene(0);
-        LoadScene(0);
+        LoadScene(1);
     }
 
     public void SelectSceneStart()

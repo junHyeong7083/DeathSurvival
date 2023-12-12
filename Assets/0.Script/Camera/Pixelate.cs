@@ -53,7 +53,7 @@ public class Pixelate : MonoBehaviour
                 toGame = false;
                 value = 100;
                 pixelate = value;
-                SceneManager.LoadScene(2);
+                SceneManager.LoadScene(3);
             }
         }
          if (isChange)
