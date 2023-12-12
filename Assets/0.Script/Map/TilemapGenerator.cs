@@ -24,20 +24,10 @@ public class TilemapGenerator : MonoBehaviour
     float spawndistance;
     void Start()
     {
-        GenerateGround();
         GenerateRandomObject();
     }
 
-    void GenerateGround()
-    {
-        for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
-            {
-                layerIndex[0].SetTile(new Vector3Int(x, y, 0), groundTile);
-            }
-        }
-    }
+  
     void GenerateRandomObject()
     {
         // ÃÊ±âÈ­
