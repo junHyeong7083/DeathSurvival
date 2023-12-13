@@ -11,8 +11,8 @@ public class RespawnCharacter : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("posx"+ this.transform.position.x);
-        Debug.Log("posy" + this.transform.position.y);
+       // Debug.Log("posx"+ this.transform.position.x);
+       // Debug.Log("posy" + this.transform.position.y);
 
         player = Instantiate(characterPrefab[(int)CharacterManager.Instance.currentCharacter]);
         player.transform.position = transform.position;

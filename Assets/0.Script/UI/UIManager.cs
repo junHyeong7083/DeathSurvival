@@ -14,6 +14,8 @@ public class UIManager : MonoBehaviour
     public Image[] optionSelect;
     int optionIndex;
     bool isoption = false;
+
+    public Text huntText;
     #region Die
     public GameObject DiePanel;
     float delayDieTime;
@@ -65,6 +67,9 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        huntText.text = "x " + MonsterManager.huntMonsterCnt.ToString();
+
+
         #region ESC Click
         if (!isClick)
         {

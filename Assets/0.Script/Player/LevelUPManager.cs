@@ -1,34 +1,67 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class LevelUPManager : MonoBehaviour
 {
+
+    [Header("-----레벨업 패널-----")]
     public GameObject LevelUpPanel;
+
+    [Header("-----선택패널 아이콘 / 텍스트-----")]
     public Image[] IconImagePanel;
+    public Text[] Descriptions;
+
+    [Header("-----스킬아이콘들-----")]
     public Sprite[] SkillSprites;
+
+
+    [Header("-----레벨업 효과-----")]
+    public ParticleSystem[] levelUpParticles;
+
     Image hpBg;
     bool isSelect = false;
 
     int buttonA = 0, buttonB = 0, buttonC = 0;
     int[] arr = new int[3];
     int index = 0;
+
+    #region Bool PlayerA
     bool playerASkillA = true;
     bool playerASkillB = true;
     bool playerASkillC = true;
     bool playerASkillD = true;
+    #endregion
 
-    public Text[] Descriptions;
+    #region Bool PlayerB
+    bool playerBSkillA = true;
+    bool playerBSkillB = true;
+    bool playerBSkillC = true;
+    bool playerBSkillD = true;
+    #endregion
+
+    #region Bool PlayerC
+    bool playerCSkillA = true;
+    bool playerCSkillB = true;
+    bool playerCSkillC = true;
+    bool playerCSkillD = true;
+    #endregion
     private void Start()
     {
         index = 0;
         hpBg = GameObject.Find("HpBG").GetComponent<Image>();
         LevelUpPanel.SetActive(false);
+
+        ControllerParticle(false);
+
     }
     #region SelectBtn
     public void SelectA() // 증강 들어갈거설정
     {
+        ControllerParticle(false);
+
         isSelect = true;
         if(CharacterManager.Instance.currentCharacter == Character.White)
         {
@@ -162,9 +195,180 @@ public class LevelUPManager : MonoBehaviour
                     break;
             }
         }
+        else if(CharacterManager.Instance.currentCharacter == Character.Blue)
+        {
+            switch(buttonA)
+            {
+                case 0:
+                    if(playerBSkillA)
+                    {
+                        WeaponManager.Instance.StartPattern("playerBatk1");
+                        playerBSkillA = false;
+                    }
+                    else if(!playerBSkillA)
+                    {
+                        WeaponDataManager.playerBOneAtk += 0.5f; //  우선 데미지 증가만 구현
+                    }
+                    break;
+
+                case 1:
+                    if(playerBSkillB)
+                    {
+                        WeaponManager.Instance.StartPattern("playerBatk1");
+                        playerBSkillB = false;
+                    }
+                    else if(!playerBSkillB)
+                    {
+
+                    }
+                    break;
+
+                case 2:
+                    if(playerBSkillC)
+                    {
+
+                    }
+                    else if(!playerBSkillC)
+                    {
+
+                    }
+                    break;
+
+                case 3:
+                    if(playerBSkillD)
+                    {
+
+                    }
+                    else if(!playerBSkillD)
+                    {
+
+                    }
+                    break;
+
+                case 4:
+                    int BsillBasic = Random.Range(0, 2);
+                    switch(BsillBasic)
+                    {
+                        case 0: // 빈도
+                            break;
+
+                        case 1: // 공격력
+                            break;
+                    }
+                    break;
+
+                case 5: // atk
+                    //PlayerState.Damage += 
+                    break;
+
+                case 6: // hp
+                        //PlayerState.Hp += 
+                    break;
+
+                case 7: // def
+                   // PlayerState.Defense +=
+                    break;
+
+                case 8: // speed
+                    //PlayerState.Speed
+                    break;
+            }
+        }
+        else if(CharacterManager.Instance.currentCharacter == Character.Green)
+        {
+            switch(buttonA)
+            {
+                case 0:
+                    if(playerCSkillA)
+                    {
+                        WeaponManager.Instance.StartPattern("playeCatk1");
+                        playerCSkillA = false;
+                    }
+                    else if(!playerCSkillA)
+                    {
+
+                    }
+                    break;
+
+                case 1:
+                    if(playerCSkillB)
+                    {
+                        WeaponManager.Instance.StartPattern("playerCatk2");
+                        playerCSkillB = false;
+                    }
+                    else if(!playerCSkillB)
+                    {
+
+                    }
+                    break;
+
+                case 2:
+                    if(playerCSkillC)
+                    {
+                        WeaponManager.Instance.StartPattern("playerCatk3");
+                        playerCSkillC = false;
+                    }
+                    else if(!playerCSkillC)
+                    {
+
+                    }
+                    break;
+
+                case 3:
+                    if(playerCSkillD)
+                    {
+                        WeaponManager.Instance.StartPattern("playerCatk4");
+                        playerCSkillD = false;
+                    }
+                    else if(playerCSkillD)
+                    {
+
+                    }
+                    break;
+
+                case 4:
+                    int CskillBasic = Random.Range(0, 3);
+                    switch(CskillBasic)
+                    {
+                        case 0: // 쿨타임
+                         //   WeaponDataManager.playerCBasicCoolTime -=  쿨타임 감소로직
+                            break;
+
+                        case 1: // 공격지속시간
+                           // WeaponDataManager.playerCBasicAtkTime += 공격지속시간
+                            break;
+
+                        case 2:  // 데미지
+                           // WeaponDataManager.playerCBasicAtkDamage += 데미지
+                            break;
+
+
+                    }
+                    break;
+
+                case 5: // 공격력
+                   //   PlayerState.Damage +=
+                    break; 
+
+                case 6: // 체력
+                   // PlayerState.Hp += 
+                    break;
+
+                case 7: // 방어력
+                   // PlayerState.Defense -= 
+                    break;
+
+                case 8: // 이동속도
+                   //  PlayerState.Speed +=
+                    break;
+
+            }
+        }
     }
     public void SelectB() // 증강 들어갈거설정
     {
+        ControllerParticle(false);
+
         isSelect = true;
         if (CharacterManager.Instance.currentCharacter == Character.White)
         {
@@ -301,6 +505,8 @@ public class LevelUPManager : MonoBehaviour
     }
     public void SelectC() // 증강 들어갈거설정
     {
+        ControllerParticle(false);
+
         isSelect = true;
         if (CharacterManager.Instance.currentCharacter == Character.White)
         {
@@ -439,9 +645,6 @@ public class LevelUPManager : MonoBehaviour
     {
         if (CharacterManager.Instance.currentCharacter == Character.White)
         {
-            Debug.Log("ButtonA : " + buttonA);
-            Debug.Log("ButtonB : " + buttonB);
-            Debug.Log("ButtonC : " + buttonC);
             switch (buttonA)
             {
                 case 0: // 1번
@@ -797,8 +1000,39 @@ public class LevelUPManager : MonoBehaviour
                     break;
             }
         }
+        else if(CharacterManager.Instance.currentCharacter == Character.Blue)
+        {
+
+        }
+        else if(CharacterManager.Instance.currentCharacter == Character.Green)
+        {
+
+        }
     }
     #endregion
+
+    void ControllerParticle(bool isPlay)
+    {
+        switch(isPlay)
+        {
+            case true:
+                for (int e = 0; e < levelUpParticles.Length; e++)
+                {
+                    levelUpParticles[e].gameObject.SetActive(true);
+                    levelUpParticles[e].Play();
+                }
+                break;
+
+            case false:
+                for (int e = 0; e < levelUpParticles.Length; e++)
+                {
+                    levelUpParticles[e].gameObject.SetActive(false);
+                    levelUpParticles[e].Stop();
+                }
+                break;
+
+        }
+    }
 
     private void GenerateDistinctRandomNumbers()
     {
@@ -848,6 +1082,9 @@ public class LevelUPManager : MonoBehaviour
             LevelUpPanel.gameObject.SetActive(true);
             UIManager.isPause = true;
             PlayerLevelBar.isLevelUp = false;
+
+
+            ControllerParticle(true);
         }
         if(isSelect)
         {

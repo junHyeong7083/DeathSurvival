@@ -20,6 +20,8 @@ public class WeaponDataManager : MonoBehaviour
 
 
     #region PlayerB
+    public static float playerBOneAtk;
+
 
     public static bool playerBTwobool;
 
@@ -32,7 +34,7 @@ public class WeaponDataManager : MonoBehaviour
     public static float playerCBasicAtkTime;
     public static float playerCBasicCoolTime;
     public static bool playerCBasicBool;
-
+    public static float playerCBasicAtkDamage;
 
     public static float playerCThreeCoolTime; // 쿨타임
     public static float playerCThreeAtkContinueTime; // 공격지속시간

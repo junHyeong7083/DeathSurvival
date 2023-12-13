@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
+    public static int huntMonsterCnt = 0;
+
     public GameObject[] monsterPrefabs; // 몬스터 프리팹 배열
     public int[] maxMonsters; // 최대 몬스터 수
     private List<GameObject>[] monsterPools; // 몬스터 풀 배열
@@ -97,7 +99,8 @@ public class MonsterManager : MonoBehaviour
 
             if (nextmonterNumber <= monsterPrefabs.Length - 1)
             {
-                inactiveNextMonster = monsterPools[nextmonterNumber].Find(monster => !monster.activeSelf);
+              //  Debug.Log("NextNumber index : " + nextmonterNumber);
+                inactiveNextMonster = monsterPools[nextmonterNumber-1].Find(monster => !monster.activeSelf);
                 if (inactiveNextMonster != null)
                 {
                     inactiveNextMonster.SetActive(true);

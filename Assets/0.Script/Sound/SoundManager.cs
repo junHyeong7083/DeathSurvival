@@ -45,7 +45,7 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("???!!!");
+          //  Debug.Log("???!!!");
             DontDestroyOnLoad(this.gameObject);
         }
         bgmPlayer = GetComponentsInChildren<AudioSource>()[0];
@@ -116,7 +116,7 @@ public class SoundManager : MonoBehaviour
     public void PlaySound()
     {
         bgmPlayer.Play();
-        Debug.Log("player");
+      //  Debug.Log("player");
         if (IsPause)
             IsPause = false;
     }

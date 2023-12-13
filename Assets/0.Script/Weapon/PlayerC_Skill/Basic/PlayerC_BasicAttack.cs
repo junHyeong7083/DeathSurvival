@@ -37,13 +37,13 @@ public class PlayerC_BasicAttack : PlayerController
                 {
                     if (Dir.transform.position.x >= PlayerPos.x)
                     {
-                        Debug.Log("¿À");
+                       // Debug.Log("¿À");
                         this.transform.localEulerAngles = new Vector3(180, 0, 270);
                         this.transform.position = new Vector3(PlayerController.PlayerPos.x + 1.0f, PlayerController.PlayerPos.y, 0);
                     }
                     else
                     {
-                        Debug.Log("¿Þ");
+                        //Debug.Log("¿Þ");
                         this.transform.localEulerAngles = new Vector3(0, 0, 90);
                         this.transform.position = new Vector3(PlayerController.PlayerPos.x - 1.0f, PlayerController.PlayerPos.y, 0);
                     }

@@ -37,7 +37,7 @@ public class PlayerHpBar : MonoBehaviour
                     if (isHit)
                     {
                         //Debug.Log("Hit!!");
-                        currentHp -= 0.5f * (1 - PlayerState.Defense);
+                        currentHp -= 10f* (1 - PlayerState.Defense);
                         isHit = false;
 
                         //  playerColor = Color.blue;

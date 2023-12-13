@@ -56,6 +56,15 @@ public class MonsterController : MonoBehaviour
     public static float PlayerAThreeDamage = 0;
     public static float PlayerABasicDamage = 0;
 
+    public static float PlayerBOneDamage = 0;
+    public static float PlayerBTwoDamage = 0;
+    public static float PlayerBThreeDamage = 0;
+    public static float PlayerBBasicDamage = 0;
+
+    public static float PlayerCOneDamage = 0;
+    public static float PlayerCTwoDamage = 0;
+    public static float PlayerCThreeDamage = 0;
+    public static float PlayerCBasicDamage = 0;
     #endregion
 
     bool isHitPlayerBFourSkill = false;
@@ -75,97 +84,105 @@ public class MonsterController : MonoBehaviour
             checkDamage = damage;
             if (checkDamage >= 1 && checkDamage < 5)
                 checkDamage = 1;
-            if (collision.gameObject.tag == "PlayerA_One")
+            switch(CharacterManager.Instance.currentCharacter)
             {
-                // 공격력 따라 데미지 줄이는 코드
-                Hp -= WeaponDataManager.playerAOneAtk + damage;
-                sumDamage = WeaponDataManager.playerAOneAtk + damage;
-                isHitAni = false;
-                isHit = true;
+                case Character.White:
+                    if (collision.gameObject.tag == "PlayerA_One")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.playerAOneAtk + damage;
+                        sumDamage = WeaponDataManager.playerAOneAtk + damage;
+                        isHitAni = false;
+                        isHit = true;
 
-                switch (CharacterManager.Instance.currentCharacter)
-                {
-                    case Character.White: // 전구
-                        PlayerAOneDamage += WeaponDataManager.playerAOneAtk;
-                        //  TakeDamage(sumDamage, checkDamage);
-                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
-                        break;
+                        switch (CharacterManager.Instance.currentCharacter)
+                        {
+                            case Character.White: // 전구
+                                PlayerAOneDamage += WeaponDataManager.playerAOneAtk;
+                                //  TakeDamage(sumDamage, checkDamage);
+                                pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                                break;
 
-                    case Character.Blue:
-                        break;
+                            case Character.Blue:
+                                break;
 
-                    case Character.Green:
-                        break;
-                }
-            }
-            
+                            case Character.Green:
+                                break;
+                        }
+                    }
+                    if (collision.gameObject.tag == "PlayerA_Two")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.playerATwoAtk + damage;
+                        sumDamage = WeaponDataManager.playerATwoAtk + damage;
+                        isHit = true;
+                        isHitAni = false;
 
-            if (collision.gameObject.tag == "PlayerA_Two")
-            {
-                // 공격력 따라 데미지 줄이는 코드
-                Hp -= WeaponDataManager.playerATwoAtk + damage;
-                sumDamage = WeaponDataManager.playerATwoAtk + damage;
-                isHit = true;
-                isHitAni = false;
+                        switch (CharacterManager.Instance.currentCharacter)
+                        {
+                            case Character.White: // 전구
+                                PlayerATwoDamage += WeaponDataManager.playerATwoAtk + damage;
+                                pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                                break;
 
-                switch (CharacterManager.Instance.currentCharacter)
-                {
-                    case Character.White: // 전구
-                        PlayerATwoDamage += WeaponDataManager.playerATwoAtk + damage;
-                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
-                        break;
+                            case Character.Blue:
+                                break;
 
-                    case Character.Blue:
-                        break;
+                            case Character.Green:
+                                break;
+                        }
+                    }
+                    if (collision.gameObject.tag == "PlayerA_Three")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.playerAThreeAtk;
+                        sumDamage = WeaponDataManager.playerAThreeAtk + damage;
+                        isHit = true;
+                        isHitAni = false;
 
-                    case Character.Green:
-                        break;
-                }
-            }
-            if (collision.gameObject.tag == "PlayerA_Three")
-            {
-                // 공격력 따라 데미지 줄이는 코드
-                Hp -= WeaponDataManager.playerAThreeAtk;
-                sumDamage = WeaponDataManager.playerAThreeAtk + damage;
-                isHit = true;
-                isHitAni = false;
+                        switch (CharacterManager.Instance.currentCharacter)
+                        {
+                            case Character.White: // 전구
+                                PlayerAThreeDamage += WeaponDataManager.playerAThreeAtk;
+                                pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                                break;
 
-                switch (CharacterManager.Instance.currentCharacter)
-                {
-                    case Character.White: // 전구
-                        PlayerAThreeDamage += WeaponDataManager.playerAThreeAtk;
-                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
-                        break;
+                            case Character.Blue:
+                                break;
 
-                    case Character.Blue:
-                        break;
+                            case Character.Green:
+                                break;
+                        }
+                    }
+                    if (collision.gameObject.tag == "PlayerA_Basic")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.playerABasicAtkDamage;
+                        sumDamage = WeaponDataManager.playerABasicAtkDamage + damage;
+                        isHit = true;
+                        isHitAni = false;
 
-                    case Character.Green:
-                        break;
-                }
-            }
+                        switch (CharacterManager.Instance.currentCharacter)
+                        {
+                            case Character.White: // 전구
+                                PlayerABasicDamage += WeaponDataManager.playerABasicAtkDamage;
+                              //  pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                                break;
 
-            if (collision.gameObject.tag == "PlayerA_Basic")
-            {
-                // 공격력 따라 데미지 줄이는 코드
-                Hp -= WeaponDataManager.playerABasicAtkDamage;
-                sumDamage = WeaponDataManager.playerABasicAtkDamage + damage;
-                isHit = true;
-                isHitAni = false;
+                            case Character.Blue:
+                                break;
 
-                switch (CharacterManager.Instance.currentCharacter)
-                {
-                    case Character.White: // 전구
-                        PlayerABasicDamage += WeaponDataManager.playerABasicAtkDamage;
-                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
-                        break;
+                            case Character.Green:
+                                break;
+                        }
+                    }
+                    break;
 
-                    case Character.Blue:
-                        break;
+                case Character.Blue:
+                    break;
 
-                    case Character.Green:
-                        break;
-                }
+                case Character.Green:
+                    break;
             }
 
             if (WeaponDataManager.playerBFourbool)
@@ -419,6 +436,7 @@ public class MonsterController : MonoBehaviour
                 monsterManager.SpawnMonsterItem(this.transform.position.x, this.transform.position.y);
                 isMove = false;
                 isDead = true; // 몬스터를 죽은 상태로 표시
+                MonsterManager.huntMonsterCnt++;
             }
             if (isDead)
             {
@@ -507,7 +525,7 @@ public class MonsterController : MonoBehaviour
             {
                 if (!ones)
                 {
-                    bloodEffect.SpawnMonsterBlood(knockPos.x, knockPos.y);
+                    //bloodEffect.SpawnMonsterBlood(knockPos.x, knockPos.y);
                     ones = true;
                 }
             }

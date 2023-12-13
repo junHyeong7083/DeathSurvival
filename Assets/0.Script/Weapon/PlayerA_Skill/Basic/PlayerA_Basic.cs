@@ -37,7 +37,7 @@ public class PlayerA_Basic : MonoBehaviour
                 if (isRight)
                 {
                     this.transform.position = new Vector3(PlayerController.PlayerPos.x + 1.5f, PlayerController.PlayerPos.y, 0);
-                    Debug.Log("¿À");
+                   // Debug.Log("¿À");
                     canAtk = false;
                     isRight = false;
                     spriteRenderer.flipX = false;
@@ -46,7 +46,7 @@ public class PlayerA_Basic : MonoBehaviour
                 else if(!isRight)
                 {
                     this.transform.position = new Vector3(PlayerController.PlayerPos.x - 1.5f, PlayerController.PlayerPos.y, 0);
-                    Debug.Log("¿Þ");
+                 //   Debug.Log("¿Þ");
                     canAtk = false;
                     isRight = true;
                     animator.SetTrigger("isAtk");
