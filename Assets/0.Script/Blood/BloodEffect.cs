@@ -52,6 +52,7 @@ public class BloodEffect : MonoBehaviour
     public void SpawnMonsterBlood(float x, float y)
     {
         int randomBlood = Random.Range(0, 4);  // 0 1 2 3 4 
+        int randomRotation = Random.Range(0, 361);
         GameObject inactiveMonsterBlood;
         switch (randomBlood)
         {
@@ -62,6 +63,7 @@ public class BloodEffect : MonoBehaviour
                     inactiveMonsterBlood.SetActive(true);
                     inactiveMonsterBlood.GetComponent<Animator>().SetTrigger("isBlood"); // Blood 애니메이터 접근후 실행
                     inactiveMonsterBlood.transform.position = new Vector3(x, y, 0);
+                    inactiveMonsterBlood.transform.eulerAngles = new Vector3(0, 0, randomRotation);
                 }
                 break;
 
@@ -72,6 +74,7 @@ public class BloodEffect : MonoBehaviour
                     inactiveMonsterBlood.SetActive(true);
                     inactiveMonsterBlood.GetComponent<Animator>().SetTrigger("isBlood"); // Blood 애니메이터 접근후 실행
                     inactiveMonsterBlood.transform.position = new Vector3(x, y, 0);
+                    inactiveMonsterBlood.transform.eulerAngles = new Vector3(0, 0, randomRotation);
                 }
                 break;
 
@@ -82,6 +85,7 @@ public class BloodEffect : MonoBehaviour
                     inactiveMonsterBlood.SetActive(true);
                     inactiveMonsterBlood.GetComponent<Animator>().SetTrigger("isBlood"); // Blood 애니메이터 접근후 실행
                     inactiveMonsterBlood.transform.position = new Vector3(x, y, 0);
+                    inactiveMonsterBlood.transform.eulerAngles = new Vector3(0, 0, randomRotation);
                 }
                 break;
 
@@ -92,6 +96,7 @@ public class BloodEffect : MonoBehaviour
                     inactiveMonsterBlood.SetActive(true);
                     inactiveMonsterBlood.GetComponent<Animator>().SetTrigger("isBlood"); // Blood 애니메이터 접근후 실행
                     inactiveMonsterBlood.transform.position = new Vector3(x, y, 0);
+                    inactiveMonsterBlood.transform.eulerAngles = new Vector3(0, 0, randomRotation);
                 }
                 break;
         }

@@ -8,7 +8,7 @@ public class DataManager : MonoBehaviour
     public AllLevel levels;
 
     public static int currentLevel;
-    private void Awake()
+    private void Awake() 
     {
          levels =  JsonUtility.FromJson<AllLevel>(data.text);
         currentLevel = 1;

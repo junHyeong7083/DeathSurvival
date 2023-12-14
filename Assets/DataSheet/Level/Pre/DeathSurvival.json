@@ -1,0 +1,204 @@
+{
+  "Level": [
+    {
+      "Level": "1",
+      "Experience": "0"
+    },
+    {
+      "Level": "2",
+      "Experience": "125"
+    },
+    {
+      "Level": "3",
+      "Experience": "300"
+    },
+    {
+      "Level": "4",
+      "Experience": "500"
+    },
+    {
+      "Level": "5",
+      "Experience": "750"
+    },
+    {
+      "Level": "6",
+      "Experience": "1296"
+    },
+    {
+      "Level": "7",
+      "Experience": "2401"
+    },
+    {
+      "Level": "8",
+      "Experience": "4096"
+    },
+    {
+      "Level": "9",
+      "Experience": "6581"
+    },
+    {
+      "Level": "10",
+      "Experience": "10000"
+    },
+    {
+      "Level": "11",
+      "Experience": "14661"
+    },
+    {
+      "Level": "12",
+      "Experience": "20756"
+    },
+    {
+      "Level": "13",
+      "Experience": "28581"
+    },
+    {
+      "Level": "14",
+      "Experience": "38436"
+    },
+    {
+      "Level": "15",
+      "Experience": "50645"
+    },
+    {
+      "Level": "16",
+      "Experience": "65556"
+    },
+    {
+      "Level": "17",
+      "Experience": "83541"
+    },
+    {
+      "Level": "18",
+      "Experience": "104996"
+    },
+    {
+      "Level": "19",
+      "Experience": "130341"
+    },
+    {
+      "Level": "20",
+      "Experience": "160020"
+    },
+    {
+      "Level": "21",
+      "Experience": "194501"
+    },
+    {
+      "Level": "22",
+      "Experience": "234276"
+    },
+    {
+      "Level": "23",
+      "Experience": "279861"
+    },
+    {
+      "Level": "24",
+      "Experience": "331792"
+    },
+    {
+      "Level": "25",
+      "Experience": "390641"
+    },
+    {
+      "Level": "26",
+      "Experience": "456992"
+    },
+    {
+      "Level": "27",
+      "Experience": "531457"
+    },
+    {
+      "Level": "28",
+      "Experience": "614672"
+    },
+    {
+      "Level": "29",
+      "Experience": "707297"
+    },
+    {
+      "Level": "30",
+      "Experience": "810016"
+    },
+    {
+      "Level": "31",
+      "Experience": "923537"
+    },
+    {
+      "Level": "32",
+      "Experience": "1048592"
+    },
+    {
+      "Level": "33",
+      "Experience": "1185937"
+    },
+    {
+      "Level": "34",
+      "Experience": "1336352"
+    },
+    {
+      "Level": "35",
+      "Experience": "1500641"
+    },
+    {
+      "Level": "36",
+      "Experience": "1679632"
+    },
+    {
+      "Level": "37",
+      "Experience": "1874177"
+    },
+    {
+      "Level": "38",
+      "Experience": "2085152"
+    },
+    {
+      "Level": "39",
+      "Experience": "2313457"
+    },
+    {
+      "Level": "40",
+      "Experience": "2560016"
+    },
+    {
+      "Level": "41",
+      "Experience": "2825777"
+    },
+    {
+      "Level": "42",
+      "Experience": "3111713"
+    },
+    {
+      "Level": "43",
+      "Experience": "3418818"
+    },
+    {
+      "Level": "44",
+      "Experience": "3748113"
+    },
+    {
+      "Level": "45",
+      "Experience": "4100642"
+    },
+    {
+      "Level": "46",
+      "Experience": "4830002"
+    },
+    {
+      "Level": "47",
+      "Experience": "6338418"
+    },
+    {
+      "Level": "48",
+      "Experience": "9833681"
+    },
+    {
+      "Level": "49",
+      "Experience": "19745870"
+    },
+    {
+      "Level": "50",
+      "Experience": "55810962"
+    }
+  ]
+}

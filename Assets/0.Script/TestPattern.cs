@@ -96,4 +96,14 @@ public class TestPattern : MonoBehaviour
     {
         WeaponManager.Instance.StartPattern("playeCatk4");
     }
+
+    public void PatternC2()
+    {
+            WeaponManager.Instance.StartPattern("playeCatk2");
+    }
+
+    public void PatternC1()
+    {
+        WeaponManager.Instance.StartPattern("playeCatk1");
+    }
 }

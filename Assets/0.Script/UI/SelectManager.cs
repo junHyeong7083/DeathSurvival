@@ -19,6 +19,10 @@ public class SelectManager : MonoBehaviour
     int currentUpDownValue = 1;
     int currentLeftRightValue = 0;
 
+    [Header("SceneButton")]
+    public Button[] buttons;
+    public Outline[] outlines;
+
     [SerializeField]
     float changeSpeed = 6; // 패널 이동속도
 
@@ -42,6 +46,7 @@ public class SelectManager : MonoBehaviour
     public static bool canC = false;
     void Start()
     {
+
         checkB = PlayerPrefs.GetFloat("CharacterB");
         checkC = PlayerPrefs.GetFloat("CharacterC");
 
@@ -73,7 +78,7 @@ public class SelectManager : MonoBehaviour
     }
 
 
-
+    #region Keyboard
     void ShowCurrentBtnIndex(int currentIndex)
     {
         for(int e= 0; e < showEffectImage.Length; e++)
@@ -174,8 +179,51 @@ public class SelectManager : MonoBehaviour
 
         }
     } // 캐릭터 패널의 이동및 사이즈 조절
+    #endregion
 
-    void StartGame(int currentIndex)
+    #region Mouse
+    public void OnStartButton()
+    {
+        outlines[0].effectColor = Color.green;
+        outlines[1].effectColor = Color.white;
+        currentUpDownValue = 1;
+    }
+
+    public void OutStartButton()
+    {
+        outlines[0].effectColor = Color.white;
+        outlines[1].effectColor = Color.white;
+        currentUpDownValue = 1;
+
+    }
+
+    public void OnBackButton()
+    {
+        outlines[0].effectColor = Color.white;
+        outlines[1].effectColor = Color.green;
+        currentUpDownValue = 0;
+    }
+    public void OutBackButton()
+    {
+        outlines[0].effectColor = Color.white;
+        outlines[1].effectColor = Color.white;
+        currentUpDownValue = 0;
+    }
+
+
+    public void OnClickStartButton()
+    {
+
+    }
+    public void OnClickBackButton()
+    {
+
+    }
+
+
+
+    #endregion
+    public void StartGame(int currentIndex)
     {
         switch(currentIndex)
         {

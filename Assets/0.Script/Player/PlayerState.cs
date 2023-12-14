@@ -39,24 +39,24 @@ public class PlayerState : MonoBehaviour
         switch(CharacterIndex)
         {
             case 0:
-                Hp = PlayerPrefs.GetFloat("PlayerAHP");
-                Speed = PlayerPrefs.GetFloat("PlayerASpeed");
-                Damage = PlayerPrefs.GetFloat("PlayerADamage");
-                Defense = PlayerPrefs.GetFloat("PlayerADefense");
+                Hp = 200f;
+                Speed = 3;
+                Damage = 100;
+                Defense = 0.8f;
                 break;
 
             case 1:
-                Hp = PlayerPrefs.GetFloat("PlayerAHP");
-                Speed = PlayerPrefs.GetFloat("PlayerASpeed");
-                Damage = PlayerPrefs.GetFloat("PlayerADamage");
-                Defense = PlayerPrefs.GetFloat("PlayerADefense");
+                Hp = 150f;
+                Speed = 5;
+                Damage = 150;
+                Defense = 0.9f;
                 break;
 
             case 2:
-                Hp = PlayerPrefs.GetFloat("PlayerCHP");
-                Speed = PlayerPrefs.GetFloat("PlayerCSpeed");
-                Damage = PlayerPrefs.GetFloat("PlayerCDamage");
-                Defense = PlayerPrefs.GetFloat("PlayerCDefense");
+                Hp = 250;
+                Speed = 4;
+                Damage = 200;
+                Defense = 0.6f;
                 break;
         }
     }

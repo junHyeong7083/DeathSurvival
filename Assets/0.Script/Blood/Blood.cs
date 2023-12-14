@@ -9,15 +9,22 @@ public class Blood : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
+    private void OnEnable()
+    {
+        Timer = 0f;
+    }
 
+    private void OnDisable()
+    {
+        Timer = 0f;
+    }
     float Timer = 0f;
     private void Update()
     {
         Timer += Time.deltaTime;
-        if (Timer >= 1.5f) // 블러드 애니메이션의 마지막 지점 1.5f
+        if (Timer >= 1.7f) // 블러드 애니메이션의 마지막 지점 1.5f
         {
             this.gameObject.SetActive(false);
-            Timer = 0f;
         }
     }
 }

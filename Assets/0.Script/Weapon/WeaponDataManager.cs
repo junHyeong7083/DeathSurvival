@@ -36,6 +36,16 @@ public class WeaponDataManager : MonoBehaviour
     public static bool playerCBasicBool;
     public static float playerCBasicAtkDamage;
 
+    public static float playerCOneContinueTime = 2f;
+    public static float playerCOneCoolTime = 7f;
+    public static float plyaerCOneDamage;
+
+
+    public static float playerCTwoAtkContinueTime;
+    public static float playerCTwoCoolTime;
+    public static float playerCTwoDamage;
+
+
     public static float playerCThreeCoolTime; // 쿨타임
     public static float playerCThreeAtkContinueTime; // 공격지속시간
     public static float playerCThreeAtkSize; // 공격 범위
@@ -68,9 +78,15 @@ public class WeaponDataManager : MonoBehaviour
         playerCBasicCoolTime = 3f;
         playerCBasicBool = false;
 
+
+
+
         playerCThreeCoolTime = 30f; // 쿨타임
         playerCThreeAtkContinueTime = 10f;
         playerCThreeAtkSize = 5;
+
+        playerCTwoCoolTime = 10f;
+        playerCTwoAtkContinueTime = 3f;
 
     }
 

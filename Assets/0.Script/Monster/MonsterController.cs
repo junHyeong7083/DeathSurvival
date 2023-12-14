@@ -225,22 +225,38 @@ public class MonsterController : MonoBehaviour
         switch (monsterIndex)
         {
             case 0:
-                saveSpeed = MincheolWork._Monster1Speed;
-                maxHp = MincheolWork._Monster1HP;
-                //Debug.Log("hp : " + maxHp);
+                maxHp = 100f;
+                saveSpeed = 2;
+
                 break;
 
             case 1:
-                saveSpeed = MincheolWork._Monster2Speed;
-                maxHp = MincheolWork._Monster2HP;
+                maxHp = 200f;
+                saveSpeed = 3;
                 break;
 
             case 2:
-                saveSpeed = MincheolWork._Monster3Speed;
-                maxHp = MincheolWork._Monster3HP;
+                maxHp = 500f;
+                saveSpeed = 4;
+                break;
+
+            case 3:
+                maxHp = 600;
+                saveSpeed = 4;
+                break;
+
+            case 4:
+                maxHp = 700;
+                saveSpeed = 5;
+                break;
+
+            case 5:
+                maxHp = 1000;
+                saveSpeed = 5;
                 break;
 
         }
+
     }
     UnityEngine.Color newColor;
     void Start()
@@ -249,6 +265,7 @@ public class MonsterController : MonoBehaviour
         targetRigid = targetPlayer.GetComponent<Rigidbody2D>();
         isHitPlayerBFourSkill = false;
         Speed = saveSpeed;
+        Debug.Log("Speed : " + Speed); 
         pool = GameObject.Find("DamageManager").GetComponent<DamageTextPool>();
 
         circleCollider2D = GetComponent<CircleCollider2D>();
@@ -300,22 +317,37 @@ public class MonsterController : MonoBehaviour
             switch (monsterIndex)
             {
                 case 0:
-                    maxHp = MincheolWork._Monster1HP;
+                    maxHp = 100f;
                     break;
 
                 case 1:
-                    maxHp = MincheolWork._Monster2HP;
+                    maxHp = 200f;
                     break;
 
                 case 2:
-                    maxHp = MincheolWork._Monster3HP;
+                    maxHp = 500f;
                     break;
+
+                case 3:
+                    maxHp = 600;
+                    break;
+
+                case 4:
+                    maxHp = 700;
+                    break;
+
+                case 5:
+                    maxHp = 1000;
+                    break;
+
+
+
             }
         }
         // 기존의 maxHp = Hp; 라인을 삭제
         // maxHp = Hp;
         isStart = true;
-        Hp = maxHp; // 이 부분이 수정되었습니다.
+        Hp = maxHp; 
         isDead = false;
     }
 
@@ -525,7 +557,7 @@ public class MonsterController : MonoBehaviour
             {
                 if (!ones)
                 {
-                    //bloodEffect.SpawnMonsterBlood(knockPos.x, knockPos.y);
+                    bloodEffect.SpawnMonsterBlood(knockPos.x, knockPos.y);
                     ones = true;
                 }
             }

@@ -14,7 +14,6 @@ public class EventMonsterController : MonoBehaviour
     void Update()
     {
         disableTime += Time.deltaTime;
-        Debug.Log("disableTime : " + disableTime);
         switch (EventMonster.patternRandom)
         {
 

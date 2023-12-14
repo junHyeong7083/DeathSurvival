@@ -6,199 +6,199 @@
     },
     {
       "Level": "2",
-      "Experience": "125"
+      "Experience": "10"
     },
     {
       "Level": "3",
-      "Experience": "300"
+      "Experience": "20"
     },
     {
       "Level": "4",
-      "Experience": "500"
+      "Experience": "30"
     },
     {
       "Level": "5",
-      "Experience": "750"
+      "Experience": "40"
     },
     {
       "Level": "6",
-      "Experience": "1296"
+      "Experience": "50"
     },
     {
       "Level": "7",
-      "Experience": "2401"
+      "Experience": "60"
     },
     {
       "Level": "8",
-      "Experience": "4096"
+      "Experience": "70"
     },
     {
       "Level": "9",
-      "Experience": "6581"
+      "Experience": "80"
     },
     {
       "Level": "10",
-      "Experience": "10000"
+      "Experience": "90"
     },
     {
       "Level": "11",
-      "Experience": "14661"
+      "Experience": "100"
     },
     {
       "Level": "12",
-      "Experience": "20756"
+      "Experience": "110"
     },
     {
       "Level": "13",
-      "Experience": "28581"
+      "Experience": "120"
     },
     {
       "Level": "14",
-      "Experience": "38436"
+      "Experience": "130"
     },
     {
       "Level": "15",
-      "Experience": "50645"
+      "Experience": "140"
     },
     {
       "Level": "16",
-      "Experience": "65556"
+      "Experience": "150"
     },
     {
       "Level": "17",
-      "Experience": "83541"
+      "Experience": "160"
     },
     {
       "Level": "18",
-      "Experience": "104996"
+      "Experience": "170"
     },
     {
       "Level": "19",
-      "Experience": "130341"
+      "Experience": "180"
     },
     {
       "Level": "20",
-      "Experience": "160020"
+      "Experience": "190"
     },
     {
       "Level": "21",
-      "Experience": "194501"
+      "Experience": "200"
     },
     {
       "Level": "22",
-      "Experience": "234276"
+      "Experience": "210"
     },
     {
       "Level": "23",
-      "Experience": "279861"
+      "Experience": "220"
     },
     {
       "Level": "24",
-      "Experience": "331792"
+      "Experience": "230"
     },
     {
       "Level": "25",
-      "Experience": "390641"
+      "Experience": "240"
     },
     {
       "Level": "26",
-      "Experience": "456992"
+      "Experience": "250"
     },
     {
       "Level": "27",
-      "Experience": "531457"
+      "Experience": "260"
     },
     {
       "Level": "28",
-      "Experience": "614672"
+      "Experience": "270"
     },
     {
       "Level": "29",
-      "Experience": "707297"
+      "Experience": "280"
     },
     {
       "Level": "30",
-      "Experience": "810016"
+      "Experience": "305"
     },
     {
       "Level": "31",
-      "Experience": "923537"
+      "Experience": "330"
     },
     {
       "Level": "32",
-      "Experience": "1048592"
+      "Experience": "355"
     },
     {
       "Level": "33",
-      "Experience": "1185937"
+      "Experience": "380"
     },
     {
       "Level": "34",
-      "Experience": "1336352"
+      "Experience": "405"
     },
     {
       "Level": "35",
-      "Experience": "1500641"
+      "Experience": "430"
     },
     {
       "Level": "36",
-      "Experience": "1679632"
+      "Experience": "455"
     },
     {
       "Level": "37",
-      "Experience": "1874177"
+      "Experience": "480"
     },
     {
       "Level": "38",
-      "Experience": "2085152"
+      "Experience": "505"
     },
     {
       "Level": "39",
-      "Experience": "2313457"
+      "Experience": "530"
     },
     {
       "Level": "40",
-      "Experience": "2560016"
+      "Experience": "555"
     },
     {
       "Level": "41",
-      "Experience": "2825777"
+      "Experience": "580"
     },
     {
       "Level": "42",
-      "Experience": "3111713"
+      "Experience": "605"
     },
     {
       "Level": "43",
-      "Experience": "3418818"
+      "Experience": "630"
     },
     {
       "Level": "44",
-      "Experience": "3748113"
+      "Experience": "655"
     },
     {
       "Level": "45",
-      "Experience": "4100642"
+      "Experience": "695"
     },
     {
       "Level": "46",
-      "Experience": "4830002"
+      "Experience": "735"
     },
     {
       "Level": "47",
-      "Experience": "6338418"
+      "Experience": "775"
     },
     {
       "Level": "48",
-      "Experience": "9833681"
+      "Experience": "815"
     },
     {
       "Level": "49",
-      "Experience": "19745870"
+      "Experience": "855"
     },
     {
       "Level": "50",
-      "Experience": "55810962"
+      "Experience": "895"
     }
   ]
 }
