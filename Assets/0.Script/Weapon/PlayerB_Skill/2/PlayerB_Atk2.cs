@@ -18,6 +18,7 @@ public class PlayerB_Atk2 : MonoBehaviour
     {
         magneticField.gameObject.SetActive(false);
         magneticspriteRenderer = magneticField.GetComponent<SpriteRenderer>();
+        magneticField.transform.localScale = new Vector3(WeaponDataManager.playerBTwoSize, WeaponDataManager.playerBTwoSize, WeaponDataManager.playerBTwoSize);
         DirPos = GameObject.Find("Dir");
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -45,6 +46,7 @@ public class PlayerB_Atk2 : MonoBehaviour
             if (Pixelate.showHpBar)
             {
                 #region Logic
+                magneticField.transform.localScale = new Vector3(WeaponDataManager.playerBTwoSize, WeaponDataManager.playerBTwoSize, WeaponDataManager.playerBTwoSize);
                 color.a = 1f;
                 magneticcolor.a = 1f;
                 spriteRenderer.color = color;

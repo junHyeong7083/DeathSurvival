@@ -21,13 +21,15 @@ public class WeaponDataManager : MonoBehaviour
 
     #region PlayerB
     public static float playerBOneAtk;
-
+    public static float playerBTwoSize;
 
     public static bool playerBTwobool;
-
+    public static float playerBThreeDamage;
     public static bool playerBFourbool;
     public static float playerBFourTime;
     public static float playerBFourCoolTime;
+
+    public static float playerBBasicDamage;
     #endregion
 
     #region PlayerC
@@ -69,6 +71,8 @@ public class WeaponDataManager : MonoBehaviour
           playerABasicAtkDamage = 1000f;
           playerABasicAtkCool = 3f;
 
+
+        playerBTwoSize = 2;
         playerBFourTime = 10f;
         playerBFourCoolTime = 30f;
         playerBFourbool = false;

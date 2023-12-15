@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
@@ -109,13 +110,13 @@ public class LevelUPManager : MonoBehaviour
                         {
                             case 0: // 재생속도 증가x
                                     // Descriptions[0].text = "1번스킬 회전속도 1증가 \n 현재 속도 : " + WeaponDataManager.playerAOneSpeed.ToString();
-                                float value1 = PlayerPrefs.GetFloat("Skill1SpeedUP");
+                                float value1 = WeaponDataManager.playerAOneSpeed * 0.05f;
                                 WeaponDataManager.playerAOneSpeed += value1;
                                 break;
 
                             case 1: // 데미지 증가
                                 //Descriptions[0].text = "1번스킬 데미지 5증가 \n 현재 데미지 : " + WeaponDataManager.playerAOneAtk.ToString();
-                                float value2 = PlayerPrefs.GetFloat("Skill1AtkUP");
+                                float value2 =  WeaponDataManager.playerAOneAtk * 0.05f;
                                 WeaponDataManager.playerAOneAtk += value2;
                                 break;
                         }
@@ -134,11 +135,13 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerATwoCoolTime -= PlayerPrefs.GetFloat("Skill2SpeedUP");
+                                float value1 = WeaponDataManager.playerATwoCoolTime * 0.05f;
+                                WeaponDataManager.playerATwoCoolTime -= value1;
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerATwoAtk += PlayerPrefs.GetFloat("Skill2AtkUP");
+                                float value2 = WeaponDataManager.playerATwoAtk * 0.05f;
+                                WeaponDataManager.playerATwoAtk += value2;
                                 break;
                         }
                     }
@@ -155,11 +158,13 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerAThreeCoolTime -= PlayerPrefs.GetFloat("Skill3SpeedUP");
+                                float value1 = WeaponDataManager.playerAThreeCoolTime * 0.05f;
+                                WeaponDataManager.playerAThreeCoolTime -= value1;
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerAThreeAtk += PlayerPrefs.GetFloat("Skill3AtkUP");
+                                float value2 = WeaponDataManager.playerAThreeAtk * 0.05f;
+                                WeaponDataManager.playerAThreeAtk += value2;
                                 break;
                         }
                     }
@@ -177,15 +182,15 @@ public class LevelUPManager : MonoBehaviour
                         switch(Askill4)
                         {
                             case 0: // 지속시간
-                                WeaponDataManager.playerAFourTime += PlayerPrefs.GetFloat("Skill4TimeUP");
+                                float value1 = WeaponDataManager.playerAFourTime * 0.05f;
+                                WeaponDataManager.playerAFourTime += value1;
                                 break;
 
                             case 1: // 쿨타임
-                                WeaponDataManager.playerAFourCoolTime -= PlayerPrefs.GetFloat("Skill4CoolUP");
+                                float value2 = WeaponDataManager.playerAFourCoolTime * 0.05f;
+                                WeaponDataManager.playerAFourCoolTime -= value2;
                                 break;
                         }
-
-                        WeaponDataManager.playerAFourTime += 0.25f;
                     }
                     break;
 
@@ -193,29 +198,35 @@ public class LevelUPManager : MonoBehaviour
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            WeaponDataManager.playerABasicAtkCool -= PlayerPrefs.GetFloat("BasicSpeedUP");
+                            float value1 = WeaponDataManager.playerABasicAtkCool * 0.05f;
+                            WeaponDataManager.playerABasicAtkCool -= value1;
                             break;
 
                         case 1: // 데미지 증가
-                            WeaponDataManager.playerABasicAtkDamage += PlayerPrefs.GetFloat("BasicAtkUP");
+                            float value2 = WeaponDataManager.playerABasicAtkDamage * 0.05f;
+                            WeaponDataManager.playerABasicAtkDamage += value2;
                             break;
                     }
                     break;
 
                 case 5: // 공격력
-                    PlayerState.Damage += PlayerPrefs.GetFloat("PlayerADamageUP");
+                    float valueAtk = PlayerState.Damage * 0.05f;
+                    PlayerState.Damage += valueAtk;
                     break;
 
                 case 6: // 체력
-                    PlayerState.Hp += PlayerPrefs.GetFloat("PlayerAHpUP");
+                    float valueHp = PlayerState.Hp * 0.05f;
+                    PlayerState.Hp += valueHp;
                     break;
 
                 case 7: // 방어력
-                    PlayerState.Defense += PlayerPrefs.GetFloat("PlayerADefenseUP");
+                    float valueDef = PlayerState.Defense * 0.05f;
+                    PlayerState.Defense += valueDef;
                     break;
 
                 case 8: // 이동속도
-                    PlayerState.Speed += PlayerPrefs.GetFloat("PlayerASpeedUP");
+                    float valueSpeed = PlayerState.Speed * 0.05f;
+                    PlayerState.Speed += valueSpeed;
                     break;
             }
         }
@@ -231,70 +242,88 @@ public class LevelUPManager : MonoBehaviour
                     }
                     else if(!playerBSkillA)
                     {
-                        WeaponDataManager.playerBOneAtk += 0.5f; //  우선 데미지 증가만 구현
+                        float value1 = WeaponDataManager.playerBOneAtk * 0.05f;
+                        WeaponDataManager.playerBOneAtk += value1; //  우선 데미지 증가만 구현
                     }
                     break;
 
                 case 1:
                     if(playerBSkillB)
                     {
-                        WeaponManager.Instance.StartPattern("playerBatk1");
+                        WeaponManager.Instance.StartPattern("playerBatk2");
                         playerBSkillB = false;
                     }
                     else if(!playerBSkillB)
                     {
-
+                        float value1 = WeaponDataManager.playerBTwoSize * 0.05f;
+                        WeaponDataManager.playerBTwoSize += value1;
                     }
                     break;
 
                 case 2:
                     if(playerBSkillC)
                     {
-
+                        playerBSkillC = false;
+                        WeaponManager.Instance.StartPattern("playerBatk3");
                     }
-                    else if(!playerBSkillC)
+                    else if(!playerBSkillC) // 데미지 증가
                     {
-
+                        float value1 = WeaponDataManager.playerBThreeDamage * 0.05f;
+                        WeaponDataManager.playerBThreeDamage += value1;
                     }
                     break;
 
                 case 3:
                     if(playerBSkillD)
                     {
-
+                        playerBSkillD = false;
+                        WeaponManager.Instance.StartPattern("playerBatk4");
                     }
                     else if(!playerBSkillD)
                     {
+                        switch(Bskill4)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerBFourCoolTime * 0.05f;
+                                WeaponDataManager.playerBFourCoolTime -= value1;
+                                break;
 
+                            case 1:
+                                float value2 = WeaponDataManager.playerBFourTime * 0.05f;
+                                WeaponDataManager.playerBFourTime += value2;
+                                break;
+                        }
                     }
                     break;
 
                 case 4:
-                    int BsillBasic = Random.Range(0, 2);
-                    switch(BsillBasic)
+                    switch(BskillBasic)
                     {
                         case 0: // 빈도
-                            break;
-
-                        case 1: // 공격력
+                            float value2 = WeaponDataManager.playerBBasicDamage * 0.05f;
+                            WeaponDataManager.playerBBasicDamage += value2;
                             break;
                     }
                     break;
 
                 case 5: // atk
-                    //PlayerState.Damage += 
+                    float valueAtk = PlayerState.Damage * 0.05f;
+                    PlayerState.Damage += valueAtk;
                     break;
 
                 case 6: // hp
-                        //PlayerState.Hp += 
+                    float valueHp= PlayerState.Hp * 0.05f;
+                    PlayerState.Hp += valueHp;
                     break;
 
                 case 7: // def
-                   // PlayerState.Defense +=
+                    float valueDef = PlayerState.Defense * 0.05f;
+                    PlayerState.Defense += valueDef;
                     break;
 
                 case 8: // speed
-                    //PlayerState.Speed
+                    float valueSpeed  = PlayerState.Speed * 0.05f;
+                    PlayerState.Speed += valueSpeed;
                     break;
             }
         }
@@ -310,7 +339,24 @@ public class LevelUPManager : MonoBehaviour
                     }
                     else if(!playerCSkillA)
                     {
+                        switch( Cskill1)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCOneContinueTime * 0.05f;
+                                WeaponDataManager.playerCOneContinueTime += value1;
+                                break;
 
+                            case 1:
+                                float value2 = WeaponDataManager.playerCOneCoolTime * 0.05f;
+                                WeaponDataManager.playerCOneCoolTime -= value2;
+                                break;
+
+                            case 2:
+                                float value3 = WeaponDataManager.plyaerCOneDamage * 0.05f;
+                                WeaponDataManager.plyaerCOneDamage += value3;
+                                break;
+
+                        }
                     }
                     break;
 
@@ -322,7 +368,24 @@ public class LevelUPManager : MonoBehaviour
                     }
                     else if(!playerCSkillB)
                     {
+                        switch(Cskill2)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCTwoAtkContinueTime * 0.05f;
+                                WeaponDataManager.playerCTwoAtkContinueTime += value1;
+                                break;
 
+                            case 1:
+                                float value2 = WeaponDataManager.playerCTwoCoolTime * 0.05f;
+                                WeaponDataManager.playerCTwoCoolTime -= value2;
+
+                                break;
+
+                            case 2:
+                                float value3 = WeaponDataManager.playerCTwoDamage * 0.05f;
+                                WeaponDataManager.playerCTwoDamage += value3;
+                                break;
+                        }
                     }
                     break;
 
@@ -334,7 +397,23 @@ public class LevelUPManager : MonoBehaviour
                     }
                     else if(!playerCSkillC)
                     {
+                        switch(Cskill3)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCThreeAtkContinueTime * 0.05f;
+                                WeaponDataManager.playerCThreeAtkContinueTime += value1;
+                                break;
 
+                            case 1:
+                                float value2 = WeaponDataManager.playerCThreeCoolTime * 0.05f;
+                                WeaponDataManager.playerCThreeCoolTime -= value2;
+                                break;
+
+                            case 2:
+                                float value3 = WeaponDataManager.playerCThreeAtkSize * 0.05f;
+                                WeaponDataManager.playerCThreeAtkSize += value3;
+                                break;
+                        }
                     }
                     break;
 
@@ -346,24 +425,38 @@ public class LevelUPManager : MonoBehaviour
                     }
                     else if(playerCSkillD)
                     {
+                        switch(Cskill4)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCFourAtkTime * 0.05f;
+                                WeaponDataManager.playerCFourAtkTime += value1;
 
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerCFourCoolTime * 0.05f;
+                                WeaponDataManager.playerCFourCoolTime -= value2;
+                                break;
+                        }
                     }
                     break;
 
                 case 4:
-                    int CskillBasic = Random.Range(0, 3);
                     switch(CskillBasic)
                     {
-                        case 0: // 쿨타임
-                         //   WeaponDataManager.playerCBasicCoolTime -=  쿨타임 감소로직
+                        case 0: 
+                            float value1 = WeaponDataManager.playerCBasicAtkTime * 0.05f;
+                            WeaponDataManager.playerCBasicAtkTime -= value1;
                             break;
 
-                        case 1: // 공격지속시간
-                           // WeaponDataManager.playerCBasicAtkTime += 공격지속시간
+                        case 1:
+                            float value2 = WeaponDataManager.playerCBasicCoolTime * 0.05f;
+                            WeaponDataManager.playerCBasicCoolTime -= value2;
                             break;
 
-                        case 2:  // 데미지
-                           // WeaponDataManager.playerCBasicAtkDamage += 데미지
+                        case 2:
+                            float value3 = WeaponDataManager.playerCBasicAtkDamage * 0.05f;
+                            WeaponDataManager.playerCBasicAtkDamage -= value3;
                             break;
 
 
@@ -371,19 +464,24 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 5: // 공격력
-                   //   PlayerState.Damage +=
+                    float valueDamage = PlayerState.Damage * 0.05f;
+                    PlayerState.Damage += valueDamage;
                     break; 
 
                 case 6: // 체력
-                   // PlayerState.Hp += 
+                    float valueHp= PlayerState.Hp * 0.05f;
+                    PlayerState.Hp += valueHp;
                     break;
 
                 case 7: // 방어력
-                   // PlayerState.Defense -= 
+                    float valueDef= PlayerState.Defense * 0.05f;
+                    PlayerState.Defense += valueDef;
                     break;
 
                 case 8: // 이동속도
-                   //  PlayerState.Speed +=
+                    float valueSpeed= PlayerState.Speed * 0.05f;
+                    PlayerState.Speed += valueSpeed;
+                    break;
                     break;
 
             }
@@ -411,13 +509,13 @@ public class LevelUPManager : MonoBehaviour
                         {
                             case 0: // 재생속도 증가x
                                     // Descriptions[0].text = "1번스킬 회전속도 1증가 \n 현재 속도 : " + WeaponDataManager.playerAOneSpeed.ToString();
-                                float value1 = PlayerPrefs.GetFloat("Skill1SpeedUP");
+                                float value1 = WeaponDataManager.playerAOneSpeed * 0.05f;
                                 WeaponDataManager.playerAOneSpeed += value1;
                                 break;
 
                             case 1: // 데미지 증가
                                 //Descriptions[0].text = "1번스킬 데미지 5증가 \n 현재 데미지 : " + WeaponDataManager.playerAOneAtk.ToString();
-                                float value2 = PlayerPrefs.GetFloat("Skill1AtkUP");
+                                float value2 = WeaponDataManager.playerAOneAtk * 0.05f;
                                 WeaponDataManager.playerAOneAtk += value2;
                                 break;
                         }
@@ -436,11 +534,13 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerATwoCoolTime -= PlayerPrefs.GetFloat("Skill2SpeedUP");
+                                float value1 = WeaponDataManager.playerATwoCoolTime * 0.05f;
+                                WeaponDataManager.playerATwoCoolTime -= value1;
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerATwoAtk += PlayerPrefs.GetFloat("Skill2AtkUP");
+                                float value2 = WeaponDataManager.playerATwoAtk * 0.05f;
+                                WeaponDataManager.playerATwoAtk += value2;
                                 break;
                         }
                     }
@@ -457,11 +557,13 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerAThreeCoolTime -= PlayerPrefs.GetFloat("Skill3SpeedUP");
+                                float value1 = WeaponDataManager.playerAThreeCoolTime * 0.05f;
+                                WeaponDataManager.playerAThreeCoolTime -= value1;
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerAThreeAtk += PlayerPrefs.GetFloat("Skill3AtkUP");
+                                float value2 = WeaponDataManager.playerAThreeAtk * 0.05f;
+                                WeaponDataManager.playerAThreeAtk += value2;
                                 break;
                         }
                     }
@@ -479,15 +581,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill4)
                         {
                             case 0: // 지속시간
-                                WeaponDataManager.playerAFourTime += PlayerPrefs.GetFloat("Skill4TimeUP");
+                                float value1 = WeaponDataManager.playerAFourTime * 0.05f;
+                                WeaponDataManager.playerAFourTime += value1;
                                 break;
 
                             case 1: // 쿨타임
-                                WeaponDataManager.playerAFourCoolTime -= PlayerPrefs.GetFloat("Skill4CoolUP");
+                                float value2 = WeaponDataManager.playerAFourCoolTime * 0.05f;
+                                WeaponDataManager.playerAFourCoolTime -= value2;
                                 break;
                         }
-
-                        WeaponDataManager.playerAFourTime += 0.25f;
                     }
                     break;
 
@@ -495,30 +597,292 @@ public class LevelUPManager : MonoBehaviour
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            WeaponDataManager.playerABasicAtkCool -= PlayerPrefs.GetFloat("BasicSpeedUP");
+                            float value1 = WeaponDataManager.playerABasicAtkCool * 0.05f;
+                            WeaponDataManager.playerABasicAtkCool -= value1;
                             break;
 
                         case 1: // 데미지 증가
-                            WeaponDataManager.playerABasicAtkDamage += PlayerPrefs.GetFloat("BasicAtkUP");
+                            float value2 = WeaponDataManager.playerABasicAtkDamage * 0.05f;
+                            WeaponDataManager.playerABasicAtkDamage += value2;
                             break;
                     }
                     break;
 
                 case 5: // 공격력
-                    PlayerState.Damage += PlayerPrefs.GetFloat("PlayerADamageUP");
+                    float valueAtk = PlayerState.Damage * 0.05f;
+                    PlayerState.Damage += valueAtk;
                     break;
 
                 case 6: // 체력
-                    PlayerState.Hp += PlayerPrefs.GetFloat("PlayerAHpUP");
+                    float valueHp = PlayerState.Hp * 0.05f;
+                    PlayerState.Hp += valueHp;
                     break;
 
                 case 7: // 방어력
-                    PlayerState.Defense += PlayerPrefs.GetFloat("PlayerADefenseUP");
+                    float valueDef = PlayerState.Defense * 0.05f;
+                    PlayerState.Defense += valueDef;
                     break;
 
                 case 8: // 이동속도
-                    PlayerState.Speed += PlayerPrefs.GetFloat("PlayerASpeedUP");
+                    float valueSpeed = PlayerState.Speed * 0.05f;
+                    PlayerState.Speed += valueSpeed;
                     break;
+            }
+        }
+        else if (CharacterManager.Instance.currentCharacter == Character.Blue)
+        {
+            switch (buttonB)
+            {
+                case 0:
+                    if (playerBSkillA)
+                    {
+                        WeaponManager.Instance.StartPattern("playerBatk1");
+                        playerBSkillA = false;
+                    }
+                    else if (!playerBSkillA)
+                    {
+                        float value1 = WeaponDataManager.playerBOneAtk * 0.05f;
+                        WeaponDataManager.playerBOneAtk += value1; //  우선 데미지 증가만 구현
+                    }
+                    break;
+
+                case 1:
+                    if (playerBSkillB)
+                    {
+                        WeaponManager.Instance.StartPattern("playerBatk2");
+                        playerBSkillB = false;
+                    }
+                    else if (!playerBSkillB)
+                    {
+                        float value1 = WeaponDataManager.playerBTwoSize * 0.05f;
+                        WeaponDataManager.playerBTwoSize += value1;
+                    }
+                    break;
+
+                case 2:
+                    if (playerBSkillC)
+                    {
+                        playerBSkillC = false;
+                        WeaponManager.Instance.StartPattern("playerBatk3");
+                    }
+                    else if (!playerBSkillC) // 데미지 증가
+                    {
+                        float value1 = WeaponDataManager.playerBThreeDamage * 0.05f;
+                        WeaponDataManager.playerBThreeDamage += value1;
+                    }
+                    break;
+
+                case 3:
+                    if (playerBSkillD)
+                    {
+                        playerBSkillD = false;
+                        WeaponManager.Instance.StartPattern("playerBatk4");
+                    }
+                    else if (!playerBSkillD)
+                    {
+                        switch (Bskill4)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerBFourCoolTime * 0.05f;
+                                WeaponDataManager.playerBFourCoolTime -= value1;
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerBFourTime * 0.05f;
+                                WeaponDataManager.playerBFourTime += value2;
+                                break;
+                        }
+                    }
+                    break;
+
+                case 4:
+                    switch (BskillBasic)
+                    {
+                        case 0: // 빈도
+                            float value2 = WeaponDataManager.playerBBasicDamage * 0.05f;
+                            WeaponDataManager.playerBBasicDamage += value2;
+                            break;
+                    }
+                    break;
+
+                case 5: // atk
+                    float valueAtk = PlayerState.Damage * 0.05f;
+                    PlayerState.Damage += valueAtk;
+                    break;
+
+                case 6: // hp
+                    float valueHp = PlayerState.Hp * 0.05f;
+                    PlayerState.Hp += valueHp;
+                    break;
+
+                case 7: // def
+                    float valueDef = PlayerState.Defense * 0.05f;
+                    PlayerState.Defense += valueDef;
+                    break;
+
+                case 8: // speed
+                    float valueSpeed = PlayerState.Speed * 0.05f;
+                    PlayerState.Speed += valueSpeed;
+                    break;
+            }
+        }
+        else if (CharacterManager.Instance.currentCharacter == Character.Green)
+        {
+            switch (buttonB)
+            {
+                case 0:
+                    if (playerCSkillA)
+                    {
+                        WeaponManager.Instance.StartPattern("playeCatk1");
+                        playerCSkillA = false;
+                    }
+                    else if (!playerCSkillA)
+                    {
+                        switch (Cskill1)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCOneContinueTime * 0.05f;
+                                WeaponDataManager.playerCOneContinueTime += value1;
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerCOneCoolTime * 0.05f;
+                                WeaponDataManager.playerCOneCoolTime -= value2;
+                                break;
+
+                            case 2:
+                                float value3 = WeaponDataManager.plyaerCOneDamage * 0.05f;
+                                WeaponDataManager.plyaerCOneDamage += value3;
+                                break;
+
+                        }
+                    }
+                    break;
+
+                case 1:
+                    if (playerCSkillB)
+                    {
+                        WeaponManager.Instance.StartPattern("playerCatk2");
+                        playerCSkillB = false;
+                    }
+                    else if (!playerCSkillB)
+                    {
+                        switch (Cskill2)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCTwoAtkContinueTime * 0.05f;
+                                WeaponDataManager.playerCTwoAtkContinueTime += value1;
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerCTwoCoolTime * 0.05f;
+                                WeaponDataManager.playerCTwoCoolTime -= value2;
+
+                                break;
+
+                            case 2:
+                                float value3 = WeaponDataManager.playerCTwoDamage * 0.05f;
+                                WeaponDataManager.playerCTwoDamage += value3;
+                                break;
+                        }
+                    }
+                    break;
+
+                case 2:
+                    if (playerCSkillC)
+                    {
+                        WeaponManager.Instance.StartPattern("playerCatk3");
+                        playerCSkillC = false;
+                    }
+                    else if (!playerCSkillC)
+                    {
+                        switch (Cskill3)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCThreeAtkContinueTime * 0.05f;
+                                WeaponDataManager.playerCThreeAtkContinueTime += value1;
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerCThreeCoolTime * 0.05f;
+                                WeaponDataManager.playerCThreeCoolTime -= value2;
+                                break;
+
+                            case 2:
+                                float value3 = WeaponDataManager.playerCThreeAtkSize * 0.05f;
+                                WeaponDataManager.playerCThreeAtkSize += value3;
+                                break;
+                        }
+                    }
+                    break;
+
+                case 3:
+                    if (playerCSkillD)
+                    {
+                        WeaponManager.Instance.StartPattern("playerCatk4");
+                        playerCSkillD = false;
+                    }
+                    else if (playerCSkillD)
+                    {
+                        switch (Cskill4)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCFourAtkTime * 0.05f;
+                                WeaponDataManager.playerCFourAtkTime += value1;
+
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerCFourCoolTime * 0.05f;
+                                WeaponDataManager.playerCFourCoolTime -= value2;
+                                break;
+                        }
+                    }
+                    break;
+
+                case 4:
+                    switch (CskillBasic)
+                    {
+                        case 0:
+                            float value1 = WeaponDataManager.playerCBasicAtkTime * 0.05f;
+                            WeaponDataManager.playerCBasicAtkTime -= value1;
+                            break;
+
+                        case 1:
+                            float value2 = WeaponDataManager.playerCBasicCoolTime * 0.05f;
+                            WeaponDataManager.playerCBasicCoolTime -= value2;
+                            break;
+
+                        case 2:
+                            float value3 = WeaponDataManager.playerCBasicAtkDamage * 0.05f;
+                            WeaponDataManager.playerCBasicAtkDamage -= value3;
+                            break;
+
+
+                    }
+                    break;
+
+                case 5: // 공격력
+                    float valueDamage = PlayerState.Damage * 0.05f;
+                    PlayerState.Damage += valueDamage;
+                    break;
+
+                case 6: // 체력
+                    float valueHp = PlayerState.Hp * 0.05f;
+                    PlayerState.Hp += valueHp;
+                    break;
+
+                case 7: // 방어력
+                    float valueDef = PlayerState.Defense * 0.05f;
+                    PlayerState.Defense += valueDef;
+                    break;
+
+                case 8: // 이동속도
+                    float valueSpeed = PlayerState.Speed * 0.05f;
+                    PlayerState.Speed += valueSpeed;
+                    break;
+                    break;
+
             }
         }
     }
@@ -544,13 +908,13 @@ public class LevelUPManager : MonoBehaviour
                         {
                             case 0: // 재생속도 증가x
                                     // Descriptions[0].text = "1번스킬 회전속도 1증가 \n 현재 속도 : " + WeaponDataManager.playerAOneSpeed.ToString();
-                                float value1 = PlayerPrefs.GetFloat("Skill1SpeedUP");
+                                float value1 = WeaponDataManager.playerAOneSpeed * 0.05f;
                                 WeaponDataManager.playerAOneSpeed += value1;
                                 break;
 
                             case 1: // 데미지 증가
                                 //Descriptions[0].text = "1번스킬 데미지 5증가 \n 현재 데미지 : " + WeaponDataManager.playerAOneAtk.ToString();
-                                float value2 = PlayerPrefs.GetFloat("Skill1AtkUP");
+                                float value2 = WeaponDataManager.playerAOneAtk * 0.05f;
                                 WeaponDataManager.playerAOneAtk += value2;
                                 break;
                         }
@@ -569,11 +933,13 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerATwoCoolTime -= PlayerPrefs.GetFloat("Skill2SpeedUP");
+                                float value1 = WeaponDataManager.playerATwoCoolTime * 0.05f;
+                                WeaponDataManager.playerATwoCoolTime -= value1;
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerATwoAtk += PlayerPrefs.GetFloat("Skill2AtkUP");
+                                float value2 = WeaponDataManager.playerATwoAtk * 0.05f;
+                                WeaponDataManager.playerATwoAtk += value2;
                                 break;
                         }
                     }
@@ -590,11 +956,13 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                WeaponDataManager.playerAThreeCoolTime -= PlayerPrefs.GetFloat("Skill3SpeedUP");
+                                float value1 = WeaponDataManager.playerAThreeCoolTime * 0.05f;
+                                WeaponDataManager.playerAThreeCoolTime -= value1;
                                 break;
 
                             case 1: // 데미지 증가
-                                WeaponDataManager.playerAThreeAtk += PlayerPrefs.GetFloat("Skill3AtkUP");
+                                float value2 = WeaponDataManager.playerAThreeAtk * 0.05f;
+                                WeaponDataManager.playerAThreeAtk += value2;
                                 break;
                         }
                     }
@@ -608,19 +976,19 @@ public class LevelUPManager : MonoBehaviour
                         //   WeaponDataManager.playerAFourbool = true;
                     }
                     else
-                    { 
+                    {
                         switch (Askill4)
                         {
                             case 0: // 지속시간
-                                WeaponDataManager.playerAFourTime += PlayerPrefs.GetFloat("Skill4TimeUP");
+                                float value1 = WeaponDataManager.playerAFourTime * 0.05f;
+                                WeaponDataManager.playerAFourTime += value1;
                                 break;
 
                             case 1: // 쿨타임
-                                WeaponDataManager.playerAFourCoolTime -= PlayerPrefs.GetFloat("Skill4CoolUP");
+                                float value2 = WeaponDataManager.playerAFourCoolTime * 0.05f;
+                                WeaponDataManager.playerAFourCoolTime -= value2;
                                 break;
                         }
-
-                        WeaponDataManager.playerAFourTime += 0.25f;
                     }
                     break;
 
@@ -628,30 +996,292 @@ public class LevelUPManager : MonoBehaviour
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            WeaponDataManager.playerABasicAtkCool -= PlayerPrefs.GetFloat("BasicSpeedUP");
+                            float value1 = WeaponDataManager.playerABasicAtkCool * 0.05f;
+                            WeaponDataManager.playerABasicAtkCool -= value1;
                             break;
 
                         case 1: // 데미지 증가
-                            WeaponDataManager.playerABasicAtkDamage += PlayerPrefs.GetFloat("BasicAtkUP");
+                            float value2 = WeaponDataManager.playerABasicAtkDamage * 0.05f;
+                            WeaponDataManager.playerABasicAtkDamage += value2;
                             break;
                     }
                     break;
 
                 case 5: // 공격력
-                    PlayerState.Damage += PlayerPrefs.GetFloat("PlayerADamageUP");
+                    float valueAtk = PlayerState.Damage * 0.05f;
+                    PlayerState.Damage += valueAtk;
                     break;
 
                 case 6: // 체력
-                    PlayerState.Hp += PlayerPrefs.GetFloat("PlayerAHpUP");
+                    float valueHp = PlayerState.Hp * 0.05f;
+                    PlayerState.Hp += valueHp;
                     break;
 
                 case 7: // 방어력
-                    PlayerState.Defense += PlayerPrefs.GetFloat("PlayerADefenseUP");
+                    float valueDef = PlayerState.Defense * 0.05f;
+                    PlayerState.Defense += valueDef;
                     break;
 
                 case 8: // 이동속도
-                    PlayerState.Speed += PlayerPrefs.GetFloat("PlayerASpeedUP");
+                    float valueSpeed = PlayerState.Speed * 0.05f;
+                    PlayerState.Speed += valueSpeed;
                     break;
+            }
+        }
+        else if (CharacterManager.Instance.currentCharacter == Character.Blue)
+        {
+            switch (buttonC)
+            {
+                case 0:
+                    if (playerBSkillA)
+                    {
+                        WeaponManager.Instance.StartPattern("playerBatk1");
+                        playerBSkillA = false;
+                    }
+                    else if (!playerBSkillA)
+                    {
+                        float value1 = WeaponDataManager.playerBOneAtk * 0.05f;
+                        WeaponDataManager.playerBOneAtk += value1; //  우선 데미지 증가만 구현
+                    }
+                    break;
+
+                case 1:
+                    if (playerBSkillB)
+                    {
+                        WeaponManager.Instance.StartPattern("playerBatk2");
+                        playerBSkillB = false;
+                    }
+                    else if (!playerBSkillB)
+                    {
+                        float value1 = WeaponDataManager.playerBTwoSize * 0.05f;
+                        WeaponDataManager.playerBTwoSize += value1;
+                    }
+                    break;
+
+                case 2:
+                    if (playerBSkillC)
+                    {
+                        playerBSkillC = false;
+                        WeaponManager.Instance.StartPattern("playerBatk3");
+                    }
+                    else if (!playerBSkillC) // 데미지 증가
+                    {
+                        float value1 = WeaponDataManager.playerBThreeDamage * 0.05f;
+                        WeaponDataManager.playerBThreeDamage += value1;
+                    }
+                    break;
+
+                case 3:
+                    if (playerBSkillD)
+                    {
+                        playerBSkillD = false;
+                        WeaponManager.Instance.StartPattern("playerBatk4");
+                    }
+                    else if (!playerBSkillD)
+                    {
+                        switch (Bskill4)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerBFourCoolTime * 0.05f;
+                                WeaponDataManager.playerBFourCoolTime -= value1;
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerBFourTime * 0.05f;
+                                WeaponDataManager.playerBFourTime += value2;
+                                break;
+                        }
+                    }
+                    break;
+
+                case 4:
+                    switch (BskillBasic)
+                    {
+                        case 0: // 빈도
+                            float value2 = WeaponDataManager.playerBBasicDamage * 0.05f;
+                            WeaponDataManager.playerBBasicDamage += value2;
+                            break;
+                    }
+                    break;
+
+                case 5: // atk
+                    float valueAtk = PlayerState.Damage * 0.05f;
+                    PlayerState.Damage += valueAtk;
+                    break;
+
+                case 6: // hp
+                    float valueHp = PlayerState.Hp * 0.05f;
+                    PlayerState.Hp += valueHp;
+                    break;
+
+                case 7: // def
+                    float valueDef = PlayerState.Defense * 0.05f;
+                    PlayerState.Defense += valueDef;
+                    break;
+
+                case 8: // speed
+                    float valueSpeed = PlayerState.Speed * 0.05f;
+                    PlayerState.Speed += valueSpeed;
+                    break;
+            }
+        }
+        else if (CharacterManager.Instance.currentCharacter == Character.Green)
+        {
+            switch (buttonC)
+            {
+                case 0:
+                    if (playerCSkillA)
+                    {
+                        WeaponManager.Instance.StartPattern("playeCatk1");
+                        playerCSkillA = false;
+                    }
+                    else if (!playerCSkillA)
+                    {
+                        switch (Cskill1)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCOneContinueTime * 0.05f;
+                                WeaponDataManager.playerCOneContinueTime += value1;
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerCOneCoolTime * 0.05f;
+                                WeaponDataManager.playerCOneCoolTime -= value2;
+                                break;
+
+                            case 2:
+                                float value3 = WeaponDataManager.plyaerCOneDamage * 0.05f;
+                                WeaponDataManager.plyaerCOneDamage += value3;
+                                break;
+
+                        }
+                    }
+                    break;
+
+                case 1:
+                    if (playerCSkillB)
+                    {
+                        WeaponManager.Instance.StartPattern("playerCatk2");
+                        playerCSkillB = false;
+                    }
+                    else if (!playerCSkillB)
+                    {
+                        switch (Cskill2)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCTwoAtkContinueTime * 0.05f;
+                                WeaponDataManager.playerCTwoAtkContinueTime += value1;
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerCTwoCoolTime * 0.05f;
+                                WeaponDataManager.playerCTwoCoolTime -= value2;
+
+                                break;
+
+                            case 2:
+                                float value3 = WeaponDataManager.playerCTwoDamage * 0.05f;
+                                WeaponDataManager.playerCTwoDamage += value3;
+                                break;
+                        }
+                    }
+                    break;
+
+                case 2:
+                    if (playerCSkillC)
+                    {
+                        WeaponManager.Instance.StartPattern("playerCatk3");
+                        playerCSkillC = false;
+                    }
+                    else if (!playerCSkillC)
+                    {
+                        switch (Cskill3)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCThreeAtkContinueTime * 0.05f;
+                                WeaponDataManager.playerCThreeAtkContinueTime += value1;
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerCThreeCoolTime * 0.05f;
+                                WeaponDataManager.playerCThreeCoolTime -= value2;
+                                break;
+
+                            case 2:
+                                float value3 = WeaponDataManager.playerCThreeAtkSize * 0.05f;
+                                WeaponDataManager.playerCThreeAtkSize += value3;
+                                break;
+                        }
+                    }
+                    break;
+
+                case 3:
+                    if (playerCSkillD)
+                    {
+                        WeaponManager.Instance.StartPattern("playerCatk4");
+                        playerCSkillD = false;
+                    }
+                    else if (playerCSkillD)
+                    {
+                        switch (Cskill4)
+                        {
+                            case 0:
+                                float value1 = WeaponDataManager.playerCFourAtkTime * 0.05f;
+                                WeaponDataManager.playerCFourAtkTime += value1;
+
+                                break;
+
+                            case 1:
+                                float value2 = WeaponDataManager.playerCFourCoolTime * 0.05f;
+                                WeaponDataManager.playerCFourCoolTime -= value2;
+                                break;
+                        }
+                    }
+                    break;
+
+                case 4:
+                    switch (CskillBasic)
+                    {
+                        case 0:
+                            float value1 = WeaponDataManager.playerCBasicAtkTime * 0.05f;
+                            WeaponDataManager.playerCBasicAtkTime -= value1;
+                            break;
+
+                        case 1:
+                            float value2 = WeaponDataManager.playerCBasicCoolTime * 0.05f;
+                            WeaponDataManager.playerCBasicCoolTime -= value2;
+                            break;
+
+                        case 2:
+                            float value3 = WeaponDataManager.playerCBasicAtkDamage * 0.05f;
+                            WeaponDataManager.playerCBasicAtkDamage -= value3;
+                            break;
+
+
+                    }
+                    break;
+
+                case 5: // 공격력
+                    float valueDamage = PlayerState.Damage * 0.05f;
+                    PlayerState.Damage += valueDamage;
+                    break;
+
+                case 6: // 체력
+                    float valueHp = PlayerState.Hp * 0.05f;
+                    PlayerState.Hp += valueHp;
+                    break;
+
+                case 7: // 방어력
+                    float valueDef = PlayerState.Defense * 0.05f;
+                    PlayerState.Defense += valueDef;
+                    break;
+
+                case 8: // 이동속도
+                    float valueSpeed = PlayerState.Speed * 0.05f;
+                    PlayerState.Speed += valueSpeed;
+                    break;
+                    break;
+
             }
         }
     }
@@ -674,12 +1304,12 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[0].text = "회전속도 증가 + 0.5%";
+                                Descriptions[0].text = "회전속도 증가\n + 0.5%";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "데미지 증가 + 0.5% ";
+                                Descriptions[0].text = "데미지 증가\n + 0.5% ";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
                         }
@@ -699,11 +1329,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "공격 딜레이 감소 - 0.5%";
+                                Descriptions[0].text = "공격 딜레이 감소\n - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "데미지 증가 + 0.5%";
+                                Descriptions[0].text = "데미지 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -722,11 +1352,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "공격 딜레이 감소 - 0.5%";
+                                Descriptions[0].text = "공격 딜레이 감소\n - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "데미지 증가 + 0.5% ";
+                                Descriptions[0].text = "데미지 증가\n + 0.5% ";
                                 break;
                         }
                     }
@@ -745,11 +1375,11 @@ public class LevelUPManager : MonoBehaviour
                         switch(Askill4)
                         {
                             case 0:
-                                Descriptions[0].text = "속박 시간 증가 + 0.5%";
+                                Descriptions[0].text = "속박 시간 증가\n + 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[0].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                         }
@@ -764,11 +1394,11 @@ public class LevelUPManager : MonoBehaviour
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[0].text = "공격 딜레이 감소 - 0.5%";
+                            Descriptions[0].text = "공격 딜레이 감소\n - 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[0].text = "데미지 증가 + 0.5%";
+                            Descriptions[0].text = "데미지 증가\n + 0.5%";
                             break;
                     }
                     break;
@@ -776,25 +1406,25 @@ public class LevelUPManager : MonoBehaviour
                 case 5: // 공격력
                     IconImagePanel[0].sprite = SkillSprites[4];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "공격력 증가 + 0.5%";
+                    Descriptions[0].text = "공격력 증가\n + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[0].sprite = SkillSprites[5];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "체력 증가 + 0.5%";
+                    Descriptions[0].text = "체력 증가\n + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[0].sprite = SkillSprites[6];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "방어력 증가 + 0.5%";
+                    Descriptions[0].text = "방어력 증가\n + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[0].sprite = SkillSprites[7];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "이동속도 증가 + 0.5%";
+                    Descriptions[0].text = "이동속도 증가\n + 0.5%";
                     break;
             }
             switch (buttonB)
@@ -812,12 +1442,12 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[1].text = "회전속도 증가 + 0.5%";
+                                Descriptions[1].text = "회전속도 증가\n + 0.5%";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "데미지 증가 + 0.5%";
+                                Descriptions[1].text = "데미지 증가\n + 0.5%";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
                         }
@@ -837,11 +1467,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "공격 딜레이 감소 - 0.5%";
+                                Descriptions[1].text = "공격 딜레이 감소\n - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "데미지 증가 + 0.5%";
+                                Descriptions[1].text = "데미지 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -860,11 +1490,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "공격 딜레이 감소 - 0.5%";
+                                Descriptions[1].text = "공격 딜레이 감소\n - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "데미지 증가 + 0.5%";
+                                Descriptions[1].text = "데미지 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -883,11 +1513,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill4)
                         {
                             case 0:
-                                Descriptions[0].text = "속박 시간 증가 + 0.5% ";
+                                Descriptions[0].text = "속박 시간 증가\n + 0.5% ";
                                 break;
 
                             case 1:
-                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[0].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                         }
@@ -902,11 +1532,11 @@ public class LevelUPManager : MonoBehaviour
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[1].text = "공격 딜레이 감소 - 0.5%";
+                            Descriptions[1].text = "공격 딜레이 감소\n - 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[1].text = "데미지 증가 + 0.5%";
+                            Descriptions[1].text = "데미지 증가\n + 0.5%";
                             break;
                     }
                     break;
@@ -914,25 +1544,25 @@ public class LevelUPManager : MonoBehaviour
                 case 5: // 공격력
                     IconImagePanel[1].sprite = SkillSprites[4];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "공격력 증가 + 0.5%";
+                    Descriptions[1].text = "공격력 증가\n + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[1].sprite = SkillSprites[5]; 
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "체력 증가 + 0.5%";
+                    Descriptions[1].text = "체력 증가\n + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[1].sprite = SkillSprites[6];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "방어력 증가 + 0.5%";
+                    Descriptions[1].text = "방어력 증가\n + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[1].sprite = SkillSprites[7];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "이동속도 증가 + 0.5%";
+                    Descriptions[1].text = "이동속도 증가\n + 0.5%";
                     break;
             }
             switch (buttonC)
@@ -950,12 +1580,12 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[2].text = "회전속도 증가 + 0.5%";
+                                Descriptions[2].text = "회전속도 증가\n + 0.5%";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "데미지 증가 + 0.5%";
+                                Descriptions[2].text = "데미지 증가\n + 0.5%";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
                         }
@@ -975,11 +1605,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "공격 딜레이 감소 - 0.5%";
+                                Descriptions[2].text = "공격 딜레이 감소\n - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "데미지 증가 + 0.5%";
+                                Descriptions[2].text = "데미지 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -998,11 +1628,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "공격 딜레이 감소 - 0.5%";
+                                Descriptions[2].text = "공격 딜레이 감소\n - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "데미지 증가 + 0.5%";
+                                Descriptions[2].text = "데미지 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1021,11 +1651,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill4)
                         {
                             case 0:
-                                Descriptions[0].text = "속박 시간 증가 + 0.5% ";
+                                Descriptions[0].text = "속박 시간 증가\n + 0.5% ";
                                 break;
 
                             case 1:
-                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[0].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                         }
@@ -1040,11 +1670,11 @@ public class LevelUPManager : MonoBehaviour
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[2].text = "공격 딜레이 감소 - 0.5%";
+                            Descriptions[2].text = "공격 딜레이 감소\n - 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[2].text = "데미지 증가 + 0.5%";
+                            Descriptions[2].text = "데미지 증가\n + 0.5%";
                             break;
                     }
                     break;
@@ -1052,25 +1682,25 @@ public class LevelUPManager : MonoBehaviour
                 case 5: // 공격력
                     IconImagePanel[2].sprite = SkillSprites[4];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "공격력 증가 + 0.5%";
+                    Descriptions[2].text = "공격력 증가\n + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[2].sprite = SkillSprites[5];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "체력 증가 + 0.5%";
+                    Descriptions[2].text = "체력 증가\n + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[2].sprite = SkillSprites[6];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "방어력 증가 + 0.5%";
+                    Descriptions[2].text = "방어력 증가\n + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[2].sprite = SkillSprites[7];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "이동속도 증가 + 0.5%";
+                    Descriptions[2].text = "이동속도 증가\n + 0.5%";
                     break;
             }
         }
@@ -1091,7 +1721,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[0].text = "데미지 증가 + 0.5%";
+                                Descriptions[0].text = "데미지 증가\n + 0.5%";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;    
                         }
@@ -1111,7 +1741,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "마그네틱 범위 증가 + 0.5%";
+                                Descriptions[0].text = "마그네틱 범위 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1130,7 +1760,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "데미지 증가 + 0.5%";
+                                Descriptions[0].text = "데미지 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1149,11 +1779,11 @@ public class LevelUPManager : MonoBehaviour
                         switch(Bskill4)
                         {
                             case 0:
-                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[0].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[0].text = "버프 시간 증가 + 0.5%";
+                                Descriptions[0].text = "버프 시간 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1168,7 +1798,7 @@ public class LevelUPManager : MonoBehaviour
                     switch (BskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[0].text = "데미지 증가 + 0.5%";
+                            Descriptions[0].text = "데미지 증가\n + 0.5%";
                             break;
                     }
                     break;
@@ -1176,25 +1806,25 @@ public class LevelUPManager : MonoBehaviour
                 case 5: // 공격력
                     IconImagePanel[0].sprite = SkillSprites[4];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "공격력 증가 + 0.5%";
+                    Descriptions[0].text = "공격력 증가\n + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[0].sprite = SkillSprites[5];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "체력 증가 + 0.5%";
+                    Descriptions[0].text = "체력 증가\n + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[0].sprite = SkillSprites[6];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "방어력 증가 + 0.5%";
+                    Descriptions[0].text = "방어력 증가\n + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[0].sprite = SkillSprites[7];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "이동속도 증가 + 0.5%";
+                    Descriptions[0].text = "이동속도 증가\n + 0.5%";
                     break;
             }
             switch (buttonB)
@@ -1212,7 +1842,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[1].text = "데미지 증가 + 0.5 % ";
+                                Descriptions[1].text = "데미지 증가\n + 0.5 % ";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;
                         }
@@ -1232,7 +1862,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "마그네틱 범위 증가 + 0.5%";
+                                Descriptions[1].text = "마그네틱 범위 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1251,7 +1881,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "데미지 증가 + 0.5%";
+                                Descriptions[1].text = "데미지 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1270,11 +1900,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill4)
                         {
                             case 0:
-                                Descriptions[1].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[1].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[1].text = "데미지 증가 + 0.5%";
+                                Descriptions[1].text = "버프 시간 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1288,7 +1918,7 @@ public class LevelUPManager : MonoBehaviour
                     switch (BskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[1].text = "데미지 증가 + 0.5%";
+                            Descriptions[1].text = "데미지 증가\n + 0.5%";
                             break;
                     }
                     break;
@@ -1296,25 +1926,25 @@ public class LevelUPManager : MonoBehaviour
                 case 5: // 공격력
                     IconImagePanel[1].sprite = SkillSprites[4];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "공격력 증가 + 0.5%";
+                    Descriptions[1].text = "공격력 증가\n + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[1].sprite = SkillSprites[5];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "체력 증가 + 0.5%";
+                    Descriptions[1].text = "체력 증가\n + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[1].sprite = SkillSprites[6];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "방어력 증가 + 0.5%";
+                    Descriptions[1].text = "방어력 증가\n + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[1].sprite = SkillSprites[7];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "이동속도 증가 + 0.5%";
+                    Descriptions[1].text = "이동속도 증가\n + 0.5%";
                     break;
             }
             switch (buttonC)
@@ -1332,7 +1962,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[2].text = "데미지 증가 + 0.5%";
+                                Descriptions[2].text = "데미지 증가\n + 0.5%";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;
                         }
@@ -1352,7 +1982,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "마그네틱 범위 증가 + 0.5%";
+                                Descriptions[2].text = "마그네틱 범위 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1371,7 +2001,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "데미지 증가 + 0.5%";
+                                Descriptions[2].text = "데미지 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1390,11 +2020,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill4)
                         {
                             case 0:
-                                Descriptions[2].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[2].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[2].text = "버프 시간 증가 + 0.5%";
+                                Descriptions[2].text = "버프 시간 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1409,7 +2039,7 @@ public class LevelUPManager : MonoBehaviour
                     switch (BskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[2].text = "데미지 증가 + 0.5%";
+                            Descriptions[2].text = "데미지 증가\n + 0.5%";
                             break;
                     }
                     break;
@@ -1417,25 +2047,25 @@ public class LevelUPManager : MonoBehaviour
                 case 5: // 공격력
                     IconImagePanel[2].sprite = SkillSprites[4];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "공격력 증가 + 0.5%";
+                    Descriptions[2].text = "공격력 증가\n + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[2].sprite = SkillSprites[5];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "체력 증가 + 0.5%";
+                    Descriptions[2].text = "체력 증가\n + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[2].sprite = SkillSprites[6];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "방어력 증가 + 0.5%";
+                    Descriptions[2].text = "방어력 증가\n + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[2].sprite = SkillSprites[7];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "이동속도 증가 + 0.5%";
+                    Descriptions[2].text = "이동속도 증가\n + 0.5%";
                     break;
             }
         }
@@ -1456,16 +2086,16 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[0].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[0].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[0].text = "쿨타임 감소\n - 0.5%";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
 
                             case 2:
-                                Descriptions[0].text = "공격력 증가 + 0.5%";
+                                Descriptions[0].text = "공격력 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1484,15 +2114,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[0].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[0].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                             case 2:
-                                Descriptions[0].text = "공격력 증가 + 0.5%";
+                                Descriptions[0].text = "공격력 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1511,15 +2141,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[0].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[0].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                             case 2: // 데미지 증가
-                                Descriptions[0].text = "범위 증가 + 0.5%";
+                                Descriptions[0].text = "범위 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1538,11 +2168,11 @@ public class LevelUPManager : MonoBehaviour
                         switch(Cskill4)
                         {
                             case 0:
-                                Descriptions[0].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[0].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[0].text = "쿨타임 감소\n - 0.5%";
                                 break;
                         }
 
@@ -1557,15 +2187,15 @@ public class LevelUPManager : MonoBehaviour
                     switch (CskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[0].text = "공격 지속시간 증가 + 0.5%";
+                            Descriptions[0].text = "공격 지속시간 증가\n + 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[0].text = "장전 시간 감소 - 0.5%";
+                            Descriptions[0].text = "장전 시간 감소\n - 0.5%";
                             break;
 
                         case 2:
-                            Descriptions[0].text = "공격력 증가 + 0.5%";
+                            Descriptions[0].text = "공격력 증가\n + 0.5%";
                             break;
                     }
                     break;
@@ -1573,25 +2203,25 @@ public class LevelUPManager : MonoBehaviour
                 case 5: // 공격력
                     IconImagePanel[0].sprite = SkillSprites[4];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "공격력 증가 + 0.5%";
+                    Descriptions[0].text = "공격력 증가\n + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[0].sprite = SkillSprites[5];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "체력 증가 + 0.5%";
+                    Descriptions[0].text = "체력 증가\n + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[0].sprite = SkillSprites[6];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "방어력 증가 + 0.5%";
+                    Descriptions[0].text = "방어력 증가\n + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[0].sprite = SkillSprites[7];
                     PropertyDescriptions[0].text = "능력치";
-                    Descriptions[0].text = "이동속도 증가 + 0.5%";
+                    Descriptions[0].text = "이동속도 증가\n + 0.5%";
                     break;
             }
             switch (buttonB)
@@ -1609,16 +2239,16 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[1].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[1].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[1].text = "쿨타임 감소\n - 0.5%";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
 
                             case 2:
-                                Descriptions[1].text = "공격력 증가 + 0.5%";
+                                Descriptions[1].text = "공격력 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1637,15 +2267,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[1].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[1].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                             case 2:
-                                Descriptions[1].text = "공격력 증가 + 0.5%";
+                                Descriptions[1].text = "공격력 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1664,15 +2294,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[1].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[1].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                             case 2: // 데미지 증가
-                                Descriptions[1].text = "범위 증가 + 0.5%";
+                                Descriptions[1].text = "범위 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1691,11 +2321,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill4)
                         {
                             case 0:
-                                Descriptions[1].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[1].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[1].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[1].text = "쿨타임 감소\n - 0.5%";
                                 break;
                         }
 
@@ -1710,15 +2340,15 @@ public class LevelUPManager : MonoBehaviour
                     switch (CskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[1].text = "공격 지속시간 증가 + 0.5%";
+                            Descriptions[1].text = "공격 지속시간 증가\n + 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[1].text = "장전 시간 감소 - 0.5%";
+                            Descriptions[1].text = "장전 시간 감소\n - 0.5%";
                             break;
 
                         case 2:
-                            Descriptions[1].text = "공격력 증가 + 0.5%";
+                            Descriptions[1].text = "공격력 증가\n + 0.5%";
                             break;
                     }
                     break;
@@ -1726,25 +2356,25 @@ public class LevelUPManager : MonoBehaviour
                 case 5: // 공격력
                     IconImagePanel[1].sprite = SkillSprites[4];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "공격력 증가 + 0.5%";
+                    Descriptions[1].text = "공격력 증가\n + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[1].sprite = SkillSprites[5];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "체력 증가 + 0.5%";
+                    Descriptions[1].text = "체력 증가\n + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[1].sprite = SkillSprites[6];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "방어력 증가 + 0.5%";
+                    Descriptions[1].text = "방어력 증가\n + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[1].sprite = SkillSprites[7];
                     PropertyDescriptions[1].text = "능력치";
-                    Descriptions[1].text = "이동속도 증가 + 0.5%";
+                    Descriptions[1].text = "이동속도 증가\n + 0.5%";
                     break;
             }
             switch (buttonC)
@@ -1762,16 +2392,16 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[2].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[2].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[2].text = "쿨타임 감소\n - 0.5%";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
 
                             case 2:
-                                Descriptions[2].text = "공격력 증가 + 0.5%";
+                                Descriptions[2].text = "공격력 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1790,15 +2420,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[2].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[2].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                             case 2:
-                                Descriptions[2].text = "공격력 증가 + 0.5%";
+                                Descriptions[2].text = "공격력 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1817,15 +2447,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[2].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[2].text = "쿨타임 감소\n - 0.5%";
                                 break;
 
                             case 2: // 데미지 증가
-                                Descriptions[2].text = "범위 증가 + 0.5%";
+                                Descriptions[2].text = "범위 증가\n + 0.5%";
                                 break;
                         }
                     }
@@ -1844,11 +2474,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill4)
                         {
                             case 0:
-                                Descriptions[2].text = "공격 지속시간 증가 + 0.5%";
+                                Descriptions[2].text = "공격 지속시간 증가\n + 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[2].text = "쿨타임 감소 - 0.5%";
+                                Descriptions[2].text = "쿨타임 감소\n - 0.5%";
                                 break;
                         }
 
@@ -1863,15 +2493,15 @@ public class LevelUPManager : MonoBehaviour
                     switch (CskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[2].text = "공격 지속시간 증가 + 0.5%";
+                            Descriptions[2].text = "공격 지속시간 증가\n + 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[2].text = "장전 시간 감소 - 0.5%";
+                            Descriptions[2].text = "장전 시간 감소\n - 0.5%";
                             break;
 
                         case 2:
-                            Descriptions[2].text = "공격력 증가 + 0.5%";
+                            Descriptions[2].text = "공격력 증가\n + 0.5%";
                             break;
                     }
                     break;
@@ -1879,25 +2509,25 @@ public class LevelUPManager : MonoBehaviour
                 case 5: // 공격력
                     IconImagePanel[2].sprite = SkillSprites[4];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "공격력 증가 + 0.5%";
+                    Descriptions[2].text = "공격력 증가\n + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[2].sprite = SkillSprites[5];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "체력 증가 + 0.5%";
+                    Descriptions[2].text = "체력 증가\n + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[2].sprite = SkillSprites[6];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "방어력 증가 + 0.5%";
+                    Descriptions[2].text = "방어력 증가\n + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[2].sprite = SkillSprites[7];
                     PropertyDescriptions[2].text = "능력치";
-                    Descriptions[2].text = "이동속도 증가 + 0.5%";
+                    Descriptions[2].text = "이동속도 증가\n + 0.5%";
                     break;
             }
         }
