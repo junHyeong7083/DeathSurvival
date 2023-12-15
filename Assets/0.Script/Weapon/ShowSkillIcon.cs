@@ -36,7 +36,14 @@ public class ShowSkillIcon : MonoBehaviour
         if (CharacterManager.Instance.currentCharacter == Character.White)
         {
             playerSet[0].gameObject.SetActive(true);
-
+        }
+        else if(CharacterManager.Instance.currentCharacter == Character.Blue)
+        {
+            playerSet[1].gameObject.SetActive(true);
+        }
+        else if(CharacterManager.Instance.currentCharacter == Character.Green)
+        {
+            playerSet[2].gameObject.SetActive(true);
         }
     }
 }
