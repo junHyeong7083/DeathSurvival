@@ -84,8 +84,9 @@ public class MonsterController : MonoBehaviour
             checkDamage = damage;
             if (checkDamage >= 1 && checkDamage < 5)
                 checkDamage = 1;
-            switch(CharacterManager.Instance.currentCharacter)
+            switch (CharacterManager.Instance.currentCharacter)
             {
+                
                 case Character.White:
                     if (collision.gameObject.tag == "PlayerA_One")
                     {
@@ -386,6 +387,7 @@ public class MonsterController : MonoBehaviour
 
     void Update()
     {
+      //  Debug.Log("hp : " + Hp);
         // Debug.Log("monsSpeed : " + Speed);
         //  DamageText.transform.position = DamagePos.position;
         if (WeaponDataManager.playerAFourbool)

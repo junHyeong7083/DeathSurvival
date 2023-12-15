@@ -14,7 +14,7 @@ public class LevelUPManager : MonoBehaviour
     [Header("-----선택패널 아이콘 / 텍스트-----")]
     public Image[] IconImagePanel;
     public Text[] Descriptions;
-
+    public Text[] PropertyDescriptions;
     [Header("-----스킬아이콘들-----")]
     public Sprite[] SkillSprites;
 
@@ -663,6 +663,7 @@ public class LevelUPManager : MonoBehaviour
             {
                 case 0: // 1번
                     IconImagePanel[0].sprite = SkillSprites[0];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerASkillA)
                     {
                         Descriptions[0].text = "1번스킬 사용가능";
@@ -673,12 +674,12 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[0].text = "1번스킬 회전속도 1증가 \n 현재 속도 : " + WeaponDataManager.playerAOneSpeed.ToString();
+                                Descriptions[0].text = "회전속도 증가 + 0.5%";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "1번스킬 데미지 5증가 \n 현재 데미지 : " + WeaponDataManager.playerAOneAtk.ToString();
+                                Descriptions[0].text = "데미지 증가 + 0.5% ";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
                         }
@@ -687,6 +688,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     IconImagePanel[0].sprite = SkillSprites[1];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerASkillB)
                     {
                         Descriptions[0].text = "2번스킬 사용가능";
@@ -697,11 +699,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "2번스킬 공격 횟수 증가";
+                                Descriptions[0].text = "공격 딜레이 감소 - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "2번스킬 데미지 증가 \n 현재 데미지 : " + WeaponDataManager.playerATwoAtk.ToString();
+                                Descriptions[0].text = "데미지 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -709,6 +711,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     IconImagePanel[0].sprite = SkillSprites[1];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerASkillC)
                     {
                         Descriptions[0].text = "3번스킬 사용가능";
@@ -719,11 +722,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "3번스킬 공격 횟수 증가";
+                                Descriptions[0].text = "공격 딜레이 감소 - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "3번스킬 데미지 증가 \n 현재 데미지 : " + WeaponDataManager.playerAThreeAtk.ToString();
+                                Descriptions[0].text = "데미지 증가 + 0.5% ";
                                 break;
                         }
                     }
@@ -731,6 +734,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     IconImagePanel[0].sprite = SkillSprites[3];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerASkillD)
                     {
                         Descriptions[0].text = "4번스킬 사용가능";
@@ -741,11 +745,11 @@ public class LevelUPManager : MonoBehaviour
                         switch(Askill4)
                         {
                             case 0:
-                                Descriptions[0].text = "4번스킬 속박 시간 증가 ";
+                                Descriptions[0].text = "속박 시간 증가 + 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[0].text = "4번스킬 쿨타임 감소 ";
+                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                         }
@@ -756,42 +760,48 @@ public class LevelUPManager : MonoBehaviour
                 case 4: //기본 공격
                     AskillBasic = Random.Range(0, 2);
                     IconImagePanel[0].sprite = SkillSprites[2];
+                    PropertyDescriptions[0].text = "기본 공격";
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[0].text = "기본공격 공격 횟수 증가";
+                            Descriptions[0].text = "공격 딜레이 감소 - 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[0].text = "기본공격 데미지 증가";
+                            Descriptions[0].text = "데미지 증가 + 0.5%";
                             break;
                     }
                     break;
 
                 case 5: // 공격력
                     IconImagePanel[0].sprite = SkillSprites[4];
-                    Descriptions[0].text = "공격력 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "공격력 증가 + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[0].sprite = SkillSprites[5];
-                    Descriptions[0].text = "체력 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "체력 증가 + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[0].sprite = SkillSprites[6];
-                    Descriptions[0].text = "방어력 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "방어력 증가 + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[0].sprite = SkillSprites[7];
-                    Descriptions[0].text = "이동속도 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "이동속도 증가 + 0.5%";
                     break;
             }
             switch (buttonB)
             {
                 case 0: // 1번
                     IconImagePanel[1].sprite = SkillSprites[0];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerASkillA)
                     {
                         Descriptions[1].text = "1번스킬 사용가능";
@@ -802,12 +812,12 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[1].text = "1번스킬 회전속도 1증가 \n 현재 속도 : " + WeaponDataManager.playerAOneSpeed.ToString();
+                                Descriptions[1].text = "회전속도 증가 + 0.5%";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "1번스킬 데미지 5증가 \n 현재 데미지 : " + WeaponDataManager.playerAOneAtk.ToString();
+                                Descriptions[1].text = "데미지 증가 + 0.5%";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
                         }
@@ -816,6 +826,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     IconImagePanel[1].sprite = SkillSprites[1];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerASkillB)
                     {
                         Descriptions[1].text = "2번스킬 사용가능";
@@ -826,11 +837,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "2번스킬 공격 횟수 증가";
+                                Descriptions[1].text = "공격 딜레이 감소 - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "2번스킬 데미지 증가 \n 현재 데미지 : " + WeaponDataManager.playerATwoAtk.ToString();
+                                Descriptions[1].text = "데미지 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -838,6 +849,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     IconImagePanel[1].sprite = SkillSprites[1];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerASkillC)
                     {
                         Descriptions[1].text = "3번스킬 사용가능";
@@ -848,11 +860,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "3번스킬 공격 횟수 증가";
+                                Descriptions[1].text = "공격 딜레이 감소 - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "3번스킬 데미지 증가 \n 현재 데미지 : " + WeaponDataManager.playerAThreeAtk.ToString();
+                                Descriptions[1].text = "데미지 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -860,6 +872,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     IconImagePanel[1].sprite = SkillSprites[3];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerASkillD)
                     {
                         Descriptions[1].text = "4번스킬 사용가능";
@@ -870,11 +883,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill4)
                         {
                             case 0:
-                                Descriptions[0].text = "4번스킬 속박 시간 증가 ";
+                                Descriptions[0].text = "속박 시간 증가 + 0.5% ";
                                 break;
 
                             case 1:
-                                Descriptions[0].text = "4번스킬 쿨타임 감소 ";
+                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                         }
@@ -885,42 +898,48 @@ public class LevelUPManager : MonoBehaviour
                 case 4: //기본 공격
                      AskillBasic = Random.Range(0, 2);
                     IconImagePanel[1].sprite = SkillSprites[2];
+                    PropertyDescriptions[1].text = "기본 공격";
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[1].text = "기본공격 공격 횟수 증가";
+                            Descriptions[1].text = "공격 딜레이 감소 - 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[1].text = "기본공격 데미지 증가";
+                            Descriptions[1].text = "데미지 증가 + 0.5%";
                             break;
                     }
                     break;
 
                 case 5: // 공격력
                     IconImagePanel[1].sprite = SkillSprites[4];
-                    Descriptions[1].text = "공격력 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "공격력 증가 + 0.5%";
                     break;
 
                 case 6: // 체력
-                    IconImagePanel[1].sprite = SkillSprites[5];
-                    Descriptions[1].text = "체력 증가";
+                    IconImagePanel[1].sprite = SkillSprites[5]; 
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "체력 증가 + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[1].sprite = SkillSprites[6];
-                    Descriptions[1].text = "방어력 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "방어력 증가 + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[1].sprite = SkillSprites[7];
-                    Descriptions[1].text = "이동속도 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "이동속도 증가 + 0.5%";
                     break;
             }
             switch (buttonC)
             {
                 case 0: // 1번
                     IconImagePanel[2].sprite = SkillSprites[0];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerASkillA)
                     {
                         Descriptions[2].text = "1번스킬 사용가능";
@@ -931,12 +950,12 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[2].text = "1번스킬 회전속도 1증가 \n 현재 속도 : " + WeaponDataManager.playerAOneSpeed.ToString();
+                                Descriptions[2].text = "회전속도 증가 + 0.5%";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "1번스킬 데미지 5증가 \n 현재 데미지 : " + WeaponDataManager.playerAOneAtk.ToString();
+                                Descriptions[2].text = "데미지 증가 + 0.5%";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
                         }
@@ -945,6 +964,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     IconImagePanel[2].sprite = SkillSprites[1];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerASkillB)
                     {
                         Descriptions[2].text = "2번스킬 사용가능";
@@ -955,11 +975,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill2)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "2번스킬 공격 횟수 증가";
+                                Descriptions[2].text = "공격 딜레이 감소 - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "2번스킬 데미지 증가 \n 현재 데미지 : " + WeaponDataManager.playerATwoAtk.ToString();
+                                Descriptions[2].text = "데미지 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -967,6 +987,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     IconImagePanel[2].sprite = SkillSprites[1];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerASkillC)
                     {
                         Descriptions[2].text = "3번스킬 사용가능";
@@ -977,11 +998,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill3)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "3번스킬 공격 횟수 증가";
+                                Descriptions[2].text = "공격 딜레이 감소 - 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "3번스킬 데미지 증가 \n 현재 데미지 : " + WeaponDataManager.playerAThreeAtk.ToString();
+                                Descriptions[2].text = "데미지 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -989,6 +1010,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     IconImagePanel[2].sprite = SkillSprites[3];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerASkillD)
                     {
                         Descriptions[2].text = "4번스킬 사용가능";
@@ -999,11 +1021,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Askill4)
                         {
                             case 0:
-                                Descriptions[0].text = "4번스킬 속박 시간 증가 ";
+                                Descriptions[0].text = "속박 시간 증가 + 0.5% ";
                                 break;
 
                             case 1:
-                                Descriptions[0].text = "4번스킬 쿨타임 감소 ";
+                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                         }
@@ -1013,37 +1035,42 @@ public class LevelUPManager : MonoBehaviour
 
                 case 4: //기본 공격
                      AskillBasic = Random.Range(0, 2);
+                    PropertyDescriptions[2].text = "기본 공격";
                     IconImagePanel[2].sprite = SkillSprites[2];
                     switch (AskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[2].text = "기본공격 공격 횟수 증가";
+                            Descriptions[2].text = "공격 딜레이 감소 - 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[2].text = "기본공격 데미지 증가";
+                            Descriptions[2].text = "데미지 증가 + 0.5%";
                             break;
                     }
                     break;
 
                 case 5: // 공격력
                     IconImagePanel[2].sprite = SkillSprites[4];
-                    Descriptions[2].text = "공격력 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "공격력 증가 + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[2].sprite = SkillSprites[5];
-                    Descriptions[2].text = "체력 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "체력 증가 + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[2].sprite = SkillSprites[6];
-                    Descriptions[2].text = "방어력 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "방어력 증가 + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[2].sprite = SkillSprites[7];
-                    Descriptions[2].text = "이동속도 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "이동속도 증가 + 0.5%";
                     break;
             }
         }
@@ -1053,6 +1080,7 @@ public class LevelUPManager : MonoBehaviour
             {
                 case 0: // 1번
                     IconImagePanel[0].sprite = SkillSprites[0];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerBSkillA)
                     {
                         Descriptions[0].text = "1번스킬 사용가능";
@@ -1063,7 +1091,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[0].text = "데미지 증가 : " ;
+                                Descriptions[0].text = "데미지 증가 + 0.5%";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;    
                         }
@@ -1072,6 +1100,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     IconImagePanel[0].sprite = SkillSprites[1];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerBSkillB)
                     {
                         Descriptions[0].text = "2번스킬 사용가능";
@@ -1082,7 +1111,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "자석 범위 증가";
+                                Descriptions[0].text = "마그네틱 범위 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1090,6 +1119,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     IconImagePanel[0].sprite = SkillSprites[1];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerBSkillC)
                     {
                         Descriptions[0].text = "3번스킬 사용가능";
@@ -1100,7 +1130,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "데미지 증가";
+                                Descriptions[0].text = "데미지 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1108,6 +1138,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     IconImagePanel[0].sprite = SkillSprites[3];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerBSkillD)
                     {
                         Descriptions[0].text = "4번스킬 사용가능";
@@ -1118,11 +1149,11 @@ public class LevelUPManager : MonoBehaviour
                         switch(Bskill4)
                         {
                             case 0:
-                                Descriptions[0].text = "쿨타임 감소";
+                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[0].text = "버프 시간 증가";
+                                Descriptions[0].text = "버프 시간 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1132,39 +1163,45 @@ public class LevelUPManager : MonoBehaviour
 
                 case 4: //기본 공격
                     BskillBasic = Random.Range(0, 1);
+                    PropertyDescriptions[0].text = "기본 공격";
                     IconImagePanel[0].sprite = SkillSprites[2];
                     switch (BskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[0].text = "데미지 증가";
+                            Descriptions[0].text = "데미지 증가 + 0.5%";
                             break;
                     }
                     break;
 
                 case 5: // 공격력
                     IconImagePanel[0].sprite = SkillSprites[4];
-                    Descriptions[0].text = "공격력 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "공격력 증가 + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[0].sprite = SkillSprites[5];
-                    Descriptions[0].text = "체력 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "체력 증가 + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[0].sprite = SkillSprites[6];
-                    Descriptions[0].text = "방어력 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "방어력 증가 + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[0].sprite = SkillSprites[7];
-                    Descriptions[0].text = "이동속도 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "이동속도 증가 + 0.5%";
                     break;
             }
             switch (buttonB)
             {
                 case 0: // 1번
                     IconImagePanel[1].sprite = SkillSprites[0];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerBSkillA)
                     {
                         Descriptions[1].text = "1번스킬 사용가능";
@@ -1175,7 +1212,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[1].text = "데미지 증가 : ";
+                                Descriptions[1].text = "데미지 증가 + 0.5 % ";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;
                         }
@@ -1184,6 +1221,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     IconImagePanel[1].sprite = SkillSprites[1];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerBSkillB)
                     {
                         Descriptions[1].text = "2번스킬 사용가능";
@@ -1194,7 +1232,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "자석 범위 증가";
+                                Descriptions[1].text = "마그네틱 범위 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1202,6 +1240,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     IconImagePanel[1].sprite = SkillSprites[1];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerBSkillC)
                     {
                         Descriptions[1].text = "3번스킬 사용가능";
@@ -1212,7 +1251,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "데미지 증가";
+                                Descriptions[1].text = "데미지 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1220,6 +1259,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     IconImagePanel[1].sprite = SkillSprites[3];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerBSkillD)
                     {
                         Descriptions[1].text = "4번스킬 사용가능";
@@ -1230,11 +1270,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill4)
                         {
                             case 0:
-                                Descriptions[1].text = "쿨타임 감소";
+                                Descriptions[1].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[1].text = "버프 시간 증가";
+                                Descriptions[1].text = "데미지 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1243,40 +1283,45 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 4: //기본 공격
-                    BskillBasic = Random.Range(0, 1);
+                    BskillBasic = Random.Range(0, 1); PropertyDescriptions[1].text = "기본 공격";
                     IconImagePanel[1].sprite = SkillSprites[2];
                     switch (BskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[1].text = "데미지 증가";
+                            Descriptions[1].text = "데미지 증가 + 0.5%";
                             break;
                     }
                     break;
 
                 case 5: // 공격력
                     IconImagePanel[1].sprite = SkillSprites[4];
-                    Descriptions[1].text = "공격력 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "공격력 증가 + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[1].sprite = SkillSprites[5];
-                    Descriptions[1].text = "체력 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "체력 증가 + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[1].sprite = SkillSprites[6];
-                    Descriptions[1].text = "방어력 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "방어력 증가 + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[1].sprite = SkillSprites[7];
-                    Descriptions[1].text = "이동속도 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "이동속도 증가 + 0.5%";
                     break;
             }
             switch (buttonC)
             {
                 case 0: // 1번
                     IconImagePanel[2].sprite = SkillSprites[0];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerBSkillA)
                     {
                         Descriptions[2].text = "1번스킬 사용가능";
@@ -1287,7 +1332,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[2].text = "데미지 증가 : ";
+                                Descriptions[2].text = "데미지 증가 + 0.5%";
                                 // WeaponDataManager.playerAOneSpeed += 1;
                                 break;
                         }
@@ -1296,6 +1341,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     IconImagePanel[2].sprite = SkillSprites[1];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerBSkillB)
                     {
                         Descriptions[2].text = "2번스킬 사용가능";
@@ -1306,7 +1352,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "자석 범위 증가";
+                                Descriptions[2].text = "마그네틱 범위 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1314,6 +1360,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     IconImagePanel[2].sprite = SkillSprites[1];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerBSkillC)
                     {
                         Descriptions[2].text = "3번스킬 사용가능";
@@ -1324,7 +1371,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "데미지 증가";
+                                Descriptions[2].text = "데미지 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1332,6 +1379,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     IconImagePanel[2].sprite = SkillSprites[3];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerBSkillD)
                     {
                         Descriptions[2].text = "4번스킬 사용가능";
@@ -1342,11 +1390,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill4)
                         {
                             case 0:
-                                Descriptions[2].text = "쿨타임 감소";
+                                Descriptions[2].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[2].text = "버프 시간 증가";
+                                Descriptions[2].text = "버프 시간 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1356,33 +1404,38 @@ public class LevelUPManager : MonoBehaviour
 
                 case 4: //기본 공격
                     BskillBasic = Random.Range(0, 1);
+                    PropertyDescriptions[2].text = "기본 공격";
                     IconImagePanel[2].sprite = SkillSprites[2];
                     switch (BskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[2].text = "데미지 증가";
+                            Descriptions[2].text = "데미지 증가 + 0.5%";
                             break;
                     }
                     break;
 
                 case 5: // 공격력
                     IconImagePanel[2].sprite = SkillSprites[4];
-                    Descriptions[2].text = "공격력 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "공격력 증가 + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[2].sprite = SkillSprites[5];
-                    Descriptions[2].text = "체력 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "체력 증가 + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[2].sprite = SkillSprites[6];
-                    Descriptions[2].text = "방어력 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "방어력 증가 + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[2].sprite = SkillSprites[7];
-                    Descriptions[2].text = "이동속도 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "이동속도 증가 + 0.5%";
                     break;
             }
         }
@@ -1392,6 +1445,7 @@ public class LevelUPManager : MonoBehaviour
             {
                 case 0: // 1번
                     IconImagePanel[0].sprite = SkillSprites[0];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerCSkillA)
                     {
                         Descriptions[0].text = "1번스킬 사용가능";
@@ -1402,16 +1456,16 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[0].text = "공격지속시간 증가 : ";
+                                Descriptions[0].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "쿨타임 감소 : ";
+                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
 
                             case 2:
-                                Descriptions[0].text = "공격력 증가 : ";
+                                Descriptions[0].text = "공격력 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1419,6 +1473,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     IconImagePanel[0].sprite = SkillSprites[1];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerCSkillB)
                     {
                         Descriptions[0].text = "2번스킬 사용가능";
@@ -1429,15 +1484,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "공격지속시간 증가";
+                                Descriptions[0].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "쿨타임 감소";
+                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                             case 2:
-                                Descriptions[0].text = "공격력 증가";
+                                Descriptions[0].text = "공격력 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1445,6 +1500,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     IconImagePanel[0].sprite = SkillSprites[1];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerCSkillC)
                     {
                         Descriptions[0].text = "3번스킬 사용가능";
@@ -1455,15 +1511,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[0].text = "공격 지속시간 증가";
+                                Descriptions[0].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[0].text = "쿨타임 감소";
+                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                             case 2: // 데미지 증가
-                                Descriptions[0].text = "범위 증가";
+                                Descriptions[0].text = "범위 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1471,6 +1527,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     IconImagePanel[0].sprite = SkillSprites[3];
+                    PropertyDescriptions[0].text = "스킬";
                     if (playerCSkillD)
                     {
                         Descriptions[0].text = "4번스킬 사용가능";
@@ -1481,11 +1538,11 @@ public class LevelUPManager : MonoBehaviour
                         switch(Cskill4)
                         {
                             case 0:
-                                Descriptions[0].text = "공격지속시간 증가";
+                                Descriptions[0].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[0].text = "쿨타임 감소";
+                                Descriptions[0].text = "쿨타임 감소 - 0.5%";
                                 break;
                         }
 
@@ -1496,46 +1553,52 @@ public class LevelUPManager : MonoBehaviour
                 case 4: //기본 공격
                     CskillBasic = Random.Range(0, 3);
                     IconImagePanel[0].sprite = SkillSprites[2];
+                    PropertyDescriptions[0].text = "기본 공격";
                     switch (CskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[0].text = "기본공격 공격 시간 증가";
+                            Descriptions[0].text = "공격 지속시간 증가 + 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[0].text = "장전시간 감소";
+                            Descriptions[0].text = "장전 시간 감소 - 0.5%";
                             break;
 
                         case 2:
-                            Descriptions[0].text = "공격력 증가";
+                            Descriptions[0].text = "공격력 증가 + 0.5%";
                             break;
                     }
                     break;
 
                 case 5: // 공격력
                     IconImagePanel[0].sprite = SkillSprites[4];
-                    Descriptions[0].text = "공격력 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "공격력 증가 + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[0].sprite = SkillSprites[5];
-                    Descriptions[0].text = "체력 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "체력 증가 + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[0].sprite = SkillSprites[6];
-                    Descriptions[0].text = "방어력 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "방어력 증가 + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[0].sprite = SkillSprites[7];
-                    Descriptions[0].text = "이동속도 증가";
+                    PropertyDescriptions[0].text = "능력치";
+                    Descriptions[0].text = "이동속도 증가 + 0.5%";
                     break;
             }
             switch (buttonB)
             {
                 case 0: // 1번
                     IconImagePanel[1].sprite = SkillSprites[0];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerCSkillA)
                     {
                         Descriptions[1].text = "1번스킬 사용가능";
@@ -1546,16 +1609,16 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[1].text = "공격지속시간 증가 : ";
+                                Descriptions[1].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "쿨타임 감소 : ";
+                                Descriptions[1].text = "쿨타임 감소 - 0.5%";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
 
                             case 2:
-                                Descriptions[1].text = "공격력 증가 : ";
+                                Descriptions[1].text = "공격력 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1563,6 +1626,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     IconImagePanel[1].sprite = SkillSprites[1];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerCSkillB)
                     {
                         Descriptions[1].text = "2번스킬 사용가능";
@@ -1573,15 +1637,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "공격지속시간 증가";
+                                Descriptions[1].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "쿨타임 감소";
+                                Descriptions[1].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                             case 2:
-                                Descriptions[1].text = "공격력 증가";
+                                Descriptions[1].text = "공격력 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1589,6 +1653,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     IconImagePanel[1].sprite = SkillSprites[1];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerCSkillC)
                     {
                         Descriptions[1].text = "3번스킬 사용가능";
@@ -1599,15 +1664,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[1].text = "공격 지속시간 증가";
+                                Descriptions[1].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[1].text = "쿨타임 감소";
+                                Descriptions[1].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                             case 2: // 데미지 증가
-                                Descriptions[1].text = "범위 증가";
+                                Descriptions[1].text = "범위 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1615,6 +1680,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     IconImagePanel[1].sprite = SkillSprites[3];
+                    PropertyDescriptions[1].text = "스킬";
                     if (playerCSkillD)
                     {
                         Descriptions[1].text = "4번스킬 사용가능";
@@ -1625,11 +1691,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill4)
                         {
                             case 0:
-                                Descriptions[1].text = "공격지속시간 증가";
+                                Descriptions[1].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[1].text = "쿨타임 감소";
+                                Descriptions[1].text = "쿨타임 감소 - 0.5%";
                                 break;
                         }
 
@@ -1639,47 +1705,53 @@ public class LevelUPManager : MonoBehaviour
 
                 case 4: //기본 공격
                     CskillBasic = Random.Range(0, 3);
+                    PropertyDescriptions[1].text = "기본 공격";
                     IconImagePanel[1].sprite = SkillSprites[2];
                     switch (CskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[1].text = "기본공격 공격 시간 증가";
+                            Descriptions[1].text = "공격 지속시간 증가 + 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[1].text = "장전시간 감소";
+                            Descriptions[1].text = "장전 시간 감소 - 0.5%";
                             break;
 
                         case 2:
-                            Descriptions[1].text = "공격력 증가";
+                            Descriptions[1].text = "공격력 증가 + 0.5%";
                             break;
                     }
                     break;
 
                 case 5: // 공격력
                     IconImagePanel[1].sprite = SkillSprites[4];
-                    Descriptions[1].text = "공격력 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "공격력 증가 + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[1].sprite = SkillSprites[5];
-                    Descriptions[1].text = "체력 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "체력 증가 + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[1].sprite = SkillSprites[6];
-                    Descriptions[1].text = "방어력 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "방어력 증가 + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[1].sprite = SkillSprites[7];
-                    Descriptions[1].text = "이동속도 증가";
+                    PropertyDescriptions[1].text = "능력치";
+                    Descriptions[1].text = "이동속도 증가 + 0.5%";
                     break;
             }
             switch (buttonC)
             {
                 case 0: // 1번
                     IconImagePanel[2].sprite = SkillSprites[0];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerCSkillA)
                     {
                         Descriptions[2].text = "1번스킬 사용가능";
@@ -1690,16 +1762,16 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill1)
                         {
                             case 0: // 재생속도 증가x
-                                Descriptions[2].text = "공격지속시간 증가 : ";
+                                Descriptions[2].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "쿨타임 감소 : ";
+                                Descriptions[2].text = "쿨타임 감소 - 0.5%";
                                 //     WeaponDataManager.playerAOneAtk += 5;
                                 break;
 
                             case 2:
-                                Descriptions[2].text = "공격력 증가 : ";
+                                Descriptions[2].text = "공격력 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1707,6 +1779,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     IconImagePanel[2].sprite = SkillSprites[1];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerCSkillB)
                     {
                         Descriptions[2].text = "2번스킬 사용가능";
@@ -1717,15 +1790,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill2)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "공격지속시간 증가";
+                                Descriptions[2].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "쿨타임 감소";
+                                Descriptions[2].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                             case 2:
-                                Descriptions[2].text = "공격력 증가";
+                                Descriptions[2].text = "공격력 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1733,6 +1806,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     IconImagePanel[2].sprite = SkillSprites[1];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerCSkillC)
                     {
                         Descriptions[2].text = "3번스킬 사용가능";
@@ -1743,15 +1817,15 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill3)
                         {
                             case 0: // 빈도
-                                Descriptions[2].text = "공격 지속시간 증가";
+                                Descriptions[2].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1: // 데미지 증가
-                                Descriptions[2].text = "쿨타임 감소";
+                                Descriptions[2].text = "쿨타임 감소 - 0.5%";
                                 break;
 
                             case 2: // 데미지 증가
-                                Descriptions[2].text = "범위 증가";
+                                Descriptions[2].text = "범위 증가 + 0.5%";
                                 break;
                         }
                     }
@@ -1759,6 +1833,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     IconImagePanel[2].sprite = SkillSprites[3];
+                    PropertyDescriptions[2].text = "스킬";
                     if (playerCSkillD)
                     {
                         Descriptions[2].text = "4번스킬 사용가능";
@@ -1769,11 +1844,11 @@ public class LevelUPManager : MonoBehaviour
                         switch (Cskill4)
                         {
                             case 0:
-                                Descriptions[2].text = "공격지속시간 증가";
+                                Descriptions[2].text = "공격 지속시간 증가 + 0.5%";
                                 break;
 
                             case 1:
-                                Descriptions[2].text = "쿨타임 감소";
+                                Descriptions[2].text = "쿨타임 감소 - 0.5%";
                                 break;
                         }
 
@@ -1783,41 +1858,46 @@ public class LevelUPManager : MonoBehaviour
 
                 case 4: //기본 공격
                     CskillBasic = Random.Range(0, 3);
+                    PropertyDescriptions[2].text = "기본 공격";
                     IconImagePanel[2].sprite = SkillSprites[2];
                     switch (CskillBasic)
                     {
                         case 0: // 빈도
-                            Descriptions[2].text = "기본공격 공격 시간 증가";
+                            Descriptions[2].text = "공격 지속시간 증가 + 0.5%";
                             break;
 
                         case 1: // 데미지 증가
-                            Descriptions[2].text = "장전시간 감소";
+                            Descriptions[2].text = "장전 시간 감소 - 0.5%";
                             break;
 
                         case 2:
-                            Descriptions[2].text = "공격력 증가";
+                            Descriptions[2].text = "공격력 증가 + 0.5%";
                             break;
                     }
                     break;
 
                 case 5: // 공격력
                     IconImagePanel[2].sprite = SkillSprites[4];
-                    Descriptions[2].text = "공격력 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "공격력 증가 + 0.5%";
                     break;
 
                 case 6: // 체력
                     IconImagePanel[2].sprite = SkillSprites[5];
-                    Descriptions[2].text = "체력 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "체력 증가 + 0.5%";
                     break;
 
                 case 7: // 방어력
                     IconImagePanel[2].sprite = SkillSprites[6];
-                    Descriptions[2].text = "방어력 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "방어력 증가 + 0.5%";
                     break;
 
                 case 8: // 이동속도
                     IconImagePanel[2].sprite = SkillSprites[7];
-                    Descriptions[2].text = "이동속도 증가";
+                    PropertyDescriptions[2].text = "능력치";
+                    Descriptions[2].text = "이동속도 증가 + 0.5%";
                     break;
             }
         }
