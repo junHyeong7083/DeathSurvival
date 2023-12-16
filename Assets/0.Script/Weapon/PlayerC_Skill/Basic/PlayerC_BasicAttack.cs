@@ -10,11 +10,12 @@ public class PlayerC_BasicAttack : PlayerController
     float attackTime = 3f;
     float coolTime = 3f;
     Animator animator;
-    
+    BoxCollider2D boxCollider2D;
     
 
     void Start()
     {
+        boxCollider2D = GetComponent<BoxCollider2D>();  
         Dir = GameObject.Find("Dir");
         animator = GetComponent<Animator>();
 
@@ -33,6 +34,7 @@ public class PlayerC_BasicAttack : PlayerController
                 float startTime = Time.time;
                 animator.SetBool("isCool", false);
                 WeaponDataManager.playerCBasicBool = true;
+                boxCollider2D.enabled = true;
                 while (Time.time - startTime < WeaponDataManager.playerCBasicAtkTime)
                 {
                     if (Dir.transform.position.x >= PlayerPos.x)
@@ -53,6 +55,7 @@ public class PlayerC_BasicAttack : PlayerController
                 startTime = Time.time;
                 animator.SetBool("isCool", true);
                 WeaponDataManager.playerCBasicBool = false;
+                boxCollider2D.enabled = false;
                 while (Time.time - startTime < WeaponDataManager.playerCBasicCoolTime)
                 {
                     yield return null;

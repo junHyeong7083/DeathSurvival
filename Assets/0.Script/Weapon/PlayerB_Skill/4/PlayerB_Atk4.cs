@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class PlayerB_Atk4 : PlayerController
 {
     bool isStart = true;
     float skillTime = 0f;
     float coolTime = 0f;
+
+    Image atk4Icon;
 
     public GameObject showPlayerChar;
     public GameObject targetTrailRender;
@@ -16,6 +18,12 @@ public class PlayerB_Atk4 : PlayerController
     // Start is called before the first frame update
     void Start()
     {
+        GameObject atk4IconObj = GameObject.Find("CameraCanvas/ShowSkillIcon/PlayerB/BG4/SkillD");
+        if (atk4IconObj != null)
+        {
+            atk4Icon = atk4IconObj.GetComponent<Image>();
+            atk4Icon.fillAmount = 1f;
+        }
     }
 
     // Update is called once per frame
@@ -26,6 +34,7 @@ public class PlayerB_Atk4 : PlayerController
     {
         if(isStart)
         {
+            atk4Icon.fillAmount = 0f;
             this.transform.position = new Vector3(PlayerController.PlayerPos.x, PlayerController.PlayerPos.y, PlayerController.PlayerPos.z);
             if(transform.localScale.x < 15)
             {
@@ -73,7 +82,8 @@ public class PlayerB_Atk4 : PlayerController
         }
         else if(!isStart)
         {
-
+            float fillAmount = Mathf.Clamp(coolTime / WeaponDataManager.playerAFourCoolTime, 0, 1);
+            atk4Icon.fillAmount = fillAmount;
             this.transform.position = new Vector3(PlayerController.PlayerPos.x - 100f, 0, 0);
             this.transform.localScale = Vector3.zero; 
             coolTime += Time.deltaTime;

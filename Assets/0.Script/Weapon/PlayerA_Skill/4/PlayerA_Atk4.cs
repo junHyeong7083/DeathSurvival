@@ -17,7 +17,7 @@ public class PlayerA_Atk4 : MonoBehaviour
     float coolTime = 0f;
     void Start()
     {
-        GameObject atk4IconObj = GameObject.Find("CameraCanvas/ShowSkillIcon/PlayerA/SkillD");
+        GameObject atk4IconObj = GameObject.Find("CameraCanvas/ShowSkillIcon/PlayerA/BG4/SkillD");
         if (atk4IconObj != null)
         {
             atk4Icon = atk4IconObj.GetComponent<Image>();

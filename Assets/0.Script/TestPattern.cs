@@ -104,6 +104,6 @@ public class TestPattern : MonoBehaviour
 
     public void PatternC1()
     {
-        WeaponManager.Instance.StartPattern("playeCatk1");
+        WeaponManager.Instance.StartPattern("playerBatk3_renew");
     }
 }

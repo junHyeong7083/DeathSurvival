@@ -13,7 +13,6 @@ public class PlayerC_Atk2Spawn : MonoBehaviour
 
         StartCoroutine(SpawnAtk());
     }
-
     [SerializeField]
     float alphaTime;
     [SerializeField]
@@ -36,8 +35,8 @@ public class PlayerC_Atk2Spawn : MonoBehaviour
             yield return null;
         }
 
-        startTime = Time.time; 
-        while(Time.time - startTime < WeaponDataManager.playerCTwoAtkContinueTime)
+        startTime = Time.time;
+        while (Time.time - startTime < WeaponDataManager.playerCTwoAtkContinueTime)
         {
             this.transform.localScale += new Vector3(scaleValue * Time.deltaTime, scaleValue * Time.deltaTime, 0);
             this.transform.eulerAngles += new Vector3(0, 0, rotateValue * Time.deltaTime);

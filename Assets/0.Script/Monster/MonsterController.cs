@@ -8,11 +8,12 @@ using System.Drawing;
 public class MonsterController : MonoBehaviour
 {
     #region State
-    [SerializeField]
     float Speed;
+    [SerializeField]
     float saveSpeed;
 
-    public float Hp;
+     float Hp;
+    [SerializeField]
     float maxHp;
     [SerializeField]
     float Damage;
@@ -96,20 +97,10 @@ public class MonsterController : MonoBehaviour
                         isHitAni = false;
                         isHit = true;
 
-                        switch (CharacterManager.Instance.currentCharacter)
-                        {
-                            case Character.White: // 전구
-                                PlayerAOneDamage += WeaponDataManager.playerAOneAtk;
-                                //  TakeDamage(sumDamage, checkDamage);
-                                pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
-                                break;
 
-                            case Character.Blue:
-                                break;
-
-                            case Character.Green:
-                                break;
-                        }
+                        PlayerAOneDamage += WeaponDataManager.playerAOneAtk;
+                        //  TakeDamage(sumDamage, checkDamage);
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                     }
                     if (collision.gameObject.tag == "PlayerA_Two")
                     {
@@ -119,19 +110,9 @@ public class MonsterController : MonoBehaviour
                         isHit = true;
                         isHitAni = false;
 
-                        switch (CharacterManager.Instance.currentCharacter)
-                        {
-                            case Character.White: // 전구
-                                PlayerATwoDamage += WeaponDataManager.playerATwoAtk + damage;
-                                pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
-                                break;
 
-                            case Character.Blue:
-                                break;
-
-                            case Character.Green:
-                                break;
-                        }
+                        PlayerATwoDamage += WeaponDataManager.playerATwoAtk + damage;
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                     }
                     if (collision.gameObject.tag == "PlayerA_Three")
                     {
@@ -141,19 +122,8 @@ public class MonsterController : MonoBehaviour
                         isHit = true;
                         isHitAni = false;
 
-                        switch (CharacterManager.Instance.currentCharacter)
-                        {
-                            case Character.White: // 전구
-                                PlayerAThreeDamage += WeaponDataManager.playerAThreeAtk;
-                                pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
-                                break;
-
-                            case Character.Blue:
-                                break;
-
-                            case Character.Green:
-                                break;
-                        }
+                        PlayerAThreeDamage += WeaponDataManager.playerAThreeAtk;
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                     }
                     if (collision.gameObject.tag == "PlayerA_Basic")
                     {
@@ -163,26 +133,112 @@ public class MonsterController : MonoBehaviour
                         isHit = true;
                         isHitAni = false;
 
-                        switch (CharacterManager.Instance.currentCharacter)
-                        {
-                            case Character.White: // 전구
-                                PlayerABasicDamage += WeaponDataManager.playerABasicAtkDamage;
-                              //  pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
-                                break;
-
-                            case Character.Blue:
-                                break;
-
-                            case Character.Green:
-                                break;
-                        }
+                         PlayerABasicDamage += WeaponDataManager.playerABasicAtkDamage;
+                         pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                        break;
                     }
                     break;
 
                 case Character.Blue:
+                    if (collision.gameObject.tag == "PlayerB_One")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.playerBOneAtk + damage;
+                        sumDamage = WeaponDataManager.playerBOneAtk + damage;
+                        isHitAni = false;
+                        isHit = true;
+
+
+                        PlayerBOneDamage += WeaponDataManager.playerBOneAtk;
+                        //  TakeDamage(sumDamage, checkDamage);
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                    }
+                    if (collision.gameObject.tag == "PlayerB_Two")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                       // Hp -= WeaponDataManager.playerBTwoAtk + damage;
+                      //  sumDamage = WeaponDataManager.playerATwoAtk + damage;
+                        isHit = true;
+                        isHitAni = false;
+
+
+                      //  PlayerATwoDamage += WeaponDataManager.playerATwoAtk + damage;
+                       // pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                    }
+                    if (collision.gameObject.tag == "PlayerB_Three")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.playerBThreeDamage;
+                        sumDamage = WeaponDataManager.playerBThreeDamage + damage;
+                        isHit = true;
+                        isHitAni = false;
+
+                        PlayerBThreeDamage += WeaponDataManager.playerBThreeDamage;
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                    }
+                    if (collision.gameObject.tag == "PlayerB_Basic")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.playerBBasicDamage;
+                        sumDamage = WeaponDataManager.playerBBasicDamage + damage;
+                        isHit = true;
+                        isHitAni = false;
+
+                        PlayerBBasicDamage += WeaponDataManager.playerBBasicDamage;
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                        break;
+                    }
                     break;
 
                 case Character.Green:
+                    if (collision.gameObject.tag == "PlayerC_One")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.plyaerCOneDamage + damage;
+                        sumDamage = WeaponDataManager.plyaerCOneDamage + damage;
+                        isHitAni = false;
+                        isHit = true;
+
+
+                        PlayerCOneDamage += WeaponDataManager.plyaerCOneDamage;
+                        //  TakeDamage(sumDamage, checkDamage);
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                    }
+                    if (collision.gameObject.tag == "PlayerC_Two")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.playerCTwoDamage + damage;
+                        sumDamage = WeaponDataManager.playerCTwoDamage + damage;
+                        isHit = true;
+                        isHitAni = false;
+
+
+                        PlayerCTwoDamage += WeaponDataManager.playerCTwoDamage + damage;
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                    }
+                    if (collision.gameObject.tag == "PlayerC_Three")
+                    {
+                     /*   // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.playerAThreeAtk;
+                        sumDamage = WeaponDataManager.playerAThreeAtk + damage;
+                        isHit = true;
+                        isHitAni = false;
+
+                        PlayerCThreeDamage += WeaponDataManager.playerAThreeAtk;
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);*/
+                    }
+                    if (collision.gameObject.tag == "PlayerC_Basic")
+                    {
+                        // 공격력 따라 데미지 줄이는 코드
+                        Hp -= WeaponDataManager.playerCBasicAtkDamage;
+                        sumDamage = WeaponDataManager.playerCBasicAtkDamage + damage;
+                        isHit = true;
+                        isHitAni = false;
+
+                        PlayerCBasicDamage += WeaponDataManager.playerCBasicAtkDamage;
+                        pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
+                        break;
+                    }
                     break;
             }
 
@@ -223,40 +279,6 @@ public class MonsterController : MonoBehaviour
     }
     private void Awake()
     {
-        switch (monsterIndex)
-        {
-            case 0:
-                maxHp = 100f;
-                saveSpeed = 2;
-
-                break;
-
-            case 1:
-                maxHp = 200f;
-                saveSpeed = 3;
-                break;
-
-            case 2:
-                maxHp = 500f;
-                saveSpeed = 4;
-                break;
-
-            case 3:
-                maxHp = 600;
-                saveSpeed = 4;
-                break;
-
-            case 4:
-                maxHp = 700;
-                saveSpeed = 5;
-                break;
-
-            case 5:
-                maxHp = 1000;
-                saveSpeed = 5;
-                break;
-
-        }
 
     }
     UnityEngine.Color newColor;
@@ -266,7 +288,7 @@ public class MonsterController : MonoBehaviour
         targetRigid = targetPlayer.GetComponent<Rigidbody2D>();
         isHitPlayerBFourSkill = false;
         Speed = saveSpeed;
-        Debug.Log("Speed : " + Speed); 
+        Hp = maxHp;
         pool = GameObject.Find("DamageManager").GetComponent<DamageTextPool>();
 
         circleCollider2D = GetComponent<CircleCollider2D>();
@@ -313,40 +335,6 @@ public class MonsterController : MonoBehaviour
         gameObject.GetComponent<CircleCollider2D>().enabled = true;
         isMove = true;
         delayDieTime = 0f;
-        if (!isStart)
-        {
-            switch (monsterIndex)
-            {
-                case 0:
-                    maxHp = 100f;
-                    break;
-
-                case 1:
-                    maxHp = 200f;
-                    break;
-
-                case 2:
-                    maxHp = 500f;
-                    break;
-
-                case 3:
-                    maxHp = 600;
-                    break;
-
-                case 4:
-                    maxHp = 700;
-                    break;
-
-                case 5:
-                    maxHp = 1000;
-                    break;
-
-
-
-            }
-        }
-        // 기존의 maxHp = Hp; 라인을 삭제
-        // maxHp = Hp;
         isStart = true;
         Hp = maxHp; 
         isDead = false;

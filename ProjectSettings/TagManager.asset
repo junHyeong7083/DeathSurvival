@@ -17,6 +17,13 @@ TagManager:
   - ItemDetect
   - Ground
   - Area
+  - PlayerB_One
+  - PlayerB_Three
+  - PlayerC_One
+  - PlayerC_Two
+  - PlayerC_Three
+  - PlayerC_Basic
+  - PlayerB_Basic
   layers:
   - Default
   - TransparentFX
@@ -25,7 +32,7 @@ TagManager:
   - Water
   - UI
   - PostProcessing
-  - 
+  - Monster
   - 
   - 
   - 

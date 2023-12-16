@@ -316,7 +316,7 @@ GameObject:
   - component: {fileID: 5955431086100561643}
   m_Layer: 0
   m_Name: BasicAttack
-  m_TagString: Untagged
+  m_TagString: PlayerB_Basic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

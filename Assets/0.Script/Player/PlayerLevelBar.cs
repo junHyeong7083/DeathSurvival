@@ -30,7 +30,7 @@ public class PlayerLevelBar : MonoBehaviour
         CheckingLevel = currentLevel;
         currentExperience = 0;
 
-        someAmount = 100 + 10 * (Timer / 30); // 임시로 30으로 설정후 30초마다 10씩 증가함
+        someAmount = 2 + 2 * (Timer / 30); // 임시로 30으로 설정후 30초마다 10씩 증가함
 
         LevelData currentLevelData = GetLevelData(currentLevel + 1);
         if (currentLevelData != null)

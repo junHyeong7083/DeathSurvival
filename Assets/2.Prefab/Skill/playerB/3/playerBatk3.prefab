@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6145782834966629059}
   - component: {fileID: 6209497433885044648}
   - component: {fileID: 5225116287860276053}
+  - component: {fileID: -5905791409535473560}
   m_Layer: 0
   m_Name: playerBatk3
   m_TagString: Untagged
@@ -101,6 +102,22 @@ MonoBehaviour:
   Axe: {fileID: 2761254361103687545}
   AxeEffect: {fileID: 1748895370221990409}
   coolTime: 3
+--- !u!58 &-5905791409535473560
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1034737082450190401}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.3349999
 --- !u!1 &1748895370221990409
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,10 +234,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6470464054196215647}
   - component: {fileID: 1873610531382874858}
-  - component: {fileID: 123412543960954179}
   m_Layer: 0
   m_Name: AxeObj
-  m_TagString: Untagged
+  m_TagString: PlayerB_Three
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -293,29 +309,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &123412543960954179
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2761254361103687545}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.013129957, y: -0.04290629}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.24}
-    newSize: {x: 0.32, y: 0.24}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.075295374, y: 0.095626906}
-  m_EdgeRadius: 0

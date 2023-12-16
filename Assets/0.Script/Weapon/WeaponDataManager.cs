@@ -25,6 +25,7 @@ public class WeaponDataManager : MonoBehaviour
 
     public static bool playerBTwobool;
     public static float playerBThreeDamage;
+    public static float playerBThreeAtkTime;
     public static bool playerBFourbool;
     public static float playerBFourTime;
     public static float playerBFourCoolTime;
@@ -61,10 +62,13 @@ public class WeaponDataManager : MonoBehaviour
     {
           playerAOneSpeed = 1;
           playerAOneAtk =25f;
+
           playerATwoAtk =15f;
           playerATwoCoolTime = 2f;
+
           playerAThreeAtk =100f;
           playerAThreeCoolTime = 3f;
+
           playerAFourTime =4f;
           playerAFourCoolTime = 30f;
           playerAFourbool = false;
@@ -72,9 +76,13 @@ public class WeaponDataManager : MonoBehaviour
           playerABasicAtkCool = 3f;
 
 
+        //////////////////////////////////
+        playerBOneAtk = 25f;
         playerBTwoSize = 2;
+        playerBThreeDamage = 25f;
         playerBFourTime = 10f;
         playerBFourCoolTime = 30f;
+        playerBBasicDamage = 10f;
         playerBFourbool = false;
         playerBTwobool = false;
 
@@ -85,12 +93,26 @@ public class WeaponDataManager : MonoBehaviour
 
 
 
-        playerCThreeCoolTime = 30f; // 쿨타임
-        playerCThreeAtkContinueTime = 10f;
-        playerCThreeAtkSize = 5;
+        /////////////////////////////////////
+        playerCBasicAtkTime = 5f;
+        playerCBasicCoolTime = 5f;
+        playerCBasicAtkDamage = 10f; // 기본공격
 
-        playerCTwoCoolTime = 10f;
-        playerCTwoAtkContinueTime = 3f;
+        playerCOneContinueTime = 2f;
+        playerCOneCoolTime = 7f;
+        plyaerCOneDamage = 20f;
+
+        playerCTwoAtkContinueTime = 2f;
+        playerCTwoCoolTime = 7f;
+        playerCTwoDamage = 20f;
+
+        playerCThreeCoolTime = 5f;
+        playerCThreeAtkContinueTime = 10f;
+        playerCThreeAtkSize = 2;
+
+        playerCFourCoolTime = 10f;
+        playerCFourAtkTime = 5f;
+        playerCFourAtkCnt = 1;
 
     }
 

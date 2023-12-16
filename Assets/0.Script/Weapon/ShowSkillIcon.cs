@@ -7,6 +7,8 @@ public class ShowSkillIcon : MonoBehaviour
 {
     public GameObject[] playerSet;
     public Image[] playerAIcon;
+    public Image[] playerBIcon;
+    public Image[] playerCIcon;
     bool timeStopCool = false;
     float timeStopCoolTime = 0f;
     private void Start()

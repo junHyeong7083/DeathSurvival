@@ -57,7 +57,7 @@ public class PlayerA_Basic : MonoBehaviour
             else if(!canAtk)
             {
                 checkTime += Time.deltaTime;
-                if (checkTime > PlayerPrefs.GetFloat("ABasicSpeed"))
+                if (checkTime >WeaponDataManager.playerABasicAtkCool)
                 {
                     checkTime = 0f; 
                     canAtk = true;
