@@ -24,6 +24,7 @@ public class ShowSkillIcon : MonoBehaviour
     private void Update()
     {
         #region Icon Setactive(true)
+        #region PlayerA
         if (PlayerA_Atk1.playerA_Atk1)
             playerAIcon[0].gameObject.SetActive(PlayerA_Atk1.playerA_Atk1);
        if(PlayerA_Atk2.playerA_Atk2)
@@ -32,6 +33,20 @@ public class ShowSkillIcon : MonoBehaviour
             playerAIcon[2].gameObject.SetActive(PlayerA_Atk3.playerA_Atk3);
        if(WeaponDataManager.playerAFourbool)
             playerAIcon[3].gameObject.SetActive(WeaponDataManager.playerAFourbool);
+        #endregion
+        #region PlayerB
+
+
+
+        #endregion
+        #region PlayerC
+
+
+        #endregion
+
+
+
+
         #endregion
 
 

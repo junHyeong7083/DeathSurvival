@@ -26,6 +26,10 @@ public class SelectManager : MonoBehaviour
     [SerializeField]
     float changeSpeed = 6; // 패널 이동속도
 
+    [Header("Key")]
+    public GameObject[] Key;
+    int firstValue;
+    int secondValue;
 
     #region 패널 변경을 위한 Vector
     Vector3 targetPosPlayerA;
@@ -46,19 +50,29 @@ public class SelectManager : MonoBehaviour
     public static bool canC = false;
     void Start()
     {
+        firstValue = PlayerPrefs.GetInt("firstCheck");
+        secondValue = PlayerPrefs.GetInt("secondCheck");
+        Key[0].gameObject.SetActive(true);
+        Key[1].gameObject.SetActive(true);
 
-        checkB = PlayerPrefs.GetFloat("CharacterB");
-        checkC = PlayerPrefs.GetFloat("CharacterC");
-
-        if (checkB >= 1)
+        if (firstValue >= 1)
             canB = true;
         else
             canB = false;
 
-        if (checkC >= 2)
+        if (secondValue >= 2)
             canC = true;
         else
             canC = false;
+
+        if(firstValue ==1)
+        {
+            Key[0].gameObject.SetActive(false);
+        }
+        if(secondValue == 1)
+        {
+            Key[1].gameObject.SetActive(false);
+        }
 
         #region Init
         originScale = new Vector2(600, 320);

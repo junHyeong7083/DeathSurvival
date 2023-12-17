@@ -19,7 +19,6 @@ public class PlayerLevelBar : MonoBehaviour
 
     float minValue;
     float maxValue;
-
     void Start()
     {
         levelTxt = GameObject.Find("LevelText").GetComponent<Text>();
@@ -30,7 +29,7 @@ public class PlayerLevelBar : MonoBehaviour
         CheckingLevel = currentLevel;
         currentExperience = 0;
 
-        someAmount = 2 + 2 * (Timer / 30); // 임시로 30으로 설정후 30초마다 10씩 증가함
+        someAmount = 2 + 2* (Timer / 30); // 임시로 30으로 설정후 30초마다 10씩 증가함
 
         LevelData currentLevelData = GetLevelData(currentLevel + 1);
         if (currentLevelData != null)
@@ -44,7 +43,7 @@ public class PlayerLevelBar : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Item")
+        if (collision.gameObject.CompareTag("Item"))
         {
             currentExperience += someAmount;
 

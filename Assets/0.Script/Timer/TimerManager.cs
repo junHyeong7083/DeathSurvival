@@ -31,9 +31,22 @@ public class TimerManager : MonoBehaviour
 
 
 
-        if(((Timer % 60) >= 30 ))
+        if((Timer / 60 % 60) >= 10) // 10분을 버텼을떄
         {
-            Debug.Log("!@#3");
+            switch(CharacterManager.Instance.currentCharacter)
+            {
+                case Character.White:
+                    PlayerPrefs.SetInt("firstCheck", 1);
+                    break;
+
+                case Character.Blue:
+                    PlayerPrefs.SetInt("secondCheck", 1);
+                    break;
+
+                case Character.Green:
+                    PlayerPrefs.SetInt("thirdCheck", 1);
+                    break;
+            }
             isClear = true;
         }
     }

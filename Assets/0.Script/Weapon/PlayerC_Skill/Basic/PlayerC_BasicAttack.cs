@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerC_BasicAttack : PlayerController
+public class PlayerC_BasicAttack : MonoBehaviour
 {
     GameObject Dir;
 
     float attackTime = 3f;
     float coolTime = 3f;
-    Animator animator;
+    Animator aanimator;
     BoxCollider2D boxCollider2D;
     
 
@@ -17,7 +17,7 @@ public class PlayerC_BasicAttack : PlayerController
     {
         boxCollider2D = GetComponent<BoxCollider2D>();  
         Dir = GameObject.Find("Dir");
-        animator = GetComponent<Animator>();
+        aanimator = GetComponent<Animator>();
 
         StartCoroutine(Atk());
     }
@@ -32,12 +32,12 @@ public class PlayerC_BasicAttack : PlayerController
             {
                 isOnes = true;
                 float startTime = Time.time;
-                animator.SetBool("isCool", false);
+                aanimator.SetBool("isCool", false);
                 WeaponDataManager.playerCBasicBool = true;
                 boxCollider2D.enabled = true;
                 while (Time.time - startTime < WeaponDataManager.playerCBasicAtkTime)
                 {
-                    if (Dir.transform.position.x >= PlayerPos.x)
+                    if (Dir.transform.position.x >=PlayerController.PlayerPos.x)
                     {
                        // Debug.Log("¿À");
                         this.transform.localEulerAngles = new Vector3(180, 0, 270);
@@ -53,7 +53,7 @@ public class PlayerC_BasicAttack : PlayerController
                     yield return null;
                 }
                 startTime = Time.time;
-                animator.SetBool("isCool", true);
+                aanimator.SetBool("isCool", true);
                 WeaponDataManager.playerCBasicBool = false;
                 boxCollider2D.enabled = false;
                 while (Time.time - startTime < WeaponDataManager.playerCBasicCoolTime)

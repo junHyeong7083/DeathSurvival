@@ -1,9 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Http.Headers;
-using Unity.VisualScripting;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +7,10 @@ public class LevelUPManager : MonoBehaviour
 {
     [Header("-----레벨업 패널-----")]
     public GameObject LevelUpPanel;
+
+    [Header("-----레벨업 선택 패널-----")]
+    public GameObject[] LevelUpSelectPanel;
+    int currentSelectNum = 0;
 
     [Header("-----패널 아이콘 이미지-----")]
     public GameObject[] panelIconImage;
@@ -28,7 +28,8 @@ public class LevelUPManager : MonoBehaviour
     public Text[] nameDescriptions;
     [Header("-----스킬아이콘들-----")]
     public Sprite[] SkillSprites;
-
+    public Sprite[] BSkillSprites;
+    public Sprite[] CSkillSprites;
 
     [Header("-----레벨업 효과-----")]
     public ParticleSystem[] levelUpParticles;
@@ -71,6 +72,14 @@ public class LevelUPManager : MonoBehaviour
         for(int e = 0; e < panelIconImage.Length; ++e)
         {
             panelIconImage[e].gameObject.SetActive(false);
+        }
+
+        for(int e = 0; e < LevelUpSelectPanel.Length; ++e )
+        {
+            if (e == 0)
+                LevelUpSelectPanel[e].gameObject.SetActive(true);
+            else
+                LevelUpSelectPanel[e].gameObject.SetActive(false);
         }
 
 
@@ -1866,7 +1875,7 @@ public class LevelUPManager : MonoBehaviour
             switch (buttonA)
             {
                 case 0: // 1번
-                    IconImagePanel[0].sprite = SkillSprites[0];
+                    IconImagePanel[0].sprite = BSkillSprites[0];
                     PropertyDescriptions[0].text = "스킬";
                     if (playerBSkillA)
                     {
@@ -1888,7 +1897,7 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 1: // 2번
-                    IconImagePanel[0].sprite = SkillSprites[1];
+                    IconImagePanel[0].sprite = BSkillSprites[1];
                     PropertyDescriptions[0].text = "스킬";
                     if (playerBSkillB)
                     {
@@ -1909,11 +1918,11 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 2: // 3번
-                    IconImagePanel[0].sprite = SkillSprites[1];
+                    IconImagePanel[0].sprite = BSkillSprites[1];
                     PropertyDescriptions[0].text = "스킬";
                     if (playerBSkillC)
                     {
-                        nameDescriptions[0].text = "주시하는 상흔";
+                        nameDescriptions[0].text = "주시하는 상흔#1";
                         Descriptions[0].text = "3번스킬 사용가능";
                     }
                     else
@@ -1922,7 +1931,7 @@ public class LevelUPManager : MonoBehaviour
                         switch (Bskill3)
                         {
                             case 0: // 빈도
-                                nameDescriptions[0].text = "주시하는 상흔";
+                                nameDescriptions[0].text = "주시하는 상흔#1";
                                 Descriptions[0].text = "데미지 증가\n + 0.5%";
                                 break;
                         }
@@ -1930,7 +1939,7 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 3: // 4번 시간증가
-                    IconImagePanel[0].sprite = SkillSprites[3];
+                    IconImagePanel[0].sprite = BSkillSprites[3];
                     PropertyDescriptions[0].text = "스킬";
                     if (playerBSkillD)
                     {
@@ -1961,7 +1970,7 @@ public class LevelUPManager : MonoBehaviour
                     BskillBasic = Random.Range(0, 1);
                     nameDescriptions[0].text = "";
                     PropertyDescriptions[0].text = "기본 공격";
-                    IconImagePanel[0].sprite = SkillSprites[2];
+                    IconImagePanel[0].sprite = BSkillSprites[2];
                     switch (BskillBasic)
                     {
                         case 0: // 빈도
@@ -2001,7 +2010,7 @@ public class LevelUPManager : MonoBehaviour
             switch (buttonB)
             {
                 case 0: // 1번
-                    IconImagePanel[1].sprite = SkillSprites[0];
+                    IconImagePanel[1].sprite = BSkillSprites[0];
                     PropertyDescriptions[1].text = "스킬";
                     if (playerBSkillA)
                     {
@@ -2023,7 +2032,7 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 1: // 2번
-                    IconImagePanel[1].sprite = SkillSprites[1];
+                    IconImagePanel[1].sprite = BSkillSprites[1];
                     PropertyDescriptions[1].text = "스킬";
                     if (playerBSkillB)
                     {
@@ -2044,7 +2053,7 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 2: // 3번
-                    IconImagePanel[1].sprite = SkillSprites[1];
+                    IconImagePanel[1].sprite = BSkillSprites[1];
                     PropertyDescriptions[1].text = "스킬";
                     if (playerBSkillC)
                     {
@@ -2065,7 +2074,7 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 3: // 4번 시간증가
-                    IconImagePanel[1].sprite = SkillSprites[3];
+                    IconImagePanel[1].sprite = BSkillSprites[3];
                     PropertyDescriptions[1].text = "스킬";
                     if (playerBSkillD)
                     {
@@ -2094,7 +2103,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 4: //기본 공격
                     BskillBasic = Random.Range(0, 1); PropertyDescriptions[1].text = "기본 공격";
-                    IconImagePanel[1].sprite = SkillSprites[2];
+                    IconImagePanel[1].sprite = BSkillSprites[2];
                     switch (BskillBasic)
                     {
                         case 0: // 빈도
@@ -2135,7 +2144,7 @@ public class LevelUPManager : MonoBehaviour
             switch (buttonC)
             {
                 case 0: // 1번
-                    IconImagePanel[2].sprite = SkillSprites[0];
+                    IconImagePanel[2].sprite = BSkillSprites[0];
                     nameDescriptions[2].text = "다가오는 상흔";
                     PropertyDescriptions[2].text = "스킬";
                     if (playerBSkillA)
@@ -2157,7 +2166,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     nameDescriptions[2].text = "주시하는 상흔";
-                    IconImagePanel[2].sprite = SkillSprites[1];
+                    IconImagePanel[2].sprite = BSkillSprites[1];
                     PropertyDescriptions[2].text = "스킬";
                     if (playerBSkillB)
                     {
@@ -2177,7 +2186,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     nameDescriptions[2].text = "주시하는 상흔";
-                    IconImagePanel[2].sprite = SkillSprites[1];
+                    IconImagePanel[2].sprite = BSkillSprites[1];
                     PropertyDescriptions[2].text = "스킬";
                     if (playerBSkillC)
                     {
@@ -2197,7 +2206,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     nameDescriptions[2].text = "상흔기록";
-                    IconImagePanel[2].sprite = SkillSprites[3];
+                    IconImagePanel[2].sprite = BSkillSprites[3];
                     PropertyDescriptions[2].text = "스킬";
                     if (playerBSkillD)
                     {
@@ -2225,7 +2234,7 @@ public class LevelUPManager : MonoBehaviour
                     nameDescriptions[2].text = "";
                     BskillBasic = Random.Range(0, 1);
                     PropertyDescriptions[2].text = "기본 공격";
-                    IconImagePanel[2].sprite = SkillSprites[2];
+                    IconImagePanel[2].sprite = BSkillSprites[2];
                     switch (BskillBasic)
                     {
                         case 0: // 빈도
@@ -2269,7 +2278,7 @@ public class LevelUPManager : MonoBehaviour
             {
                 case 0: // 1번
                     nameDescriptions[0].text = "고통과 환희";
-                    IconImagePanel[0].sprite = SkillSprites[0];
+                    IconImagePanel[0].sprite = CSkillSprites[0];
                     PropertyDescriptions[0].text = "스킬";
                     if (playerCSkillA)
                     {
@@ -2297,7 +2306,7 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 1: // 2번
-                    IconImagePanel[0].sprite = SkillSprites[1];
+                    IconImagePanel[0].sprite = CSkillSprites[1];
                     nameDescriptions[0].text = "고통과 전이";
                     PropertyDescriptions[0].text = "스킬";
                     if (playerCSkillB)
@@ -2325,7 +2334,7 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 2: // 3번
-                    IconImagePanel[0].sprite = SkillSprites[1];
+                    IconImagePanel[0].sprite = CSkillSprites[1];
                     PropertyDescriptions[0].text = "스킬";
                     nameDescriptions[0].text = "윤회의 시작";
                     if (playerCSkillC)
@@ -2353,7 +2362,7 @@ public class LevelUPManager : MonoBehaviour
                     break;
 
                 case 3: // 4번 시간증가
-                    IconImagePanel[0].sprite = SkillSprites[3];
+                    IconImagePanel[0].sprite = CSkillSprites[3];
                     PropertyDescriptions[0].text = "스킬";
                     nameDescriptions[0].text = "타종";
                     if (playerCSkillD)
@@ -2380,7 +2389,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 4: //기본 공격
                     CskillBasic = Random.Range(0, 3);
-                    IconImagePanel[0].sprite = SkillSprites[2];
+                    IconImagePanel[0].sprite = CSkillSprites[2];
                     nameDescriptions[0].text = "";
                     PropertyDescriptions[0].text = "기본 공격";
                     switch (CskillBasic)
@@ -2431,7 +2440,7 @@ public class LevelUPManager : MonoBehaviour
             {
                 case 0: // 1번
                     nameDescriptions[1].text = "고통과 환희";
-                    IconImagePanel[1].sprite = SkillSprites[0];
+                    IconImagePanel[1].sprite = CSkillSprites[0];
                     PropertyDescriptions[1].text = "스킬";
                     if (playerCSkillA)
                     {
@@ -2460,7 +2469,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     nameDescriptions[1].text = "고통과 전이";
-                    IconImagePanel[1].sprite = SkillSprites[1];
+                    IconImagePanel[1].sprite = CSkillSprites[1];
                     PropertyDescriptions[1].text = "스킬";
                     if (playerCSkillB)
                     {
@@ -2488,7 +2497,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     nameDescriptions[1].text = "윤회의 시작";
-                    IconImagePanel[1].sprite = SkillSprites[1];
+                    IconImagePanel[1].sprite = CSkillSprites[1];
                     PropertyDescriptions[1].text = "스킬";
                     if (playerCSkillC)
                     {
@@ -2516,7 +2525,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     nameDescriptions[1].text = "타종";
-                    IconImagePanel[1].sprite = SkillSprites[3];
+                    IconImagePanel[1].sprite = CSkillSprites[3];
                     PropertyDescriptions[1].text = "스킬";
                     if (playerCSkillD)
                     {
@@ -2544,7 +2553,7 @@ public class LevelUPManager : MonoBehaviour
                     nameDescriptions[1].text = "";
                     CskillBasic = Random.Range(0, 3);
                     PropertyDescriptions[1].text = "기본 공격";
-                    IconImagePanel[1].sprite = SkillSprites[2];
+                    IconImagePanel[1].sprite = CSkillSprites[2];
                     switch (CskillBasic)
                     {
                         case 0: // 빈도
@@ -2593,7 +2602,7 @@ public class LevelUPManager : MonoBehaviour
             {
                 case 0: // 1번
                     nameDescriptions[2].text = "고통과 환희";
-                    IconImagePanel[2].sprite = SkillSprites[0];
+                    IconImagePanel[2].sprite = CSkillSprites[0];
                     PropertyDescriptions[2].text = "스킬";
                     if (playerCSkillA)
                     {
@@ -2622,7 +2631,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 1: // 2번
                     nameDescriptions[2].text = "고통과 전이";
-                    IconImagePanel[2].sprite = SkillSprites[1];
+                    IconImagePanel[2].sprite = CSkillSprites[1];
                     PropertyDescriptions[2].text = "스킬";
                     if (playerCSkillB)
                     {
@@ -2650,7 +2659,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 2: // 3번
                     nameDescriptions[2].text = "윤회의 시작";
-                    IconImagePanel[2].sprite = SkillSprites[1];
+                    IconImagePanel[2].sprite = CSkillSprites[1];
                     PropertyDescriptions[2].text = "스킬";
                     if (playerCSkillC)
                     {
@@ -2678,7 +2687,7 @@ public class LevelUPManager : MonoBehaviour
 
                 case 3: // 4번 시간증가
                     nameDescriptions[2].text = "타종";
-                    IconImagePanel[2].sprite = SkillSprites[3];
+                    IconImagePanel[2].sprite = CSkillSprites[3];
                     PropertyDescriptions[2].text = "스킬";
                     if (playerCSkillD)
                     {
@@ -2706,7 +2715,7 @@ public class LevelUPManager : MonoBehaviour
                     nameDescriptions[2].text = "";
                     CskillBasic = Random.Range(0, 3);
                     PropertyDescriptions[2].text = "기본 공격";
-                    IconImagePanel[2].sprite = SkillSprites[2];
+                    IconImagePanel[2].sprite = CSkillSprites[2];
                     switch (CskillBasic)
                     {
                         case 0: // 빈도
@@ -2813,10 +2822,97 @@ public class LevelUPManager : MonoBehaviour
         }
         return false;
     }
+    bool isOnes = false;
+
+
+    public void ButtonAOn()
+    {
+        int index = 0;
+        currentSelectNum = index;
+
+    }
+    public void ButtonBOn()
+    {
+        int index = 1;
+        currentSelectNum = index;
+    }
+
+    public void ButtonCOn()
+    {
+        int index = 2;
+        currentSelectNum = index;
+    }
+
+
+    bool isLevelUp = false;
     private void Update()
     {
-        if(PlayerLevelBar.isLevelUp)
+        if(isLevelUp)
         {
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+            {
+                if (currentSelectNum == 0)
+                    currentSelectNum = 2;
+                else
+                    currentSelectNum--;
+            }
+            if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
+            {
+                if (currentSelectNum == 2)
+                    currentSelectNum = 0;
+                else
+                    currentSelectNum++;
+            }
+            switch (currentSelectNum)
+            {
+                case 0:
+                    LevelUpSelectPanel[0].gameObject.SetActive(true);
+                    LevelUpSelectPanel[1].gameObject.SetActive(false);
+                    LevelUpSelectPanel[2].gameObject.SetActive(false);
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        if (!isOnes)
+                        {
+                            SelectA();
+                            isOnes = true;
+                        }
+                    }
+                    break;
+
+                case 1:
+                    LevelUpSelectPanel[0].gameObject.SetActive(false);
+                    LevelUpSelectPanel[1].gameObject.SetActive(true);
+                    LevelUpSelectPanel[2].gameObject.SetActive(false);
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        if (!isOnes)
+                        {
+                            isOnes = true;
+                            SelectB();
+                        }
+                    }
+                    break;
+
+                case 2:
+                    LevelUpSelectPanel[0].gameObject.SetActive(false);
+                    LevelUpSelectPanel[1].gameObject.SetActive(false);
+                    LevelUpSelectPanel[2].gameObject.SetActive(true);
+                    if (Input.GetKeyDown(KeyCode.Space))
+                    {
+                        if (!isOnes)
+                        {
+                            SelectC();
+                            isOnes = true;
+                        }
+                    }
+                    break;
+            }
+
+        }
+
+        if (PlayerLevelBar.isLevelUp)
+        {
+            isLevelUp = true;
             GenerateDistinctRandomNumbers();
             buttonA = arr[0];
             buttonB = arr[1];
@@ -2830,9 +2926,13 @@ public class LevelUPManager : MonoBehaviour
 
 
             ControllerParticle(true);
+
         }
         if(isSelect)
         {
+            currentSelectNum = 1;
+            isLevelUp = false;
+            isOnes = false;
             hpBg.gameObject.SetActive(true);
             LevelUpPanel.gameObject.SetActive(false);
             UIManager.isPause = false;

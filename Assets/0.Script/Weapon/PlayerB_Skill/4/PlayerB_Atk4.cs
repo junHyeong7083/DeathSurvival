@@ -15,6 +15,10 @@ public class PlayerB_Atk4 : PlayerController
 
     private Color[] originalColors;
 
+    SpriteRenderer spriteRenderer;
+    Color color;
+    Vector3 originScale;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +28,72 @@ public class PlayerB_Atk4 : PlayerController
             atk4Icon = atk4IconObj.GetComponent<Image>();
             atk4Icon.fillAmount = 1f;
         }
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        color = spriteRenderer.color;
+
+        originScale = this.transform.localScale;
+
+        StartCoroutine(Atk());
     }
 
     // Update is called once per frame
-    bool isOnes = false;
-
     float currentSpeed = 0f;
+
+    IEnumerator Atk()
+    {
+        while(true)
+        {
+            this.transform.localScale = originScale;
+            color.a = 0.25f;
+            spriteRenderer.color = color;
+
+
+            float startTime = Time.time;
+            atk4Icon.fillAmount = 0f;
+            WeaponDataManager.playerBFourbool = true;
+            while (Time.time - startTime < 1f)
+            {
+                this.transform.localScale += new Vector3(50 * Time.deltaTime, 30 * Time.deltaTime, 30 * Time.deltaTime);
+
+                yield return null;
+            }
+
+            startTime = Time.time;
+            currentSpeed = PlayerState.Speed;
+
+            PlayerState.Speed *= 1.5f;
+            while (Time.time-  startTime< WeaponDataManager.playerBFourTime)
+            {
+                showPlayerChar.gameObject.SetActive(true);
+                targetTrailRender.gameObject.SetActive(true);
+
+                yield return null;
+            }
+            PlayerState.Speed = currentSpeed;
+            startTime = Time.time;
+            color.a = 0f;
+            spriteRenderer.color = color;
+            WeaponDataManager.playerBFourbool = false;
+            while (Time.time - startTime < WeaponDataManager.playerAFourCoolTime)
+            {
+                float t = (Time.time - startTime ) / WeaponDataManager.playerAFourCoolTime;
+                float fillAmount = Mathf.Clamp(coolTime / WeaponDataManager.playerAFourCoolTime, 0, 1);
+                atk4Icon.fillAmount = fillAmount;
+
+
+                yield return null;
+            }
+            
+        }
+
+
+    }
+
+
     void Update()
     {
-        if(isStart)
+        this.transform.position = PlayerController.PlayerPos;
+/*        if(isStart)
         {
             atk4Icon.fillAmount = 0f;
             this.transform.position = new Vector3(PlayerController.PlayerPos.x, PlayerController.PlayerPos.y, PlayerController.PlayerPos.z);
@@ -56,7 +117,7 @@ public class PlayerB_Atk4 : PlayerController
             skillTime += Time.deltaTime;
           //  GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
 
-            /*    foreach (GameObject monster in monsters)
+            *//*    foreach (GameObject monster in monsters)
                 {
                     //monster.SendMessage("OnSlow", SendMessageOptions.DontRequireReceiver);
                 }
@@ -68,7 +129,7 @@ public class PlayerB_Atk4 : PlayerController
                     {
                       //  monster.SendMessage("OutSlow", SendMessageOptions.DontRequireReceiver);
                     }
-                }*/
+                }*//*
 
 
             if (skillTime > WeaponDataManager.playerBFourTime + 0.3f)
@@ -88,7 +149,7 @@ public class PlayerB_Atk4 : PlayerController
             this.transform.localScale = Vector3.zero; 
             coolTime += Time.deltaTime;
 
-            if(coolTime > WeaponDataManager.playerBFourCoolTime)
+            if(coolTime >= WeaponDataManager.playerBFourCoolTime)
             {
                 coolTime = 0f;
                 isStart = true;
@@ -96,6 +157,6 @@ public class PlayerB_Atk4 : PlayerController
             }
 
             
-        }
+        }*/
     }
 }

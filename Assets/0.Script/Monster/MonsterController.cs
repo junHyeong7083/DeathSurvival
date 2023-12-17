@@ -89,7 +89,7 @@ public class MonsterController : MonoBehaviour
             {
                 
                 case Character.White:
-                    if (collision.gameObject.tag == "PlayerA_One")
+                    if (collision.gameObject.CompareTag("PlayerA_One"))
                     {
                         // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.playerAOneAtk + damage;
@@ -102,7 +102,7 @@ public class MonsterController : MonoBehaviour
                         //  TakeDamage(sumDamage, checkDamage);
                         pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                     }
-                    if (collision.gameObject.tag == "PlayerA_Two")
+                    if (collision.gameObject.CompareTag("PlayerA_Two"))
                     {
                         // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.playerATwoAtk + damage;
@@ -114,7 +114,7 @@ public class MonsterController : MonoBehaviour
                         PlayerATwoDamage += WeaponDataManager.playerATwoAtk + damage;
                         pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                     }
-                    if (collision.gameObject.tag == "PlayerA_Three")
+                    if (collision.gameObject.CompareTag("PlayerA_Three"))
                     {
                         // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.playerAThreeAtk;
@@ -125,7 +125,7 @@ public class MonsterController : MonoBehaviour
                         PlayerAThreeDamage += WeaponDataManager.playerAThreeAtk;
                         pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                     }
-                    if (collision.gameObject.tag == "PlayerA_Basic")
+                    if (collision.gameObject.CompareTag("PlayerA_Basic"))
                     {
                         // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.playerABasicAtkDamage;
@@ -140,7 +140,7 @@ public class MonsterController : MonoBehaviour
                     break;
 
                 case Character.Blue:
-                    if (collision.gameObject.tag == "PlayerB_One")
+                    if (collision.gameObject.CompareTag("PlayerB_One") )
                     {
                         // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.playerBOneAtk + damage;
@@ -153,7 +153,7 @@ public class MonsterController : MonoBehaviour
                         //  TakeDamage(sumDamage, checkDamage);
                         pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                     }
-                    if (collision.gameObject.tag == "PlayerB_Two")
+/*                    if (collision.gameObject.CompareTag("PlayerB_Two"))
                     {
                         // 공격력 따라 데미지 줄이는 코드
                        // Hp -= WeaponDataManager.playerBTwoAtk + damage;
@@ -164,8 +164,8 @@ public class MonsterController : MonoBehaviour
 
                       //  PlayerATwoDamage += WeaponDataManager.playerATwoAtk + damage;
                        // pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
-                    }
-                    if (collision.gameObject.tag == "PlayerB_Three")
+                    }*/
+                    if (collision.gameObject.CompareTag("PlayerB_Three"))
                     {
                         // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.playerBThreeDamage;
@@ -176,7 +176,7 @@ public class MonsterController : MonoBehaviour
                         PlayerBThreeDamage += WeaponDataManager.playerBThreeDamage;
                         pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                     }
-                    if (collision.gameObject.tag == "PlayerB_Basic")
+                    if (collision.gameObject.CompareTag("PlayerB_Basic"))
                     {
                         // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.playerBBasicDamage;
@@ -191,7 +191,7 @@ public class MonsterController : MonoBehaviour
                     break;
 
                 case Character.Green:
-                    if (collision.gameObject.tag == "PlayerC_One")
+                    if (collision.gameObject.CompareTag("PlayerC_One"))
                     {
                         // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.plyaerCOneDamage + damage;
@@ -204,7 +204,7 @@ public class MonsterController : MonoBehaviour
                         //  TakeDamage(sumDamage, checkDamage);
                         pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                     }
-                    if (collision.gameObject.tag == "PlayerC_Two")
+                    if (collision.gameObject.CompareTag("PlayerC_Two"))
                     {
                         // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.playerCTwoDamage + damage;
@@ -216,7 +216,7 @@ public class MonsterController : MonoBehaviour
                         PlayerCTwoDamage += WeaponDataManager.playerCTwoDamage + damage;
                         pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);
                     }
-                    if (collision.gameObject.tag == "PlayerC_Three")
+                    if (collision.gameObject.CompareTag("PlayerC_Three"))
                     {
                      /*   // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.playerAThreeAtk;
@@ -227,7 +227,7 @@ public class MonsterController : MonoBehaviour
                         PlayerCThreeDamage += WeaponDataManager.playerAThreeAtk;
                         pool.ShowDamageText(DamagePos.position, sumDamage, checkDamage);*/
                     }
-                    if (collision.gameObject.tag == "PlayerC_Basic")
+                    if (collision.gameObject.CompareTag("PlayerC_Basic"))
                     {
                         // 공격력 따라 데미지 줄이는 코드
                         Hp -= WeaponDataManager.playerCBasicAtkDamage;
@@ -251,14 +251,14 @@ public class MonsterController : MonoBehaviour
                     isHitPlayerBFourSkill = true;
                 }
             }
-            if(collision.gameObject.tag == "PlayerB_Magnetic")
+            if(collision.gameObject.CompareTag("PlayerB_Magnetic"))
             {
                 isMagnetic = true;
             }
 
 
             #region 플레이어한테 너무 안붙게
-            if (collision.gameObject.tag == "Player")
+            if (collision.gameObject.CompareTag("Player"))
             {
                 Speed = 0;
             }
@@ -272,7 +272,7 @@ public class MonsterController : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "PlayerB_Magnetic")
+        if(collision.gameObject.CompareTag("PlayerB_Magnetic"))
         {
             isMagnetic = false;
         }

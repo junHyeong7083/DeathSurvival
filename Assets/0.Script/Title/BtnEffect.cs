@@ -35,7 +35,7 @@ public class BtnEffect : MonoBehaviour
     bool xbgmSound;
     bool xsfxSound;
 
-    bool isOptionOn; // 옵션패널 계속 안열리도록 방지하는 코드
+    public static bool isOptionOn; // 옵션패널 계속 안열리도록 방지하는 코드
     public GameObject SceneManager;
     ChangeScene changeScene;
     private void Awake()
