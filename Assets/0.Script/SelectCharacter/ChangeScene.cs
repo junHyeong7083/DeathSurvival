@@ -27,7 +27,13 @@ public class ChangeScene : MonoBehaviour
         TransitionManager.Instance().Transition(_sceneName, transition, loadDelay);
     }
 
-
+    public void Quit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
+    }
     public void GoSelectScene()
     {
         // SceneManager.LoadScene(1);

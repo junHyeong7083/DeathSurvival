@@ -560,6 +560,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 2583348718290999364, guid: 36190b23d57f3e244bae5cbac616acbd, type: 3}
+      propertyPath: m_Size.x
+      value: 0.15100406
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583348718290999364, guid: 36190b23d57f3e244bae5cbac616acbd, type: 3}
+      propertyPath: m_Size.y
+      value: 0.1278708
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583348718290999364, guid: 36190b23d57f3e244bae5cbac616acbd, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.02684503
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583348718290999364, guid: 36190b23d57f3e244bae5cbac616acbd, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.04895282
+      objectReference: {fileID: 0}
     - target: {fileID: 3309473433515105110, guid: 36190b23d57f3e244bae5cbac616acbd, type: 3}
       propertyPath: m_RootOrder
       value: 1

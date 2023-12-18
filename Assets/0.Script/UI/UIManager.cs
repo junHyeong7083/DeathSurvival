@@ -22,6 +22,9 @@ public class UIManager : MonoBehaviour
     #endregion
 
     public GameObject ClearPanel;
+    public GameObject[] clearEffects;
+    public Outline[] clearoutlnes;
+    int clearIndex = 1;
     float delayClearTime;
     // public Text levelTxt;
     public static bool isPause;
@@ -39,7 +42,7 @@ public class UIManager : MonoBehaviour
         Time.timeScale = 1f;
         delayDieTime = 0f;
         DiePanel.gameObject.SetActive(false);
-
+        ClearPanel.gameObject.SetActive(false);
         isClick = false;
         optionPanel.SetActive(false);
     }
@@ -64,6 +67,14 @@ public class UIManager : MonoBehaviour
         isPause = false;
     }
 
+    public void OnClearTitle()
+    {
+        clearIndex = 1;
+    }
+    public void OnClearQuit()
+    {
+        clearIndex = 0;
+    }
 
     private void Update()
     {
@@ -188,6 +199,7 @@ public class UIManager : MonoBehaviour
 
         #endregion
 
+        Debug.Log("timebool : " + TimerManager.isClear);
         #region ClearPanel
         if (TimerManager.isClear)
         {
@@ -207,8 +219,52 @@ public class UIManager : MonoBehaviour
 
                 if (Pixelate.showClearPanel)
                 {
+                    Pixelate.showHpBar = false; 
                     Time.timeScale = 0f;
                     ClearPanel.gameObject.SetActive(true);
+                    SoundManager.Instance.PlaySFXSound("GameOver", 0.05f);
+                    if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+                    {
+                        if (clearIndex == 0)
+                            clearIndex = 1;
+                        else
+                            clearIndex--;
+                    }
+
+                    if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+                    {
+                        if (clearIndex == 1)
+                            clearIndex = 0;
+                        else
+                            clearIndex++;
+                    }
+
+                    switch(clearIndex)
+                    {
+                        case 1:
+                            clearoutlnes[0].effectColor = Color.red;
+                            clearoutlnes[1].effectColor = Color.black;
+
+                            clearEffects[0].gameObject.SetActive(true);
+                            clearEffects[1].gameObject.SetActive(false);
+                            if (Input.GetKeyDown(KeyCode.Space))
+                            {
+                                GetComponent<ChangeScene>().GoTitleScene();
+                            }
+                            break;
+
+                        case 0:
+                            clearoutlnes[1].effectColor = Color.red;
+                            clearoutlnes[0].effectColor = Color.black;
+
+                            clearEffects[1].gameObject.SetActive(true);
+                            clearEffects[0].gameObject.SetActive(false);
+                            if (Input.GetKeyDown(KeyCode.Space))
+                            {
+                                GetComponent<ChangeScene>().Quit();
+                            }
+                            break;
+                    }
                 }
                 PlayerHpBar.isDie = false;
 
@@ -219,6 +275,50 @@ public class UIManager : MonoBehaviour
                 }
             }
         }
+        #endregion
+
+        #region 치트키
+        if(Input.GetKeyDown(KeyCode.F1))
+        {
+            TimerManager.isClear = true;
+            switch (CharacterManager.Instance.currentCharacter)
+            {
+                case Character.White:
+                    PlayerPrefs.SetInt("firstCheck", 1);
+                    break;
+
+                case Character.Blue:
+                    PlayerPrefs.SetInt("secondCheck", 1);
+                    break;
+
+                case Character.Green:
+                    PlayerPrefs.SetInt("thirdCheck", 1);
+                    break;
+            }
+        } // 강제 클리어
+
+        if (Input.GetKeyDown(KeyCode.F5))
+        {
+            PlayerPrefs.SetInt("firstCheck", 1);
+        } // 토구 해금
+
+        if (Input.GetKeyDown(KeyCode.F6))
+        {
+            PlayerPrefs.SetInt("secondCheck", 1);
+        } // 톱구 해금
+
+        if (Input.GetKeyDown(KeyCode.F7))
+        {
+            PlayerPrefs.SetInt("thirdCheck", 1);
+        } // 히든 해금
+
+
+        if (Input.GetKeyDown(KeyCode.F8))
+        {
+            PlayerPrefs.SetInt("firstCheck", 0);
+            PlayerPrefs.SetInt("secondCheck", 0);
+            PlayerPrefs.SetInt("thirdCheck", 0);
+        } // 초기화
         #endregion
     }
     bool isOnes;

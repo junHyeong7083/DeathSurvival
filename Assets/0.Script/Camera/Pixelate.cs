@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using static UnityEngine.Rendering.DebugUI;
 
 [ExecuteInEditMode]
 public class Pixelate : MonoBehaviour
@@ -36,6 +37,11 @@ public class Pixelate : MonoBehaviour
 
     private void Start()
     {
+        clearshow = false;
+        dieshow = false;
+        showClearPanel = false;
+        toGame = false;
+        value = 1;
         showHpBar = false;
         pixelate = value;
         showDiePanel = false;

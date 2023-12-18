@@ -160,7 +160,7 @@ public class BtnEffect : MonoBehaviour
         selectObj[0].gameObject.SetActive(false);
         selectObj[2].gameObject.SetActive(false);
 
-        OptionBtnOutline.effectColor = Color.green;
+        OptionBtnOutline.effectColor = Color.red;
         StartBtnOutline.effectColor = Color.white;
         ExitBtnOutline.effectColor = Color.white;
     }
@@ -179,7 +179,7 @@ public class BtnEffect : MonoBehaviour
         selectObj[1].gameObject.SetActive(false);
         selectObj[2].gameObject.SetActive(false);
 
-        ExitBtnOutline.effectColor = Color.black;
+        ExitBtnOutline.effectColor = Color.red;
         StartBtnOutline.effectColor = Color.white;
         OptionBtnOutline.effectColor = Color.white;
     }
@@ -239,7 +239,7 @@ public class BtnEffect : MonoBehaviour
                     {
                         if (e == currentIndex)
                         {
-                            ExitBtnOutline.effectColor = Color.black;
+                            ExitBtnOutline.effectColor = Color.red;
                             selectObj[e].gameObject.SetActive(true);
                         }
                         else
@@ -262,7 +262,7 @@ public class BtnEffect : MonoBehaviour
                     {
                         if (e == currentIndex)
                         {
-                            OptionBtnOutline.effectColor = Color.green;
+                            OptionBtnOutline.effectColor = Color.red;
                             selectObj[e].gameObject.SetActive(true);
                         }
                         else

@@ -47,7 +47,7 @@ public class PlayerB_Atk4 : PlayerController
             color.a = 0.25f;
             spriteRenderer.color = color;
 
-
+           // SoundManager.Instance.PlaySFXSound("groundOpen", 5f); ·áÀÌÄí ÅÙÄ«ÀÌ
             float startTime = Time.time;
             atk4Icon.fillAmount = 0f;
             WeaponDataManager.playerBFourbool = true;

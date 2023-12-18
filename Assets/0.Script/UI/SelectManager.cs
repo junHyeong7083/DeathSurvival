@@ -12,7 +12,10 @@ public class SelectManager : MonoBehaviour
 
     [Header("CharacterPanel")]
     public Image[] charBox;
-
+    [Header("Lock Key")]
+    public Image[] keys;
+    [Header("Character Story")]
+    public Image[] storys;
     [Header("SelectEffect")]
     public Image[] showEffectImage;
     public Outline[] showButtonOutline;
@@ -42,6 +45,13 @@ public class SelectManager : MonoBehaviour
 
     Vector2 originScale;
     Vector2 changeScale;
+
+    Vector2 originStroyScale;
+    Vector2 changeStroyScale;
+
+
+    Vector2 originKeyScale;
+    Vector2 changeKeyScale;
     #endregion
 
     float checkB = 0f;
@@ -60,7 +70,7 @@ public class SelectManager : MonoBehaviour
         else
             canB = false;
 
-        if (secondValue >= 2)
+        if (secondValue >= 1)
             canC = true;
         else
             canC = false;
@@ -77,6 +87,12 @@ public class SelectManager : MonoBehaviour
         #region Init
         originScale = new Vector2(600, 320);
         changeScale = new Vector2(470, 250);
+
+        originStroyScale = new Vector2(640, 320);
+        changeStroyScale = new Vector2(460, 250);
+
+        originKeyScale = new Vector2(130, 130);
+        changeKeyScale = new Vector2(80, 80);
 
         currentPosPlayerA = new Vector3(279, -15, 0);
         currentPosPlayerB = new Vector3(180, 34, 0);
@@ -116,10 +132,14 @@ public class SelectManager : MonoBehaviour
             if (e != currentIndex)
             {
                 charBox[e].GetComponent<Image>().color = new Color32(89, 74, 74, 255);
+                //  keys[e].GetComponent<Image>().color = new Color32(89, 74, 74, 255);
+                storys[e].GetComponent<Image>().color = new Color32(89, 74, 74, 255);
             }
             else if (e == currentIndex)
             {
                 charBox[e].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                //   keys[e].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                storys[e].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
         }
     } // 캐릭터 패널의 색변경 조절
@@ -135,6 +155,17 @@ public class SelectManager : MonoBehaviour
                 charBox[0].rectTransform.sizeDelta = originScale;
                 charBox[1].rectTransform.sizeDelta = changeScale;
                 charBox[2].rectTransform.sizeDelta = changeScale;
+
+                storys[0].rectTransform.sizeDelta = originStroyScale;
+                storys[1].rectTransform.sizeDelta = changeStroyScale;
+                storys[2].rectTransform.sizeDelta = changeStroyScale;
+
+
+
+                keys[0].rectTransform.sizeDelta = changeKeyScale;
+                keys[1].rectTransform.sizeDelta = changeKeyScale;
+                keys[0].GetComponent<Image>().color = new Color32(89, 74, 74, 255);
+                keys[1].GetComponent<Image>().color = new Color32(89, 74, 74, 255);
 
                 charBox[0].transform.localPosition = Vector3.Lerp(currentPosPlayerA, targetPosPlayerA, changeSpeed * Time.deltaTime);
                 charBox[1].transform.localPosition = Vector3.Lerp(currentPosPlayerB, targetPosPlayerB, changeSpeed * Time.deltaTime);
@@ -157,6 +188,15 @@ public class SelectManager : MonoBehaviour
                 charBox[0].rectTransform.sizeDelta = changeScale;
                 charBox[2].rectTransform.sizeDelta = changeScale;
 
+                storys[1].rectTransform.sizeDelta = originStroyScale;
+                storys[0].rectTransform.sizeDelta = changeStroyScale;
+                storys[2].rectTransform.sizeDelta = changeStroyScale;
+
+                keys[0].rectTransform.sizeDelta = originKeyScale;
+                keys[1].rectTransform.sizeDelta = changeKeyScale;
+                keys[0].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                keys[1].GetComponent<Image>().color = new Color32(89, 74, 74, 255);
+
                 charBox[0].transform.localPosition = Vector3.Lerp(currentPosPlayerA, targetPosPlayerA, changeSpeed * Time.deltaTime);
                 charBox[1].transform.localPosition = Vector3.Lerp(currentPosPlayerB, targetPosPlayerB, changeSpeed * Time.deltaTime);
                 charBox[2].transform.localPosition = Vector3.Lerp(currentPosPlayerC, targetPosPlayerC, changeSpeed * Time.deltaTime);
@@ -177,6 +217,15 @@ public class SelectManager : MonoBehaviour
                 charBox[2].rectTransform.sizeDelta = originScale;
                 charBox[1].rectTransform.sizeDelta = changeScale;
                 charBox[0].rectTransform.sizeDelta = changeScale;
+
+                storys[2].rectTransform.sizeDelta = originStroyScale;
+                storys[1].rectTransform.sizeDelta = changeStroyScale;
+                storys[0].rectTransform.sizeDelta = changeStroyScale;
+
+                keys[0].rectTransform.sizeDelta = changeKeyScale;
+                keys[1].rectTransform.sizeDelta = originKeyScale;
+                keys[1].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+                keys[0].GetComponent<Image>().color = new Color32(89, 74, 74, 255);
 
                 charBox[0].transform.localPosition = Vector3.Lerp(currentPosPlayerA, targetPosPlayerA, changeSpeed * Time.deltaTime);
                 charBox[1].transform.localPosition = Vector3.Lerp(currentPosPlayerB, targetPosPlayerB, changeSpeed * Time.deltaTime);
@@ -276,14 +325,14 @@ public class SelectManager : MonoBehaviour
     void Update()
     {
         #region 게임시작, 돌아가기 키입력
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
         {
             if (currentUpDownValue == 1)
                 currentUpDownValue = 1;
             else
                 currentUpDownValue++;
         }
-        else if(Input.GetKeyDown(KeyCode.DownArrow))
+        else if(Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
         {
             if (currentUpDownValue == 0)
                 currentUpDownValue = 0;
@@ -314,14 +363,14 @@ public class SelectManager : MonoBehaviour
         #endregion
 
         #region 캐릭터 선택
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
         {
             if (currentLeftRightValue == 2)
                 currentLeftRightValue = 0;
             else
                 currentLeftRightValue++;
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
         {
             if (currentLeftRightValue == 0)
                 currentLeftRightValue = 2;

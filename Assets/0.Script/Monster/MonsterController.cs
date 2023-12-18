@@ -338,6 +338,12 @@ public class MonsterController : MonoBehaviour
         isStart = true;
         Hp = maxHp; 
         isDead = false;
+
+        Transform monsterTransform = this.transform;
+        Transform child0 = monsterTransform.GetChild(0);
+        Transform child1 = monsterTransform.GetChild(1);
+        child0.gameObject.SetActive(false);
+        child1.gameObject.SetActive(false);
     }
 
     float delayDieTime;
@@ -373,6 +379,9 @@ public class MonsterController : MonoBehaviour
     }
     bool isOnes = false;
 
+
+    bool isCheckSande = false;
+    float isSandeTime = 0f;
     void Update()
     {
       //  Debug.Log("hp : " + Hp);
@@ -411,9 +420,11 @@ public class MonsterController : MonoBehaviour
                 Transform child = monsterTransform.GetChild(1);
                 child.gameObject.SetActive(true);
                 isHitPlayerBFourSkill = false;
+                Hp = 0;
             }
 
         }
+
 
 
         if (!PlayerHpBar.isDie) // 플레이어가 살아있을때 움직이기
@@ -477,7 +488,7 @@ public class MonsterController : MonoBehaviour
                 {
                     /*   Vector2 direction = (playerTransform.position - transform.position).normalized;
                        transform.Translate(direction * Speed * Time.deltaTime);*/
-                    Vector2 dirV = targetRigid.position - rigidbody2D.position;
+                    Vector2 dirV = (targetRigid.position - rigidbody2D.position);
                     Vector2 nextV = dirV.normalized * Speed * Time.deltaTime;
                     rigidbody2D.MovePosition(rigidbody2D.position + nextV);
                     rigidbody2D.velocity = Vector2.zero;

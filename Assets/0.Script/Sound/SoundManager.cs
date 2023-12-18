@@ -7,7 +7,7 @@ public class SoundManager : MonoBehaviour
     public float masterVolume;
     public float bgmVolume;
     public float sfxVolume;
-
+    
     public static SoundManager Instance
     {
         get
@@ -85,9 +85,26 @@ public class SoundManager : MonoBehaviour
         }
 
         if (!IsPause)
-            sfxPlayer.PlayOneShot(audioClipsDic[name], volume * masterVolumeSFX);
-    }
+        {
+            AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.clip = audioClipsDic[name];
+            audioSource.volume = volume * masterVolumeSFX;
+            audioSource.Play();
 
+            // 재생 중인 AudioSource 저장
+            playingAudios[name] = audioSource;
+        }
+    }
+    public void StopAudioClip(string name)
+    {
+        if (playingAudios.ContainsKey(name))
+        {
+            AudioSource audioSource = playingAudios[name];
+            audioSource.Stop();
+            Destroy(audioSource);  // AudioSource 제거
+            playingAudios.Remove(name);
+        }
+    }
     // BGM 
     public void SetBGMSound(int bgm_num, float volume = 1f)
     {
@@ -99,18 +116,19 @@ public class SoundManager : MonoBehaviour
             bgmPlayer.clip = MainBgmAudioClip;
         }
     }
+    private Dictionary<string, AudioSource> playingAudios = new Dictionary<string, AudioSource>();
 
     // Volume
-   /* public void SetMasterVolume(float value)
-    {
-        masterVolumeBGM = value;
-        masterVolumeSFX = value;
-    }*/
+    /* public void SetMasterVolume(float value)
+     {
+         masterVolumeBGM = value;
+         masterVolumeSFX = value;
+     }*/
 
-   /* public float GetMasterVolume()
-    {
-        return masterVolumeBGM;
-    }*/
+    /* public float GetMasterVolume()
+     {
+         return masterVolumeBGM;
+     }*/
 
     // Sound Play
     public void PlaySound()
@@ -125,6 +143,14 @@ public class SoundManager : MonoBehaviour
     public void PauseSound()
     {
         bgmPlayer.Pause();
+
+        if (!IsPause)
+            IsPause = true;
+    }
+
+    public void SFXPauseSound()
+    {
+        sfxPlayer.Pause();
 
         if (!IsPause)
             IsPause = true;
