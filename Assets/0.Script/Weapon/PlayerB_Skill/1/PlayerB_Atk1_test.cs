@@ -26,7 +26,6 @@ public class PlayerB_Atk1_test : MonoBehaviour
 
         StartCoroutine(Atk());
     }
-    bool checkFirst = false;
     IEnumerator Atk()
     {
         while (true)

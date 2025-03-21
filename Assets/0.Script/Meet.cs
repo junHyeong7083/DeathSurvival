@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 public class Meet : MonoBehaviour
@@ -16,8 +15,6 @@ public class Meet : MonoBehaviour
     {
         if (collision.gameObject.tag == "ItemDetect")
         {
-
-
             this.gameObject.SetActive(false);
         }
     }
@@ -27,17 +24,14 @@ public class Meet : MonoBehaviour
         Timer += Time.deltaTime;
         float distance = Vector3.Distance(transform.position, Player.transform.position);
         if (distance <= PlayerState.detectRange) // 아이템 탐지
-        {
             isAttracted = true;
-        }
         else
-        {
             isAttracted = false;
-        }
+
+
         if (isAttracted)
         {
-            // 플레이어 위치로 아이템을 부드럽게 이동시킴
-         //   transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, PlayerState.attractionSpeed * Time.deltaTime);
+            // 플레이어 위치로 아이템 이동
             transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, 15f * Time.deltaTime);
         }
     }

@@ -1,8 +1,5 @@
 using EasyTransition;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
@@ -199,7 +196,6 @@ public class UIManager : MonoBehaviour
 
         #endregion
 
-        Debug.Log("timebool : " + TimerManager.isClear);
         #region ClearPanel
         if (TimerManager.isClear)
         {

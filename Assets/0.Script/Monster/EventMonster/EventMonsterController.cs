@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EventMonsterController : MonoBehaviour
 {
-    float disableTime = 0f;
+    float disableTime;
     private void OnEnable()
     {
         disableTime = 0f;

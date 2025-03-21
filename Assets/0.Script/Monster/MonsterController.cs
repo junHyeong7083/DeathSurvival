@@ -91,7 +91,7 @@ public class MonsterController : MonoBehaviour
                 case Character.White:
                     if (collision.gameObject.CompareTag("PlayerA_One"))
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.playerAOneAtk + damage;
                         sumDamage = WeaponDataManager.playerAOneAtk + damage;
                         isHitAni = false;
@@ -104,7 +104,7 @@ public class MonsterController : MonoBehaviour
                     }
                     if (collision.gameObject.CompareTag("PlayerA_Two"))
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.playerATwoAtk + damage;
                         sumDamage = WeaponDataManager.playerATwoAtk + damage;
                         isHit = true;
@@ -116,7 +116,7 @@ public class MonsterController : MonoBehaviour
                     }
                     if (collision.gameObject.CompareTag("PlayerA_Three"))
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.playerAThreeAtk;
                         sumDamage = WeaponDataManager.playerAThreeAtk + damage;
                         isHit = true;
@@ -127,7 +127,7 @@ public class MonsterController : MonoBehaviour
                     }
                     if (collision.gameObject.CompareTag("PlayerA_Basic"))
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.playerABasicAtkDamage;
                         sumDamage = WeaponDataManager.playerABasicAtkDamage + damage;
                         isHit = true;
@@ -142,7 +142,7 @@ public class MonsterController : MonoBehaviour
                 case Character.Blue:
                     if (collision.gameObject.CompareTag("PlayerB_One") )
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.playerBOneAtk + damage;
                         sumDamage = WeaponDataManager.playerBOneAtk + damage;
                         isHitAni = false;
@@ -155,7 +155,7 @@ public class MonsterController : MonoBehaviour
                     }
 /*                    if (collision.gameObject.CompareTag("PlayerB_Two"))
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                        // Hp -= WeaponDataManager.playerBTwoAtk + damage;
                       //  sumDamage = WeaponDataManager.playerATwoAtk + damage;
                         isHit = true;
@@ -167,7 +167,7 @@ public class MonsterController : MonoBehaviour
                     }*/
                     if (collision.gameObject.CompareTag("PlayerB_Three"))
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.playerBThreeDamage;
                         sumDamage = WeaponDataManager.playerBThreeDamage + damage;
                         isHit = true;
@@ -178,7 +178,7 @@ public class MonsterController : MonoBehaviour
                     }
                     if (collision.gameObject.CompareTag("PlayerB_Basic"))
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.playerBBasicDamage;
                         sumDamage = WeaponDataManager.playerBBasicDamage + damage;
                         isHit = true;
@@ -193,7 +193,7 @@ public class MonsterController : MonoBehaviour
                 case Character.Green:
                     if (collision.gameObject.CompareTag("PlayerC_One"))
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.plyaerCOneDamage + damage;
                         sumDamage = WeaponDataManager.plyaerCOneDamage + damage;
                         isHitAni = false;
@@ -206,7 +206,7 @@ public class MonsterController : MonoBehaviour
                     }
                     if (collision.gameObject.CompareTag("PlayerC_Two"))
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.playerCTwoDamage + damage;
                         sumDamage = WeaponDataManager.playerCTwoDamage + damage;
                         isHit = true;
@@ -218,7 +218,7 @@ public class MonsterController : MonoBehaviour
                     }
                     if (collision.gameObject.CompareTag("PlayerC_Three"))
                     {
-                     /*   // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                     /*   // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.playerAThreeAtk;
                         sumDamage = WeaponDataManager.playerAThreeAtk + damage;
                         isHit = true;
@@ -229,7 +229,7 @@ public class MonsterController : MonoBehaviour
                     }
                     if (collision.gameObject.CompareTag("PlayerC_Basic"))
                     {
-                        // °ø°Ý·Â µû¶ó µ¥¹ÌÁö ÁÙÀÌ´Â ÄÚµå
+                        // ï¿½ï¿½ï¿½Ý·ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½ ï¿½Úµï¿½
                         Hp -= WeaponDataManager.playerCBasicAtkDamage;
                         sumDamage = WeaponDataManager.playerCBasicAtkDamage + damage;
                         isHit = true;
@@ -257,7 +257,7 @@ public class MonsterController : MonoBehaviour
             }
 
 
-            #region ÇÃ·¹ÀÌ¾îÇÑÅ× ³Ê¹« ¾ÈºÙ°Ô
+            #region ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¹ï¿½ ï¿½ÈºÙ°ï¿½
             if (collision.gameObject.CompareTag("Player"))
             {
                 Speed = 0;
@@ -427,9 +427,9 @@ public class MonsterController : MonoBehaviour
 
 
 
-        if (!PlayerHpBar.isDie) // ÇÃ·¹ÀÌ¾î°¡ »ì¾ÆÀÖÀ»¶§ ¿òÁ÷ÀÌ±â
+        if (!PlayerHpBar.isDie) // ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì±ï¿½
         {
-            if (!isDead && Hp <= 0) // ¸ó½ºÅÍ°¡ Á×Áö ¾Ê¾Ò°í HP°¡ 0 ÀÌÇÏÀÎ °æ¿ì
+            if (!isDead && Hp <= 0) // ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò°ï¿½ HPï¿½ï¿½ 0 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
             {
                 int dieSound = Random.Range(1, 7);
                 switch(dieSound)
@@ -468,7 +468,7 @@ public class MonsterController : MonoBehaviour
                 }
                 monsterManager.SpawnMonsterItem(this.transform.position.x, this.transform.position.y);
                 isMove = false;
-                isDead = true; // ¸ó½ºÅÍ¸¦ Á×Àº »óÅÂ·Î Ç¥½Ã
+                isDead = true; // ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â·ï¿½ Ç¥ï¿½ï¿½
                 MonsterManager.huntMonsterCnt++;
             }
             if (isDead)
@@ -491,7 +491,7 @@ public class MonsterController : MonoBehaviour
                     Vector2 dirV = (targetRigid.position - rigidbody2D.position);
                     Vector2 nextV = dirV.normalized * Speed * Time.deltaTime;
                     rigidbody2D.MovePosition(rigidbody2D.position + nextV);
-                    rigidbody2D.velocity = Vector2.zero;
+                    rigidbody2D.linearVelocity = Vector2.zero;
 
                     if(WeaponDataManager.playerBTwobool)
                     {
@@ -537,7 +537,7 @@ public class MonsterController : MonoBehaviour
         {
             if(!isDead)
             {
-                if(!WeaponDataManager.playerAFourbool) // Àü±¸ ½Ã°£Á¤Áö¶§´Â ³Ë¹éÀÛµ¿ÇÏ¸é µô·Î½º³²
+                if(!WeaponDataManager.playerAFourbool) // ï¿½ï¿½ï¿½ï¿½ ï¿½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¹ï¿½ï¿½Ûµï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½Î½ï¿½ï¿½ï¿½
                 {
                     if (knockbackTime < 0.1f)
                     {
@@ -562,7 +562,7 @@ public class MonsterController : MonoBehaviour
                     ones = true;
                 }
             }
-        } // ³Ë¹éÈ¿°ú
+        } // ï¿½Ë¹ï¿½È¿ï¿½ï¿½
 
 
 

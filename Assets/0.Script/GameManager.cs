@@ -79,15 +79,10 @@ public class GameManager : MonoBehaviour
     #endregion
     private void Start()
     {
-        //   SoundManager.Instance.PlaySound();
-        //Screen.SetResolution(640, 360, false);
         if (SceneManager.GetActiveScene().name == "Title") // 타이틀씬에서 사운드재생
         {
             SoundManager.Instance.SetBGMSound(1, PlayerPrefs.GetFloat("masterSound") * PlayerPrefs.GetFloat("bgmSound"));
             SoundManager.Instance.PlaySound();
         }
-    }
-    void Update()
-    {
     }
 }

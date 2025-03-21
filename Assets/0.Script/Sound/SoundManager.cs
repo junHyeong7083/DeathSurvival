@@ -80,7 +80,6 @@ public class SoundManager : MonoBehaviour
     {
         if (audioClipsDic.ContainsKey(name) == false)
         {
-            Debug.Log(name + " is not Contained audioClipsDic");
             return;
         }
 
@@ -117,18 +116,6 @@ public class SoundManager : MonoBehaviour
         }
     }
     private Dictionary<string, AudioSource> playingAudios = new Dictionary<string, AudioSource>();
-
-    // Volume
-    /* public void SetMasterVolume(float value)
-     {
-         masterVolumeBGM = value;
-         masterVolumeSFX = value;
-     }*/
-
-    /* public float GetMasterVolume()
-     {
-         return masterVolumeBGM;
-     }*/
 
     // Sound Play
     public void PlaySound()

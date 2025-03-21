@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class Blood : MonoBehaviour
 {
-    Animator animator;
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
+
+    float Timer = 0f;
+
     private void OnEnable()
     {
         Timer = 0f;
     }
-
-    private void OnDisable()
-    {
-        Timer = 0f;
-    }
-    float Timer = 0f;
     private void Update()
     {
         Timer += Time.deltaTime;

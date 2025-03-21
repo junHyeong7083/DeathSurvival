@@ -4,101 +4,62 @@ using UnityEngine;
 
 public class BloodEffect : MonoBehaviour
 {
-    public GameObject[] BloodObj;
-    private List<GameObject> monsterBloodPool1;
-    private List<GameObject> monsterBloodPool2;
-    private List<GameObject> monsterBloodPool3;
-    private List<GameObject> monsterBloodPool4;
-
-    Transform BloodParent;
+    public GameObject[] BloodObj; // 다양한 피 오브젝트 프리팹
+    private List<List<GameObject>> monsterBloodPools = new List<List<GameObject>>(); // 여러 개의 피 풀
+    private Transform BloodParent; // 부모 오브젝트
 
     void Start()
     {
-        monsterBloodPool1 = new List<GameObject>();
-        monsterBloodPool2 = new List<GameObject>();
-        monsterBloodPool3 = new List<GameObject>();
-        monsterBloodPool4 = new List<GameObject>();
+        BloodParent = new GameObject("BloodParent").transform;
 
-        GameObject parentBlood = new GameObject( "BloodParent");
-        BloodParent = parentBlood.transform;
-
-        for (int e = 0; e < 50; ++e)
+        // 4개의 피 풀 초기화
+        for (int i = 0; i < BloodObj.Length; i++)
         {
-            GameObject blood1 = Instantiate(BloodObj[0], BloodParent);
-            blood1.SetActive(false);
-            monsterBloodPool1.Add(blood1);
+            monsterBloodPools.Add(new List<GameObject>());
+            InitBloodPool(monsterBloodPools[i], BloodObj[i]);
         }
-        for (int e = 0; e < 50; ++e)
-        {
-            GameObject blood2 = Instantiate(BloodObj[1], BloodParent);
-            blood2.SetActive(false);
-            monsterBloodPool2.Add(blood2);
-        }
-        for (int e = 0; e < 50; ++e)
-        {
-            GameObject blood3 = Instantiate(BloodObj[2], BloodParent);
-            blood3.SetActive(false);
-            monsterBloodPool3.Add(blood3);
-        }
-        for (int e = 0; e < 50; ++e)
-        {
-            GameObject blood4 = Instantiate(BloodObj[3], BloodParent);
-            blood4.SetActive(false);
-            monsterBloodPool4.Add(blood4);
-        }
-
     }
 
+    /// <summary>
+    /// 피 오브젝트 풀 초기화
+    /// </summary>
+    void InitBloodPool(List<GameObject> bloodPool, GameObject bloodPrefab)
+    {
+        for (int i = 0; i < 50; i++)
+        {
+            GameObject blood = Instantiate(bloodPrefab, BloodParent);
+            blood.SetActive(false);
+            bloodPool.Add(blood);
+        }
+    }
+
+    /// <summary>
+    /// 몬스터 피 이펙트 스폰
+    /// </summary>
     public void SpawnMonsterBlood(float x, float y)
     {
-        int randomBlood = Random.Range(0, 4);  // 0 1 2 3 4 
-        int randomRotation = Random.Range(0, 361);
-        GameObject inactiveMonsterBlood;
-        switch (randomBlood)
+        int randomIndex = Random.Range(0, monsterBloodPools.Count);
+        GameObject inactiveBlood = monsterBloodPools[randomIndex].Find(blood => !blood.activeSelf);
+
+        if (inactiveBlood != null)
         {
-            case 0:
-                inactiveMonsterBlood = monsterBloodPool1.Find(blood1 => !blood1.activeSelf);
-                if (inactiveMonsterBlood != null)
-                {
-                    inactiveMonsterBlood.SetActive(true);
-                    inactiveMonsterBlood.GetComponent<Animator>().SetTrigger("isBlood"); // Blood 애니메이터 접근후 실행
-                    inactiveMonsterBlood.transform.position = new Vector3(x, y, 0);
-                    inactiveMonsterBlood.transform.eulerAngles = new Vector3(0, 0, randomRotation);
-                }
-                break;
+            ActivateBloodEffect(inactiveBlood, x, y);
+        }
+    }
 
-             case 1:
-                inactiveMonsterBlood = monsterBloodPool2.Find(blood2 => !blood2.activeSelf);
-                if (inactiveMonsterBlood != null)
-                {
-                    inactiveMonsterBlood.SetActive(true);
-                    inactiveMonsterBlood.GetComponent<Animator>().SetTrigger("isBlood"); // Blood 애니메이터 접근후 실행
-                    inactiveMonsterBlood.transform.position = new Vector3(x, y, 0);
-                    inactiveMonsterBlood.transform.eulerAngles = new Vector3(0, 0, randomRotation);
-                }
-                break;
+    /// <summary>
+    /// 피 이펙트를 활성화하는 함수
+    /// </summary>
+    private void ActivateBloodEffect(GameObject blood, float x, float y)
+    {
+        blood.SetActive(true);
+        blood.transform.position = new Vector3(x, y, 0);
+        blood.transform.eulerAngles = new Vector3(0, 0, Random.Range(0, 361));
 
-            case 2:
-                inactiveMonsterBlood = monsterBloodPool3.Find(blood3 => !blood3.activeSelf);
-                if (inactiveMonsterBlood != null)
-                {
-                    inactiveMonsterBlood.SetActive(true);
-                    inactiveMonsterBlood.GetComponent<Animator>().SetTrigger("isBlood"); // Blood 애니메이터 접근후 실행
-                    inactiveMonsterBlood.transform.position = new Vector3(x, y, 0);
-                    inactiveMonsterBlood.transform.eulerAngles = new Vector3(0, 0, randomRotation);
-                }
-                break;
-
-            case 3:
-                inactiveMonsterBlood = monsterBloodPool4.Find(blood4 => !blood4.activeSelf);
-                if (inactiveMonsterBlood != null)
-                {
-                    inactiveMonsterBlood.SetActive(true);
-                    inactiveMonsterBlood.GetComponent<Animator>().SetTrigger("isBlood"); // Blood 애니메이터 접근후 실행
-                    inactiveMonsterBlood.transform.position = new Vector3(x, y, 0);
-                    inactiveMonsterBlood.transform.eulerAngles = new Vector3(0, 0, randomRotation);
-                }
-                break;
+        Animator anim = blood.GetComponent<Animator>();
+        if (anim != null)
+        {
+            anim.SetTrigger("isBlood");
         }
     }
 }
